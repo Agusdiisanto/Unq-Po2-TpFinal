@@ -6,19 +6,20 @@ import usuario.IParticipante;
 
 public class Proyecto {
 	
-	private String nombre;
-	private String descripcion;
-	private List<String> categorias;
+	private String				  nombreDelProyecto;
+	private String 				  descripcion;
+	private List<String> 		  categorias;
 	private List<ActividadLudica> actividades;
-	private List<Muestra> muestrasRecolectadas;
-	private List<IParticipante> participantes;
-	private List<String> intereses;
+	private List<Muestra> 		  muestrasRecolectadas;
+	private List<IParticipante>   participantes;
+	private List<String> 		  intereses;
 	
+	// ============== GETTERS & SETTERS ==============
 	public String getNombre() {
-		return nombre;
+		return nombreDelProyecto;
 	}
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombreDelProyecto = nombre;
 	}
 	public String getDescripcion() {
 		return descripcion;
@@ -57,7 +58,16 @@ public class Proyecto {
 		this.intereses = intereses;
 	}
 	
-	public boolean esDeInteres(Muestra muestra) {
+	// ================== COSTRUCTOR ==================
+	public Proyecto(String nombreDelProyecto, String descripcion) {
+		super();
+		this.nombreDelProyecto = nombreDelProyecto;
+		this.descripcion 	   = descripcion;
+	}
+	
+	
+	// ================== METHODS ==================
+	public boolean esMuestraDeInteres(Muestra muestra) {
 		for (String interes : this.getIntereses()) {
 			if(muestra.tieneLaCaracteristica(interes)) {
 				return true;
@@ -66,8 +76,8 @@ public class Proyecto {
 		return false;
 	}
 	
-	public void agregarNuevaMuestraDeInteres(Muestra muestra) {
-		if(this.esDeInteres(muestra)) {
+	public void agregarMuestra(Muestra muestra) {
+		if(this.esMuestraDeInteres(muestra)) {
 			this.getMuestrasRecolectadas().add(muestra);
 		}
 	}

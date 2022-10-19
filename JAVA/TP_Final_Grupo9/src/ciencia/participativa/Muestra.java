@@ -56,8 +56,6 @@ public class Muestra {
 	}
 	
 	public void notificar(Proyecto proyecto) {
-		proyecto.esDeInteres(this);
+		proyecto.esMuestraDeInteres(this);
 	}
-
-	
 }

@@ -1,64 +1,65 @@
 package usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ciencia.participativa.AplicacionMovil;
 import ciencia.participativa.Desafio;
-import ciencia.participativa.Desafios;
 import ciencia.participativa.Muestra;
 import ciencia.participativa.Proyecto;
 import ciencia.participativa.Sistema;
 
 public class Usuario implements IParticipante{
 	
-	private String nombre;
+	private String			nombre;
 	private AplicacionMovil aplicacion;
-	private List<Proyecto> proyectoEnCurso;
-	private Perfil perfil;
-	private List<Desafios> desafiosCompletados;
-	
+	private List<Proyecto> 	proyectoEnCurso;
+	private Perfil 			perfil;
+	private List<Desafio> 	desafiosCompletados;
+
+	// ============== GETTERS & SETTERS ==============
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public AplicacionMovil getAplicacion() {
 		return aplicacion;
 	}
-
 	public void setAplicacion(AplicacionMovil aplicacion) {
 		this.aplicacion = aplicacion;
 	}
-
 	public List<Proyecto> getProyectoEnCurso() {
 		return proyectoEnCurso;
 	}
-
 	public void setProyectoEnCurso(List<Proyecto> proyectoEnCurso) {
 		this.proyectoEnCurso = proyectoEnCurso;
 	}
-
 	public Perfil getPerfil() {
 		return perfil;
 	}
-
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
-
-	public List<Desafios> getDesafiosCompletados() {
+	public List<Desafio> getDesafiosCompletados() {
 		return desafiosCompletados;
 	}
-
-	public void setDesafiosCompletados(List<Desafios> desafiosCompletados) {
+	public void setDesafiosCompletados(List<Desafio> desafiosCompletados) {
 		this.desafiosCompletados = desafiosCompletados;
 	}
-
+	
+	// ================== COSTRUCTOR ==================
+	public Usuario(String nombre, AplicacionMovil aplicacion, Perfil perfil) {
+		this.nombre				 = nombre;
+		this.aplicacion			 = aplicacion;
+		this.proyectoEnCurso 	 = new ArrayList<>();
+		this.perfil 			 = perfil;
+		this.desafiosCompletados = new ArrayList<>();
+	}
 	
 	
+	// ================== METHODS ==================
 	@Override
 	public void recolectarMuestra(Muestra muestra) {
 		// TODO Auto-generated method stub
@@ -73,12 +74,6 @@ public class Usuario implements IParticipante{
 	@Override
 	public void recomendarParticipante(Sistema system, IParticipante x) {
 		system.realizarRecomendacionAParticipante(x);
-	}
-
-	@Override
-	public List<Desafio> getDesafiosCompleatados() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
