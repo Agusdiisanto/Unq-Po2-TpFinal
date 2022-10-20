@@ -13,7 +13,16 @@ public class Muestra {
 	private LocalDateTime fechaYHoraDeRecoleccion;
 	private Coordenada coordenadaDeRecollecion;
 	
-	
+
+	public Muestra(List<String> caracteristicas, Usuario usuarioQueLaRecolecto, 
+			       LocalDateTime fechaYHoraDeRecoleccion,
+			       Coordenada coordenadaDeRecollecion) {
+		this.caracteristicas = caracteristicas;
+		this.usuarioQueLaRecolecto = usuarioQueLaRecolecto;
+		this.fechaYHoraDeRecoleccion = fechaYHoraDeRecoleccion;
+		this.coordenadaDeRecollecion = coordenadaDeRecollecion;
+	}
+
 	public List<String> getCaracteristicas() {
 		return caracteristicas;
 	}
@@ -50,11 +59,14 @@ public class Muestra {
 		return caracteristicas.contains(interes);
 	}
 	
+	//Ver
 	public void registrarMuestraEnProyectoPorUsario(Proyecto proyecto, IParticipante participante) {
 		this.notificar(proyecto);
 		participante.recolectarMuestra(this);
 	}
 	
+	
+	//Sacar??
 	public void notificar(Proyecto proyecto) {
 		proyecto.esMuestraDeInteres(this);
 	}

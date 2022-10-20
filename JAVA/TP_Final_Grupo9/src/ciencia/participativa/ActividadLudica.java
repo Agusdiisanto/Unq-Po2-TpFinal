@@ -1,5 +1,6 @@
 package ciencia.participativa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ActividadLudica {
@@ -14,5 +15,7 @@ public class ActividadLudica {
 	}
 	
 	// ================== COSTRUCTOR ==================
-	public ActividadLudica() {}
+	public ActividadLudica() {
+		this.elementosUtilizados = new ArrayList<>();
+	}
 }

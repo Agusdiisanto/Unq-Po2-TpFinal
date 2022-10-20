@@ -92,9 +92,4 @@ public class Usuario implements IParticipante{
 	public void calificarProyecto(Sistema system, Proyecto proyecto) {
 		system.puntuarProyecto(proyecto);
 	}
-
-
-
-	
-
 }

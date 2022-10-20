@@ -2,14 +2,13 @@ package usuario;
 
 import java.util.List;
 
-import ciencia.participativa.Desafio;
+import ciencia.participativa.Caracteristica;
 
 public class Perfil {
 	
 	private List<String> gustos;
-	private List<String> preferencias;
+	private List<Caracteristica> preferencias;
 	private List<String> comportamiento;
-	private List<Desafio> recomendaciones;
 	
 	
 	public List<String> getGustos() {
@@ -18,10 +17,10 @@ public class Perfil {
 	public void setGustos(List<String> gustos) {
 		this.gustos = gustos;
 	}
-	public List<String> getPreferencias() {
+	public List<Caracteristica> getPreferencias() {
 		return preferencias;
 	}
-	public void setPreferencias(List<String> preferencias) {
+	public void setPreferencias(List<Caracteristica> preferencias) {
 		this.preferencias = preferencias;
 	}
 	public List<String> getComportamiento() {
@@ -29,11 +28,6 @@ public class Perfil {
 	}
 	public void setComportamiento(List<String> comportamiento) {
 		this.comportamiento = comportamiento;
-	}
-
-	
-	public void agregar() {
-		
 	}
 	
 	

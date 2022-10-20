@@ -13,6 +13,7 @@ public class Desafio {
 	private Dificultad 			dificultad;
 	private int 				recompensa;
 	private List<IParticipante> participantes;
+	private List <Caracteristica>       caracteristicas;
 	
 	// ============== GETTERS & SETTERS ==============
 	public Area getArea() {
@@ -58,17 +59,23 @@ public class Desafio {
 		this.participantes = participantes;
 	}
 	
+	public List<Caracteristica> getCaracteristicas() {
+		return caracteristicas;
+	}
+	public void setCaracteristicas(List<Caracteristica> caracteristicas) {
+		this.caracteristicas = caracteristicas;
+	}
 	// ================== COSTRUCTOR ==================
 	public Desafio(Area area, RestriccionTemporal restriccionTemporal,
 			int cantidadDeMuestrasARecolectar,
-			Dificultad dificultad, int recompensa) {
-		super();
+			Dificultad dificultad, int recompensa, List <Caracteristica> caracteristicas) {
 		this.area 							= area;
 		this.restriccionTemporal 			= restriccionTemporal;
 		this.cantidadDeMuestrasARecolectar  = cantidadDeMuestrasARecolectar;
 		this.cantidadDeMuestrasRecolectadas = 0;
 		this.dificultad 					= dificultad;
 		this.recompensa 					= recompensa;
+		this.caracteristicas                = caracteristicas;
 	}
 
 	
