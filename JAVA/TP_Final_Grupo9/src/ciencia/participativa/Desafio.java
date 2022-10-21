@@ -6,14 +6,14 @@ import java.util.List;
 import usuario.IParticipante;
 
 public class Desafio {
-	private Area area;
-	private RestriccionTemporal restriccionTemporal;
-	private int 				cantidadDeMuestrasARecolectar;
-	private int 				cantidadDeMuestrasRecolectadas;
-	private Dificultad 			dificultad;
-	private int 				recompensa;
-	private List<IParticipante> participantes;
-	private List <Caracteristica>       caracteristicas;
+	private Area 				 area;
+	private RestriccionTemporal  restriccionTemporal;
+	private int 				 cantidadDeMuestrasARecolectar;
+	private int 				 cantidadDeMuestrasRecolectadas;
+	private Dificultad 			 dificultad;
+	private int 				 recompensa;
+	private List<IParticipante>  participantes;
+	private List<Caracteristica> caracteristicas;
 	
 	// ============== GETTERS & SETTERS ==============
 	public Area getArea() {

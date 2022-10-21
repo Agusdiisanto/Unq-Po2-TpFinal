@@ -2,23 +2,25 @@ package ciencia.participativa;
 
 public class Caracteristica {
 	private String descripicion;
-	private int preferencia;
+	private double afinidad;
+	
+	
 	public String getDescripicion() {
 		return descripicion;
 	}
 	public void setDescripicion(String descripicion) {
 		this.descripicion = descripicion;
 	}
-	public int getPreferencia() {
-		return preferencia;
+	public double getAfinidad() {
+		return afinidad;
 	}
-	public void setPreferencia(int preferencia) {
-		this.preferencia = preferencia;
+	public void setPreferencia(double preferencia) {
+		this.afinidad = preferencia;
 	}
 	
-	public Caracteristica(String descripicion, int preferencia) {
+	public Caracteristica(String descripicion, double preferencia) {
 		this.descripicion = descripicion;
-		this.preferencia = preferencia;
+		this.afinidad = preferencia;
 	}
 	
 	
