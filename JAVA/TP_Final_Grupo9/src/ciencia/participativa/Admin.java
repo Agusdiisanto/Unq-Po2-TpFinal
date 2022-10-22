@@ -31,13 +31,21 @@ public class Admin {
 		this.proyectos = proyectos;
 	}
 	
+	
+	//  ========= PREGUNTAR SI SE PUEDE MEJORAR EL FILTRO ===========
+	
 	public List<Desafio> getDesafios(List<ActividadLudica> actividades){
+		
 		List <Desafio> desafios = new ArrayList <>();
 		for (ActividadLudica actividad : actividades) {
-		desafios.addAll(actividad.getElementosUtilizados()); 
-	} 
+			if(actividad.getClass() == Desafio.class) {
+				desafios.add((Desafio) actividad);
+			}
+		} 
 		return desafios;
 	}
+	
+	// =================================================================
 	
 	public List <Desafio> todosLosDesafios() {
 		List <Desafio> desafios = new ArrayList<>();

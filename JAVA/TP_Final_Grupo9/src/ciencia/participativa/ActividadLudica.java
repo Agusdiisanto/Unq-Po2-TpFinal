@@ -1,21 +1,18 @@
 package ciencia.participativa;
 
-import java.util.ArrayList;
 import java.util.List;
+import usuario.IParticipante;
 
-public class ActividadLudica {
-	private List<Desafio> elementosUtilizados;
+
+public abstract class ActividadLudica {
+	
+	private List<IParticipante>  participantes;
 
 	// ============== GETTERS & SETTERS ==============
-	public List<Desafio> getElementosUtilizados() {
-		return elementosUtilizados;
-	}
-	public void setElementosUtilizados(List<Desafio> elementosUtilizados) {
-		this.elementosUtilizados = elementosUtilizados;
-	}
 	
-	// ================== COSTRUCTOR ==================
-	public ActividadLudica() {
-		this.elementosUtilizados = new ArrayList<>();
+	public List<IParticipante> getParticipantes() {
+		return participantes;
 	}
+
+	// ¿Que mas debe haber en la clase abstracta? 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 import usuario.IParticipante;
 
-public class Desafio {
+public class Desafio extends ActividadLudica {
 	private Area 				 area;
 	private RestriccionTemporal  restriccionTemporal;
 	private int 				 cantidadDeMuestrasARecolectar;
@@ -95,6 +95,20 @@ public class Desafio {
 	}
 	
 	public void agregarUsuarioAlDesafio(IParticipante usuario) {
-		this.getParticipantes().add(usuario);
+		this.getEstado().aceptarParticipante(usuario);
 	}
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
