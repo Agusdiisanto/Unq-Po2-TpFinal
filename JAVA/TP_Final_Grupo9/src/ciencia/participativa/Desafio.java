@@ -14,6 +14,7 @@ public class Desafio {
 	private int 				 recompensa;
 	private List<IParticipante>  participantes;
 	private List<Caracteristica> caracteristicas;
+	private IEstadoDesafio  estado;
 	
 	// ============== GETTERS & SETTERS ==============
 	public Area getArea() {
@@ -65,6 +66,14 @@ public class Desafio {
 	public void setCaracteristicas(List<Caracteristica> caracteristicas) {
 		this.caracteristicas = caracteristicas;
 	}
+	
+	public IEstadoDesafio getEstado() {
+		return estado;
+	}
+	public void setEstado(IEstadoDesafio estado) {
+		this.estado = estado;
+	}
+	
 	// ================== COSTRUCTOR ==================
 	public Desafio(Area area, RestriccionTemporal restriccionTemporal,
 			int cantidadDeMuestrasARecolectar,

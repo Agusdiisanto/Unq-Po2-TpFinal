@@ -1,7 +1,5 @@
 package usuario;
 
-import java.util.List;
-
 import ciencia.participativa.Desafio;
 import ciencia.participativa.Muestra;
 import ciencia.participativa.Proyecto;
