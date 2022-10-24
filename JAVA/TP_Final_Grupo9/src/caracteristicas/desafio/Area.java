@@ -1,4 +1,4 @@
-package ciencia.participativa;
+package caracteristicas.desafio;
 
 public class Area {
 	private int latitud;

@@ -1,8 +1,9 @@
-package ciencia.participativa;
+package muestra;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+import ciencia.participativa.Proyecto;
 import usuario.IParticipante;
 import usuario.Usuario;
 

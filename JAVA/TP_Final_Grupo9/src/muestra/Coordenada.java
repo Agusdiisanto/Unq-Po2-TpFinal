@@ -1,4 +1,4 @@
-package ciencia.participativa;
+package muestra;
 
 public class Coordenada {
 	

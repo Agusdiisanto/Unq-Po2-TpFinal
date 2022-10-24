@@ -1,20 +1,17 @@
 package usuario;
 
-import ciencia.participativa.Desafio;
-import ciencia.participativa.Muestra;
 import ciencia.participativa.Proyecto;
 import ciencia.participativa.Sistema;
+import desafios.Desafio;
+import muestra.Muestra;
 
 public interface IParticipante {
 
 	public void recolectarMuestra(Muestra muestra);
 	public void solicitarSuscripcionAProyecto(Proyecto proyecto, Sistema system);
 	public void recomendarParticipante(Sistema system, IParticipante x);
-	public void inscribirseEnUnDesafio(Desafio desafio);
+	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception ;
 	public boolean estaEnDesafioActualmente(Desafio desafio);
 	public void calificarProyecto(Sistema system, Proyecto proyecto);
 	public Perfil getPerfil();
-	
-	
-	
 }

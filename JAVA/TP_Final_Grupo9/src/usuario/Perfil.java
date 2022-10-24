@@ -2,7 +2,7 @@ package usuario;
 
 import java.util.List;
 
-import ciencia.participativa.Caracteristica;
+import caracteristicas.desafio.Caracteristica;
 
 public class Perfil {
 	

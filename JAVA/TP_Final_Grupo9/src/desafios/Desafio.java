@@ -1,8 +1,13 @@
-package ciencia.participativa;
+package desafios;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
+import caracteristicas.desafio.Area;
+import caracteristicas.desafio.Caracteristica;
+import caracteristicas.desafio.Dificultad;
+import caracteristicas.desafio.RestriccionTemporal;
 import usuario.IParticipante;
 
 public class Desafio extends ActividadLudica {
@@ -14,11 +19,19 @@ public class Desafio extends ActividadLudica {
 	private int 				 recompensa;
 	private List<IParticipante>  participantes;
 	private List<Caracteristica> caracteristicas;
-	private IEstadoDesafio  estado;
+	private Map<IParticipante, Integer> puntaje;
+	private EstadoDesafio  estado;
 	
 	// ============== GETTERS & SETTERS ==============
+	
 	public Area getArea() {
 		return area;
+	}
+	public Map<IParticipante, Integer> getPuntaje() {
+		return puntaje;
+	}
+	public void setPuntaje(Map<IParticipante, Integer> puntaje) {
+		this.puntaje = puntaje;
 	}
 	public void setArea(Area area) {
 		this.area = area;
@@ -67,10 +80,10 @@ public class Desafio extends ActividadLudica {
 		this.caracteristicas = caracteristicas;
 	}
 	
-	public IEstadoDesafio getEstado() {
+	public EstadoDesafio getEstado() {
 		return estado;
 	}
-	public void setEstado(IEstadoDesafio estado) {
+	public void setEstado(EstadoDesafio estado) {
 		this.estado = estado;
 	}
 	
@@ -94,14 +107,44 @@ public class Desafio extends ActividadLudica {
 		 	 && LocalDateTime.now().isBefore(restriccionTemporal.getFechaDeCierre()));
 	}
 	
-	public void agregarUsuarioAlDesafio(IParticipante usuario) {
-		this.getEstado().aceptarParticipante(usuario);
+	public void agregarUsuarioAlDesafio(IParticipante usuario) throws Exception {
+		this.getEstado().aceptarParticipante(usuario,this) ;
+	}
+	public void IngresoDeParticipanteADesafio(IParticipante participante) throws Exception {
+		
+		if (this.estaElParticipanteEnDesafio(participante)) {
+			throw new RuntimeException("Ya ha sido registrado en el desafio");	
+		}
+		else {
+			this.getParticipantes().add(participante);
+		}
 	}
 	 
+	public boolean estaElParticipanteEnDesafio(IParticipante participante) {
+		return this.getParticipantes().contains(participante);
+	}
 	
+	public void sumarPuntajeAParticipante(IParticipante participante) throws Exception {
+		
+		int puntajeActual = this.getPuntaje().get(participante);
+		this.getPuntaje().put(participante, puntajeActual+1);
+		
+		  	if (this.esGanador(participante)) {
+				this.finalizarJuego();
+		  	    }
+	}
 	
+	public boolean esGanador(IParticipante participante) {
+		
+		// Este es un ESQUEMA
+		// En el pdf no vi como se inidica que es ganador
+		// Por el momento cuando un participante obtiene 5 puntos gana	
+		return this.getPuntaje().get(participante) == 5;
+	}
 	
-	
+	public void finalizarJuego() throws Exception {
+		this.getEstado().finalizarDesafio(this);
+	}
 	
 	
 	

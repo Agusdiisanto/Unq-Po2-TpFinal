@@ -2,6 +2,8 @@ package ciencia.participativa;
 
 import java.util.List;
 
+import desafios.ActividadLudica;
+import muestra.Muestra;
 import usuario.IParticipante;
 
 public class Proyecto {

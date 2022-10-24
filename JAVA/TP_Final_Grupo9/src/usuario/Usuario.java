@@ -3,11 +3,10 @@ package usuario;
 import java.util.ArrayList;
 import java.util.List;
 
-import ciencia.participativa.AplicacionMovil;
-import ciencia.participativa.Desafio;
-import ciencia.participativa.Muestra;
 import ciencia.participativa.Proyecto;
 import ciencia.participativa.Sistema;
+import desafios.Desafio;
+import muestra.Muestra;
 
 public class Usuario implements IParticipante{
 	
@@ -62,24 +61,9 @@ public class Usuario implements IParticipante{
 	// ================== METHODS ==================
 	@Override
 	public void recolectarMuestra(Muestra muestra) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void solicitarSuscripcionAProyecto(Proyecto proyecto, Sistema system) {
-		system.ingresarSolicitudAProyecto(proyecto);
-	}
-
-	@Override
-	public void recomendarParticipante(Sistema system, IParticipante x) {
-		system.realizarRecomendacionAParticipante(x);
-	}
-
-	@Override
-	public void inscribirseEnUnDesafio(Desafio desafio) {
-		// TODO Auto-generated method stub
-		
+		for (Proyecto proyecto : this.getProyectoEnCurso()) {
+			aplicacion.recolectarMuestra(muestra,proyecto);
+		}
 	}
 
 	@Override
@@ -89,7 +73,21 @@ public class Usuario implements IParticipante{
 	}
 
 	@Override
+	public void solicitarSuscripcionAProyecto(Proyecto proyecto, Sistema system) {
+
+	}
+	@Override
+	public void recomendarParticipante(Sistema system, IParticipante x) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
 	public void calificarProyecto(Sistema system, Proyecto proyecto) {
-		system.puntuarProyecto(proyecto);
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception {
+		desafio.agregarUsuarioAlDesafio(this);
 	}
 }

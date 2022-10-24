@@ -1,4 +1,4 @@
-package ciencia.participativa;
+package caracteristicas.desafio;
 
 import java.time.LocalDateTime;
 

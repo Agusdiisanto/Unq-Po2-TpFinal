@@ -1,4 +1,4 @@
-package ciencia.participativa;
+package desafios;
 
 import java.util.List;
 import usuario.IParticipante;
