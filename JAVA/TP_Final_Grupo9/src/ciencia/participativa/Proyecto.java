@@ -79,12 +79,37 @@ public class Proyecto {
 	}
 	
 	public void agregarMuestra(Muestra muestra) {
+		
+		if(this.elProyectoTieneLaMuestraDeInteres(muestra)) {
+			throw new RuntimeException("Ya ha sido registrada la muestra");
+		}
+		else {
+			this.agregarMuestraSiEsDeInteres(muestra);
+		}	
+	}
+	
+	public boolean elProyectoTieneLaMuestraDeInteres(Muestra muestra) {
+		return this.getMuestrasRecolectadas().contains(muestra);
+	}
+	
+	public void agregarMuestraSiEsDeInteres(Muestra muestra) {
 		if(this.esMuestraDeInteres(muestra)) {
 			this.getMuestrasRecolectadas().add(muestra);
 		}
 	}
 	
+	public void agregarNuevoParticipante(IParticipante participante) {
+		if(this.elProyectoTieneAlParticipante(participante)) {
+			throw new RuntimeException("Ya ha sido ingresado el nuevo participante al proyecto");
+		}
+		else {
+			this.getParticipantes().add(participante);
+		}
+	}
 	
+	public boolean elProyectoTieneAlParticipante(IParticipante participante) {
+		return this.getParticipantes().contains(participante);
+	}
 	
 
 	

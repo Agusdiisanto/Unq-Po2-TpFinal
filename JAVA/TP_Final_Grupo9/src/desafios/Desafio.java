@@ -19,7 +19,7 @@ public class Desafio extends ActividadLudica {
 	private int 				 recompensa;
 	private List<IParticipante>  participantes;
 	private List<Caracteristica> caracteristicas;
-	private Map<IParticipante, Integer> puntaje;
+	private Map<IParticipante, Integer> puntaje;  // CONSULTA CON EL EQUIPO :D
 	private EstadoDesafio  estado;
 	
 	// ============== GETTERS & SETTERS ==============
@@ -125,6 +125,8 @@ public class Desafio extends ActividadLudica {
 	}
 	
 	public void sumarPuntajeAParticipante(IParticipante participante) throws Exception {
+		
+		// Hay que implementarlo en algun otro metodo 
 		
 		int puntajeActual = this.getPuntaje().get(participante);
 		this.getPuntaje().put(participante, puntajeActual+1);

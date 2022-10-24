@@ -3,6 +3,7 @@ package ciencia.participativa;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import caracteristicas.desafio.Caracteristica;
 import desafios.ActividadLudica;
@@ -14,6 +15,7 @@ public class Sistema {
 	
 	private List <Usuario> usuarios;
 	private List <Proyecto> proyectos;
+	private Map<Proyecto, Integer> recomendacion;
 	
 
 	public List<Usuario> getUsuarios() {
@@ -32,9 +34,19 @@ public class Sistema {
 		this.proyectos = proyectos;
 	}
 	
+	public Map<Proyecto, Integer> getRecomendacion() {
+		return recomendacion;
+	}
+
+	public void setRecomendacion(Map<Proyecto, Integer> recomendacion) {
+		this.recomendacion = recomendacion;
+	}
+	
 	
 	//  ========= PREGUNTAR SI SE PUEDE MEJORAR EL FILTRO ===========
 	
+
+
 	public List<Desafio> getDesafios(List<ActividadLudica> actividades){
 		
 		List <Desafio> desafios = new ArrayList <>();
@@ -99,13 +111,23 @@ public class Sistema {
 		return preferencias.get(0).getDescripicion() == caracteristica.getDescripicion();
 	}
 
-	public void ingresarSolicitudAProyecto(Proyecto proyecto) {
-		// TODO Auto-generated method stub
-		
+	public void ingresarSolicitudAProyecto(Proyecto proyecto, IParticipante usuario) {
+		proyecto.agregarNuevoParticipante(usuario);
 	}
 
 	public void realizarRecomendacionAParticipante(IParticipante x) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	// Lo que hace este metodo de abajo es 
+	// busca el proyecto al que el usuario quiere calificar y le pone una calificacion por parametro
+	
+	public void calificarProyecto(Proyecto proyectoARecomendar, int calificacion) {
+		for (Proyecto proyecto : this.getProyectos()) {
+			if (proyecto.equals(proyectoARecomendar)) {
+				this.getRecomendacion().put(proyectoARecomendar, calificacion);
+			}
+		}
 	}
 }

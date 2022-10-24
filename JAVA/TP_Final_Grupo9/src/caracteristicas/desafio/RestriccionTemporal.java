@@ -21,5 +21,6 @@ public class RestriccionTemporal {
 		this.fechaDeCierre = fechaDeCierre;
 	}
 	
+	// VER EL DISCORD 
 	
 }
