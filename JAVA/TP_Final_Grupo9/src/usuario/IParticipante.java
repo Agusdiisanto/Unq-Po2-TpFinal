@@ -7,7 +7,7 @@ import muestra.Muestra;
 
 public interface IParticipante {
 	
-	// Agus : pensando si IPARTICIPANTE tendria que ser clase o interface 
+	// Agus : pensando si IPARTICIPANTE tendria que ser clase o interface s 
 	
 	public void recolectarMuestra(Muestra muestra);
 	public void solicitarSuscripcionAProyecto(Proyecto proyecto, Sistema system);
@@ -15,5 +15,5 @@ public interface IParticipante {
 	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception ;
 	public boolean estaEnDesafioActualmente(Desafio desafio);
 	public void calificarProyecto(Sistema system, Proyecto proyecto, int calificacion);
-	public Perfil getPerfil();
+	public void recibirRecompensaDeDesafio(Desafio desafio, int recompensa);
 }

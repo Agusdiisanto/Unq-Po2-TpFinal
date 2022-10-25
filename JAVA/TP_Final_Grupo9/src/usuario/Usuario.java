@@ -1,7 +1,9 @@
 package usuario;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ciencia.participativa.Proyecto;
 import ciencia.participativa.Sistema;
@@ -14,7 +16,7 @@ public class Usuario implements IParticipante{
 	private AplicacionMovil aplicacion;
 	private List<Proyecto> 	proyectoEnCurso;
 	private Perfil 			perfil;
-	private List<Desafio> 	desafiosCompletados;
+	private Map<Desafio, Integer>	desafiosCompletados;
 
 	// ============== GETTERS & SETTERS ==============
 	public String getNombre() {
@@ -41,10 +43,10 @@ public class Usuario implements IParticipante{
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
-	public List<Desafio> getDesafiosCompletados() {
+	public Map<Desafio, Integer> getDesafiosCompletados() {
 		return desafiosCompletados;
 	}
-	public void setDesafiosCompletados(List<Desafio> desafiosCompletados) {
+	public void setDesafiosCompletados(Map<Desafio, Integer> desafiosCompletados) {
 		this.desafiosCompletados = desafiosCompletados;
 	}
 	
@@ -54,11 +56,25 @@ public class Usuario implements IParticipante{
 		this.aplicacion			 = aplicacion;
 		this.proyectoEnCurso 	 = new ArrayList<>();
 		this.perfil 			 = perfil;
-		this.desafiosCompletados = new ArrayList<>();
+		this.desafiosCompletados = new HashMap<Desafio, Integer>();
 	}
 	
+	// ================== METHODS USUARIO ========================
 	
-	// ================== METHODS ==================
+	public void registrarDesafioCompleatado(Desafio desafio, int recompensa) {
+		if(this.ganoElDesafio(desafio)) {
+			this.getDesafiosCompletados().put(desafio, recompensa);
+		}
+		else {
+			this.getDesafiosCompletados().put(desafio, 0);
+		}
+	}
+	
+	private boolean ganoElDesafio(Desafio desafio) {
+		return desafio.esElGanador(this);
+	}
+	
+	// ================== METHODS IPARTICIPANTE ==================
 	@Override
 	public void recolectarMuestra(Muestra muestra) {
 		for (Proyecto proyecto : this.getProyectoEnCurso()) {
@@ -81,6 +97,7 @@ public class Usuario implements IParticipante{
 		// TODO Auto-generated method stub
 		
 	}
+	
 	@Override
 	public void calificarProyecto(Sistema system, Proyecto proyecto, int calificacion) {
 		system.calificarProyecto(proyecto,calificacion);
@@ -88,5 +105,9 @@ public class Usuario implements IParticipante{
 	@Override
 	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception {
 		desafio.agregarUsuarioAlDesafio(this);
+	}
+	@Override
+	public void recibirRecompensaDeDesafio(Desafio desafio, int recompensa) {
+		this.registrarDesafioCompleatado(desafio,recompensa);
 	}
 }

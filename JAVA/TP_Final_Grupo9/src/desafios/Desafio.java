@@ -132,7 +132,8 @@ public class Desafio extends ActividadLudica {
 		this.getPuntaje().put(participante, puntajeActual+1);
 		
 		  	if (this.esGanador(participante)) {
-				this.finalizarJuego();
+				this.finalizarDesafio();
+				this.otorgarRecompensaAlParticipante(participante);
 		  	    }
 	}
 	
@@ -144,16 +145,27 @@ public class Desafio extends ActividadLudica {
 		return this.getPuntaje().get(participante) == 5;
 	}
 	
-	public void finalizarJuego() throws Exception {
+	public void finalizarDesafio() throws Exception {
 		this.getEstado().finalizarDesafio(this);
 	}
 	
+	public int contadorDeMuestraRestantes() {
+		return this.getCantidadDeMuestrasARecolectar() - this.getCantidadDeMuestrasRecolectadas();
+	}
 	
+	public void noHayMasMuestras() throws Exception {
+		if (this.contadorDeMuestraRestantes() == 0) {
+			this.finalizarDesafio();
+		}
+	}
 	
+	public boolean esElGanador(IParticipante participante) {
+		return this.getPuntaje().get(participante) == 5; 
+	}
 	
-	
-	
-	
+	public void otorgarRecompensaAlParticipante(IParticipante participante) {
+		participante.recibirRecompensaDeDesafio(this,this.getRecompensa());
+	}
 	
 	
 }
