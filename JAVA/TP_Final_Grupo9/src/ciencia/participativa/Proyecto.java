@@ -110,6 +110,9 @@ public class Proyecto {
 	public boolean elProyectoTieneAlParticipante(IParticipante participante) {
 		return this.getParticipantes().contains(participante);
 	}
+	public Integer cantidadDeMuestras() {
+		return this.getMuestrasRecolectadas().size();
+	}
 	
 
 	

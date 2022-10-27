@@ -100,7 +100,6 @@ public class Desafio extends ActividadLudica {
 		this.caracteristicas                = caracteristicas;
 	}
 
-	
 	// ================== METHODS ==================
 	public Boolean esDesafioActivo() {
 		return (LocalDateTime.now().isAfter(restriccionTemporal.getFechaDeInicio())
