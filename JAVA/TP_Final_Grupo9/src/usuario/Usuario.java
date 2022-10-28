@@ -93,16 +93,6 @@ public class Usuario implements IParticipante{
 	}
 	
 	@Override
-	public void recomendarParticipante(Sistema system, IParticipante x) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void calificarProyecto(Sistema system, Proyecto proyecto, int calificacion) {
-		system.calificarProyecto(proyecto,calificacion);
-	}
-	@Override
 	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception {
 		desafio.agregarUsuarioAlDesafio(this);
 	}

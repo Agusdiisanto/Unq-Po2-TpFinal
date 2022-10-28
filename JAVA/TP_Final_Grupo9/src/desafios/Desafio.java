@@ -22,6 +22,12 @@ public class Desafio extends ActividadLudica {
 	private Map<IParticipante, Integer> puntaje;  // CONSULTA CON EL EQUIPO :D
 	private EstadoDesafio  estado;
 	
+	
+	// Es necesario separar los conceptos de Etado y Estado del Desafio
+	// Cada usuario tiene un estado para el Desafio.
+	// El estado del desario para el usuario esta vinculado al desafio.
+	// Mejorar UML (Faltan unir cosas y hay flechas a reves)
+	
 	// ============== GETTERS & SETTERS ==============
 	
 	public Area getArea() {

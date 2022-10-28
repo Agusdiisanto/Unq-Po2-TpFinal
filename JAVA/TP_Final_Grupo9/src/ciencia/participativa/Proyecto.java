@@ -81,7 +81,7 @@ public class Proyecto {
 	public void agregarMuestra(Muestra muestra) {
 		
 		if(this.elProyectoTieneLaMuestraDeInteres(muestra)) {
-			throw new RuntimeException("Ya ha sido registrada la muestra");
+			throw new RuntimeException("La muestra ya ha sido registrada");
 		}
 		else {
 			this.agregarMuestraSiEsDeInteres(muestra);
