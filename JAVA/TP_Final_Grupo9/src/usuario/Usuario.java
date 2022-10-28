@@ -86,9 +86,22 @@ public class Usuario implements IParticipante{
 	
 	// ================== METHODS IPARTICIPANTE ==================
 	@Override
-	public void recolectarMuestra(Muestra muestra) {
+	
+	public void recolectarMuestra(Muestra muestra) throws Exception {
+		this.recolectarMuestraParaLosProyectos(muestra);
+		this.recolectarMuestraParaLosDesafios(muestra);
+	}
+	
+	public void recolectarMuestraParaLosDesafios(Muestra muestra) throws Exception {
+		for (ProgresoDesafio desafio : this.getDesafiosEnCurso()) {
+			desafio.recolectarMuestra(this,muestra);
+		}
+		
+	}
+	
+	public void recolectarMuestraParaLosProyectos(Muestra muestra) {
 		for (Proyecto proyecto : this.getProyectoEnCurso()) {
-			aplicacion.recolectarMuestra(muestra,proyecto);
+			aplicacion.recolectarMuestraParaProyectoSiEsDeInteres(muestra,proyecto);
 		}
 	}
 

@@ -23,7 +23,7 @@ public class DesafioEnCurso implements IEstadoDesafio {
 		// TODO Auto-generated method stub
 		return true;
 	}
-
+    
 	public void finalizarDesafio(Desafio desafio) {
 		desafio.setEstado(new DesafioFinalizado());
 	}

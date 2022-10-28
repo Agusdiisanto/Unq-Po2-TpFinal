@@ -61,7 +61,7 @@ public class Muestra {
 	}
 	
 	//Ver
-	public void registrarMuestraEnProyectoPorUsario(Proyecto proyecto, IParticipante participante) {
+	public void registrarMuestraEnProyectoPorUsario(Proyecto proyecto, IParticipante participante) throws Exception {
 		this.notificar(proyecto);
 		participante.recolectarMuestra(this);
 	}

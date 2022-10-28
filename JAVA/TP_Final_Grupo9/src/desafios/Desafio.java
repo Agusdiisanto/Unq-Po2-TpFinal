@@ -8,13 +8,14 @@ import caracteristicas.desafio.Area;
 import caracteristicas.desafio.Caracteristica;
 import caracteristicas.desafio.Dificultad;
 import caracteristicas.desafio.RestriccionTemporal;
+import muestra.Muestra;
 import usuario.IParticipante;
 
 public class Desafio extends ActividadLudica {
 	private Area 				 area;
 	private RestriccionTemporal  restriccionTemporal;
 	private int 				 cantidadDeMuestrasARecolectar;
-	private int 				 cantidadDeMuestrasRecolectadas;
+	private int 				 cantidadDeMuestrasRecolectadas; 
 	private Dificultad 			 dificultad;
 	private int 				 recompensa;
 	private List<IParticipante>  participantes;
@@ -137,7 +138,6 @@ public class Desafio extends ActividadLudica {
 		this.getPuntaje().put(participante, puntajeActual+1);
 		
 		  	if (this.esGanador(participante)) {
-				this.finalizarDesafio();
 				this.otorgarRecompensaAlParticipante(participante);
 		  	    }
 	}
@@ -154,22 +154,21 @@ public class Desafio extends ActividadLudica {
 		this.getEstado().finalizarDesafio(this);
 	}
 	
-	public int contadorDeMuestraRestantes() {
-		return this.getCantidadDeMuestrasARecolectar() - this.getCantidadDeMuestrasRecolectadas();
-	}
-	
-	public void noHayMasMuestras() throws Exception {
-		if (this.contadorDeMuestraRestantes() == 0) {
-			this.finalizarDesafio();
-		}
-	}
-	
 	public boolean esElGanador(IParticipante participante) {
 		return this.getPuntaje().get(participante) == 5; 
 	}
 	
 	public void otorgarRecompensaAlParticipante(IParticipante participante) {
 		participante.recibirRecompensaDeDesafio(this,this.getRecompensa());
+	}
+	public boolean estaLaMuestraDentroDelArea(Muestra muestra) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	public void incrementarLaCantidadTotalDeRecoleccion() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

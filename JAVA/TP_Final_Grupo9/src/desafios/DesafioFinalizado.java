@@ -9,13 +9,7 @@ public class DesafioFinalizado implements IEstadoDesafio{
 	}
 
 	public boolean esDesafioActivo() {
-		
-		// Aca tendriamos que ver el tema de la restriccion 
-		// Pero con el state no verificamos si esta activo? 
-		// Si no lo verificamos con el state hay que tener un parametro desafio 
-		// Para llamar a la restriccion
-		
-		return true;
+		return false;
 	}
 
 	public void finalizarDesafio(Desafio desafio) throws Exception {

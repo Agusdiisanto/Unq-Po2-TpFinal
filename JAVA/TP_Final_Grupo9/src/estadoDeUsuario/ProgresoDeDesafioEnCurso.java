@@ -1,6 +1,7 @@
 package estadoDeUsuario;
 
 import muestra.Muestra;
+import usuario.IParticipante;
 
 public class ProgresoDeDesafioEnCurso implements IEstadoDelProgreso {
 
@@ -10,14 +11,13 @@ public class ProgresoDeDesafioEnCurso implements IEstadoDelProgreso {
 	}
 
 	@Override
-	public void recolectarMuestra(Muestra muestra) {
-		// TODO Auto-generated method stub
-		
+	public void recibirRecompensaDesafio() {
+		throw new RuntimeException("Todavia no has terminado el desafio para recibir la recompensa");
 	}
 
 	@Override
-	public void recibirRecompensaDesafio() {
-		throw new RuntimeException("Todavia no has terminado el desafio para recibir la recompensa");
+	public void recolectarMuestraPorParticipante(IParticipante participante, Muestra muestra) throws Exception {
+		participante.getAplicacion().recolectarMuestra(muestra);
 	}
 	
 	

@@ -1,6 +1,7 @@
 package estadoDeUsuario;
 
 import muestra.Muestra;
+import usuario.IParticipante;
 
 public class ProgresoDeDesafioTerminado implements IEstadoDelProgreso {
 
@@ -11,13 +12,14 @@ public class ProgresoDeDesafioTerminado implements IEstadoDelProgreso {
 	}
 
 	@Override
-	public void recolectarMuestra(Muestra muestra) throws Exception {
-		throw new RuntimeException("Ya no puedes recolectar mas muestras, ya terminaste el desafio");
+	public void recibirRecompensaDesafio() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void recibirRecompensaDesafio() {
-		// TODO Auto-generated method stub
+	public void recolectarMuestraPorParticipante(IParticipante participante, Muestra muestra) throws Exception {
+		throw new RuntimeException("No puedes recolectar mas muestras debido a que ya has terminado el desafio");
 		
 	}
 

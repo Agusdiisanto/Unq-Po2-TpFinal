@@ -20,15 +20,18 @@ public class AplicacionMovil {
 	// ===== DUDA ====
 	// ¿Que sea un parametro la muestra o que sea new Muestra?
 	
-	public void recolectarMuestra(Muestra m,Proyecto p) {
-				
+	public void recolectarMuestraParaProyectoSiEsDeInteres(Muestra m,Proyecto p) {	
 		if (this.esMuestraDeInteresParaProyecto(m, p)) {
 			this.getMuestras().add(m);
-			
 		}
 	}
 	
 	public Boolean esMuestraDeInteresParaProyecto(Muestra m, Proyecto p) {
 		return m.getCaracteristicas().stream().anyMatch(c -> p.getIntereses().contains(c));
 	}
+	
+	public void recolectarMuestra(Muestra m) {
+		// Analizar que haria
+	}
+	
 }

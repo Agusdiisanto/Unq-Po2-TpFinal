@@ -1,13 +1,13 @@
 package estadoDeUsuario;
 
 import desafios.Desafio;
+import muestra.Muestra;
 import usuario.IParticipante;
 
 public class ProgresoDesafio {
 	
 	private Desafio desafioActual;
 	private IEstadoDelProgreso estado;
-	private IParticipante participante;
 
 	public ProgresoDesafio(Desafio desafioActual) {
 		super();
@@ -30,18 +30,20 @@ public class ProgresoDesafio {
 		this.estado = estado;
 	}
 	
-	public IParticipante getParticipante() {
-		return participante;
-	}
-
-	public void setParticipante(IParticipante participante) {
-		this.participante = participante;
-	}
-
-	
 	public boolean esDesafioActual() {
 		// TODO Auto-generated method stub
 		return this.getEstado().esDesafioEnCurso();
+	}
+	
+	public void recolectarMuestra(IParticipante participante, Muestra muestra) throws Exception {
+		
+		// Ver si el mensaje incrementar lo ponemos dentro del recolectar muestra o lo dejamos ahi
+		
+		if (this.getDesafioActual().estaLaMuestraDentroDelArea(muestra)) {
+			this.getEstado().recolectarMuestraPorParticipante(participante,muestra);
+			this.getDesafioActual().sumarPuntajeAParticipante(participante);
+			this.getDesafioActual().incrementarLaCantidadTotalDeRecoleccion();
+		}
 	}
 	
 	
