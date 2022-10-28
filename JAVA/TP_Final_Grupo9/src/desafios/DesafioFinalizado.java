@@ -2,14 +2,12 @@ package desafios;
 
 import usuario.IParticipante;
 
-public class DesafioFinalizado extends EstadoDesafio{
+public class DesafioFinalizado implements IEstadoDesafio{
 
-	@Override
 	public void aceptarParticipante(IParticipante participante, Desafio desafio) throws Exception {
 		throw new RuntimeException("El desafio ya ha finalizado");
 	}
 
-	@Override
 	public boolean esDesafioActivo() {
 		
 		// Aca tendriamos que ver el tema de la restriccion 
@@ -20,7 +18,6 @@ public class DesafioFinalizado extends EstadoDesafio{
 		return true;
 	}
 
-	@Override
 	public void finalizarDesafio(Desafio desafio) throws Exception {
 		throw new RuntimeException("El desafio ya ha finalizado");
 	}

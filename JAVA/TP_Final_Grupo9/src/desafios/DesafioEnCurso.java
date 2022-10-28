@@ -2,9 +2,8 @@ package desafios;
 
 import usuario.IParticipante;
 
-public class DesafioEnCurso extends EstadoDesafio {
+public class DesafioEnCurso implements IEstadoDesafio {
 	
-	@Override
 	public void aceptarParticipante(IParticipante participante, Desafio desafio) throws Exception {
 		
 		// ======= DUDA ========
@@ -20,13 +19,11 @@ public class DesafioEnCurso extends EstadoDesafio {
 		
 	}
 
-	@Override
 	public boolean esDesafioActivo() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
-	@Override
 	public void finalizarDesafio(Desafio desafio) {
 		desafio.setEstado(new DesafioFinalizado());
 	}

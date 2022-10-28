@@ -20,7 +20,7 @@ public class Desafio extends ActividadLudica {
 	private List<IParticipante>  participantes;
 	private List<Caracteristica> caracteristicas;
 	private Map<IParticipante, Integer> puntaje;  // CONSULTA CON EL EQUIPO :D
-	private EstadoDesafio  estado;
+	private IEstadoDesafio  estado;
 	
 	
 	// Es necesario separar los conceptos de Etado y Estado del Desafio
@@ -86,11 +86,11 @@ public class Desafio extends ActividadLudica {
 		this.caracteristicas = caracteristicas;
 	}
 	
-	public EstadoDesafio getEstado() {
+	public IEstadoDesafio getEstado() {
 		return estado;
 	}
-	public void setEstado(EstadoDesafio estado) {
-		this.estado = estado;
+	public void setEstado(IEstadoDesafio desafioFinalizado) {
+		this.estado = desafioFinalizado;
 	}
 	
 	// ================== COSTRUCTOR ==================

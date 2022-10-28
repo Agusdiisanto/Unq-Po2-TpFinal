@@ -12,6 +12,6 @@ public interface IParticipante {
 	public void recolectarMuestra(Muestra muestra);
 	public void solicitarSuscripcionAProyecto(Proyecto proyecto, Sistema system);
 	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception ;
-	public boolean estaEnDesafioActualmente(Desafio desafio);
+	public boolean estaEnDesafioActualmente();
 	public void recibirRecompensaDeDesafio(Desafio desafio, int recompensa);
 }

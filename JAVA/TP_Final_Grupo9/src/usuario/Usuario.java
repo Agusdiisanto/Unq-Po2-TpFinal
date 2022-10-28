@@ -8,6 +8,7 @@ import java.util.Map;
 import ciencia.participativa.Proyecto;
 import ciencia.participativa.Sistema;
 import desafios.Desafio;
+import estadoDeUsuario.ProgresoDesafio;
 import muestra.Muestra;
 
 public class Usuario implements IParticipante{
@@ -17,6 +18,7 @@ public class Usuario implements IParticipante{
 	private List<Proyecto> 	proyectoEnCurso;
 	private Perfil 			perfil;
 	private Map<Desafio, Integer>	desafiosCompletados;
+	private List<ProgresoDesafio> desafiosEnCurso;
 
 	// ============== GETTERS & SETTERS ==============
 	public String getNombre() {
@@ -48,6 +50,14 @@ public class Usuario implements IParticipante{
 	}
 	public void setDesafiosCompletados(Map<Desafio, Integer> desafiosCompletados) {
 		this.desafiosCompletados = desafiosCompletados;
+	}
+	
+	public List<ProgresoDesafio> getDesafiosEnCurso() {
+		return desafiosEnCurso;
+	}
+	
+	public void setDesafiosEnCurso(List<ProgresoDesafio> desafiosEnCurso) {
+		this.desafiosEnCurso = desafiosEnCurso;
 	}
 	
 	// ================== COSTRUCTOR ==================
@@ -83,8 +93,8 @@ public class Usuario implements IParticipante{
 	}
 
 	@Override
-	public boolean estaEnDesafioActualmente(Desafio desafio) {
-		return desafio.estaElParticipanteEnDesafio(this);
+	public boolean estaEnDesafioActualmente() {
+		return this.getDesafiosEnCurso().stream().anyMatch(p -> p.esDesafioActual());
 	}
 
 	@Override

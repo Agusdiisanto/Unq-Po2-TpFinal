@@ -2,7 +2,7 @@ package desafios;
 
 import usuario.IParticipante;
 
-public abstract class EstadoDesafio {
+public interface IEstadoDesafio {
 	
 	public abstract void aceptarParticipante(IParticipante participante, Desafio desafio) throws Exception;
 	public abstract boolean esDesafioActivo();
