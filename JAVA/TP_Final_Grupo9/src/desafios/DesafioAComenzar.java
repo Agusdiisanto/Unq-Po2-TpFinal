@@ -6,7 +6,6 @@ public class DesafioAComenzar implements IEstadoDesafio {
 
 	public void aceptarParticipante(IParticipante participante, Desafio desafio) throws Exception {
 		desafio.IngresoDeParticipanteADesafio(participante);
-		desafio.getPuntaje().put(participante,0);
 	}
 
 	public boolean esDesafioActivo() {

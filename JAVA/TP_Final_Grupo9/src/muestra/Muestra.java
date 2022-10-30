@@ -1,34 +1,34 @@
 package muestra;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-import ciencia.participativa.Proyecto;
-import usuario.IParticipante;
+import caracteristicas.desafio.Caracteristica;
 import usuario.Usuario;
 
 public class Muestra {
 	
-	private List<String> caracteristicas;
+	private Set<Caracteristica> caracteristicas;
 	private Usuario usuarioQueLaRecolecto;
 	private LocalDateTime fechaYHoraDeRecoleccion;
 	private Coordenada coordenadaDeRecollecion;
 	
 
-	public Muestra(List<String> caracteristicas, Usuario usuarioQueLaRecolecto, 
+	public Muestra(Usuario usuarioQueLaRecolecto, 
 			       LocalDateTime fechaYHoraDeRecoleccion,
 			       Coordenada coordenadaDeRecollecion) {
-		this.caracteristicas = caracteristicas;
+		this.caracteristicas = new HashSet<Caracteristica>();
 		this.usuarioQueLaRecolecto = usuarioQueLaRecolecto;
 		this.fechaYHoraDeRecoleccion = fechaYHoraDeRecoleccion;
 		this.coordenadaDeRecollecion = coordenadaDeRecollecion;
 	}
 
-	public List<String> getCaracteristicas() {
+	public Set<Caracteristica> getCaracteristicas() {
 		return caracteristicas;
 	}
 
-	public void setCaracteristicas(List<String> caracteristicas) {
+	public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
 		this.caracteristicas = caracteristicas;
 	}
 
@@ -57,18 +57,14 @@ public class Muestra {
 	}
 
 	public boolean tieneLaCaracteristica(String interes) {
-		return caracteristicas.contains(interes);
+		Set<String> intereses = new HashSet<String>();
+		for (Caracteristica caracteristica : this.getCaracteristicas()) {
+			intereses.add(caracteristica.getDescripicion());
+		}
+		return intereses.contains(interes);
 	}
 	
-	//Ver
-	public void registrarMuestraEnProyectoPorUsario(Proyecto proyecto, IParticipante participante) throws Exception {
-		this.notificar(proyecto);
-		participante.recolectarMuestra(this);
-	}
-	
-	
-	//Sacar??
-	public void notificar(Proyecto proyecto) {
-		proyecto.esMuestraDeInteres(this);
+	public void agregarCaracteristicaAMuestra(Caracteristica caracteristica1) {
+		this.getCaracteristicas().add(caracteristica1);
 	}
 }

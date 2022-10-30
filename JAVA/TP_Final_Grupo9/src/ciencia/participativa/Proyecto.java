@@ -1,7 +1,9 @@
 package ciencia.participativa;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import caracteristicas.desafio.Caracteristica;
 import desafios.ActividadLudica;
 import muestra.Muestra;
 import usuario.IParticipante;
@@ -10,11 +12,11 @@ public class Proyecto {
 	
 	private String				  nombreDelProyecto;
 	private String 				  descripcion;
-	private List<String> 		  categorias;
-	private List<ActividadLudica> actividades;
-	private List<Muestra> 		  muestrasRecolectadas;
-	private List<IParticipante>   participantes;
-	private List<String> 		  intereses;
+	private Set<String> 		  categorias;
+	private Set<ActividadLudica> actividades;
+	private Set<Muestra> 		  muestrasRecolectadas;
+	private Set<IParticipante>   participantes;
+	private Set<String> 		  intereses;
 	
 	// ============== GETTERS & SETTERS ==============
 	public String getNombre() {
@@ -29,42 +31,48 @@ public class Proyecto {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public List<String> getCategorias() {
+	public Set<String> getCategorias() {
 		return categorias;
 	}
-	public void setCategorias(List<String> categorias) {
+	public void setCategorias(Set<String> categorias) {
 		this.categorias = categorias;
 	}
-	public List<ActividadLudica> getActividades() {
+	public Set<ActividadLudica> getActividades() {
 		return actividades;
 	}
-	public void setActividades(List<ActividadLudica> actividades) {
+	public void setActividades(Set<ActividadLudica> actividades) {
 		this.actividades = actividades;
 	}
-	public List<Muestra> getMuestrasRecolectadas() {
+	public Set<Muestra> getMuestrasRecolectadas() {
 		return muestrasRecolectadas;
 	}
-	public void setMuestrasRecolectadas(List<Muestra> muestrasRecolectadas) {
+	public void setMuestrasRecolectadas(Set<Muestra> muestrasRecolectadas) {
 		this.muestrasRecolectadas = muestrasRecolectadas;
 	}
-	public List<IParticipante> getParticipantes() {
+	public Set<IParticipante> getParticipantes() {
 		return participantes;
 	}
-	public void setParticipantes(List<IParticipante> participantes) {
+	public void setParticipantes(Set<IParticipante> participantes) {
 		this.participantes = participantes;
 	}
-	public List<String> getIntereses() {
+	public Set<String> getIntereses() {
 		return intereses;
 	}
-	public void setIntereses(List<String> intereses) {
+	public void setIntereses(Set<String> intereses) {
 		this.intereses = intereses;
 	}
 	
 	// ================== COSTRUCTOR ==================
 	public Proyecto(String nombreDelProyecto, String descripcion) {
 		super();
+		
 		this.nombreDelProyecto = nombreDelProyecto;
 		this.descripcion 	   = descripcion;
+		this.intereses = new HashSet<String>();
+		this.participantes = new HashSet<IParticipante>();
+		this.muestrasRecolectadas = new HashSet<Muestra>();
+		this.actividades = new HashSet<ActividadLudica>();
+		this.categorias = new HashSet<String>(); 
 	}
 	
 	
@@ -79,13 +87,7 @@ public class Proyecto {
 	}
 	
 	public void agregarMuestra(Muestra muestra) {
-		
-		if(this.elProyectoTieneLaMuestraDeInteres(muestra)) {
-			throw new RuntimeException("La muestra ya ha sido registrada");
-		}
-		else {
-			this.agregarMuestraSiEsDeInteres(muestra);
-		}	
+		this.agregarMuestraSiEsDeInteres(muestra);
 	}
 	
 	public boolean elProyectoTieneLaMuestraDeInteres(Muestra muestra) {
@@ -99,12 +101,7 @@ public class Proyecto {
 	}
 	
 	public void agregarNuevoParticipante(IParticipante participante) {
-		if(this.elProyectoTieneAlParticipante(participante)) {
-			throw new RuntimeException("Ya ha sido ingresado el nuevo participante al proyecto");
-		}
-		else {
-			this.getParticipantes().add(participante);
-		}
+		this.getParticipantes().add(participante);
 	}
 	
 	public boolean elProyectoTieneAlParticipante(IParticipante participante) {
@@ -112,6 +109,9 @@ public class Proyecto {
 	}
 	public Integer cantidadDeMuestras() {
 		return this.getMuestrasRecolectadas().size();
+	}
+	public void agregarInteres(Caracteristica caracteristica1) {
+		this.getIntereses().add(caracteristica1.getDescripicion());
 	}
 	
 

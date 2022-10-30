@@ -1,8 +1,9 @@
 package ciencia.participativa;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import caracteristicas.desafio.Caracteristica;
 import desafios.ActividadLudica;
 import desafios.Desafio;
@@ -11,24 +12,28 @@ import usuario.Usuario;
 
 public class Sistema {
 	
-	private List <Proyecto> proyectos;
+	private Set<Proyecto> proyectos;
 
-
-	public List<Proyecto> getProyectos() {
+	public Set<Proyecto> getProyectos() {
 		return proyectos;
 	}
-
-	public void setProyectos(List<Proyecto> proyectos) {
+	
+	public void setProyectos(Set<Proyecto> proyectos) {
 		this.proyectos = proyectos;
 	}
 	
-	// delegar objeto! 
+	
+	// ========================= CONTRUCTOR ==============================
+	
+	public Sistema() {
+		this.proyectos = new HashSet<Proyecto>();
+	}
+	
+	public Set<Desafio> getDesafios(Set<ActividadLudica> set){
 		
-	public List<Desafio> getDesafios(List<ActividadLudica> actividades){
-		
-		List <Desafio> desafios = new ArrayList <>();
-		for (ActividadLudica actividad : actividades) {
-			if(actividad.getClass() == Desafio.class) {
+		Set<Desafio> desafios = new HashSet<Desafio>();
+		for (ActividadLudica actividad : set) {
+			if(actividad.esDesafio()) {
 				desafios.add((Desafio) actividad);
 			}
 		} 
@@ -38,19 +43,30 @@ public class Sistema {
 	
 	// =================================================================
 	
-	public List <Desafio> todosLosDesafios() {
-		List <Desafio> desafios = new ArrayList<>();
+	public Set <Desafio> todosLosDesafios() {
+		Set <Desafio> desafios = new HashSet<Desafio>();
 		for (Proyecto proyecto : getProyectos()) {
 		 desafios.addAll(this.getDesafios(proyecto.getActividades()));
 		}
 		return desafios;
 	}
 	
+	/*
 	public List <Desafio> desafiosRecomendadosPara(Usuario usuario) {
 		List<Desafio> desafiosOrdenados = new LinkedList<Desafio>();
 		desafiosOrdenados.add(this.todosLosDesafios().get(0));
 		for (Desafio desafio : this.todosLosDesafios()) {
 			desafiosOrdenados.add(0, desafio);
+		}
+		return null;
+	}
+	*/
+	
+	public Set<Desafio> desafiosRecomendadosPara(Usuario usuario) {
+		Set<Desafio> desafiosOrdenados = new HashSet<Desafio>();
+		desafiosOrdenados.addAll(this.todosLosDesafios());
+		for (Desafio desafio : this.todosLosDesafios()) {
+			desafiosOrdenados.add(desafio);
 		}
 		return null;
 	}

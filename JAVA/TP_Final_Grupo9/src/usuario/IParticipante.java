@@ -3,6 +3,7 @@ package usuario;
 import ciencia.participativa.Proyecto;
 import ciencia.participativa.Sistema;
 import desafios.Desafio;
+import estadoDeUsuario.ProgresoDesafio;
 import muestra.Muestra;
 
 public interface IParticipante {
@@ -13,7 +14,8 @@ public interface IParticipante {
 	public void solicitarSuscripcionAProyecto(Proyecto proyecto, Sistema system);
 	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception ;
 	public boolean estaEnDesafioActualmente();
-	public void recibirRecompensaDeDesafio(Desafio desafio, int recompensa);
+	public void recibirRecompensaDeDesafio(ProgresoDesafio progresoDesafio, int recompensa);
 	public AplicacionMovil getAplicacion();
+	void recibirRecompensaDeDesafio(Desafio desafio, int recompensa);
 	
 }

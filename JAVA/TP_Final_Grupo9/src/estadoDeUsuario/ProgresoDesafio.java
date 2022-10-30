@@ -8,6 +8,7 @@ public class ProgresoDesafio {
 	
 	private Desafio desafioActual;
 	private IEstadoDelProgreso estado;
+	private int puntaje;
 
 	public ProgresoDesafio(Desafio desafioActual) {
 		super();
@@ -30,6 +31,14 @@ public class ProgresoDesafio {
 		this.estado = estado;
 	}
 	
+	public int getPuntaje() {
+		return puntaje;
+	}
+
+	public void setPuntaje(int puntaje) {
+		this.puntaje = puntaje;
+	}
+	
 	public boolean esDesafioActual() {
 		// TODO Auto-generated method stub
 		return this.getEstado().esDesafioEnCurso();
@@ -41,10 +50,29 @@ public class ProgresoDesafio {
 		
 		if (this.getDesafioActual().estaLaMuestraDentroDelArea(muestra)) {
 			this.getEstado().recolectarMuestraPorParticipante(participante,muestra);
-			this.getDesafioActual().sumarPuntajeAParticipante(participante);
 			this.getDesafioActual().incrementarLaCantidadTotalDeRecoleccion();
 		}
 	}
 	
+	public boolean esGanador(IParticipante participante) {
+		
+		// Este es un ESQUEMA
+		// En el pdf no vi como se inidica que es ganador
+		// Por el momento cuando un participante obtiene 5 puntos gana	
+		return this.getPuntaje() == 5;
+	}
+	
+	public void sumarPuntajeAParticipante(IParticipante participante) throws Exception {
+		
+		// Hay que implementarlo en algun otro metodo 
+		this.puntaje = puntaje + 1;
+		  	if (this.esGanador(participante)) {
+				this.otorgarRecompensaAlParticipante(participante);
+		  	}
+	}
+	
+	public void otorgarRecompensaAlParticipante(IParticipante participante) {
+		participante.recibirRecompensaDeDesafio(this,this.getDesafioActual().getRecompensa());
+	}
 	
 }

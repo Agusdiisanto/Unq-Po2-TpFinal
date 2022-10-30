@@ -14,5 +14,10 @@ public abstract class ActividadLudica {
 		return participantes;
 	}
 
+	public boolean esDesafio() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	// ¿Que mas debe haber en la clase abstracta? 
 }

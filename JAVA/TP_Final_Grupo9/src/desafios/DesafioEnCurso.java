@@ -14,9 +14,7 @@ public class DesafioEnCurso implements IEstadoDesafio {
 		// por el momento lo dejo como dijo santi
 		
 		
-		desafio.IngresoDeParticipanteADesafio(participante);
-		desafio.getPuntaje().put(participante,0);
-		
+		desafio.IngresoDeParticipanteADesafio(participante);		
 	}
 
 	public boolean esDesafioActivo() {

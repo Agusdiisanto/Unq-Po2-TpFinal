@@ -20,7 +20,6 @@ public class Desafio extends ActividadLudica {
 	private int 				 recompensa;
 	private List<IParticipante>  participantes;
 	private List<Caracteristica> caracteristicas;
-	private Map<IParticipante, Integer> puntaje;  // CONSULTA CON EL EQUIPO :D
 	private IEstadoDesafio  estado;
 	
 	
@@ -33,12 +32,6 @@ public class Desafio extends ActividadLudica {
 	
 	public Area getArea() {
 		return area;
-	}
-	public Map<IParticipante, Integer> getPuntaje() {
-		return puntaje;
-	}
-	public void setPuntaje(Map<IParticipante, Integer> puntaje) {
-		this.puntaje = puntaje;
 	}
 	public void setArea(Area area) {
 		this.area = area;
@@ -130,37 +123,15 @@ public class Desafio extends ActividadLudica {
 		return this.getParticipantes().contains(participante);
 	}
 	
-	public void sumarPuntajeAParticipante(IParticipante participante) throws Exception {
-		
-		// Hay que implementarlo en algun otro metodo 
-		
-		int puntajeActual = this.getPuntaje().get(participante);
-		this.getPuntaje().put(participante, puntajeActual+1);
-		
-		  	if (this.esGanador(participante)) {
-				this.otorgarRecompensaAlParticipante(participante);
-		  	    }
-	}
-	
-	public boolean esGanador(IParticipante participante) {
-		
-		// Este es un ESQUEMA
-		// En el pdf no vi como se inidica que es ganador
-		// Por el momento cuando un participante obtiene 5 puntos gana	
-		return this.getPuntaje().get(participante) == 5;
-	}
-	
 	public void finalizarDesafio() throws Exception {
 		this.getEstado().finalizarDesafio(this);
 	}
 	
 	public boolean esElGanador(IParticipante participante) {
-		return this.getPuntaje().get(participante) == 5; 
+		return false;
 	}
 	
-	public void otorgarRecompensaAlParticipante(IParticipante participante) {
-		participante.recibirRecompensaDeDesafio(this,this.getRecompensa());
-	}
+	
 	public boolean estaLaMuestraDentroDelArea(Muestra muestra) {
 		// TODO Auto-generated method stub
 		return true;
@@ -170,6 +141,14 @@ public class Desafio extends ActividadLudica {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public boolean esDesafio() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	
 	
 	
 }

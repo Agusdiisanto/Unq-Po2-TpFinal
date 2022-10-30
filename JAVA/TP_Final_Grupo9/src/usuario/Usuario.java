@@ -123,4 +123,9 @@ public class Usuario implements IParticipante{
 	public void recibirRecompensaDeDesafio(Desafio desafio, int recompensa) {
 		this.registrarDesafioCompleatado(desafio,recompensa);
 	}
+	@Override
+	public void recibirRecompensaDeDesafio(ProgresoDesafio progresoDesafio, int recompensa) {
+		// TODO Auto-generated method stub
+		
+	}
 }
