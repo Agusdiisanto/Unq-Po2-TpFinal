@@ -2,7 +2,6 @@ package desafios;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 import caracteristicas.desafio.Area;
 import caracteristicas.desafio.Caracteristica;
