@@ -41,6 +41,11 @@ public class Sistema {
 		
 	}
 	
+	public void agregarDesafio(Proyecto proyecto) {
+		this.getProyectos().add(proyecto);
+	}
+	
+	
 	// =================================================================
 	
 	public Set <Desafio> todosLosDesafios() {

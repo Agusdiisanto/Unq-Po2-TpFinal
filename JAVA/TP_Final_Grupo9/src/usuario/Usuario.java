@@ -9,15 +9,17 @@ import ciencia.participativa.Proyecto;
 import ciencia.participativa.Sistema;
 import desafios.Desafio;
 import estadoDeUsuario.ProgresoDesafio;
+import estrategiaDeRecomendacion.IRecomendacion;
 import muestra.Muestra;
 
 public class Usuario implements IParticipante{
 	private String				  nombre;
 	private AplicacionMovil 	  aplicacion;
-	private List<Proyecto> 		  proyectoEnCurso;
+	private List<Proyecto> 		  proyectosEnCurso;
 	private Perfil 				  perfil;
 	private Map<Desafio, Integer> desafiosCompletados;
 	private List<ProgresoDesafio> desafiosEnCurso;
+	private IRecomendacion        recomendacionPreferida;
 	
 	// ================== METHODS USUARIO ========================
 	public void registrarDesafioCompleatado(Desafio desafio, int recompensa) {
@@ -66,12 +68,13 @@ public class Usuario implements IParticipante{
 	}
 	
 	// ================== COSTRUCTOR ==================
-	public Usuario(String nombre, AplicacionMovil aplicacion, Perfil perfil) {
+	public Usuario(String nombre, AplicacionMovil aplicacion, Perfil perfil, IRecomendacion recomendacionPreferida) {
 		this.nombre				 = nombre;
 		this.aplicacion			 = aplicacion;
-		this.proyectoEnCurso 	 = new ArrayList<>();
+		this.proyectosEnCurso 	 = new ArrayList<>();
 		this.perfil 			 = perfil;
 		this.desafiosCompletados = new HashMap<Desafio, Integer>();
+		this.recomendacionPreferida= recomendacionPreferida;
 	}
 
 	// ============== GETTERS & SETTERS ==============
@@ -88,10 +91,10 @@ public class Usuario implements IParticipante{
 		this.aplicacion = aplicacion;
 	}
 	public List<Proyecto> getProyectoEnCurso() {
-		return proyectoEnCurso;
+		return proyectosEnCurso;
 	}
 	public void setProyectoEnCurso(List<Proyecto> proyectoEnCurso) {
-		this.proyectoEnCurso = proyectoEnCurso;
+		this.proyectosEnCurso = proyectoEnCurso;
 	}
 	public Perfil getPerfil() {
 		return perfil;
@@ -112,5 +115,9 @@ public class Usuario implements IParticipante{
 	
 	public void setDesafiosEnCurso(List<ProgresoDesafio> desafiosEnCurso) {
 		this.desafiosEnCurso = desafiosEnCurso;
+	}
+	
+	public IRecomendacion getRecomendacionPreferida() {
+		return recomendacionPreferida;
 	}
 }

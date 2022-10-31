@@ -1,5 +1,6 @@
 package desafiostTest;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -29,7 +30,6 @@ public class DesafioTest {
 	private Caracteristica caracteristica1;
 	private Caracteristica caracteristica2;
 	private Caracteristica caracteristica3;
-	private Set<Caracteristica> caracteristicas;
 		
 	@BeforeEach
 	public void setUp() {
@@ -59,6 +59,12 @@ public class DesafioTest {
 		assertEquals(30, desafio.getCantidadDeMuestrasARecolectar());
 	}
 	
-	
+	@Test 
+	public void test02() {
+		desafio = new Desafio(area, restriccionTemporal, 30, Dificultad.MEDIO, 2359);
+		desafio.getCaracteristicas().add(caracteristica1);
+		assertEquals(desafio.getCaracteristicas().size(), 1);
+		assertTrue(desafio.getCaracteristicas().contains(caracteristica1));
+	}	
 	
 }
