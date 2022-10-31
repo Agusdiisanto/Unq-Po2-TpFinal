@@ -1,9 +1,9 @@
 package usuario;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import ciencia.participativa.Proyecto;
 import ciencia.participativa.Sistema;
@@ -15,10 +15,10 @@ import muestra.Muestra;
 public class Usuario implements IParticipante{
 	private String				  nombre;
 	private AplicacionMovil 	  aplicacion;
-	private List<Proyecto> 		  proyectosEnCurso;
+	private Set<Proyecto> 		  proyectosEnCurso;
 	private Perfil 				  perfil;
 	private Map<Desafio, Integer> desafiosCompletados;
-	private List<ProgresoDesafio> desafiosEnCurso;
+	private Set<ProgresoDesafio>  desafiosEnCurso;
 	private IRecomendacion        recomendacionPreferida;
 	
 	// ================== METHODS USUARIO ========================
@@ -69,12 +69,13 @@ public class Usuario implements IParticipante{
 	
 	// ================== COSTRUCTOR ==================
 	public Usuario(String nombre, AplicacionMovil aplicacion, Perfil perfil, IRecomendacion recomendacionPreferida) {
-		this.nombre				 = nombre;
-		this.aplicacion			 = aplicacion;
-		this.proyectosEnCurso 	 = new ArrayList<>();
-		this.perfil 			 = perfil;
-		this.desafiosCompletados = new HashMap<Desafio, Integer>();
-		this.recomendacionPreferida= recomendacionPreferida;
+		this.nombre				 	= nombre;
+		this.aplicacion			 	= aplicacion;
+		this.proyectosEnCurso 	 	= new HashSet<Proyecto>();
+		this.perfil 			 	= perfil;
+		this.desafiosCompletados 	= new HashMap<Desafio, Integer>();
+		this.desafiosEnCurso        = new HashSet<ProgresoDesafio>();
+		this.recomendacionPreferida = recomendacionPreferida;
 	}
 
 	// ============== GETTERS & SETTERS ==============
@@ -90,11 +91,8 @@ public class Usuario implements IParticipante{
 	public void setAplicacion(AplicacionMovil aplicacion) {
 		this.aplicacion = aplicacion;
 	}
-	public List<Proyecto> getProyectoEnCurso() {
+	public Set<Proyecto> getProyectoEnCurso() {
 		return proyectosEnCurso;
-	}
-	public void setProyectoEnCurso(List<Proyecto> proyectoEnCurso) {
-		this.proyectosEnCurso = proyectoEnCurso;
 	}
 	public Perfil getPerfil() {
 		return perfil;
@@ -105,18 +103,9 @@ public class Usuario implements IParticipante{
 	public Map<Desafio, Integer> getDesafiosCompletados() {
 		return desafiosCompletados;
 	}
-	public void setDesafiosCompletados(Map<Desafio, Integer> desafiosCompletados) {
-		this.desafiosCompletados = desafiosCompletados;
-	}
-	
-	public List<ProgresoDesafio> getDesafiosEnCurso() {
+	public Set<ProgresoDesafio> getDesafiosEnCurso() {
 		return desafiosEnCurso;
 	}
-	
-	public void setDesafiosEnCurso(List<ProgresoDesafio> desafiosEnCurso) {
-		this.desafiosEnCurso = desafiosEnCurso;
-	}
-	
 	public IRecomendacion getRecomendacionPreferida() {
 		return recomendacionPreferida;
 	}

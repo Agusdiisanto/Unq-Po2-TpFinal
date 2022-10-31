@@ -1,35 +1,43 @@
 package usuario;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import caracteristicas.desafio.Caracteristica;
 
 public class Perfil {
+	private Set<String>		 	gustos;
+	private Set<Caracteristica> caracteristicasPreferidas;
+	private Set<String>			comportamiento;
+
+	// =================== METHODS ====================
+	public void agregarGusto(String g) {
+		this.getGustos().add(g);
+	}
 	
-	private List<String> gustos;
-	private List<Caracteristica> preferencias;
-	private List<String> comportamiento;
+	public void agregarCaracteristicaPreferida(Caracteristica c) {
+		this.getPreferencias().add(c);
+	}
 	
+	public void agregarComportamiento(String c) {
+		this.getComportamiento().add(c);
+	}
+
+	// ================== COSTRUCTOR ==================
+	public Perfil() {
+		this.gustos		 			   = new HashSet<String>();
+		this.caracteristicasPreferidas = new HashSet<Caracteristica>();
+		this.comportamiento 		   = new HashSet<String>();
+	}
 	
-	public List<String> getGustos() {
+	// ============== GETTERS & SETTERS ===============
+	public Set<String> getGustos() {
 		return gustos;
 	}
-	public void setGustos(List<String> gustos) {
-		this.gustos = gustos;
+	public Set<Caracteristica> getPreferencias() {
+		return caracteristicasPreferidas;
 	}
-	public List<Caracteristica> getPreferencias() {
-		return preferencias;
-	}
-	public void setPreferencias(List<Caracteristica> preferencias) {
-		this.preferencias = preferencias;
-	}
-	public List<String> getComportamiento() {
+	public Set<String> getComportamiento() {
 		return comportamiento;
 	}
-	public void setComportamiento(List<String> comportamiento) {
-		this.comportamiento = comportamiento;
-	}
-	
-	
-	
 }
