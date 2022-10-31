@@ -5,7 +5,6 @@ import usuario.IParticipante;
 
 public class ProgresoDeDesafioEnCurso implements IEstadoDelProgreso {
 
-
 	public boolean esDesafioEnCurso() {
 		return true;
 	}
@@ -19,7 +18,4 @@ public class ProgresoDeDesafioEnCurso implements IEstadoDelProgreso {
 	public void recolectarMuestraPorParticipante(IParticipante participante, Muestra muestra) throws Exception {
 		participante.getAplicacion().recolectarMuestra(muestra);
 	}
-	
-	
-	
 }

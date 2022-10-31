@@ -1,7 +1,9 @@
 package desafios;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import caracteristicas.desafio.Area;
 import caracteristicas.desafio.Caracteristica;
@@ -11,24 +13,68 @@ import muestra.Muestra;
 import usuario.IParticipante;
 
 public class Desafio extends ActividadLudica {
-	private Area 				 area;
-	private RestriccionTemporal  restriccionTemporal;
-	private int 				 cantidadDeMuestrasARecolectar;
-	private int 				 cantidadDeMuestrasRecolectadas; 
-	private Dificultad 			 dificultad;
-	private int 				 recompensa;
-	private List<IParticipante>  participantes;
-	private List<Caracteristica> caracteristicas;
-	private IEstadoDesafio  estado;
-	
+	private Area 				area;
+	private RestriccionTemporal restriccionTemporal;
+	private int 				cantidadDeMuestrasARecolectar;
+	private int 				cantidadDeMuestrasRecolectadas; 
+	private Dificultad 			dificultad;
+	private int 				recompensa;
+	private Set<IParticipante>  participantes;
+	private Set<Caracteristica> caracteristicas;
 	
 	// Es necesario separar los conceptos de Etado y Estado del Desafio
 	// Cada usuario tiene un estado para el Desafio.
 	// El estado del desario para el usuario esta vinculado al desafio.
 	// Mejorar UML (Faltan unir cosas y hay flechas a reves)
+
+	// ================== METHODS ==================
+	public Boolean esDesafioActivo() {
+		return (LocalDateTime.now().isAfter(restriccionTemporal.getFechaDeInicio())
+		 	 && LocalDateTime.now().isBefore(restriccionTemporal.getFechaDeCierre()));
+	}
 	
+	public void agregarUsuarioAlDesafio(IParticipante usuario) throws Exception {
+		// Un participante puede ingresar a un desafío que aún no haya arrancado
+		// pero solo se contabilizan las muestras a partir del inicio del desafío.
+		if (sePuedeInscribir()) {
+			this.getParticipantes().add(usuario);
+		}
+	}
+	
+	public boolean estaLaMuestraDentroDelArea(Muestra muestra) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	public boolean esDesafio() {
+		return true;
+	}
+	
+
+
+	// ================ PRIVATE METHODS ================
+	private boolean sePuedeInscribir() {
+		return this.getRestriccionTemporal().getFechaDeCierre().isAfter(LocalDateTime.now());
+	}
+
+	
+	// ================== COSTRUCTOR ==================
+	public Desafio(Area 			   area,
+				   RestriccionTemporal restriccionTemporal,
+				   int 				   cantidadDeMuestrasARecolectar,
+				   Dificultad 		   dificultad,
+				   int				   recompensa) {
+		this.area 							= area;
+		this.restriccionTemporal 			= restriccionTemporal;
+		this.cantidadDeMuestrasARecolectar  = cantidadDeMuestrasARecolectar;
+		this.cantidadDeMuestrasRecolectadas = 0;
+		this.dificultad 					= dificultad;
+		this.recompensa 					= recompensa;
+		this.caracteristicas                = new HashSet<Caracteristica>();
+	}
+
 	// ============== GETTERS & SETTERS ==============
-	
 	public Area getArea() {
 		return area;
 	}
@@ -65,89 +111,10 @@ public class Desafio extends ActividadLudica {
 	public void setRecompensa(int recompensa) {
 		this.recompensa = recompensa;
 	}
-	public List<IParticipante> getParticipantes() {
+	public Set<IParticipante> getParticipantes() {
 		return participantes;
 	}
-	public void setParticipantes(List<IParticipante> participantes) {
-		this.participantes = participantes;
-	}
-	
-	public List<Caracteristica> getCaracteristicas() {
+	public Set<Caracteristica> getCaracteristicas() {
 		return caracteristicas;
 	}
-	public void setCaracteristicas(List<Caracteristica> caracteristicas) {
-		this.caracteristicas = caracteristicas;
-	}
-	
-	public IEstadoDesafio getEstado() {
-		return estado;
-	}
-	public void setEstado(IEstadoDesafio desafioFinalizado) {
-		this.estado = desafioFinalizado;
-	}
-	
-	// ================== COSTRUCTOR ==================
-	public Desafio(Area area, RestriccionTemporal restriccionTemporal,
-			int cantidadDeMuestrasARecolectar,
-			Dificultad dificultad, int recompensa, List <Caracteristica> caracteristicas) {
-		this.area 							= area;
-		this.restriccionTemporal 			= restriccionTemporal;
-		this.cantidadDeMuestrasARecolectar  = cantidadDeMuestrasARecolectar;
-		this.cantidadDeMuestrasRecolectadas = 0;
-		this.dificultad 					= dificultad;
-		this.recompensa 					= recompensa;
-		this.caracteristicas                = caracteristicas;
-	}
-
-	// ================== METHODS ==================
-	public Boolean esDesafioActivo() {
-		return (LocalDateTime.now().isAfter(restriccionTemporal.getFechaDeInicio())
-		 	 && LocalDateTime.now().isBefore(restriccionTemporal.getFechaDeCierre()));
-	}
-	
-	public void agregarUsuarioAlDesafio(IParticipante usuario) throws Exception {
-		this.getEstado().aceptarParticipante(usuario,this) ;
-	}
-	public void IngresoDeParticipanteADesafio(IParticipante participante) throws Exception {
-		
-		if (this.estaElParticipanteEnDesafio(participante)) {
-			throw new RuntimeException("Ya ha sido registrado en el desafio");	
-		}
-		else {
-			this.getParticipantes().add(participante);
-		}
-	}
-	 
-	public boolean estaElParticipanteEnDesafio(IParticipante participante) {
-		return this.getParticipantes().contains(participante);
-	}
-	
-	public void finalizarDesafio() throws Exception {
-		this.getEstado().finalizarDesafio(this);
-	}
-	
-	public boolean esElGanador(IParticipante participante) {
-		return false;
-	}
-	
-	
-	public boolean estaLaMuestraDentroDelArea(Muestra muestra) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	
-	public void incrementarLaCantidadTotalDeRecoleccion() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public boolean esDesafio() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	
-	
-	
-	
 }

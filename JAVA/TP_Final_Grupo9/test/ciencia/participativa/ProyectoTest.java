@@ -19,12 +19,12 @@ import usuario.Usuario;
 
 public class ProyectoTest {
 	
-	private Muestra muestra1;
-	private Muestra muestra2;
-	private Muestra muestra3;
-	private IParticipante participante1;
-	private IParticipante participante2;
-	private IParticipante participante3;
+	private Muestra 		muestra1;
+	private Muestra 		muestra2;
+	private Muestra 		muestra3;
+	private IParticipante 	participante1;
+	private IParticipante 	participante2;
+	private IParticipante 	participante3;
 	private ActividadLudica actividad1;
 	private ActividadLudica actividad2;
 	private ActividadLudica actividad3;
@@ -34,8 +34,8 @@ public class ProyectoTest {
 	private Usuario         usuario1;
 	private LocalDateTime   fecha2;
 	
-	private Proyecto proyecto;
-	private Caracteristica caracteristica1;
+	private Proyecto 		proyecto;
+	private Caracteristica 	caracteristica1;
 	
 	@BeforeEach
 	public void setUp() {
@@ -66,7 +66,7 @@ public class ProyectoTest {
 	public void test01_unProyectoTieneMuestras() {
 		muestra1.agregarCaracteristicaAMuestra(caracteristica1);
 		proyecto.agregarMuestra(muestra1);
-	    assertTrue(muestra1.tieneLaCaracteristica(caracteristica1.getDescripicion()));
+	    assertTrue(muestra1.tieneLaCaracteristica(caracteristica1));
 	    assertEquals(proyecto.cantidadDeMuestras(), 1);
 	}
 	
@@ -75,7 +75,7 @@ public class ProyectoTest {
 		muestra4.agregarCaracteristicaAMuestra(caracteristica1);
 		proyecto.agregarMuestra(muestra4);
 		assertEquals(proyecto.getMuestrasRecolectadas().size(), 1);
-		assertTrue(muestra4.tieneLaCaracteristica(caracteristica1.getDescripicion()));
+		assertTrue(muestra4.tieneLaCaracteristica(caracteristica1));
 		assertTrue(proyecto.getMuestrasRecolectadas().contains(muestra4));
 	
 	}

@@ -1,16 +1,17 @@
 package desafios;
 
-import java.util.List;
+import java.util.Set;
+
 import usuario.IParticipante;
 
 
 public abstract class ActividadLudica {
 	
-	private List<IParticipante>  participantes;
+	private Set<IParticipante>  participantes;
 
 	// ============== GETTERS & SETTERS ==============
 	
-	public List<IParticipante> getParticipantes() {
+	public Set<IParticipante> getParticipantes() {
 		return participantes;
 	}
 

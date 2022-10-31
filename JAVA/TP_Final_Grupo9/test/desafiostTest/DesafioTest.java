@@ -7,7 +7,10 @@ import static org.mockito.Mockito.when;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -26,7 +29,7 @@ public class DesafioTest {
 	private Caracteristica caracteristica1;
 	private Caracteristica caracteristica2;
 	private Caracteristica caracteristica3;
-	private List<Caracteristica> caracteristicas;
+	private Set<Caracteristica> caracteristicas;
 		
 	@BeforeEach
 	public void setUp() {
@@ -47,16 +50,12 @@ public class DesafioTest {
 	 when(caracteristica2.getAfinidad()).thenReturn(5.5);
 	 when(caracteristica3.getDescripicion()).thenReturn("Santi es mejor");
 	 when(caracteristica3.getAfinidad()).thenReturn(7.7);
-	 
-	 caracteristicas = new ArrayList<Caracteristica>(Arrays.asList(caracteristica1,caracteristica2,caracteristica3));
-	 desafio = new Desafio(area, restriccionTemporal, 30, Dificultad.MEDIO, 2359, caracteristicas);
-	 
-	 
+	 desafio = new Desafio(area, restriccionTemporal, 30, Dificultad.MEDIO, 2359);
 	}
 	
 	@Test
 	public void test01_cuandoUnDesafioTieneUnaCantidadDeMuestras() {
-		desafio = new Desafio(area, restriccionTemporal, 30, Dificultad.MEDIO, 2359, caracteristicas);
+		desafio = new Desafio(area, restriccionTemporal, 30, Dificultad.MEDIO, 2359);
 		assertEquals(30, desafio.getCantidadDeMuestrasARecolectar());
 	}
 	

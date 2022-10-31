@@ -12,13 +12,67 @@ import estadoDeUsuario.ProgresoDesafio;
 import muestra.Muestra;
 
 public class Usuario implements IParticipante{
-	
-	private String			nombre;
-	private AplicacionMovil aplicacion;
-	private List<Proyecto> 	proyectoEnCurso;
-	private Perfil 			perfil;
-	private Map<Desafio, Integer>	desafiosCompletados;
+	private String				  nombre;
+	private AplicacionMovil 	  aplicacion;
+	private List<Proyecto> 		  proyectoEnCurso;
+	private Perfil 				  perfil;
+	private Map<Desafio, Integer> desafiosCompletados;
 	private List<ProgresoDesafio> desafiosEnCurso;
+	
+	// ================== METHODS USUARIO ========================
+	public void registrarDesafioCompleatado(Desafio desafio, int recompensa) {
+		this.getDesafiosCompletados().put(desafio, recompensa);
+	}
+	
+	// ================== METHODS IPARTICIPANTE ==================
+	
+	@Override
+	public void recolectarMuestra(Muestra muestra) throws Exception {
+		this.recolectarMuestraParaLosProyectos(muestra);
+		this.recolectarMuestraParaLosDesafios(muestra);
+	}
+	
+	public void recolectarMuestraParaLosDesafios(Muestra muestra) throws Exception {
+		for (ProgresoDesafio desafio : this.getDesafiosEnCurso()) {
+			desafio.recolectarMuestra(this,muestra);
+		}
+		
+	}
+	
+	public void recolectarMuestraParaLosProyectos(Muestra muestra) {
+		for (Proyecto proyecto : this.getProyectoEnCurso()) {
+			aplicacion.recolectarMuestraParaProyecto(muestra,proyecto);
+		}
+	}
+
+	@Override
+	public boolean estaEnDesafioActualmente() {
+		return this.getDesafiosEnCurso().stream().anyMatch(p -> p.esDesafioActual());
+	}
+
+	@Override
+	public void solicitarSuscripcionAProyecto(Proyecto proyecto, Sistema system) {
+		system.ingresarSolicitudAProyecto(proyecto,this);
+	}
+	
+	@Override
+	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception {
+		desafio.agregarUsuarioAlDesafio(this);
+	}
+	
+	@Override
+	public void recibirRecompensaDeDesafio(Desafio desafio, int recompensa) {
+		this.registrarDesafioCompleatado(desafio,recompensa);
+	}
+	
+	// ================== COSTRUCTOR ==================
+	public Usuario(String nombre, AplicacionMovil aplicacion, Perfil perfil) {
+		this.nombre				 = nombre;
+		this.aplicacion			 = aplicacion;
+		this.proyectoEnCurso 	 = new ArrayList<>();
+		this.perfil 			 = perfil;
+		this.desafiosCompletados = new HashMap<Desafio, Integer>();
+	}
 
 	// ============== GETTERS & SETTERS ==============
 	public String getNombre() {
@@ -58,74 +112,5 @@ public class Usuario implements IParticipante{
 	
 	public void setDesafiosEnCurso(List<ProgresoDesafio> desafiosEnCurso) {
 		this.desafiosEnCurso = desafiosEnCurso;
-	}
-	
-	// ================== COSTRUCTOR ==================
-	public Usuario(String nombre, AplicacionMovil aplicacion, Perfil perfil) {
-		this.nombre				 = nombre;
-		this.aplicacion			 = aplicacion;
-		this.proyectoEnCurso 	 = new ArrayList<>();
-		this.perfil 			 = perfil;
-		this.desafiosCompletados = new HashMap<Desafio, Integer>();
-	}
-	
-	// ================== METHODS USUARIO ========================
-	
-	public void registrarDesafioCompleatado(Desafio desafio, int recompensa) {
-		if(this.ganoElDesafio(desafio)) {
-			this.getDesafiosCompletados().put(desafio, recompensa);
-		}
-		else {
-			this.getDesafiosCompletados().put(desafio, 0);
-		}
-	}
-	
-	private boolean ganoElDesafio(Desafio desafio) {
-		return desafio.esElGanador(this);
-	}
-	
-	// ================== METHODS IPARTICIPANTE ==================
-	@Override
-	
-	public void recolectarMuestra(Muestra muestra) throws Exception {
-		this.recolectarMuestraParaLosProyectos(muestra);
-		this.recolectarMuestraParaLosDesafios(muestra);
-	}
-	
-	public void recolectarMuestraParaLosDesafios(Muestra muestra) throws Exception {
-		for (ProgresoDesafio desafio : this.getDesafiosEnCurso()) {
-			desafio.recolectarMuestra(this,muestra);
-		}
-		
-	}
-	
-	public void recolectarMuestraParaLosProyectos(Muestra muestra) {
-		for (Proyecto proyecto : this.getProyectoEnCurso()) {
-			aplicacion.recolectarMuestraParaProyectoSiEsDeInteres(muestra,proyecto);
-		}
-	}
-
-	@Override
-	public boolean estaEnDesafioActualmente() {
-		return this.getDesafiosEnCurso().stream().anyMatch(p -> p.esDesafioActual());
-	}
-
-	@Override
-	public void solicitarSuscripcionAProyecto(Proyecto proyecto, Sistema system) {
-		system.ingresarSolicitudAProyecto(proyecto,this);
-	}
-	
-	@Override
-	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception {
-		desafio.agregarUsuarioAlDesafio(this);
-	}
-	@Override
-	public void recibirRecompensaDeDesafio(Desafio desafio, int recompensa) {
-		this.registrarDesafioCompleatado(desafio,recompensa);
-	}
-	@Override
-	public void recibirRecompensaDeDesafio(ProgresoDesafio progresoDesafio, int recompensa) {
-		// TODO Auto-generated method stub
-		
 	}
 }
