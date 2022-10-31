@@ -11,7 +11,7 @@ public class Muestra {
 	private Set<Caracteristica> caracteristicas;
 	private Usuario 			usuarioQueLaRecolecto;
 	private LocalDateTime 		fechaYHoraDeRecoleccion;
-	private Coordenada 			coordenadaDeRecollecion;
+	private Coordenada 			coordenadaDeRecoleccion;
 
 	// ================== METHODS ==================
 	public boolean tieneLaCaracteristica(Caracteristica c) {
@@ -29,7 +29,7 @@ public class Muestra {
 		this.caracteristicas		 = new HashSet<Caracteristica>();
 		this.usuarioQueLaRecolecto	 = usuarioQueLaRecolecto;
 		this.fechaYHoraDeRecoleccion = fechaYHoraDeRecoleccion;
-		this.coordenadaDeRecollecion = coordenadaDeRecollecion;
+		this.coordenadaDeRecoleccion = coordenadaDeRecollecion;
 	}
 
 	// ============== GETTERS & SETTERS ==============
@@ -54,10 +54,10 @@ public class Muestra {
 	}
 
 	public Coordenada getCoordenadaDeRecollecion() {
-		return coordenadaDeRecollecion;
+		return coordenadaDeRecoleccion;
 	}
 
 	public void setCoordenadaDeRecollecion(Coordenada coordenadaDeRecollecion) {
-		this.coordenadaDeRecollecion = coordenadaDeRecollecion;
+		this.coordenadaDeRecoleccion = coordenadaDeRecollecion;
 	}
 }

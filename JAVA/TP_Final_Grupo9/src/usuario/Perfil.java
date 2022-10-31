@@ -11,16 +11,16 @@ public class Perfil {
 	private Set<String>			comportamiento;
 
 	// =================== METHODS ====================
-	public void agregarGusto(String g) {
-		this.getGustos().add(g);
+	public void agregarGusto(String gusto) {
+		this.getGustos().add(gusto);
 	}
 	
-	public void agregarCaracteristicaPreferida(Caracteristica c) {
-		this.getPreferencias().add(c);
+	public void agregarCaracteristicaPreferida(Caracteristica caracteristica) {
+		this.getPreferencias().add(caracteristica);
 	}
 	
-	public void agregarComportamiento(String c) {
-		this.getComportamiento().add(c);
+	public void agregarComportamiento(String caracteristica) {
+		this.getComportamiento().add(caracteristica);
 	}
 
 	// ================== COSTRUCTOR ==================
@@ -40,4 +40,8 @@ public class Perfil {
 	public Set<String> getComportamiento() {
 		return comportamiento;
 	}
+
+
 }
+
+

@@ -34,7 +34,7 @@ public class SistemaTest {
 	
 	@Test
 	public void test01_sistema() {
-		system.getProyectos().(proyecto1);
+		
 		
 	}
 	
