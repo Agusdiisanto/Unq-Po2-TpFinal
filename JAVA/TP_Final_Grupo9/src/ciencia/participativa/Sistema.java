@@ -96,18 +96,14 @@ public class Sistema {
 		return indiceDeCoincidencia;
 	}
 
-	private Caracteristica caracteristicaConDescripcion(String descripicion, List<Caracteristica> preferencias) {
-		while(preferencias.get(0).getDescripicion() != descripicion) {
-			preferencias.remove(0);
-		}
-		return preferencias.get(0);
+	private Caracteristica caracteristicaConDescripcion(String descripicion, Set<Caracteristica> preferencias) {
+	    return	(Caracteristica) preferencias.stream().filter(c -> c.getDescripicion().equals(descripicion));
 	}
-
-	private boolean contieneCaracteristica(Caracteristica caracteristica, List<Caracteristica> preferencias) {
-		while(preferencias.get(0).getDescripicion() != caracteristica.getDescripicion()) {
-			preferencias.remove(0);
-		}
-		return preferencias.get(0).getDescripicion() == caracteristica.getDescripicion();
+		
+		
+		
+	private boolean contieneCaracteristica(Caracteristica caracteristica, Set<Caracteristica> preferencias) {
+		return preferencias.contains(caracteristica);
 	}
 	
 	
