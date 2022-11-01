@@ -1,9 +1,7 @@
 package ciencia.participativa;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
 import caracteristicas.desafio.Caracteristica;
 import desafios.ActividadLudica;
 import desafios.Desafio;

@@ -13,34 +13,26 @@ public class ProgresoDesafio {
 	// ================== METHODS ==================
 	public boolean esDesafioActual() {
 		// TODO Auto-generated method stub
-		return this.getEstado().esDesafioEnCurso();
+		return this.getEstado().esDesafioEnCurso(this.getDesafioActual());
 	}
 	
+	// VER ESTO RARO 
 	public void recolectarMuestra(IParticipante participante, Muestra muestra) throws Exception {
-		// Ver si el mensaje incrementar lo ponemos dentro del recolectar muestra o lo dejamos ahi
-		if (this.getDesafioActual().estaLaMuestraDentroDelArea(muestra)) {
-			this.getEstado().recolectarMuestraPorParticipante(participante,muestra);
-		}
+		this.getEstado().recolectarMuestra(this,muestra);
+	}
+
+	public boolean completoElDesafio() {
+		return this.getEstado().completoElDesafio(this);
 	}
 	
-	public boolean completoElDesafio(IParticipante participante) {
-		// Este es un ESQUEMA
-		// En el pdf no vi como se inidica que es ganador
-		// Por el momento cuando un participante obtiene 5 puntos gana	
-		return this.getPuntaje() == 5;
-	}
-	
-	public void sumarPuntajeAParticipante(IParticipante participante) throws Exception {
-		// Hay que implementarlo en algun otro metodo 
+	public void sumarPuntajeAParticipante() throws Exception {
 		this.incrementarPuntajeEnUno();
-	  	if (this.completoElDesafio(participante)) {
-	  		// participante.;
-	 	}
 	}
 
 	public void otorgarRecompensaAlParticipante(IParticipante participante) {
 		participante.recibirRecompensaDeDesafio(this.getDesafioActual(),this.getDesafioActual().getRecompensa());
 	}
+	
 	
 	// =============== PRIVATE METHODS ================
 	private void incrementarPuntajeEnUno() {

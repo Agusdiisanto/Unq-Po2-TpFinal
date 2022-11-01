@@ -1,21 +1,35 @@
 package estadoDeUsuario;
 
+import java.time.LocalDateTime;
+import desafios.Desafio;
 import muestra.Muestra;
-import usuario.IParticipante;
 
-public class ProgresoDeDesafioEnCurso implements IEstadoDelProgreso {
 
-	public boolean esDesafioEnCurso() {
-		return true;
+public class ProgresoDeDesafioEnCurso extends EstadoDeProgreso{
+
+	
+	@Override
+	public boolean esDesafioEnCurso(Desafio desafio) {
+		return desafio.estaDentroDeLaRestriccion(LocalDateTime.now());
 	}
+	
 
 	@Override
-	public void recibirRecompensaDesafio() {
-		throw new RuntimeException("Todavia no has terminado el desafio para recibir la recompensa");
+	public void recolectarMuestra(ProgresoDesafio progresoDesafio, Muestra muestra) throws Exception {	
+		if (progresoDesafio.getDesafioActual().estaLaMuestraDentroDelArea(muestra)) {
+			progresoDesafio.sumarPuntajeAParticipante();
+		}	
 	}
-
+	
 	@Override
-	public void recolectarMuestraPorParticipante(IParticipante participante, Muestra muestra) throws Exception {
-		participante.getAplicacion().recolectarMuestra(muestra);
+	public void recibirRecompensaDesafio() throws Exception {
+		
 	}
+	
+	@Override
+	public boolean completoElDesafio(ProgresoDesafio progresoDesafio) {
+		return progresoDesafio.getPuntaje() == progresoDesafio.getDesafioActual().getCantidadDeMuestrasARecolectar();
+	}
+	
+	
 }

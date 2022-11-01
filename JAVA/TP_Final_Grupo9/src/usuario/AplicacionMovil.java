@@ -11,18 +11,36 @@ public class AplicacionMovil {
 	private Set<Muestra> muestras;
 	
 	// ================== METHODS ==================
-	public void recolectarMuestraParaProyecto(Muestra m, Proyecto p) {	
-		if (this.esMuestraDeInteresParaProyecto(m, p)) {
-			this.getMuestras().add(m);
-		}
-	}
-	
+
 	public Boolean esMuestraDeInteresParaProyecto(Muestra m, Proyecto p) {
 		return p.esMuestraDeInteres(m);
 	}
 	
-	public void recolectarMuestra(Muestra m) {
-		// Analizar que haria
+	public void recolectarMuestra(Muestra m, Usuario usuario, Proyecto p) throws Exception {
+		if(estaRegistradoElUsuario(usuario)) {
+			this.recolectarMuestraParaProyecto(m, p);
+			usuario.recolectarMuestra(m);
+		}
+	}
+	
+	public boolean estaRegistradoElUsuario(Usuario usuario) {
+		return this.getUsuario().contains(usuario);
+	}
+	
+	public void registrarUsuarioEnAplicacion(Usuario usuario) {
+		this.getUsuario().add(usuario);
+	}
+	
+	public void recolectarMuestraParaProyecto(Muestra m, Proyecto p) {	
+		if (this.esMuestraDeInteresParaProyecto(m, p)) {
+			this.cargarMuestraEnAplicacion(m);
+		}
+	}
+	
+	// ======================== PRIVATES ================================
+	
+	private void cargarMuestraEnAplicacion(Muestra muestra) {
+		this.getMuestras().add(muestra);
 	}
 	
 	// ================== COSTRUCTOR ==================

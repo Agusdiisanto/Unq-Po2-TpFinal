@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
 import ciencia.participativa.Proyecto;
 import ciencia.participativa.Sistema;
 import desafios.Desafio;
@@ -13,7 +12,7 @@ import estrategiaDeRecomendacion.IRecomendacion;
 import muestra.Muestra;
 
 public class Usuario implements IParticipante{
-	private String				  nombre;
+	private String		   nombre;
 	private AplicacionMovil 	  aplicacion;
 	private Set<Proyecto> 		  proyectosEnCurso;
 	private Perfil 				  perfil;
@@ -26,24 +25,23 @@ public class Usuario implements IParticipante{
 		this.getDesafiosCompletados().put(desafio, recompensa);
 	}
 	
-	// ================== METHODS IPARTICIPANTE ==================
+	//================== METHODS IPARTICIPANTE ====================
 	
 	@Override
-	public void recolectarMuestra(Muestra muestra) throws Exception {
-		this.recolectarMuestraParaLosProyectos(muestra);
-		this.recolectarMuestraParaLosDesafios(muestra);
+	public void recolectarMuestra(Muestra m) throws Exception {
+		this.recolectarMuestraParaLosDesafios(m);
+		this.recolectarMuestraParaLosProyectos(m);
 	}
 	
 	public void recolectarMuestraParaLosDesafios(Muestra muestra) throws Exception {
-		for (ProgresoDesafio desafio : this.getDesafiosEnCurso()) {
-			desafio.recolectarMuestra(this,muestra);
+		for (ProgresoDesafio progresoDesafio : desafiosEnCurso) {
+			progresoDesafio.recolectarMuestra(this, muestra);
 		}
-		
 	}
 	
-	public void recolectarMuestraParaLosProyectos(Muestra muestra) {
+	public void recolectarMuestraParaLosProyectos(Muestra muestra) throws Exception {
 		for (Proyecto proyecto : this.getProyectoEnCurso()) {
-			aplicacion.recolectarMuestraParaProyecto(muestra,proyecto);
+			aplicacion.recolectarMuestra(muestra, this, proyecto);
 		}
 	}
 
@@ -54,7 +52,7 @@ public class Usuario implements IParticipante{
 
 	@Override
 	public void solicitarSuscripcionAProyecto(Proyecto proyecto, Sistema system) {
-		system.ingresarSolicitudAProyecto(proyecto,this);
+		system.ingresarSolicitudAProyecto(proyecto,this);  // Cambiar no lo tiene que hacer el system
 	}
 	
 	@Override
@@ -109,4 +107,6 @@ public class Usuario implements IParticipante{
 	public IRecomendacion getRecomendacionPreferida() {
 		return recomendacionPreferida;
 	}
+
+	
 }

@@ -3,7 +3,6 @@ package usuario;
 import ciencia.participativa.Proyecto;
 import ciencia.participativa.Sistema;
 import desafios.Desafio;
-import estadoDeUsuario.ProgresoDesafio;
 import muestra.Muestra;
 
 public interface IParticipante {
@@ -17,4 +16,5 @@ public interface IParticipante {
 	public AplicacionMovil getAplicacion();
 	public void recibirRecompensaDeDesafio(Desafio desafio, int recompensa);
 	public void registrarDesafioCompleatado(Desafio desafio, int recompensa);
+
 }

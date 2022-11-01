@@ -1,8 +1,8 @@
 package desafios;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import caracteristicas.desafio.Area;
@@ -16,7 +16,6 @@ public class Desafio extends ActividadLudica {
 	private Area 				area;
 	private RestriccionTemporal restriccionTemporal;
 	private int 				cantidadDeMuestrasARecolectar;
-	private int 				cantidadDeMuestrasRecolectadas; 
 	private Dificultad 			dificultad;
 	private int 				recompensa;
 	private Set<IParticipante>  participantes;
@@ -68,7 +67,6 @@ public class Desafio extends ActividadLudica {
 		this.area 							= area;
 		this.restriccionTemporal 			= restriccionTemporal;
 		this.cantidadDeMuestrasARecolectar  = cantidadDeMuestrasARecolectar;
-		this.cantidadDeMuestrasRecolectadas = 0;
 		this.dificultad 					= dificultad;
 		this.recompensa 					= recompensa;
 		this.caracteristicas                = new HashSet<Caracteristica>();
@@ -93,12 +91,6 @@ public class Desafio extends ActividadLudica {
 	public void setCantidadDeMuestrasARecolectar(int cantidadDeMuestrasARecolectar) {
 		this.cantidadDeMuestrasARecolectar = cantidadDeMuestrasARecolectar;
 	}
-	public int getCantidadDeMuestrasRecolectadas() {
-		return cantidadDeMuestrasRecolectadas;
-	}
-	public void setCantidadDeMuestrasRecolectadas(int cantidadDeMuestrasRecolectadas) {
-		this.cantidadDeMuestrasRecolectadas = cantidadDeMuestrasRecolectadas;
-	}
 	public Dificultad getDificultad() {
 		return dificultad;
 	}
@@ -116,5 +108,9 @@ public class Desafio extends ActividadLudica {
 	}
 	public Set<Caracteristica> getCaracteristicas() {
 		return caracteristicas;
+	}
+
+	public boolean estaDentroDeLaRestriccion(LocalDateTime localDateTime) {
+		return this.getRestriccionTemporal().estaHabilitado(localDateTime);
 	}
 }
