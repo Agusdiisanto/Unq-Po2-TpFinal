@@ -17,7 +17,7 @@ public class ProgresoDeDesafioTerminado extends EstadoDeProgreso {
 	
 	@Override
 	public void concederRecompensaDelDesafioA(IParticipante participante, ProgresoDesafio progresoDesafio) {
-		participante.registrarDesafioCompleatado(progresoDesafio.getDesafioActual(),progresoDesafio.recompensaDelDesafio());
+		participante.registrarDesafioCompletado(progresoDesafio.getDesafioActual(),progresoDesafio.recompensaDelDesafio(),progresoDesafio.getDesafioActual().getCantidadDeMuestrasARecolectar());
 	}
 	
 }

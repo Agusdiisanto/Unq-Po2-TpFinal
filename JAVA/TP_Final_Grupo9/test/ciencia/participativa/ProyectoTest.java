@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import caracteristicas.desafio.Caracteristica;
 import desafios.ActividadLudica;
+import desafios.Desafio;
 import muestra.Coordenada;
 import muestra.Muestra;
 import proyectos.Proyecto;
@@ -37,6 +38,9 @@ public class ProyectoTest {
 	private Proyecto 		proyecto;
 	private Caracteristica 	caracteristica1;
 	
+	private Desafio			desafio1;
+	private Desafio			desafio2;
+	
 	@BeforeEach
 	public void setUp() {
 		
@@ -45,20 +49,22 @@ public class ProyectoTest {
 		muestra1 = new Muestra(usuario1, fecha2 , coordenada1);
 		muestra2 = mock(Muestra.class);
 		muestra3 = mock(Muestra.class);
-		usuario1 = mock(Usuario.class); 
+		usuario1 = mock(Usuario.class);
 		
-		fecha1 = LocalDateTime.now();
-		coordenada1= mock(Coordenada.class);
+		fecha1      = LocalDateTime.now();
+		coordenada1 = mock(Coordenada.class);
 		
 		participante1 = mock(IParticipante.class);
 		participante2 = mock(IParticipante.class);
 		participante3 = mock(IParticipante.class);
 		
-		muestra4= new Muestra(usuario1,fecha1 , coordenada1);
+		muestra4   = new Muestra(usuario1,fecha1 , coordenada1);
 		actividad1 = mock(ActividadLudica.class);
 		actividad2 = mock(ActividadLudica.class);
 		actividad3 = mock(ActividadLudica.class);
-		proyecto = new Proyecto("ProyectoNueve","GrupoNueve");
+		desafio1   = mock(Desafio.class);
+		desafio2   = mock(Desafio.class);
+		proyecto   = new Proyecto("ProyectoNueve","GrupoNueve");
 		this.caracteristica1 = new Caracteristica("Carateristica1", 1);
 		proyecto.agregarInteres(caracteristica1); 
 		
@@ -82,5 +88,12 @@ public class ProyectoTest {
 		assertTrue(muestra4.tieneLaCaracteristica(caracteristica1));
 		assertTrue(proyecto.getMuestrasRecolectadas().contains(muestra4));
 	
+	}
+	
+	@Test
+	public void test03_unProyectoTieneMuestras() {
+		usuario1.registrarDesafioCompletado(desafio1, 3, 2);
+		//usuario1.registrarDesafioCompletado(desafio2, 3, 2);
+	    assertEquals(usuario1.getDesafioFavorito(), desafio1);
 	}
 }

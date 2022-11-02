@@ -2,16 +2,13 @@ package usuario;
 
 public class Estadisticas {
 	private int satisfaccion;
-	private int cantidadDeMuestrasRecolectadas;
 	private int recompensa;
-	private int dificultad;
-
+	private int cantidadDeMuestrasRecolectadas;
 	// ====================== CONSTRUCTOR =======================
-	public Estadisticas(int satisfaccion, int cantidadDeMuestrasRecolectadas, int recompensa, int dificultad) {
-		this.satisfaccion					= satisfaccion;
+	public Estadisticas(int satisfaccion, int recompensa, int cantidadDeMuestrasRecolectadas) {
+		this.satisfaccion = satisfaccion;
+		this.recompensa   = recompensa;
 		this.cantidadDeMuestrasRecolectadas = cantidadDeMuestrasRecolectadas;
-		this.recompensa						= recompensa;
-		this.dificultad 					= dificultad;
 	}
 
 	// =================== GETTERS && SETTERS ===================
@@ -32,11 +29,5 @@ public class Estadisticas {
 	}
 	void setCantidadDeMuestrasRecolectadas(int cantidadDeMuestrasRecolectadas) {
 		this.cantidadDeMuestrasRecolectadas = cantidadDeMuestrasRecolectadas;
-	}
-	int getDificultad() {
-		return dificultad;
-	}
-	void setDificultad(int dificultad) {
-		this.dificultad = dificultad;
 	}
 }

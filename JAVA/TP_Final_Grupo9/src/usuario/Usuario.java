@@ -3,6 +3,7 @@ package usuario;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
 
@@ -42,9 +43,16 @@ public class Usuario implements IParticipante{
 	}
 	
 	public Desafio getDesafioFavorito() {
-		return null; // TERMINAR LUEGO
-		// HAY QUE EXTRAERLO DEL MAP.
-	}
+        int satisfaccionMaxima = 0;
+        Desafio desafioActual = null;
+        for(Entry<Desafio, Estadisticas> entry : desafiosCompletados.entrySet()) {
+            if(satisfaccionMaxima < entry.getValue().getSatisfaccion()) {
+                satisfaccionMaxima = entry.getValue().getSatisfaccion();
+                desafioActual = entry.getKey();
+            }
+        };
+        return desafioActual;
+    }
 	
 	//================== METHODS IPARTICIPANTE ====================
 	@Override
@@ -82,9 +90,9 @@ public class Usuario implements IParticipante{
 	}
 	
 	@Override
-	public void registrarDesafioCompleatado(Desafio desafio, int recompensa) {
+	public void registrarDesafioCompletado(Desafio desafio, int recompensa, int muestrasRecolectadas) {
 		Random random = new Random();
-		Estadisticas estadisticas = new Estadisticas(random.nextInt(5), recompensa);
+		Estadisticas estadisticas = new Estadisticas(random.nextInt(5), recompensa, muestrasRecolectadas);
 		this.getDesafiosCompletados().put(desafio, estadisticas);
 	}
 	
