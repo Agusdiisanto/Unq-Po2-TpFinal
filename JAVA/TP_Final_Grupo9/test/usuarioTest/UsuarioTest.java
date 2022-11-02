@@ -1,5 +1,25 @@
 package usuarioTest;
 
-public class UsuarioTest {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+import usuario.AplicacionMovil;
+import usuario.Usuario;
+
+public class UsuarioTest {
+		
+	Usuario usuario;
+	AplicacionMovil apMovil;
+	
+	
+	@BeforeEach
+	public void setUp() {
+		
+	}
+	
+	@Test
+	public void test01_UnUsuarioSabeSuNombre() {
+		
+	}
+	
 }

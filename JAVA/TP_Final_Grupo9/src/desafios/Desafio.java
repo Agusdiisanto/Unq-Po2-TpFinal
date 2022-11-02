@@ -1,6 +1,5 @@
 package desafios;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -41,17 +40,20 @@ public class Desafio extends ActividadLudica {
 	}
 	
 	public boolean estaLaMuestraDentroDelArea(Muestra muestra) {
+		// Santi 
+		return true;
+	}
+	
+	public boolean estaDentroDeLaRestriccion(LocalDateTime localDateTime) {
+		return this.getRestriccionTemporal().estaHabilitado(localDateTime);
+	}
+	
+	public boolean estaLaMuestraDentroDeLaRestriccion(Muestra muestra) {
 		// TODO Auto-generated method stub
-		return true;
+		return this.getRestriccionTemporal().estaHabilitado(muestra.getFechaYHoraDeRecoleccion());
 	}
 	
-	@Override
-	public boolean esDesafio() {
-		return true;
-	}
 	
-
-
 	// ================ PRIVATE METHODS ================
 	private boolean sePuedeInscribir() {
 		return this.getRestriccionTemporal().getFechaDeCierre().isAfter(LocalDateTime.now());
@@ -110,7 +112,7 @@ public class Desafio extends ActividadLudica {
 		return caracteristicas;
 	}
 
-	public boolean estaDentroDeLaRestriccion(LocalDateTime localDateTime) {
-		return this.getRestriccionTemporal().estaHabilitado(localDateTime);
-	}
+	
+
+	
 }

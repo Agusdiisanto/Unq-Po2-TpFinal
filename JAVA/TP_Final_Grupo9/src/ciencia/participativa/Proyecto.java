@@ -46,6 +46,10 @@ public class Proyecto {
 		this.getCaracteristicasDeInteres().add(caracteristica);
 	}
 	
+	public void ingresarSolicitudAProyecto(IParticipante participante) {
+		this.getParticipantes().add(participante);
+	}
+	
 	// ================== COSTRUCTOR ==================
 	public Proyecto(String nombreDelProyecto, String descripcion) {
 		this.nombreDelProyecto    	  = nombreDelProyecto;
@@ -85,4 +89,6 @@ public class Proyecto {
 	public Set<Caracteristica> getCaracteristicasDeInteres() {
 		return caracteristicasDeInteres;
 	}
+
+	
 }

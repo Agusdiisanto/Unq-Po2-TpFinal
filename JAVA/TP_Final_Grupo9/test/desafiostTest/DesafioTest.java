@@ -6,11 +6,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,7 +34,7 @@ public class DesafioTest {
 	 caracteristica1 = mock(Caracteristica.class);
 	 caracteristica2 = mock(Caracteristica.class);
 	 caracteristica3 = mock(Caracteristica.class);
-	 
+	  
 	 when(area.getLatitud()).thenReturn(6);
 	 when(area.getLongitud()).thenReturn(2);
 	 when(area.getRadio()).thenReturn(4);

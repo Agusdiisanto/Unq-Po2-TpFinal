@@ -5,20 +5,20 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import ciencia.participativa.Proyecto;
-import ciencia.participativa.Sistema;
 import desafios.Desafio;
 import estadoDeUsuario.ProgresoDesafio;
-import estrategiaDeRecomendacion.IRecomendacion;
 import muestra.Muestra;
 
 public class Usuario implements IParticipante{
-	private String		   nombre;
+	
+	private String		          nombre;
 	private AplicacionMovil 	  aplicacion;
 	private Set<Proyecto> 		  proyectosEnCurso;
-	private Perfil 				  perfil;
+	private Perfil 				  perfil;   // Aca tenes las recomendaciones
 	private Map<Desafio, Integer> desafiosCompletados;
 	private Set<ProgresoDesafio>  desafiosEnCurso;
-	private IRecomendacion        recomendacionPreferida;
+	
+	  
 	
 	// ================== METHODS USUARIO ========================
 	public void registrarDesafioCompleatado(Desafio desafio, int recompensa) {
@@ -51,13 +51,14 @@ public class Usuario implements IParticipante{
 	}
 
 	@Override
-	public void solicitarSuscripcionAProyecto(Proyecto proyecto, Sistema system) {
-		system.ingresarSolicitudAProyecto(proyecto,this);  // Cambiar no lo tiene que hacer el system
+	public void solicitarSuscripcionAProyecto(Proyecto proyecto) {
+		proyecto.ingresarSolicitudAProyecto(this);  
 	}
 	
 	@Override
 	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception {
 		desafio.agregarUsuarioAlDesafio(this);
+		this.agregarNuevoDesafioEnCurso(desafio);
 	}
 	
 	@Override
@@ -65,15 +66,21 @@ public class Usuario implements IParticipante{
 		this.registrarDesafioCompleatado(desafio,recompensa);
 	}
 	
+	// ================== PRIVATE =====================
+	
+	private void agregarNuevoDesafioEnCurso(Desafio desafio) {
+		ProgresoDesafio progreso = new ProgresoDesafio(desafio);
+		this.getDesafiosEnCurso().add(progreso);
+	}
+	
 	// ================== COSTRUCTOR ==================
-	public Usuario(String nombre, AplicacionMovil aplicacion, Perfil perfil, IRecomendacion recomendacionPreferida) {
+	public Usuario(String nombre, AplicacionMovil aplicacion, Perfil perfil) {
 		this.nombre				 	= nombre;
 		this.aplicacion			 	= aplicacion;
-		this.proyectosEnCurso 	 	= new HashSet<Proyecto>();
 		this.perfil 			 	= perfil;
+		this.proyectosEnCurso 	 	= new HashSet<Proyecto>();
 		this.desafiosCompletados 	= new HashMap<Desafio, Integer>();
 		this.desafiosEnCurso        = new HashSet<ProgresoDesafio>();
-		this.recomendacionPreferida = recomendacionPreferida;
 	}
 
 	// ============== GETTERS & SETTERS ==============
@@ -104,9 +111,7 @@ public class Usuario implements IParticipante{
 	public Set<ProgresoDesafio> getDesafiosEnCurso() {
 		return desafiosEnCurso;
 	}
-	public IRecomendacion getRecomendacionPreferida() {
-		return recomendacionPreferida;
-	}
+	
 
 	
 }

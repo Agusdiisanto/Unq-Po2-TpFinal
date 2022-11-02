@@ -19,9 +19,9 @@ public class Caracteristica {
 	}
 	
 	public Caracteristica(String descripicion, double preferencia) {
-		this.descripicion = descripicion;
-		this.afinidad = preferencia;
+		this.setDescripicion(descripicion);
+		this.setPreferencia(preferencia);
 	}
 	
 	
-}
+} 

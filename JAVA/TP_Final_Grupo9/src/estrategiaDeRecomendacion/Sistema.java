@@ -1,11 +1,11 @@
-package ciencia.participativa;
+package estrategiaDeRecomendacion;
 
 import java.util.HashSet;
 import java.util.Set;
 import caracteristicas.desafio.Caracteristica;
+import ciencia.participativa.Proyecto;
 import desafios.ActividadLudica;
 import desafios.Desafio;
-import usuario.IParticipante;
 import usuario.Usuario;
 
 public class Sistema {
@@ -19,13 +19,21 @@ public class Sistema {
 	public void setProyectos(Set<Proyecto> proyectos) {
 		this.proyectos = proyectos;
 	}
-	
+	 
 	
 	// ========================= CONTRUCTOR ==============================
 	
 	public Sistema() {
 		this.proyectos = new HashSet<Proyecto>();
+		
 	}
+	
+	public void agregarProyectoAlSistema(Proyecto proyecto) {
+		this.getProyectos().add(proyecto);
+	}
+		
+	
+	// =================================================================
 	
 	public Set<Desafio> getDesafios(Set<ActividadLudica> set){
 		
@@ -39,13 +47,6 @@ public class Sistema {
 		
 	}
 	
-	public void agregarDesafio(Proyecto proyecto) {
-		this.getProyectos().add(proyecto);
-	}
-	
-	
-	// =================================================================
-	
 	public Set <Desafio> todosLosDesafios() {
 		Set <Desafio> desafios = new HashSet<Desafio>();
 		for (Proyecto proyecto : getProyectos()) {
@@ -53,17 +54,6 @@ public class Sistema {
 		}
 		return desafios;
 	}
-	
-	/*
-	public List <Desafio> desafiosRecomendadosPara(Usuario usuario) {
-		List<Desafio> desafiosOrdenados = new LinkedList<Desafio>();
-		desafiosOrdenados.add(this.todosLosDesafios().get(0));
-		for (Desafio desafio : this.todosLosDesafios()) {
-			desafiosOrdenados.add(0, desafio);
-		}
-		return null;
-	}
-	*/
 	
 	public Set<Desafio> desafiosRecomendadosPara(Usuario usuario) {
 		Set<Desafio> desafiosOrdenados = new HashSet<Desafio>();
@@ -103,13 +93,33 @@ public class Sistema {
 	private boolean contieneCaracteristica(Caracteristica caracteristica, Set<Caracteristica> preferencias) {
 		return preferencias.contains(caracteristica);
 	}
-	
-	
-	// Esto se va
 
-	public void ingresarSolicitudAProyecto(Proyecto proyecto, IParticipante usuario) {
-		proyecto.agregarNuevoParticipante(usuario);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	/*
+	public List <Desafio> desafiosRecomendadosPara(Usuario usuario) {
+		List<Desafio> desafiosOrdenados = new LinkedList<Desafio>();
+		desafiosOrdenados.add(this.todosLosDesafios().get(0));
+		for (Desafio desafio : this.todosLosDesafios()) {
+			desafiosOrdenados.add(0, desafio);
+		}
+		return null;
 	}
-
-
+	*/
 }

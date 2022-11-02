@@ -20,9 +20,10 @@ public class RestriccionTemporal {
 	public Etapa getEtapa() {
 		return etapa;
 	}
+	
 	public void setEtapa(Etapa etapa) {
 		this.etapa = etapa;
-	}
+	} 
 	
 	// ================== COSTRUCTOR ==================
 	public RestriccionTemporal(LocalDateTime fechaDeInicio, LocalDateTime fechaDeCierre) {
@@ -32,6 +33,8 @@ public class RestriccionTemporal {
 	
 	public boolean estaHabilitado(LocalDateTime fecha) {
 	    
+		/* Mal olor
+		
 		switch (this.getEtapa()) {
 	    case DIA_SEMANA:
 	       return fecha.getDayOfWeek().getValue() < 6 && this.estaDentroDelRango(fecha);
@@ -40,6 +43,9 @@ public class RestriccionTemporal {
 	    default:
 	        return this.estaDentroDelRango(fecha);
 	     }
+	     */
+		
+		return this.estaDentroDelRango(fecha);
 	}
 	
 	private boolean estaDentroDelRango(LocalDateTime fecha) {

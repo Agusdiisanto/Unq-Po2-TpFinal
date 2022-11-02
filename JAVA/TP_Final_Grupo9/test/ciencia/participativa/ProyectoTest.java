@@ -1,6 +1,5 @@
 package ciencia.participativa;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -39,29 +38,33 @@ public class ProyectoTest {
 	
 	@BeforeEach
 	public void setUp() {
+		
 		fecha2 = LocalDateTime.now();
+		
 		muestra1 = new Muestra(usuario1, fecha2 , coordenada1);
 		muestra2 = mock(Muestra.class);
 		muestra3 = mock(Muestra.class);
 		usuario1 = mock(Usuario.class); 
+		
 		fecha1 = LocalDateTime.now();
 		coordenada1= mock(Coordenada.class);
+		
 		participante1 = mock(IParticipante.class);
 		participante2 = mock(IParticipante.class);
 		participante3 = mock(IParticipante.class);
+		
 		muestra4= new Muestra(usuario1,fecha1 , coordenada1);
 		actividad1 = mock(ActividadLudica.class);
 		actividad2 = mock(ActividadLudica.class);
 		actividad3 = mock(ActividadLudica.class);
 		proyecto = new Proyecto("ProyectoNueve","GrupoNueve");
 		this.caracteristica1 = new Caracteristica("Carateristica1", 1);
-		proyecto.agregarInteres(caracteristica1);
+		proyecto.agregarInteres(caracteristica1); 
 		
 	}
 	
 //	Hay que testear por el caso verdadero y el caso falso.
 
-	
 	@Test
 	public void test01_unProyectoTieneMuestras() {
 		muestra1.agregarCaracteristicaAMuestra(caracteristica1);

@@ -30,7 +30,7 @@ public class MuestraTest {
     	perfil1.agregarComportamiento("Comportamiento1");
     	
   
-    	usuario1= new Usuario("Tomas", aplicacion1, perfil1, recomendacionPreferida1)
+    	usuario1= new Usuario("Tomas", aplicacion1, perfil1);
     	
     }
 	

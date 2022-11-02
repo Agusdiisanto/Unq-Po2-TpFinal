@@ -4,13 +4,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 import caracteristicas.desafio.Caracteristica;
+import estrategiaDeRecomendacion.Sistema;
 
 public class Perfil {
+	
 	private Set<String>		 	gustos;
 	private Set<Caracteristica> caracteristicasPreferidas;
 	private Set<String>			comportamiento;
+	private Sistema             recomendaciones;
 
-	// =================== METHODS ====================
+	// =================== METHODS ==================== 
 	public void agregarGusto(String gusto) {
 		this.getGustos().add(gusto);
 	}
@@ -41,7 +44,13 @@ public class Perfil {
 		return comportamiento;
 	}
 
+	public Sistema getRecomendaciones() {
+		return recomendaciones;
+	}
 
+	public void setRecomendaciones(Sistema recomendaciones) {
+		this.recomendaciones = recomendaciones;
+	}
 }
 
 
