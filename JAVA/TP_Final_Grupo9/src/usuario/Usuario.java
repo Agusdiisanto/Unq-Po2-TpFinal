@@ -3,34 +3,54 @@ package usuario;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
-import ciencia.participativa.Proyecto;
+
+import caracteristicas.desafio.Caracteristica;
 import desafios.Desafio;
 import estadoDeUsuario.ProgresoDesafio;
 import muestra.Muestra;
+import proyectos.Proyecto;
 
 public class Usuario implements IParticipante{
 	
-	private String		          nombre;
-	private AplicacionMovil 	  aplicacion;
-	private Set<Proyecto> 		  proyectosEnCurso;
-	private Perfil 				  perfil;   // Aca tenes las recomendaciones
-	private Map<Desafio, Integer> desafiosCompletados;
-	private Set<ProgresoDesafio>  desafiosEnCurso;
-	
-	  
+	private String		          	   nombre;
+	private AplicacionMovil 	  	   aplicacion;
+	private Set<Proyecto> 		  	   proyectosEnCurso;
+	private Perfil 				  	   perfil;   // Aca tenes las recomendaciones
+	private Map<Desafio, Estadisticas> desafiosCompletados;
+	private Set<ProgresoDesafio>  	   desafiosEnCurso;
 	
 	// ================== METHODS USUARIO ========================
-	public void registrarDesafioCompleatado(Desafio desafio, int recompensa) {
-		this.getDesafiosCompletados().put(desafio, recompensa);
+	public boolean contieneCaracteristicaConDescripcion(String descripcion) {
+		return this.getPerfil().contieneCaracteristicaConDescripcion(descripcion);
+	}
+
+	public double afinidadConCaracteristica(Caracteristica caracteristica) {
+		return this.getPerfil().afinidadConCaracteristica(caracteristica);
+	}
+
+	public EstrategiaDeRecomendacion getEstrategia() {
+		return this.getPerfil().getTipoDeRecomendacionPreferida();
+	}
+
+	public double similitudConFavorito(Desafio desafio) {
+		double diferenciaDeMuestras   = Math.abs(desafio.getCantidadDeMuestrasARecolectar()     - this.getDesafiosCompletados().get(this.getDesafioFavorito()).getCantidadDeMuestrasRecolectadas());
+		double diferenciaDeDificultad = Math.abs(desafio.getDificultad().getNivelDeDificultad() - this.getDesafioFavorito().getDificultad().getNivelDeDificultad());
+		double diferenciaDeRecompensa = Math.abs(desafio.getRecompensa()                        - this.getDesafioFavorito().getRecompensa());
+		return (diferenciaDeMuestras + diferenciaDeDificultad + diferenciaDeRecompensa)/3;
+	}
+	
+	public Desafio getDesafioFavorito() {
+		return null; // TERMINAR LUEGO
+		// HAY QUE EXTRAERLO DEL MAP.
 	}
 	
 	//================== METHODS IPARTICIPANTE ====================
-	
 	@Override
-	public void recolectarMuestra(Muestra m) throws Exception {
-		this.recolectarMuestraParaLosDesafios(m);
-		this.recolectarMuestraParaLosProyectos(m);
+	public void recolectarMuestra(Muestra muestra) throws Exception {
+		this.recolectarMuestraParaLosDesafios(muestra);
+		this.recolectarMuestraParaLosProyectos(muestra);
 	}
 	
 	public void recolectarMuestraParaLosDesafios(Muestra muestra) throws Exception {
@@ -62,8 +82,10 @@ public class Usuario implements IParticipante{
 	}
 	
 	@Override
-	public void recibirRecompensaDeDesafio(Desafio desafio, int recompensa) {
-		this.registrarDesafioCompleatado(desafio,recompensa);
+	public void registrarDesafioCompleatado(Desafio desafio, int recompensa) {
+		Random random = new Random();
+		Estadisticas estadisticas = new Estadisticas(random.nextInt(5), recompensa);
+		this.getDesafiosCompletados().put(desafio, estadisticas);
 	}
 	
 	// ================== PRIVATE =====================
@@ -79,7 +101,7 @@ public class Usuario implements IParticipante{
 		this.aplicacion			 	= aplicacion;
 		this.perfil 			 	= perfil;
 		this.proyectosEnCurso 	 	= new HashSet<Proyecto>();
-		this.desafiosCompletados 	= new HashMap<Desafio, Integer>();
+		this.desafiosCompletados 	= new HashMap<Desafio, Estadisticas>();
 		this.desafiosEnCurso        = new HashSet<ProgresoDesafio>();
 	}
 
@@ -105,13 +127,10 @@ public class Usuario implements IParticipante{
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
-	public Map<Desafio, Integer> getDesafiosCompletados() {
+	public Map<Desafio, Estadisticas> getDesafiosCompletados() {
 		return desafiosCompletados;
 	}
 	public Set<ProgresoDesafio> getDesafiosEnCurso() {
 		return desafiosEnCurso;
 	}
-	
-
-	
 }

@@ -1,8 +1,8 @@
 package usuario;
 
-import ciencia.participativa.Proyecto;
 import desafios.Desafio;
 import muestra.Muestra;
+import proyectos.Proyecto;
 
 public interface IParticipante {
 	
@@ -11,7 +11,5 @@ public interface IParticipante {
 	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception ;
 	public boolean estaEnDesafioActualmente();
 	public AplicacionMovil getAplicacion();
-	public void recibirRecompensaDeDesafio(Desafio desafio, int recompensa);
 	public void registrarDesafioCompleatado(Desafio desafio, int recompensa);
-
 }

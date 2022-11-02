@@ -3,8 +3,8 @@ package usuario;
 import java.util.HashSet;
 import java.util.Set;
 
-import ciencia.participativa.Proyecto;
 import muestra.Muestra;
+import proyectos.Proyecto;
 
 public class AplicacionMovil {
 	private Set<Usuario> usuarios;

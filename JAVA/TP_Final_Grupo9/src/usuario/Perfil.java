@@ -4,14 +4,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 import caracteristicas.desafio.Caracteristica;
-import estrategiaDeRecomendacion.Sistema;
 
 public class Perfil {
 	
-	private Set<String>		 	gustos;
-	private Set<Caracteristica> caracteristicasPreferidas;
-	private Set<String>			comportamiento;
-	private Sistema             recomendaciones;
+	private Set<String>		 		  gustos;
+	private Set<Caracteristica> 	  caracteristicasPreferidas;
+	private Set<String>				  comportamiento;
+	private EstrategiaDeRecomendacion tipoDeRecomendacionPreferido;
 
 	// =================== METHODS ==================== 
 	public void agregarGusto(String gusto) {
@@ -19,11 +18,23 @@ public class Perfil {
 	}
 	
 	public void agregarCaracteristicaPreferida(Caracteristica caracteristica) {
-		this.getPreferencias().add(caracteristica);
+		this.getCaracteristicasPreferidas().add(caracteristica);
 	}
 	
 	public void agregarComportamiento(String caracteristica) {
 		this.getComportamiento().add(caracteristica);
+	}
+
+	public boolean contieneCaracteristicaConDescripcion(String s) {
+		return this.getCaracteristicasPreferidas().stream().anyMatch(c -> c.getDescripicion().equals(s));
+	}
+
+	public double afinidadConCaracteristica(Caracteristica caracteristica) {
+		return Math.abs(getCaracteristicaSegunDescripcion(caracteristica).getAfinidad() - caracteristica.getAfinidad());
+	}
+
+	private Caracteristica getCaracteristicaSegunDescripcion(Caracteristica caracteristica) {
+		return (Caracteristica) this.getCaracteristicasPreferidas().stream().filter(c -> c.getDescripicion().equals(caracteristica.getDescripicion()));
 	}
 
 	// ================== COSTRUCTOR ==================
@@ -37,19 +48,17 @@ public class Perfil {
 	public Set<String> getGustos() {
 		return gustos;
 	}
-	public Set<Caracteristica> getPreferencias() {
+	public Set<Caracteristica> getCaracteristicasPreferidas() {
 		return caracteristicasPreferidas;
 	}
 	public Set<String> getComportamiento() {
 		return comportamiento;
 	}
-
-	public Sistema getRecomendaciones() {
-		return recomendaciones;
+	public EstrategiaDeRecomendacion getTipoDeRecomendacionPreferida() {
+		return tipoDeRecomendacionPreferido;
 	}
-
-	public void setRecomendaciones(Sistema recomendaciones) {
-		this.recomendaciones = recomendaciones;
+	public void setTipoDeRecomendacionPreferido(EstrategiaDeRecomendacion tipoDeRecomendacion) {
+		this.tipoDeRecomendacionPreferido = tipoDeRecomendacion;
 	}
 }
 

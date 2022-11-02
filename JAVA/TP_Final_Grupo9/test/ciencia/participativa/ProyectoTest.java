@@ -13,6 +13,7 @@ import caracteristicas.desafio.Caracteristica;
 import desafios.ActividadLudica;
 import muestra.Coordenada;
 import muestra.Muestra;
+import proyectos.Proyecto;
 import usuario.IParticipante;
 import usuario.Usuario;
 

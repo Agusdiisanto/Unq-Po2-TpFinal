@@ -1,10 +1,11 @@
-package ciencia.participativa;
+package proyectos;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import caracteristicas.desafio.Caracteristica;
 import desafios.ActividadLudica;
+import desafios.Desafio;
 import muestra.Muestra;
 import usuario.IParticipante;
 
@@ -48,6 +49,16 @@ public class Proyecto {
 	
 	public void ingresarSolicitudAProyecto(IParticipante participante) {
 		this.getParticipantes().add(participante);
+	}
+	
+	public Set<Desafio> getDesafios(){
+		Set<Desafio> desafios = new HashSet<Desafio>();
+		for (ActividadLudica actividad : this.getActividades()) {
+			if(actividad.esDesafio()) {
+				desafios.add((Desafio) actividad);
+			}
+		}
+		return desafios;
 	}
 	
 	// ================== COSTRUCTOR ==================
