@@ -1,6 +1,7 @@
 package proyectos;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import caracteristicas.desafio.Caracteristica;
@@ -86,6 +87,17 @@ public class Proyecto {
 
 	public int cantidadDeCaracteristicasDeInteres() {
 		return this.getCaracteristicasDeInteres().size();
+	}
+	
+	public boolean contieneCategorias(List<String> categorias) {
+		Set<String> caracteristicasEnComun = this.getCategorias();
+		caracteristicasEnComun.retainAll(categorias);
+		return !caracteristicasEnComun.isEmpty();
+	}
+	
+	public boolean noIncluye(List<String> categorias2) {
+		// TODO Auto-generated method stub
+		return !this.contieneCategorias(categorias2);
 	}
 	
 	// ================== COSTRUCTOR ==================

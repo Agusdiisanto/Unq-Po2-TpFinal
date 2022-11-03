@@ -20,5 +20,5 @@ public class FilterTitulo implements IFilter {
 				.filter(proyecto -> proyecto.getNombre().equals(filterTitulo))
 				.collect(Collectors.toList());
 	}
-
+ 
 }
