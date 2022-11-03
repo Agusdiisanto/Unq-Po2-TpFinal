@@ -14,7 +14,7 @@ public class Sistema {
 	private Set<Proyecto> proyectos;
 
 	// ======================== METHODS ========================
-	public void agregarProyectoAlSistema(Proyecto proyecto) {
+	public void agregarProyecto(Proyecto proyecto) {
 		this.getProyectos().add(proyecto);
 	}
 	
@@ -40,5 +40,4 @@ public class Sistema {
 	public Set<Proyecto> getProyectos() {
 		return proyectos;
 	}
-	
 }

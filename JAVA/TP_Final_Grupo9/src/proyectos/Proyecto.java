@@ -16,38 +16,14 @@ public class Proyecto {
 	private Set<String> 		 categorias;
 	private Set<ActividadLudica> actividades;
 	private Set<Muestra> 		 muestrasRecolectadas;
-	private Set<IParticipante>   participantes;
-	private Set<Caracteristica>  caracteristicasDeInteres; 
-	 
-	// ================== METHODS ==================
-	public void agregarMuestra(Muestra muestra) {
-		this.getMuestrasRecolectadas().add(muestra);
-	} 
+	private Set<IParticipante>   participantes; // SE PUEDE TYPEAR CON USUARIO?
+	private Set<Caracteristica>  caracteristicasDeInteres;
 	
+	// ================== METHODS ==================
 	public boolean esMuestraDeInteres(Muestra muestra) {
 		Set<Caracteristica> caracteristicasEnComun = this.getCaracteristicasDeInteres();
 		caracteristicasEnComun.retainAll(muestra.getCaracteristicas());
 		return !caracteristicasEnComun.isEmpty();
-	} 
-	
-	public void agregarNuevoParticipante(IParticipante participante) {
-		this.getParticipantes().add(participante);
-	}
-	
-	public boolean elProyectoTieneAlParticipante(IParticipante participante) {
-		return this.getParticipantes().contains(participante);
-	}
-	
-	public Integer cantidadDeMuestras() {
-		return this.getMuestrasRecolectadas().size();
-	}
-	
-	public void agregarInteres(Caracteristica caracteristica) {
-		this.getCaracteristicasDeInteres().add(caracteristica);
-	}
-	
-	public void ingresarSolicitudAProyecto(IParticipante participante) {
-		this.getParticipantes().add(participante);
 	}
 	
 	public Set<Desafio> getDesafios(){
@@ -60,47 +36,67 @@ public class Proyecto {
 		return desafios;
 	}
 	
-	public int cantidadDeCaracteristicas() {
-		return this.getCaracteristicasDeInteres().size();
+	// QUÉ DIFERENCIA HAY ENTRE ÉSTE...
+	public boolean elProyectoTieneAlParticipante(IParticipante participante) {
+		return this.getParticipantes().contains(participante);
+	}
+
+	// Y ESTE...?
+	public boolean tieneRegistradoAlParticipante(Usuario usuario) {
+		return this.getParticipantes().contains(usuario);
+	}
+
+	// ================ ADD METHODS =================
+	public void agregarActividad(ActividadLudica actividad) {
+		this.getActividades().add(actividad);
 	}
 	
-	public boolean tieneRegistradoAlParticipante(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return this.getParticipantes().contains(usuario);
+	public void agregarCategoria(String categoria) {
+		this.getCategorias().add(categoria);
+	}
+	
+	public void agregarMuestra(Muestra muestra) {
+		this.getMuestrasRecolectadas().add(muestra);
+	}
+	
+	public void agregarParticipante(IParticipante participante) {
+		this.getParticipantes().add(participante);
+	}
+	
+	public void agregarCaracteristicaDeInteres(Caracteristica caracteristica) {
+		this.getCaracteristicasDeInteres().add(caracteristica);
+	}
+	
+	// ================ SIZE METHODS ================
+	public int cantidadDeActividades() {
+		return this.getActividades().size();
+	}
+	
+	public int cantidadDeCategorias() {
+		return this.getCategorias().size();
+	}
+	
+	public int cantidadDeMuestrasRecolectadas() {
+		return this.getMuestrasRecolectadas().size();
 	}
 	
 	public int cantidadDeParticipantes() {
 		return this.getParticipantes().size();
 	}
-	
-	public Integer cantidadDeActividades() {
-		// TODO Auto-generated method stub
-		return this.getActividades().size();
-	}
-	
-	public void agregarActividadLudica(ActividadLudica actividad) {
-		this.getActividades().add(actividad);
-	}
-	
-	public void agregarCategorias(String categoria) {
-		this.getCategorias().add(categoria);
-	}
-	
-	public Integer cantidadDeCategorias() {
-		// TODO Auto-generated method stub
-		return this.getCategorias().size();
-	}
 
+	public int cantidadDeCaracteristicasDeInteres() {
+		return this.getCaracteristicasDeInteres().size();
+	}
 	
 	// ================== COSTRUCTOR ==================
 	public Proyecto(String nombreDelProyecto, String descripcion) {
 		this.nombreDelProyecto    	  = nombreDelProyecto;
 		this.descripcion 	   	  	  = descripcion;
-		this.caracteristicasDeInteres = new HashSet<Caracteristica>();
-		this.participantes 		  	  = new HashSet<IParticipante>();
-		this.muestrasRecolectadas 	  = new HashSet<Muestra>();
 		this.actividades 		      = new HashSet<ActividadLudica>();
 		this.categorias			  	  = new HashSet<String>(); 
+		this.muestrasRecolectadas 	  = new HashSet<Muestra>();
+		this.participantes 		  	  = new HashSet<IParticipante>();
+		this.caracteristicasDeInteres = new HashSet<Caracteristica>();
 	}
 	
 	// ============== GETTERS & SETTERS ==============
@@ -131,11 +127,4 @@ public class Proyecto {
 	public Set<Caracteristica> getCaracteristicasDeInteres() {
 		return caracteristicasDeInteres;
 	}
-
-
-	
-
-	
-
-	
 }

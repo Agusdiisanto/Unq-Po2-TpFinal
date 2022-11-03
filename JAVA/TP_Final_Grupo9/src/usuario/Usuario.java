@@ -79,7 +79,7 @@ public class Usuario implements IParticipante{
 
 	@Override
 	public void solicitarSuscripcionAProyecto(Proyecto proyecto) {
-		proyecto.ingresarSolicitudAProyecto(this);  
+		proyecto.agregarParticipante(this);  
 	}
 	
 	@Override

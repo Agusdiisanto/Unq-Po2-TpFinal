@@ -10,8 +10,7 @@ public class AplicacionMovil {
 
 	private Set<Muestra> muestras;
 	
-	// ================== METHODS ==================
-
+	// ======================= METHODS ========================
 	public void recolectarMuestra(Muestra muestra, Usuario usuario, Proyecto proyecto) throws Exception {
 		if(proyecto.tieneRegistradoAlParticipante(usuario) && proyecto.esMuestraDeInteres(muestra)) {
 			this.cargarMuestraEnAplicacion(muestra);
@@ -19,21 +18,19 @@ public class AplicacionMovil {
 			usuario.recolectarMuestraParaLosDesafios(muestra);
 		}
 	}
-	
-	// ======================== PRIVATES ================================
-	
+
+	// ======================= PRIVATES =======================
 	private void cargarMuestraEnAplicacion(Muestra muestra) {
 		this.getMuestras().add(muestra);
 	}
 	
-	// ================== COSTRUCTOR ==================
+	// ====================== COSTRUCTOR ======================
 	public AplicacionMovil() {
 		this.muestras = new HashSet<Muestra>();
 	}
 
-	// ============== GETTERS & SETTERS ==============
+	// ================== GETTERS & SETTERS ===================
 	public Set<Muestra> getMuestras() {
 		return muestras;
 	}
-	
 } 
