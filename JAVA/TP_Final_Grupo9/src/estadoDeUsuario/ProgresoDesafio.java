@@ -14,14 +14,14 @@ public class ProgresoDesafio {
 	public ProgresoDesafio(Desafio desafioActual) {
 		this.desafioActual = desafioActual;
 		this.estado        = new ProgresoDeDesafioEnCurso();
-	}
+	} 
  
 	// ================== METHODS ==================
 	public boolean esDesafioActual() {
 		// TODO Auto-generated method stub
 		return this.getEstado().esDesafioEnCurso(this);
 	}
-	
+	 
 	// VER ESTO RARO 
 	public void recolectarMuestra(IParticipante participante, Muestra muestra) throws Exception {
 		this.getEstado().recolectarMuestra(this,muestra);
@@ -52,7 +52,7 @@ public class ProgresoDesafio {
 		// TODO Auto-generated method stub
 		return estaLaMuestraDentroDelAreaDelDesafio(muestra) && estaLaMuestraDentroDeLaRestriccionDelDesafio(muestra);
 	}
-
+	
 	
 	// =============== PRIVATE METHODS ================
 	private void incrementarPuntajeEnUno() {
@@ -90,7 +90,7 @@ public class ProgresoDesafio {
 
 	public void setPuntaje(int puntaje) {
 		this.puntaje = puntaje;
-	}
-
+	} 
+ 
 	
 }

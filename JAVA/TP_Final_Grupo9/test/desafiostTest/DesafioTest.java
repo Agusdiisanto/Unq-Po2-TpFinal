@@ -46,7 +46,7 @@ public class DesafioTest {
 	 when(caracteristica3.getDescripicion()).thenReturn("Santi es mejor");
 	 when(caracteristica3.getAfinidad()).thenReturn(7.7);
 	 desafio = new Desafio(area, restriccionTemporal, 30, Dificultad.MEDIO, 2359);
-	}
+	}  
 	
 	@Test
 	public void test01_cuandoUnDesafioTieneUnaCantidadDeMuestras() {

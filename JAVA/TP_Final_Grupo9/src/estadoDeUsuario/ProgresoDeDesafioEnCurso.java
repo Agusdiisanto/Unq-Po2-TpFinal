@@ -1,6 +1,6 @@
 package estadoDeUsuario;
 
-import java.time.LocalDateTime;
+import java.time.LocalDateTime; 
 import muestra.Muestra;
  
 public class ProgresoDeDesafioEnCurso extends EstadoDeProgreso{
@@ -19,7 +19,7 @@ public class ProgresoDeDesafioEnCurso extends EstadoDeProgreso{
 		else {
 			recolectarMuestraSiAunNoHaExpirado(progresoDesafio, muestra);	
 		}
-	}
+	} 
 	
 	@Override
 	public boolean completoElDesafio(ProgresoDesafio progresoDesafio) {
@@ -45,7 +45,7 @@ public class ProgresoDeDesafioEnCurso extends EstadoDeProgreso{
 	
 	// ============================================================================================
 	
-	
+	 
 	
 	
 	

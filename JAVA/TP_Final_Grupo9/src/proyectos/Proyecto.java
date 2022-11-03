@@ -8,6 +8,7 @@ import desafios.ActividadLudica;
 import desafios.Desafio;
 import muestra.Muestra;
 import usuario.IParticipante;
+import usuario.Usuario;
 
 public class Proyecto {
 	private String				 nombreDelProyecto;
@@ -16,20 +17,18 @@ public class Proyecto {
 	private Set<ActividadLudica> actividades;
 	private Set<Muestra> 		 muestrasRecolectadas;
 	private Set<IParticipante>   participantes;
-	private Set<Caracteristica>  caracteristicasDeInteres;
-	
+	private Set<Caracteristica>  caracteristicasDeInteres; 
+	 
 	// ================== METHODS ==================
 	public void agregarMuestra(Muestra muestra) {
-		if(this.esMuestraDeInteres(muestra)) {
-			this.getMuestrasRecolectadas().add(muestra);
-		}
-	}
+		this.getMuestrasRecolectadas().add(muestra);
+	} 
 	
 	public boolean esMuestraDeInteres(Muestra muestra) {
 		Set<Caracteristica> caracteristicasEnComun = this.getCaracteristicasDeInteres();
 		caracteristicasEnComun.retainAll(muestra.getCaracteristicas());
 		return !caracteristicasEnComun.isEmpty();
-	}
+	} 
 	
 	public void agregarNuevoParticipante(IParticipante participante) {
 		this.getParticipantes().add(participante);
@@ -59,6 +58,37 @@ public class Proyecto {
 			}
 		}
 		return desafios;
+	}
+	
+	public int cantidadDeCaracteristicas() {
+		return this.getCaracteristicasDeInteres().size();
+	}
+	
+	public boolean tieneRegistradoAlParticipante(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return this.getParticipantes().contains(usuario);
+	}
+	
+	public int cantidadDeParticipantes() {
+		return this.getParticipantes().size();
+	}
+	
+	public Integer cantidadDeActividades() {
+		// TODO Auto-generated method stub
+		return this.getActividades().size();
+	}
+	
+	public void agregarActividadLudica(ActividadLudica actividad) {
+		this.getActividades().add(actividad);
+	}
+	
+	public void agregarCategorias(String categoria) {
+		this.getCategorias().add(categoria);
+	}
+	
+	public Integer cantidadDeCategorias() {
+		// TODO Auto-generated method stub
+		return this.getCategorias().size();
 	}
 	
 	// ================== COSTRUCTOR ==================
@@ -100,6 +130,11 @@ public class Proyecto {
 	public Set<Caracteristica> getCaracteristicasDeInteres() {
 		return caracteristicasDeInteres;
 	}
+
+
+	
+
+	
 
 	
 }

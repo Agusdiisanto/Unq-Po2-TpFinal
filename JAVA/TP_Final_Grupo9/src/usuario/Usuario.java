@@ -33,8 +33,8 @@ public class Usuario implements IParticipante{
 
 	public EstrategiaDeRecomendacion getEstrategia() {
 		return this.getPerfil().getTipoDeRecomendacionPreferida();
-	}
-
+	} 
+ 
 	public double similitudConFavorito(Desafio desafio) {
 		double diferenciaDeMuestras   = Math.abs(desafio.getCantidadDeMuestrasARecolectar()     - this.getDesafiosCompletados().get(this.getDesafioFavorito()).getCantidadDeMuestrasRecolectadas());
 		double diferenciaDeDificultad = Math.abs(desafio.getDificultad().getNivelDeDificultad() - this.getDesafioFavorito().getDificultad().getNivelDeDificultad());
@@ -51,13 +51,12 @@ public class Usuario implements IParticipante{
                 desafioActual = entry.getKey();
             }
         };
-        return desafioActual;
+        return desafioActual; 
     }
-	
+	 
 	//================== METHODS IPARTICIPANTE ====================
 	@Override
 	public void recolectarMuestra(Muestra muestra) throws Exception {
-		this.recolectarMuestraParaLosDesafios(muestra);
 		this.recolectarMuestraParaLosProyectos(muestra);
 	}
 	
@@ -72,7 +71,7 @@ public class Usuario implements IParticipante{
 			aplicacion.recolectarMuestra(muestra, this, proyecto);
 		}
 	}
-
+	
 	@Override
 	public boolean estaEnDesafioActualmente() {
 		return this.getDesafiosEnCurso().stream().anyMatch(p -> p.esDesafioActual());
@@ -95,7 +94,7 @@ public class Usuario implements IParticipante{
 		Estadisticas estadisticas = new Estadisticas(random.nextInt(5), recompensa, muestrasRecolectadas);
 		this.getDesafiosCompletados().put(desafio, estadisticas);
 	}
-	
+	 
 	// ================== PRIVATE =====================
 	
 	private void agregarNuevoDesafioEnCurso(Desafio desafio) {

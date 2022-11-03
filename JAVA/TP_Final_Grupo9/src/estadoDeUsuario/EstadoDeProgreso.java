@@ -9,8 +9,10 @@ public class EstadoDeProgreso implements IEstadoDelProgreso {
 	public boolean esDesafioEnCurso(ProgresoDesafio progresoDesafio) { return false;}
 
 	@Override
-	public void recolectarMuestra(ProgresoDesafio progresoDesafio, Muestra muestra) throws Exception {}
-
+	public void recolectarMuestra(ProgresoDesafio progresoDesafio, Muestra muestra) throws Exception {
+		
+	}
+	
 	@Override
 	public void concederRecompensaDelDesafioA(IParticipante participante, ProgresoDesafio progresoDesafio) {}
 	
@@ -20,3 +22,4 @@ public class EstadoDeProgreso implements IEstadoDelProgreso {
 	@Override
 	public void verificarSiCompletoElDesafio(ProgresoDesafio progreso) {}
 }
+ 

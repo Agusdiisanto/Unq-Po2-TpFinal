@@ -7,33 +7,16 @@ import muestra.Muestra;
 import proyectos.Proyecto;
 
 public class AplicacionMovil {
-	private Set<Usuario> usuarios;
+
 	private Set<Muestra> muestras;
 	
 	// ================== METHODS ==================
 
-	public Boolean esMuestraDeInteresParaProyecto(Muestra m, Proyecto p) {
-		return p.esMuestraDeInteres(m);
-	}
-	
-	public void recolectarMuestra(Muestra m, Usuario usuario, Proyecto p) throws Exception {
-		if(estaRegistradoElUsuario(usuario)) {
-			this.recolectarMuestraParaProyecto(m, p);
-			usuario.recolectarMuestra(m);
-		}
-	}
-	
-	public boolean estaRegistradoElUsuario(Usuario usuario) {
-		return this.getUsuario().contains(usuario);
-	}
-	
-	public void registrarUsuarioEnAplicacion(Usuario usuario) {
-		this.getUsuario().add(usuario);
-	}
-	
-	public void recolectarMuestraParaProyecto(Muestra m, Proyecto p) {	
-		if (this.esMuestraDeInteresParaProyecto(m, p)) {
-			this.cargarMuestraEnAplicacion(m);
+	public void recolectarMuestra(Muestra muestra, Usuario usuario, Proyecto proyecto) throws Exception {
+		if(proyecto.tieneRegistradoAlParticipante(usuario) && proyecto.esMuestraDeInteres(muestra)) {
+			this.cargarMuestraEnAplicacion(muestra);
+			proyecto.agregarMuestra(muestra);
+			usuario.recolectarMuestraParaLosDesafios(muestra);
 		}
 	}
 	
@@ -53,7 +36,4 @@ public class AplicacionMovil {
 		return muestras;
 	}
 	
-	public Set<Usuario> getUsuario() {
-		return usuarios;
-	}
-}
+} 

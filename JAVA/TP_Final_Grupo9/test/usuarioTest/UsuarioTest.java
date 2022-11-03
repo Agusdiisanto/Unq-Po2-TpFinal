@@ -21,5 +21,14 @@ public class UsuarioTest {
 	public void test01_UnUsuarioSabeSuNombre() {
 		
 	}
+
+	/*
+	@Test
+	public void test04_unProyectoTieneMuestras() {
+		usuario1.registrarDesafioCompletado(desafio1, 3, 2);
+		//usuario1.registrarDesafioCompletado(desafio2, 3, 2);
+	    assertEquals(usuario1.getDesafioFavorito(), desafio1);
+	}
+	*/	
 	
 }
