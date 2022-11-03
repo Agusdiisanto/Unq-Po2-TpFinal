@@ -90,6 +90,7 @@ public class Proyecto {
 		// TODO Auto-generated method stub
 		return this.getCategorias().size();
 	}
+
 	
 	// ================== COSTRUCTOR ==================
 	public Proyecto(String nombreDelProyecto, String descripcion) {

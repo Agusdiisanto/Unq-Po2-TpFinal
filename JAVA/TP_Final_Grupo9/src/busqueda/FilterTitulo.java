@@ -16,7 +16,6 @@ public class FilterTitulo implements IFilter {
 
 	@Override
 	public List<Proyecto> buscarProyecto(List<Proyecto> proyectos) {
-		// TODO Auto-generated method stub
 		return proyectos.stream()
 				.filter(proyecto -> proyecto.getNombre().equals(filterTitulo))
 				.collect(Collectors.toList());
