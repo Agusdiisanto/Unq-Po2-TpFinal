@@ -129,7 +129,7 @@ public class ProyectoTest {
 		proyecto.agregarParticipante(participante1);
 		assertEquals(proyecto.cantidadDeParticipantes(), 1);
 		// SE PODRÍA USAR "elProyectoTieneAlParticipante()" ?
-		assertTrue(proyecto.getParticipantes().contains(participante1));
+		assertTrue(proyecto.tieneAlParticipante(participante1));
 	}
 	
 	@Test
@@ -137,7 +137,7 @@ public class ProyectoTest {
 		proyecto.agregarParticipante(participante1);
 		proyecto.agregarParticipante(participante1);
 		assertEquals(proyecto.cantidadDeParticipantes(), 1);
-		assertTrue(proyecto.getParticipantes().contains(participante1));
+		assertTrue(proyecto.tieneAlParticipante(participante1));
 	}
 
 	@Test

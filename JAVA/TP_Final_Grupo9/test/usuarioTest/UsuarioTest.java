@@ -3,7 +3,13 @@ package usuarioTest;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.calls;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.timeout;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -140,10 +146,25 @@ public class UsuarioTest {
 		assertFalse(usuario.getDesafiosEnCurso().isEmpty());
 	}
 	
+	@Test
+	public void test11_UnUsuarioPuedeInscribiriseEnUnProyecto() {
+		
+		when(proyecto.tieneAlParticipante(usuario)).thenReturn(true);
+		
+		usuario.solicitarSuscripcionAProyecto(proyecto);
+		assertTrue(proyecto.tieneAlParticipante(usuario));
+	} 
 	
+	@Test
+	public void test12_UnUsuarioPuedeRecolectarMuestras() throws Exception {
+		
+		usuario.recolectarMuestra(muestra);
+		verify(appMovil,times(1)).recolectarMuestra(muestra, usuario, proyecto);
+		
+	}
 	
 
-	/*
+/*
 	@Test
 	public void test04_unProyectoTieneMuestras() {
 		usuario1.registrarDesafioCompletado(desafio1, 3, 2);

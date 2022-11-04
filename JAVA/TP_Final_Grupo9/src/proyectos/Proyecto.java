@@ -112,14 +112,8 @@ public class Proyecto {
 	public String getNombre() {
 		return nombreDelProyecto;
 	}
-	public void setNombre(String nombre) {
-		this.nombreDelProyecto = nombre;
-	}
 	public String getDescripcion() {
 		return descripcion;
-	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
 	}
 	public Set<String> getCategorias() {
 		return categorias;
@@ -135,5 +129,8 @@ public class Proyecto {
 	}
 	public Set<Caracteristica> getCaracteristicasDeInteres() {
 		return caracteristicasDeInteres;
+	}
+	public boolean tieneAlParticipante(IParticipante participante) {
+		return this.getParticipantes().contains(participante);
 	}
 }

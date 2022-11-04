@@ -120,9 +120,6 @@ public class Usuario implements IParticipante{
 	public AplicacionMovil getAplicacion() {
 		return aplicacion;
 	}
-	public void setAplicacion(AplicacionMovil aplicacion) {
-		this.aplicacion = aplicacion;
-	}
 	public Set<Proyecto> getProyectoEnCurso() {
 		return proyectosEnCurso;
 	}
