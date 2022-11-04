@@ -14,7 +14,7 @@ import estadoDeUsuario.ProgresoDesafio;
 import muestra.Muestra;
 import proyectos.Proyecto;
 import usuario.AplicacionMovil;
-import usuario.Estadistica;
+import usuario.Estadisticas;
 import usuario.Perfil;
 import usuario.Usuario;
 
@@ -25,7 +25,7 @@ public class UsuarioTest {
 	Perfil perfil;
 	ProgresoDesafio progreso;
 	Desafio desafio;
-	Estadistica estadistica;
+	Estadisticas estadistica;
 	Proyecto proyecto;
 	Muestra muestra;
 	
@@ -36,7 +36,7 @@ public class UsuarioTest {
 		perfil = mock(Perfil.class);
 		progreso = mock(ProgresoDesafio.class);
 		desafio = mock(Desafio.class);
-		estadistica = mock(Estadistica.class);
+		estadistica = mock(Estadisticas.class);
 		muestra = mock(Muestra.class);
 		
 		usuario = new Usuario("Agustin", appMovil, perfil);

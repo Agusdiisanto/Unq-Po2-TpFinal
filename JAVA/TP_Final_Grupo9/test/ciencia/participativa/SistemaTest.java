@@ -115,7 +115,7 @@ public class SistemaTest {
 		assertTrue(system.recomendarDesafiosAlUsuario(usuario1).contains(desafio1));
 		assertTrue(system.recomendarDesafiosAlUsuario(usuario1).contains(desafio2));
 		assertTrue(system.recomendarDesafiosAlUsuario(usuario1).contains(desafio3));
-	} 
+	}
 	
 	// HABRÍA QUE TESTEAR MÁS CASOS
 }

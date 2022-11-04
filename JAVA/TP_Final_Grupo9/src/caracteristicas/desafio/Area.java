@@ -4,6 +4,13 @@ public class Area {
 	private int latitud;
 	private int longitud;
 	private int radio;
+
+	// ================== COSTRUCTOR ==================
+	public Area(int latitud, int longitud, int radio) {
+		this.latitud  = latitud;
+		this.longitud = longitud;
+		this.radio    = radio;
+	}
 	
 	// ============== GETTERS & SETTERS ==============
 	public int getLatitud() {
@@ -14,12 +21,5 @@ public class Area {
 	}
 	public int getRadio() {
 		return radio;
-	}
-
-	// ================== COSTRUCTOR ==================
-	public Area(int latitud, int longitud, int radio) {
-		this.latitud  = latitud;
-		this.longitud = longitud;
-		this.radio    = radio;
 	}
 }

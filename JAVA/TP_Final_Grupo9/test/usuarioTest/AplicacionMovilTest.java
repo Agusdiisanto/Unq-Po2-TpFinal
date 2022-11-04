@@ -17,7 +17,7 @@ import usuario.Usuario;
 
 public class AplicacionMovilTest {
 		
-	AplicacionMovil ap;
+	AplicacionMovil app;
 	Muestra muestra;
 	Proyecto proyecto;
 	Usuario usuario;
@@ -28,22 +28,22 @@ public class AplicacionMovilTest {
 	public void setUp() {
 		muestra = mock(Muestra.class);
 		proyecto = mock(Proyecto.class);
-		ap = new AplicacionMovil();
+		app = new AplicacionMovil();
 		usuario = mock(Usuario.class);
 	}
 	
 	@Test
 	public void test01_UnaAplicacionCuandoSeCreaNoContieneMuestras() {
-		assertTrue(ap.getMuestras().isEmpty());
+		assertTrue(app.getMuestras().isEmpty());
 	}
 	
 	@Test
 	public void test02_UnaAplicacionPuedeAgregarMuestras() {
 		
-		ap.cargarMuestraEnAplicacion(muestra);
+		app.cargarMuestraEnAplicacion(muestra);
 		
-		assertTrue(ap.getMuestras().contains(muestra));
-		assertFalse(ap.getMuestras().isEmpty());
+		assertTrue(app.getMuestras().contains(muestra));
+		assertFalse(app.getMuestras().isEmpty());
 	}
 	
 	@Test
@@ -52,10 +52,10 @@ public class AplicacionMovilTest {
 		when(proyecto.tieneRegistradoAlParticipante(usuario)).thenReturn(true); 
 		when(proyecto.esMuestraDeInteres(muestra)).thenReturn(true);
 		
-		ap.recolectarMuestra(muestra,usuario,proyecto);
+		app.recolectarMuestra(muestra,usuario,proyecto);
 		
-		assertTrue(ap.getMuestras().contains(muestra));
-		assertFalse(ap.getMuestras().isEmpty());
+		assertTrue(app.getMuestras().contains(muestra));
+		assertFalse(app.getMuestras().isEmpty());
 	
 	}
 
@@ -65,9 +65,9 @@ public class AplicacionMovilTest {
 		when(proyecto.tieneRegistradoAlParticipante(usuario)).thenReturn(true); 
 		when(proyecto.esMuestraDeInteres(muestra)).thenReturn(false);
 		
-		ap.recolectarMuestra(muestra,usuario,proyecto);
+		app.recolectarMuestra(muestra,usuario,proyecto);
 
-		assertTrue(ap.getMuestras().isEmpty());
+		assertTrue(app.getMuestras().isEmpty());
 	}
 	
 	@Test
@@ -76,9 +76,9 @@ public class AplicacionMovilTest {
 		when(proyecto.tieneRegistradoAlParticipante(usuario)).thenReturn(false); 
 		when(proyecto.esMuestraDeInteres(muestra)).thenReturn(true);
 		
-		ap.recolectarMuestra(muestra,usuario,proyecto);
+		app.recolectarMuestra(muestra,usuario,proyecto);
 
-		assertTrue(ap.getMuestras().isEmpty());
+		assertTrue(app.getMuestras().isEmpty());
 	}
 	
 	@Test
@@ -87,9 +87,9 @@ public class AplicacionMovilTest {
 		when(proyecto.tieneRegistradoAlParticipante(usuario)).thenReturn(false); 
 		when(proyecto.esMuestraDeInteres(muestra)).thenReturn(false);
 		
-		ap.recolectarMuestra(muestra,usuario,proyecto);
+		app.recolectarMuestra(muestra,usuario,proyecto);
 
-		assertTrue(ap.getMuestras().isEmpty());
+		assertTrue(app.getMuestras().isEmpty());
 	}
 	
 }

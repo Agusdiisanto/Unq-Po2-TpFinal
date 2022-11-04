@@ -19,7 +19,7 @@ public class Usuario implements IParticipante{
 	private AplicacionMovil 	  	   aplicacion;
 	private Set<Proyecto> 		  	   proyectosEnCurso;
 	private Perfil 				  	   perfil;   // Aca tenes las recomendaciones
-	private Map<Desafio, Estadistica> desafiosCompletados;
+	private Map<Desafio, Estadisticas> desafiosCompletados;
 	private Set<ProgresoDesafio>  	   desafiosEnCurso;
 	
 	// ================== METHODS USUARIO ========================
@@ -45,7 +45,7 @@ public class Usuario implements IParticipante{
 	public Desafio getDesafioFavorito() {
         int satisfaccionMaxima = 0;
         Desafio desafioActual = null;
-        for(Entry<Desafio, Estadistica> entry : desafiosCompletados.entrySet()) {
+        for(Entry<Desafio, Estadisticas> entry : desafiosCompletados.entrySet()) {
             if(satisfaccionMaxima < entry.getValue().getSatisfaccion()) {
                 satisfaccionMaxima = entry.getValue().getSatisfaccion();
                 desafioActual = entry.getKey();
@@ -84,14 +84,14 @@ public class Usuario implements IParticipante{
 	
 	@Override
 	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception {
-		desafio.agregarUsuarioAlDesafio(this);
+		desafio.agregarParticipanteAlDesafio(this);
 		this.agregarNuevoDesafioEnCurso(desafio);
 	}
 	
 	@Override
 	public void registrarDesafioCompletado(Desafio desafio, int recompensa, int muestrasRecolectadas) {
 		Random random = new Random();
-		Estadistica estadisticas = new Estadistica(random.nextInt(5), recompensa, muestrasRecolectadas);
+		Estadisticas estadisticas = new Estadisticas(random.nextInt(5), recompensa, muestrasRecolectadas);
 		this.getDesafiosCompletados().put(desafio, estadisticas);
 	}
 	 
@@ -108,7 +108,7 @@ public class Usuario implements IParticipante{
 		this.aplicacion			 	= aplicacion;
 		this.perfil 			 	= perfil;
 		this.proyectosEnCurso 	 	= new HashSet<Proyecto>();
-		this.desafiosCompletados 	= new HashMap<Desafio, Estadistica>();
+		this.desafiosCompletados 	= new HashMap<Desafio, Estadisticas>();
 		this.desafiosEnCurso        = new HashSet<ProgresoDesafio>();
 	}
 
@@ -130,7 +130,7 @@ public class Usuario implements IParticipante{
 		return perfil;
 	}
 	
-	public Map<Desafio, Estadistica> getDesafiosCompletados() {
+	public Map<Desafio, Estadisticas> getDesafiosCompletados() {
 		return desafiosCompletados;
 	}
 	public Set<ProgresoDesafio> getDesafiosEnCurso() {

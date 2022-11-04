@@ -5,9 +5,9 @@ public class Caracteristica {
 	private double afinidad;
 	
 	// ====================== CONSTRUCTOR =======================
-	public Caracteristica(String descripicion, double preferencia) {
+	public Caracteristica(String descripicion, double afinidad) {
 		this.setDescripicion(descripicion);
-		this.setPreferencia(preferencia);
+		this.setAfinidad(afinidad);
 	}
 	
 	// =================== GETTERS && SETTERS ===================
@@ -20,7 +20,7 @@ public class Caracteristica {
 	public double getAfinidad() {
 		return afinidad;
 	}
-	public void setPreferencia(double preferencia) {
-		this.afinidad = preferencia;
+	public void setAfinidad(double afinidad) {
+		this.afinidad = afinidad;
 	}
-} 
+}

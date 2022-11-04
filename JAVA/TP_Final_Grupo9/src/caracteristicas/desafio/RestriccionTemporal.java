@@ -7,7 +7,15 @@ public class RestriccionTemporal {
 	private LocalDateTime fechaDeInicio;
 	private LocalDateTime fechaDeCierre;
 
-	// Posible composite? 
+	public boolean estaHabilitado(LocalDateTime fecha) {
+		return (fecha.isAfter(this.getFechaDeInicio()) && fecha.isBefore(this.getFechaDeCierre()));
+	}
+	
+	// ================== COSTRUCTOR ==================
+	public RestriccionTemporal(LocalDateTime fechaDeInicio, LocalDateTime fechaDeCierre) {
+		this.fechaDeInicio = fechaDeInicio;
+		this.fechaDeCierre = fechaDeCierre;
+	}
 	
 	// ============== GETTERS & SETTERS ==============
 	public LocalDateTime getFechaDeInicio() {
@@ -16,42 +24,10 @@ public class RestriccionTemporal {
 	public LocalDateTime getFechaDeCierre() {
 		return fechaDeCierre;
 	}
-	
 	public Etapa getEtapa() {
 		return etapa;
 	}
-	
 	public void setEtapa(Etapa etapa) {
 		this.etapa = etapa;
-	} 
-	
-	// ================== COSTRUCTOR ==================
-	public RestriccionTemporal(LocalDateTime fechaDeInicio, LocalDateTime fechaDeCierre) {
-		this.fechaDeInicio = fechaDeInicio;
-		this.fechaDeCierre = fechaDeCierre;
 	}
-	
-	public boolean estaHabilitado(LocalDateTime fecha) {
-	    
-		/* Mal olor
-		
-		switch (this.getEtapa()) {
-	    case DIA_SEMANA:
-	       return fecha.getDayOfWeek().getValue() < 6 && this.estaDentroDelRango(fecha);
-	    case FIN_DE_SEMANA:
-	       return fecha.getDayOfWeek().getValue() > 5 && this.estaDentroDelRango(fecha);
-	    default:
-	        return this.estaDentroDelRango(fecha);
-	     }
-	     */
-		
-		return this.estaDentroDelRango(fecha);
-	}
-	
-	private boolean estaDentroDelRango(LocalDateTime fecha) {
-	       
-		return (fecha.isAfter(this.getFechaDeInicio()) && fecha.isBefore(this.getFechaDeCierre()));
-		
-	}
-	
 }
