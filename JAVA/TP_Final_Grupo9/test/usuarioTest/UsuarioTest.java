@@ -12,10 +12,10 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import caracteristicas.desafio.Caracteristica;
-import caracteristicas.desafio.Dificultad;
-import caracteristicas.desafio.DificultadTest;
-import desafios.Desafio;
+import actividad.Caracteristica;
+import actividad.Desafio;
+import actividad.Dificultad;
+import actividadTest.DificultadTest;
 import estadoDeUsuario.ProgresoDesafio;
 import muestra.Muestra;
 import proyectos.Proyecto;

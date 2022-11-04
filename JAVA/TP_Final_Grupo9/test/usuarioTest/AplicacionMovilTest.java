@@ -49,7 +49,7 @@ public class AplicacionMovilTest {
 	@Test
 	public void test03_UnaAplicacionPuedeRecolectarLaMuestraSiEsDeInteresParaElProyecto() throws Exception {
 		
-		when(proyecto.tieneRegistradoAlParticipante(usuario)).thenReturn(true); 
+		when(proyecto.tieneRegistradoAlUsuario(usuario)).thenReturn(true); 
 		when(proyecto.esMuestraDeInteres(muestra)).thenReturn(true);
 		
 		app.recolectarMuestra(muestra,usuario,proyecto);
@@ -62,7 +62,7 @@ public class AplicacionMovilTest {
 	@Test
 	public void test04_UnaAplicacionNoPuedeRecolectarLaMuestraSiNoEsDeInteresParaElProyectoPeroSiEstaRegistrado() throws Exception {
 		
-		when(proyecto.tieneRegistradoAlParticipante(usuario)).thenReturn(true); 
+		when(proyecto.tieneRegistradoAlUsuario(usuario)).thenReturn(true); 
 		when(proyecto.esMuestraDeInteres(muestra)).thenReturn(false);
 		
 		app.recolectarMuestra(muestra,usuario,proyecto);
@@ -73,7 +73,7 @@ public class AplicacionMovilTest {
 	@Test
 	public void test05_UnaAplicacionNoPuedeRecolectarLaMuestraSiEsDeInteresParaElProyectoPeroNoEstaRegistrado() throws Exception {
 		
-		when(proyecto.tieneRegistradoAlParticipante(usuario)).thenReturn(false); 
+		when(proyecto.tieneRegistradoAlUsuario(usuario)).thenReturn(false); 
 		when(proyecto.esMuestraDeInteres(muestra)).thenReturn(true);
 		
 		app.recolectarMuestra(muestra,usuario,proyecto);
@@ -84,7 +84,7 @@ public class AplicacionMovilTest {
 	@Test
 	public void test06_UnaAplicacionNoPuedeRecolectarLaMuestraSiNoEsDeInteresParaElProyectoPeroNoEstaRegistrado() throws Exception {
 		
-		when(proyecto.tieneRegistradoAlParticipante(usuario)).thenReturn(false); 
+		when(proyecto.tieneRegistradoAlUsuario(usuario)).thenReturn(false); 
 		when(proyecto.esMuestraDeInteres(muestra)).thenReturn(false);
 		
 		app.recolectarMuestra(muestra,usuario,proyecto);

@@ -10,9 +10,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
+
+import actividad.Caracteristica;
+
 import org.junit.jupiter.api.BeforeEach;
 
-import caracteristicas.desafio.Caracteristica;
 import muestra.Coordenada;
 import muestra.Muestra;
 import usuario.AplicacionMovil;
@@ -43,9 +45,8 @@ public class MuestraTest {
     	perfil1.agregarGusto("Gusto1");
     	perfil1.agregarCaracteristicaPreferida(caracteristica1);
     	perfil1.agregarComportamiento("Comportamiento1");
-    	when(coordenadaDeRecoleccion.getCoordenadaX()).thenReturn(1);
-    	when(coordenadaDeRecoleccion.getCoordenadaY()).thenReturn(2);
-    	
+    	when(coordenadaDeRecoleccion.getCoordenadaX()).thenReturn(1.0);
+    	when(coordenadaDeRecoleccion.getCoordenadaY()).thenReturn(2.0);
     }
 	
     

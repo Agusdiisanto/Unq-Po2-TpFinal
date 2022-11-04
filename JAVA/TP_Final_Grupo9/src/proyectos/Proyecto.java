@@ -3,9 +3,9 @@ package proyectos;
 import java.util.HashSet;
 import java.util.Set;
 
-import caracteristicas.desafio.Caracteristica;
-import desafios.ActividadLudica;
-import desafios.Desafio;
+import actividad.ActividadLudica;
+import actividad.Caracteristica;
+import actividad.Desafio;
 import muestra.Muestra;
 import usuario.IParticipante;
 import usuario.Usuario;
@@ -35,15 +35,17 @@ public class Proyecto {
 		}
 		return desafios;
 	}
-	
-	// QUÉ DIFERENCIA HAY ENTRE ÉSTE...
-	public boolean elProyectoTieneAlParticipante(IParticipante participante) {
+
+	public boolean tieneRegistradoAlUsuario(IParticipante participante) {
 		return this.getParticipantes().contains(participante);
 	}
-
-	// Y ESTE...?
-	public boolean tieneRegistradoAlParticipante(Usuario usuario) {
-		return this.getParticipantes().contains(usuario);
+	
+	public boolean contieneCategorias(Set<String> categorias) {
+		return this.getCategorias().containsAll(categorias);
+	}
+	
+	public boolean noContieneCategorias(Set<String> categorias) {
+		return !this.contieneCategorias(categorias);
 	}
 
 	// ================ ADD METHODS =================
@@ -88,15 +90,6 @@ public class Proyecto {
 		return this.getCaracteristicasDeInteres().size();
 	}
 	
-	public boolean contieneCategorias(Set<String> categorias2) {
-		return this.getCategorias().containsAll(categorias2);
-	}
-	
-	public boolean noIncluye(Set<String> categorias2) {
-		// TODO Auto-generated method stub
-		return !this.contieneCategorias(categorias2);
-	}
-	
 	// ================== COSTRUCTOR ==================
 	public Proyecto(String nombreDelProyecto, String descripcion) {
 		this.nombreDelProyecto    	  = nombreDelProyecto;
@@ -129,8 +122,5 @@ public class Proyecto {
 	}
 	public Set<Caracteristica> getCaracteristicasDeInteres() {
 		return caracteristicasDeInteres;
-	}
-	public boolean tieneAlParticipante(IParticipante participante) {
-		return this.getParticipantes().contains(participante);
 	}
 }

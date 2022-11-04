@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import busqueda.IFilter;
-import desafios.Desafio;
+import actividad.Desafio;
+import filter.IFilter;
 import proyectos.Proyecto;
 import usuario.Usuario;
 

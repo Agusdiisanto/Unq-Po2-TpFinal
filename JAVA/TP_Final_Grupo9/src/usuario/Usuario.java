@@ -4,10 +4,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import actividad.Caracteristica;
+import actividad.Desafio;
+
 import java.util.Set;
 
-import caracteristicas.desafio.Caracteristica;
-import desafios.Desafio;
 import estadoDeUsuario.ProgresoDesafio;
 import muestra.Muestra;
 import proyectos.Proyecto;

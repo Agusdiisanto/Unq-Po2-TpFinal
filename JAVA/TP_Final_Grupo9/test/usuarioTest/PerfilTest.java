@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import caracteristicas.desafio.Caracteristica;
+import actividad.Caracteristica;
 import usuario.Perfil;
 import usuario.RecomendacionSegunFavoritos;
 import usuario.RecomendacionSegunPreferencias;
@@ -108,7 +108,7 @@ public class PerfilTest {
 		assertTrue(perfil.contieneCaracteristicaConDescripcion("Botánica"));
     }
 	
-	// A CHEQUEAR LUEGO
+	// NO FUNCIONA, A CHEQUEAR LUEGO
 	@Test
     public void test13_unPerfilCalculaLaAfinidadConUnaCaracteristica() {
 		perfil.agregarCaracteristicaPreferida(caracteristica1);
@@ -116,6 +116,4 @@ public class PerfilTest {
 		// assertTrue(perfil.afinidadConCaracteristica(caracteristica1) == 0);
 		// assertEquals(perfil.afinidadConCaracteristica(caracteristica1), 0);
     }
-	
-	// FALTARIA TESTEAR getCaracteristicaSegunDescripcion PERO ES PRIVADO, QUÉ HACEMOS? XD
 }

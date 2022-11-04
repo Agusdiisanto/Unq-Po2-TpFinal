@@ -12,7 +12,7 @@ public class AplicacionMovil {
 	
 	// ======================= METHODS ========================
 	public void recolectarMuestra(Muestra muestra, Usuario usuario, Proyecto proyecto) throws Exception {
-		if(proyecto.tieneRegistradoAlParticipante(usuario) && proyecto.esMuestraDeInteres(muestra)) {
+		if(proyecto.tieneRegistradoAlUsuario(usuario) && proyecto.esMuestraDeInteres(muestra)) {
 			this.cargarMuestraEnAplicacion(muestra);
 			proyecto.agregarMuestra(muestra);
 			usuario.recolectarMuestraParaLosDesafios(muestra);

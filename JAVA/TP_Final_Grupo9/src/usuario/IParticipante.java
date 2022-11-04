@@ -1,6 +1,6 @@
 package usuario;
 
-import desafios.Desafio;
+import actividad.Desafio;
 import muestra.Muestra;
 import proyectos.Proyecto;
 

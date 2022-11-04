@@ -3,7 +3,7 @@ package usuario;
 import java.util.HashSet;
 import java.util.Set;
 
-import caracteristicas.desafio.Caracteristica;
+import actividad.Caracteristica;
 
 public class Perfil {
 	

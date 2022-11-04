@@ -2,12 +2,12 @@ package usuario;
 
 import java.util.ArrayList;
 
-import caracteristicas.desafio.Caracteristica;
-import desafios.Desafio;
+import actividad.Caracteristica;
+import actividad.Desafio;
 
 public abstract class EstrategiaDeRecomendacion { 
 
-	public abstract ArrayList<Desafio> recomendarDesafiosAlUsuario(Usuario user,ArrayList<Desafio> desafios);
+	public abstract ArrayList<Desafio> recomendarDesafiosAlUsuario(Usuario usuario,ArrayList<Desafio> desafios);
 
 	public ArrayList<Desafio> quedarseConLosPrimeros(ArrayList<Desafio> desafios, int cantidadRequerida) {
 		ArrayList<Desafio> primerosDesafios = new ArrayList<Desafio>();
@@ -15,7 +15,7 @@ public abstract class EstrategiaDeRecomendacion {
 			primerosDesafios.add(desafios.get(i));
 		}
 		return primerosDesafios;
-	}  
+	}
 	
 	public ArrayList<Desafio> desafiosRecomendadosPara(Usuario usuario, ArrayList<Desafio> desafiosARecomendar) {
 		ArrayList<Desafio> desafios = new ArrayList<Desafio>();
@@ -24,11 +24,11 @@ public abstract class EstrategiaDeRecomendacion {
 	}
 	
 	// ================== PRIVATE =====================
-	private ArrayList<Desafio> ordenarDesafiosSegunCoincidenciaPara(ArrayList<Desafio> desafios, Usuario u) {
+	private ArrayList<Desafio> ordenarDesafiosSegunCoincidenciaPara(ArrayList<Desafio> desafios, Usuario usuario) {
 		ArrayList<Desafio> desafiosOrdenados = new ArrayList<Desafio>();
 		while (!desafios.isEmpty()) {
-			desafiosOrdenados.add(this.desafioConMayorCoincidenciaPara(desafios, u));
-			desafios.remove(this.desafioConMayorCoincidenciaPara(desafios, u));
+			desafiosOrdenados.add(this.desafioConMayorCoincidenciaPara(desafios, usuario));
+			desafios.remove(this.desafioConMayorCoincidenciaPara(desafios, usuario));
 		}
 		return desafiosOrdenados;
 	}
@@ -42,19 +42,19 @@ public abstract class EstrategiaDeRecomendacion {
 		return current;
 	}
 
-	private Desafio desafioConMayorCoincidenciaEntre(Desafio d1 ,Desafio d2, Usuario user) {
-		return coincidenciaConUsuario(d1,user) < coincidenciaConUsuario(d2,user) ? d1 : d2;
+	private Desafio desafioConMayorCoincidenciaEntre(Desafio desafio1 ,Desafio desafio2, Usuario usuario) {
+		return coincidenciaConUsuario(desafio1,usuario) < coincidenciaConUsuario(desafio2,usuario) ? desafio1 : desafio2;
 	}
 
-	private double coincidenciaConUsuario(Desafio d1, Usuario user) {
+	private double coincidenciaConUsuario(Desafio desafio, Usuario usuario) {
 		double indiceDeCoincidencia = 0;
-		for (Caracteristica caracteristica : d1.getCaracteristicas()) {
-			indiceDeCoincidencia += user.afinidadConCaracteristica(caracteristica);
+		for (Caracteristica caracteristica : desafio.getCaracteristicas()) {
+			indiceDeCoincidencia += usuario.afinidadConCaracteristica(caracteristica);
 		}
 		return indiceDeCoincidencia;
 	}
 
 	private int min(int i, int j) {
-		return i < j ? i : j;
+		return i<j ? i : j;
 	}
 }

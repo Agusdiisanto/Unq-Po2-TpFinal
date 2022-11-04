@@ -2,10 +2,11 @@ package usuario;
 
 import java.util.ArrayList;
 
-import desafios.Desafio;
+import actividad.Desafio;
 
 public class RecomendacionSegunFavoritos extends EstrategiaDeRecomendacion {
-
+	
+	// ======================== METHODS =========================
 	@Override 
 	public ArrayList<Desafio> recomendarDesafiosAlUsuario(Usuario user, ArrayList<Desafio> desafios) {
 		ArrayList<Desafio> desafiosAOrdenar = this.quedarseConLosPrimeros(desafiosRecomendadosPara(user,desafios),cantidadDeDesafiosASeleccionar());
@@ -16,7 +17,8 @@ public class RecomendacionSegunFavoritos extends EstrategiaDeRecomendacion {
 		}
 		return desafiosOrdenados;
 	}
-
+	
+	// ==================== PRIVATE METHODS =====================
 	private Desafio desafioConMayorSimilitudPara(ArrayList<Desafio> desafios, Usuario user) {
 		Desafio current = desafios.get(0);
 		desafios.remove(0);

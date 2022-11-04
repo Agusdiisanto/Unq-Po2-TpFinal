@@ -1,34 +1,26 @@
 package muestra;
 
 public class Coordenada {
-	
-	private int coordenadaX;
-	private int coordenadaY;
+	private double coordenadaX;
+	private double coordenadaY;
 	
 	// ============ CONSTRUCTOR ===================
-	
-	public Coordenada(int coordenadaX, int coordenadaY) {
+	public Coordenada(double coordenadaX, double coordenadaY) {
 		this.setCoordenadaX(coordenadaX);
 		this.setCoordenadaY(coordenadaY);
 	}
 	
-	
 	// ============= METHODS =======================
-	
-	public int getCoordenadaX() {
+	public double getCoordenadaX() {
 		return coordenadaX;
 	}
-	
-	public void setCoordenadaX(int coordenadaX) {
+	public void setCoordenadaX(double coordenadaX) {
 		this.coordenadaX = coordenadaX;
 	}
-	public int getCoordenadaY() {
+	public double getCoordenadaY() {
 		return coordenadaY;
 	}
-	public void setCoordenadaY(int coordenadaY) {
+	public void setCoordenadaY(double coordenadaY) {
 		this.coordenadaY = coordenadaY;
 	}
-	
-	
-	
 }

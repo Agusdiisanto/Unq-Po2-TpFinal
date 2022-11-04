@@ -2,7 +2,7 @@ package usuario;
 
 import java.util.ArrayList;
 
-import desafios.Desafio;
+import actividad.Desafio;
 
 public class RecomendacionSegunPreferencias extends EstrategiaDeRecomendacion {
 

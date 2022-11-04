@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import caracteristicas.desafio.Caracteristica;
+import actividad.Caracteristica;
 import usuario.Usuario;
 
 public class Muestra {

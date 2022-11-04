@@ -1,6 +1,6 @@
 package estadoDeUsuario;
 
-import desafios.Desafio;
+import actividad.Desafio;
 import muestra.Muestra;
 import usuario.IParticipante;
 

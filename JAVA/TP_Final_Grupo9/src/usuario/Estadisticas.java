@@ -4,30 +4,31 @@ public class Estadisticas {
 	private int satisfaccion;
 	private int recompensa;
 	private int cantidadDeMuestrasRecolectadas;
+	
 	// ====================== CONSTRUCTOR =======================
 	public Estadisticas(int satisfaccion, int recompensa, int cantidadDeMuestrasRecolectadas) {
-		this.satisfaccion = satisfaccion;
-		this.recompensa   = recompensa;
-		this.cantidadDeMuestrasRecolectadas = cantidadDeMuestrasRecolectadas;
+		this.setSatisfaccion(satisfaccion);
+		this.setRecompensa(recompensa);
+		this.setCantidadDeMuestrasRecolectadas(cantidadDeMuestrasRecolectadas);
 	}
 
 	// =================== GETTERS && SETTERS ===================
-	int getSatisfaccion() {
+	public int getSatisfaccion() {
 		return satisfaccion;
 	}
-	void setSatisfaccion(int satisfaccion) {
+	public void setSatisfaccion(int satisfaccion) {
 		this.satisfaccion = satisfaccion;
 	}
-	int getRecompensa() {
+	public int getRecompensa() {
 		return recompensa; 
 	}
-	void setRecompensa(int recompensa) {
+	public void setRecompensa(int recompensa) {
 		this.recompensa = recompensa;
 	}
-	int getCantidadDeMuestrasRecolectadas() {
+	public int getCantidadDeMuestrasRecolectadas() {
 		return cantidadDeMuestrasRecolectadas;
 	}
-	void setCantidadDeMuestrasRecolectadas(int cantidadDeMuestrasRecolectadas) {
+	public void setCantidadDeMuestrasRecolectadas(int cantidadDeMuestrasRecolectadas) {
 		this.cantidadDeMuestrasRecolectadas = cantidadDeMuestrasRecolectadas;
 	}
 } 
