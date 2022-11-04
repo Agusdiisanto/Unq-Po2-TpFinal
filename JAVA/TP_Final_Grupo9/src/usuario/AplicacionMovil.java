@@ -19,8 +19,7 @@ public class AplicacionMovil {
 		}
 	}
 
-	// ======================= PRIVATES =======================
-	private void cargarMuestraEnAplicacion(Muestra muestra) {
+	public void cargarMuestraEnAplicacion(Muestra muestra) {
 		this.getMuestras().add(muestra);
 	}
 	

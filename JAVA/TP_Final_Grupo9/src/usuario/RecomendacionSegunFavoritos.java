@@ -6,7 +6,7 @@ import desafios.Desafio;
 
 public class RecomendacionSegunFavoritos extends EstrategiaDeRecomendacion {
 
-	@Override
+	@Override 
 	public ArrayList<Desafio> recomendarDesafiosAlUsuario(Usuario user, ArrayList<Desafio> desafios) {
 		ArrayList<Desafio> desafiosAOrdenar = this.quedarseConLosPrimeros(desafiosRecomendadosPara(user,desafios),cantidadDeDesafiosASeleccionar());
 		ArrayList<Desafio> desafiosOrdenados = new ArrayList<Desafio>();

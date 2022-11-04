@@ -1,15 +1,16 @@
 package busqueda;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import proyectos.Proyecto;
 
 public class FilterNotIncluedCategoria implements IFilter {
 	
-	private List<String> categorias;
+	private Set<String> categorias;
 	
-	public FilterNotIncluedCategoria(List<String> categorias) {
+	public FilterNotIncluedCategoria(Set<String> categorias) {
 		super();
 		this.categorias = categorias;
 	}

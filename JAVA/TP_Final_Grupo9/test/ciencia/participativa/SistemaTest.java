@@ -62,7 +62,6 @@ public class SistemaTest {
 		desafios3 = new ArrayList<Desafio>();
 		system	  = new Sistema();
 		
-		// usuario1.getPerfil().setTipoDeRecomendacionPreferido(estrategiaDeRecomendacion1);
 		desafios1.add(desafio1);
 		desafios2.add(desafio2);
 		desafios2.add(desafio3);
@@ -74,13 +73,7 @@ public class SistemaTest {
     	perfil1.agregarComportamiento("Comportamiento1");
     	perfil1.setTipoDeRecomendacionPreferido(estrategiaDeRecomendacion1);
 		
-		when(proyecto1.getDesafios()).thenReturn(desafios1);
-		when(proyecto2.getDesafios()).thenReturn(desafios2);
-		when(perfil1.getTipoDeRecomendacionPreferida()).thenReturn(estrategiaDeRecomendacion1);
-		when(usuario1.getPerfil()).thenReturn(perfil1);
-		when(usuario1.getEstrategia()).thenReturn(estrategiaDeRecomendacion1);
-		when(usuario1.getPerfil().getTipoDeRecomendacionPreferida()).thenReturn(estrategiaDeRecomendacion1);
-		when(estrategiaDeRecomendacion1.desafiosRecomendadosPara(usuario1, desafios3)).thenReturn(desafios3);
+		
 	}
 	
 	
@@ -103,16 +96,26 @@ public class SistemaTest {
 		assertEquals(system.getProyectos().size(), 1);
 		assertTrue(system.getProyectos().contains(proyecto1));
 	}
-	
+	 
 	@Test
-	public void test04_unSistemaRecomiendaDesafiosAUnUsuario() {
+	public void test04_unSistemaRecomiendaDesafiosAUnUsuarioPorPreferencia() {
+		ArrayList<Desafio> desafios = new ArrayList<>();
+		
+		desafios.add(desafio1);
+		desafios.add(desafio2);
+		desafios.add(desafio3);
+		
+		
+		when(usuario1.getEstrategia()).thenReturn(estrategiaDeRecomendacion1);
+		when(estrategiaDeRecomendacion1.quedarseConLosPrimeros(desafios3, 0)).thenReturn(desafios);
+		
 		system.agregarProyecto(proyecto1);
 		system.agregarProyecto(proyecto2);
-		assertEquals(system.recomendarDesafiosAlUsuario(usuario1).size(), 3);
+		assertEquals(system.recomendarDesafiosAlUsuario(usuario1).size(), 0);
 		assertTrue(system.recomendarDesafiosAlUsuario(usuario1).contains(desafio1));
 		assertTrue(system.recomendarDesafiosAlUsuario(usuario1).contains(desafio2));
 		assertTrue(system.recomendarDesafiosAlUsuario(usuario1).contains(desafio3));
-	}
+	} 
 	
 	// HABRÍA QUE TESTEAR MÁS CASOS
 }

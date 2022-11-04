@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import caracteristicas.desafio.Caracteristica;
 import desafios.Desafio;
 
-public abstract class EstrategiaDeRecomendacion {
+public abstract class EstrategiaDeRecomendacion { 
 
 	public abstract ArrayList<Desafio> recomendarDesafiosAlUsuario(Usuario user,ArrayList<Desafio> desafios);
 
@@ -15,7 +15,7 @@ public abstract class EstrategiaDeRecomendacion {
 			primerosDesafios.add(desafios.get(i));
 		}
 		return primerosDesafios;
-	}
+	} 
 	
 	public ArrayList<Desafio> desafiosRecomendadosPara(Usuario usuario, ArrayList<Desafio> desafiosARecomendar) {
 		ArrayList<Desafio> desafios = new ArrayList<Desafio>();

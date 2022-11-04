@@ -182,6 +182,14 @@ public class ProyectoTest {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
 	private void inicializadorDeObjetos() {
 		caracteristica1  = mock(Caracteristica.class);
 		caracteristica2  = mock(Caracteristica.class);

@@ -52,7 +52,7 @@ public class Usuario implements IParticipante{
             }
         };
         return desafioActual; 
-    }
+    } 
 	 
 	//================== METHODS IPARTICIPANTE ====================
 	@Override
@@ -116,9 +116,7 @@ public class Usuario implements IParticipante{
 	public String getNombre() {
 		return nombre;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+	
 	public AplicacionMovil getAplicacion() {
 		return aplicacion;
 	}
@@ -131,13 +129,41 @@ public class Usuario implements IParticipante{
 	public Perfil getPerfil() {
 		return perfil;
 	}
-	public void setPerfil(Perfil perfil) {
-		this.perfil = perfil;
-	}
+	
 	public Map<Desafio, Estadisticas> getDesafiosCompletados() {
 		return desafiosCompletados;
 	}
 	public Set<ProgresoDesafio> getDesafiosEnCurso() {
 		return desafiosEnCurso;
 	}
+	public void agregarNuevoProyectoEnCurso(Proyecto proyecto) {
+		this.getProyectoEnCurso().add(proyecto);
+	}
+	public Integer cantidadDeProyectosEnCurso() {
+		// TODO Auto-generated method stub
+		return this.getProyectoEnCurso().size();
+	}
+	public Integer cantidadDeDesafiosCompletados() {
+		// TODO Auto-generated method stub
+		return this.getDesafiosCompletados().size();
+	}
+	public void agregarNuevoProgresoDeDesafio(ProgresoDesafio progreso) {
+		this.getDesafiosEnCurso().add(progreso);
+	}
+	public Integer cantidadDeDesafiosEnCurso() {
+		// TODO Auto-generated method stub
+		return this.getDesafiosEnCurso().size();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

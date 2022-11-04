@@ -30,7 +30,7 @@ public class Sistema {
 		}
 		return desafios;
 	}
-
+ 
 	// ====================== CONTRUCTOR ======================
 	public Sistema() {
 		this.proyectos = new HashSet<Proyecto>();
