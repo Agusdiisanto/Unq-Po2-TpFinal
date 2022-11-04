@@ -15,7 +15,7 @@ public abstract class EstrategiaDeRecomendacion {
 			primerosDesafios.add(desafios.get(i));
 		}
 		return primerosDesafios;
-	} 
+	}  
 	
 	public ArrayList<Desafio> desafiosRecomendadosPara(Usuario usuario, ArrayList<Desafio> desafiosARecomendar) {
 		ArrayList<Desafio> desafios = new ArrayList<Desafio>();

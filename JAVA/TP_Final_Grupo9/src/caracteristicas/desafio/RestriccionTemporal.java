@@ -9,7 +9,7 @@ public class RestriccionTemporal {
 
 	public boolean cumpleLaRestriccion(LocalDateTime fecha) {
 		return fecha.isAfter(this.getFechaDeInicio()) && fecha.isBefore(this.getFechaDeCierre());
-	}
+	} 
 	
 	// ================== COSTRUCTOR ==================
 	public RestriccionTemporal(LocalDateTime fechaDeInicio, LocalDateTime fechaDeCierre) {

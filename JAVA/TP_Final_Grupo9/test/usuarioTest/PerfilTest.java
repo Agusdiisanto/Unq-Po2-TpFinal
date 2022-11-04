@@ -28,7 +28,7 @@ public class PerfilTest {
 		estategiaDeRecomedacion2 = new RecomendacionSegunFavoritos();
 		perfil					 = new Perfil();
 	}
-	
+	  
 	@Test
     public void test01_unPerfilNuevoNoTieneGustos() {
     	assertEquals(perfil.getGustos().size(), 0);

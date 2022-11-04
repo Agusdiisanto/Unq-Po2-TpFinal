@@ -29,7 +29,7 @@ public class Desafio extends ActividadLudica {
 	public Boolean esDesafioActivo() {
 		return LocalDateTime.now().isAfter(this.getRestriccionTemporal().getFechaDeInicio())
 			&& LocalDateTime.now().isBefore(this.getRestriccionTemporal().getFechaDeCierre());
-	}
+	} 
 	
 	public boolean estaLaMuestraDentroDelArea(Muestra muestra) {
 		int x = muestra.getCoordenadaDeRecollecion().getCoordenadaX() - this.getArea().getLatitud();

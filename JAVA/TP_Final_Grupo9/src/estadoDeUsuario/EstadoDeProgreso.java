@@ -12,9 +12,9 @@ public class EstadoDeProgreso implements IEstadoDelProgreso {
 	public void recolectarMuestra(ProgresoDesafio progresoDesafio, Muestra muestra) throws Exception {
 		
 	}
-	
+	 
 	@Override
-	public void concederRecompensaDelDesafioA(IParticipante participante, ProgresoDesafio progresoDesafio) {}
+	public void registrarDesafioCompletado(IParticipante participante, ProgresoDesafio progresoDesafio, int sastifaccion) {}
 	
 	@Override
 	public boolean completoElDesafio(ProgresoDesafio progresoDesafio) {return false;}

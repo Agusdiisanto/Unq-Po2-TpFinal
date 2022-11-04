@@ -60,7 +60,7 @@ public class DesafioTest {
 	 when(area.getLatitud()).thenReturn(10);
 	 when(area.getLongitud()).thenReturn(10);
 	 when(area.getRadio()).thenReturn(10);
-	 when(coordenada1.getCoordenadaX()).thenReturn(5);
+	 when(coordenada1.getCoordenadaX()).thenReturn(5); 
 	 when(coordenada1.getCoordenadaY()).thenReturn(5);
 	 when(coordenada2.getCoordenadaX()).thenReturn(1);
 	 when(coordenada2.getCoordenadaY()).thenReturn(1);
@@ -75,7 +75,7 @@ public class DesafioTest {
 	 when(caracteristica2.getDescripicion()).thenReturn("Tomi es mejor");
 	 when(caracteristica2.getAfinidad()).thenReturn(5.5);
 	 when(caracteristica3.getDescripicion()).thenReturn("Santi es mejor");
-	 when(caracteristica3.getAfinidad()).thenReturn(7.7);
+	 when(caracteristica3.getAfinidad()).thenReturn(7.7); 
 	}
 	
 	@Test
@@ -149,7 +149,7 @@ public class DesafioTest {
 		assertTrue(desafio1.getCaracteristicas().contains(caracteristica1));
 	}
 	
-	@Test
+	@Test 
 	public void test13_unDesafioEsUnDesafio() {
 		assertTrue(desafio1.esDesafio());
 	}
@@ -158,7 +158,7 @@ public class DesafioTest {
 	public void test14_unDesafioEstaActivo() {
 		assertTrue(desafio1.esDesafioActivo());
 	}
-	
+	 
 	@Test
 	public void test15_unDesafioNoEstaActivoPorqueEstaConcluido() {
 		assertFalse(desafio2.esDesafioActivo());

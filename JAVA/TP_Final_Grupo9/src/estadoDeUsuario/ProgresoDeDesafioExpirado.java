@@ -11,7 +11,7 @@ public class ProgresoDeDesafioExpirado extends EstadoDeProgreso{
 	} 
 
 	@Override
-	public void concederRecompensaDelDesafioA(IParticipante participante, ProgresoDesafio progresoDesafio) {
+	public void registrarDesafioCompletado(IParticipante participante, ProgresoDesafio progresoDesafio, int sastifaccion) {
 		throw new RuntimeException("Ya no puedes conceder recompensa, el desafio ya ha expirado");	
 	}
 	
@@ -19,5 +19,5 @@ public class ProgresoDeDesafioExpirado extends EstadoDeProgreso{
 	public void verificarSiCompletoElDesafio(ProgresoDesafio progreso) {
 		throw new RuntimeException("Ya no puedes verificar el progreso del desafio porque ya ha expirado");	
 	}
-	
+	 
 }

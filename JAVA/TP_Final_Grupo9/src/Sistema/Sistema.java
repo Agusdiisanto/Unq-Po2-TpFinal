@@ -28,7 +28,7 @@ public class Sistema {
 		for (Proyecto proyecto : this.getProyectos()) {
 			desafios.addAll(proyecto.getDesafios());
 		}
-		return desafios;
+		return desafios; 
 	}
  
 	// ====================== CONTRUCTOR ======================

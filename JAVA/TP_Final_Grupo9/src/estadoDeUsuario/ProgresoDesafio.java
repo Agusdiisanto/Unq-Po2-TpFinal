@@ -18,7 +18,7 @@ public class ProgresoDesafio {
  
 	// ================== METHODS ==================
 	public boolean esDesafioActual() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		return this.getEstado().esDesafioEnCurso(this);
 	}
 	 
@@ -34,9 +34,9 @@ public class ProgresoDesafio {
 	public void sumarPuntajeAParticipante() throws Exception {
 		this.incrementarPuntajeEnUno();
 	}
-
-	public void otorgarRecompensaAlParticipante(IParticipante participante){
-		this.getEstado().concederRecompensaDelDesafioA(participante, this);
+ 
+	public void registrarDesafioCompletado(IParticipante participante, int sastifaccion){
+		this.getEstado().registrarDesafioCompletado(participante, this, sastifaccion);
 	}
 
 	public int recompensaDelDesafio() {

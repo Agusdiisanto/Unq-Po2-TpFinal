@@ -19,7 +19,7 @@ public class Estadisticas {
 		this.satisfaccion = satisfaccion;
 	}
 	int getRecompensa() {
-		return recompensa;
+		return recompensa; 
 	}
 	void setRecompensa(int recompensa) {
 		this.recompensa = recompensa;

@@ -31,7 +31,7 @@ public class ProgresoDeDesafioEnCurso extends EstadoDeProgreso{
 		if(this.completoElDesafio(progreso)) {
 			progreso.setEstado(new ProgresoDeDesafioTerminado());
 		}
-	}
+	} 
 	
 	
 	// ============================ PRIVATE METHODS ================================================

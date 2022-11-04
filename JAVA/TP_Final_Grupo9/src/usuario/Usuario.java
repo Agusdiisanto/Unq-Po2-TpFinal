@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Random;
 import java.util.Set;
 
 import caracteristicas.desafio.Caracteristica;
@@ -23,24 +22,28 @@ public class Usuario implements IParticipante{
 	private Set<ProgresoDesafio>  	   desafiosEnCurso;
 	
 	// ================== METHODS USUARIO ========================
+	
 	public boolean contieneCaracteristicaConDescripcion(String descripcion) {
 		return this.getPerfil().contieneCaracteristicaConDescripcion(descripcion);
 	}
-
+	
 	public double afinidadConCaracteristica(Caracteristica caracteristica) {
 		return this.getPerfil().afinidadConCaracteristica(caracteristica);
 	}
-
+ 
 	public EstrategiaDeRecomendacion getEstrategia() {
 		return this.getPerfil().getTipoDeRecomendacionPreferida();
-	} 
- 
+	}  
+  
 	public double similitudConFavorito(Desafio desafio) {
 		double diferenciaDeMuestras   = Math.abs(desafio.getCantidadDeMuestrasARecolectar()     - this.getDesafiosCompletados().get(this.getDesafioFavorito()).getCantidadDeMuestrasRecolectadas());
 		double diferenciaDeDificultad = Math.abs(desafio.getDificultad().getNivelDeDificultad() - this.getDesafioFavorito().getDificultad().getNivelDeDificultad());
 		double diferenciaDeRecompensa = Math.abs(desafio.getRecompensa()                        - this.getDesafioFavorito().getRecompensa());
-		return (diferenciaDeMuestras + diferenciaDeDificultad + diferenciaDeRecompensa)/3;
+		return Math.round((diferenciaDeMuestras + diferenciaDeDificultad + diferenciaDeRecompensa)/3);
 	}
+	 
+	// _ _ _ _ _ __ 
+	
 	
 	public Desafio getDesafioFavorito() {
         int satisfaccionMaxima = 0;
@@ -51,7 +54,7 @@ public class Usuario implements IParticipante{
                 desafioActual = entry.getKey();
             }
         };
-        return desafioActual; 
+        return desafioActual;  
     } 
 	 
 	//================== METHODS IPARTICIPANTE ====================
@@ -89,9 +92,9 @@ public class Usuario implements IParticipante{
 	}
 	
 	@Override
-	public void registrarDesafioCompletado(Desafio desafio, int recompensa, int muestrasRecolectadas) {
-		Random random = new Random();
-		Estadisticas estadisticas = new Estadisticas(random.nextInt(5), recompensa, muestrasRecolectadas);
+	public void registrarDesafioCompletado(Desafio desafio, int recompensa, int muestrasRecolectadas, int satisfaccion) {
+	
+		Estadisticas estadisticas = new Estadisticas(satisfaccion, recompensa, muestrasRecolectadas);
 		this.getDesafiosCompletados().put(desafio, estadisticas);
 	}
 	 

@@ -14,10 +14,10 @@ public class ProgresoDeDesafioTerminado extends EstadoDeProgreso {
 	public void verificarSiCompletoElDesafio(ProgresoDesafio progreso) {
 		throw new RuntimeException("Ya no puedes verificar el progreso del desafio porque ya ha terminado");	
 	}
-	
+	 
 	@Override
-	public void concederRecompensaDelDesafioA(IParticipante participante, ProgresoDesafio progresoDesafio) {
-		participante.registrarDesafioCompletado(progresoDesafio.getDesafioActual(),progresoDesafio.recompensaDelDesafio(),progresoDesafio.getDesafioActual().getCantidadDeMuestrasARecolectar());
+	public void registrarDesafioCompletado(IParticipante participante, ProgresoDesafio progresoDesafio, int sastifaccion) {
+		participante.registrarDesafioCompletado(progresoDesafio.getDesafioActual(),progresoDesafio.recompensaDelDesafio(),progresoDesafio.getDesafioActual().getCantidadDeMuestrasARecolectar(), 5);
 	}
 	
 }

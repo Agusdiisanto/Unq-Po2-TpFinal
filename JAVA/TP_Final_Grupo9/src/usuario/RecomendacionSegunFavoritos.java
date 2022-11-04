@@ -34,4 +34,4 @@ public class RecomendacionSegunFavoritos extends EstrategiaDeRecomendacion {
 		return 20;
 	}
 
-}
+} 

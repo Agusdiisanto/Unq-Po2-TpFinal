@@ -13,6 +13,7 @@ public class Perfil {
 	private EstrategiaDeRecomendacion tipoDeRecomendacionPreferido;
 
 	// =================== METHODS ====================
+	
 	public boolean contieneCaracteristicaConDescripcion(String s) {
 		return this.getCaracteristicasPreferidas().stream().anyMatch(c -> c.getDescripicion().equals(s));
 	}
@@ -20,14 +21,14 @@ public class Perfil {
 	public double afinidadConCaracteristica(Caracteristica caracteristica) {
 		return Math.abs(this.getCaracteristicaSegunDescripcion(caracteristica).getAfinidad() - caracteristica.getAfinidad());
 	}
-
+ 
 	private Caracteristica getCaracteristicaSegunDescripcion(Caracteristica caracteristica) {
 		return (Caracteristica) this.getCaracteristicasPreferidas().stream().
 				filter(c -> c.getDescripicion().equals(caracteristica.getDescripicion()));
 	}
 	
 	// ================= ADD METHODS ==================
-	public void agregarGusto(String gusto) {
+	public void agregarGusto(String gusto){
 		this.getGustos().add(gusto);
 	}
 	
@@ -38,7 +39,7 @@ public class Perfil {
 	public void agregarComportamiento(String comportamiento) {
 		this.getComportamientos().add(comportamiento);
 	}
-
+	
 	// ================== COSTRUCTOR ==================
 	public Perfil() {
 		this.gustos		 			   = new HashSet<String>();
@@ -55,7 +56,7 @@ public class Perfil {
 	}
 	public Set<String> getComportamientos() {
 		return comportamientos;
-	}
+	} 
 	public EstrategiaDeRecomendacion getTipoDeRecomendacionPreferida() {
 		return tipoDeRecomendacionPreferido;
 	}
