@@ -60,4 +60,8 @@ public class Muestra {
 	public void setCoordenadaDeRecollecion(Coordenada coordenadaDeRecollecion) {
 		this.coordenadaDeRecoleccion = coordenadaDeRecollecion;
 	}
+	
+	public int cantidadDeCaracteristicas() {
+		return this.getCaracteristicas().size();
+	}
 }

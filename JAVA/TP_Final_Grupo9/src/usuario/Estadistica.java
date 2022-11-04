@@ -1,11 +1,11 @@
 package usuario;
 
-public class Estadisticas {
+public class Estadistica {
 	private int satisfaccion;
 	private int recompensa;
 	private int cantidadDeMuestrasRecolectadas;
 	// ====================== CONSTRUCTOR =======================
-	public Estadisticas(int satisfaccion, int recompensa, int cantidadDeMuestrasRecolectadas) {
+	public Estadistica(int satisfaccion, int recompensa, int cantidadDeMuestrasRecolectadas) {
 		this.satisfaccion = satisfaccion;
 		this.recompensa   = recompensa;
 		this.cantidadDeMuestrasRecolectadas = cantidadDeMuestrasRecolectadas;
