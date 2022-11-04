@@ -118,6 +118,30 @@ public class UsuarioTest {
 		assertFalse(usuario.getDesafiosEnCurso().isEmpty());
 	}
 	
+	@Test
+	public void test08_UnUsuarioSabeCuandoEstaEnDesafioActualmente() {
+		usuario.agregarNuevoProgresoDeDesafio(progreso);
+		when(progreso.esDesafioActual()).thenReturn(true);
+		assertTrue(usuario.estaEnDesafioActualmente());
+	}
+	
+	@Test
+	public void test09_UnUsuarioSabeCuandoEstaEnDesafioActualmente() {
+		usuario.agregarNuevoProgresoDeDesafio(progreso);
+		when(progreso.esDesafioActual()).thenReturn(false);
+		assertFalse(usuario.estaEnDesafioActualmente());
+	}
+	
+	@Test
+	public void test10_UnUsuarioSabeIncribirseAUnDesafio() throws Exception {
+		
+		usuario.inscribirseEnUnDesafio(desafio);
+		assertEquals(1, usuario.cantidadDeDesafiosEnCurso());
+		assertFalse(usuario.getDesafiosEnCurso().isEmpty());
+	}
+	
+	
+	
 
 	/*
 	@Test
