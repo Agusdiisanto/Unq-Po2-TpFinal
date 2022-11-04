@@ -14,54 +14,48 @@ public class Muestra {
 	private Coordenada 			coordenadaDeRecoleccion;
 
 	// ================== METHODS ==================
-	public boolean tieneLaCaracteristica(Caracteristica c) {
-		return this.getCaracteristicas().contains(c);
+	public boolean tieneLaCaracteristica(Caracteristica caracteristica) {
+		return this.getCaracteristicas().contains(caracteristica);
 	}
 	
-	public void agregarCaracteristicaAMuestra(Caracteristica c) {
-		this.getCaracteristicas().add(c);
+	public void agregarCaracteristicaAMuestra(Caracteristica caracteristica) {
+		this.getCaracteristicas().add(caracteristica);
+	}
+	
+	public int cantidadDeCaracteristicas() {
+		return this.getCaracteristicas().size();
 	}
 	
 	// ================== COSTRUCTOR ==================
 	public Muestra(Usuario		 usuarioQueLaRecolecto, 
 			       LocalDateTime fechaYHoraDeRecoleccion,
 			       Coordenada	 coordenadaDeRecollecion) {
-		this.caracteristicas		 = new HashSet<Caracteristica>();
-		this.usuarioQueLaRecolecto	 = usuarioQueLaRecolecto;
-		this.fechaYHoraDeRecoleccion = fechaYHoraDeRecoleccion;
-		this.coordenadaDeRecoleccion = coordenadaDeRecollecion;
+		this.caracteristicas = new HashSet<Caracteristica>();
+		this.setUsuarioQueLaRecolecto(usuarioQueLaRecolecto);
+		this.setFechaYHoraDeRecoleccion(fechaYHoraDeRecoleccion);
+		this.setCoordenadaDeRecollecion(coordenadaDeRecollecion);
 	}
 
 	// ============== GETTERS & SETTERS ==============
 	public Set<Caracteristica> getCaracteristicas() {
 		return caracteristicas;
 	}
-
 	public Usuario getUsuarioQueLaRecolecto() {
 		return usuarioQueLaRecolecto;
 	}
-
 	public void setUsuarioQueLaRecolecto(Usuario usuarioQueLaRecolecto) {
 		this.usuarioQueLaRecolecto = usuarioQueLaRecolecto;
 	}
-
 	public LocalDateTime getFechaYHoraDeRecoleccion() {
 		return fechaYHoraDeRecoleccion;
 	}
-
 	public void setFechaYHoraDeRecoleccion(LocalDateTime fechaYHoraDeRecoleccion) {
 		this.fechaYHoraDeRecoleccion = fechaYHoraDeRecoleccion;
 	}
-
 	public Coordenada getCoordenadaDeRecollecion() {
 		return coordenadaDeRecoleccion;
 	}
-
 	public void setCoordenadaDeRecollecion(Coordenada coordenadaDeRecollecion) {
 		this.coordenadaDeRecoleccion = coordenadaDeRecollecion;
-	}
-	
-	public int cantidadDeCaracteristicas() {
-		return this.getCaracteristicas().size();
 	}
 }

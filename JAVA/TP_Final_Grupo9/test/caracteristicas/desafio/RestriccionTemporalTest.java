@@ -30,12 +30,12 @@ public class RestriccionTemporalTest {
 	
 	@Test
 	public void test03_unaRestriccionSabeSiEstaHabilitadaUnaFecha() {
-		assertTrue(restriccion.estaHabilitado(LocalDateTime.of(2022, 5, 25, 12, 55)));
+		assertTrue(restriccion.cumpleLaRestriccion(LocalDateTime.of(2022, 5, 25, 12, 55)));
 	}
 	
 	@Test
 	public void test04_unaRestriccionSabeSiNoEstaHabilitadaUnaFecha() {
-		assertFalse(restriccion.estaHabilitado(LocalDateTime.of(2022, 8, 31, 1, 55)));
+		assertFalse(restriccion.cumpleLaRestriccion(LocalDateTime.of(2022, 8, 31, 1, 55)));
 	}
 	
 }

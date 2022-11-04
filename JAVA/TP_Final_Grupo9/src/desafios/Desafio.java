@@ -27,21 +27,22 @@ public class Desafio extends ActividadLudica {
 	}
 	
 	public Boolean esDesafioActivo() {
-		return (LocalDateTime.now().isAfter(restriccionTemporal.getFechaDeInicio())
-		 	 && LocalDateTime.now().isBefore(restriccionTemporal.getFechaDeCierre()));
+		return LocalDateTime.now().isAfter(this.getRestriccionTemporal().getFechaDeInicio())
+			&& LocalDateTime.now().isBefore(this.getRestriccionTemporal().getFechaDeCierre());
 	}
 	
 	public boolean estaLaMuestraDentroDelArea(Muestra muestra) {
-		// FALTA CODEAR!!!
-		return true;
+		int x = muestra.getCoordenadaDeRecollecion().getCoordenadaX() - this.getArea().getLatitud();
+		int y = muestra.getCoordenadaDeRecollecion().getCoordenadaY() - this.getArea().getLongitud();
+		return Math.pow(x, 2) + Math.pow(y, 2) <= Math.pow(this.getArea().getRadio(), 2);
 	}
 	
-	public boolean estaDentroDeLaRestriccion(LocalDateTime localDateTime) {
-		return this.getRestriccionTemporal().estaHabilitado(localDateTime);
+	public boolean estaDentroDeLaRestriccion(LocalDateTime fecha) {
+		return this.getRestriccionTemporal().cumpleLaRestriccion(fecha);
 	}
 	
 	public boolean estaLaMuestraDentroDeLaRestriccion(Muestra muestra) {
-		return this.getRestriccionTemporal().estaHabilitado(muestra.getFechaYHoraDeRecoleccion());
+		return this.getRestriccionTemporal().cumpleLaRestriccion(muestra.getFechaYHoraDeRecoleccion());
 	}
 	
 	// ================ ADD METHODS ================

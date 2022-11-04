@@ -17,6 +17,8 @@ import caracteristicas.desafio.Caracteristica;
 import caracteristicas.desafio.Dificultad;
 import caracteristicas.desafio.RestriccionTemporal;
 import desafios.Desafio;
+import muestra.Coordenada;
+import muestra.Muestra;
 import usuario.IParticipante;
 
 
@@ -28,6 +30,10 @@ public class DesafioTest {
 	private Desafio				desafio1;
 	private Desafio				desafio2;
 	private Desafio				desafio3;
+	private Coordenada			coordenada1;
+	private Coordenada			coordenada2;
+	private Muestra				muestra1;
+	private Muestra				muestra2;
 	private IParticipante		participante1;
 	private Caracteristica		caracteristica1;
 	private Caracteristica		caracteristica2;
@@ -36,6 +42,8 @@ public class DesafioTest {
 	@BeforeEach
 	public void setUp() {
 	 area				  = mock(Area.class);
+	 coordenada1		  = mock(Coordenada.class);
+	 coordenada2		  = mock(Coordenada.class);
 	 restriccionTemporal1 = mock(RestriccionTemporal.class);
 	 restriccionTemporal2 = mock(RestriccionTemporal.class);
 	 restriccionTemporal3 = mock(RestriccionTemporal.class);
@@ -43,14 +51,19 @@ public class DesafioTest {
 	 caracteristica2	  = mock(Caracteristica.class);
 	 caracteristica3	  = mock(Caracteristica.class);
 	 participante1		  = mock(IParticipante.class);
+	 muestra1			  = new Muestra(null, null, coordenada1);
+	 muestra2			  = new Muestra(null, null, coordenada2);
 	 desafio1			  = new Desafio(area, restriccionTemporal1, 30, Dificultad.MEDIO, 50);
 	 desafio2			  = new Desafio(area, restriccionTemporal2, 30, Dificultad.MEDIO, 50);
 	 desafio3			  = new Desafio(area, restriccionTemporal3, 30, Dificultad.MEDIO, 50);
 	 
-	 when(area.getLatitud()).thenReturn(6);
-	 when(area.getLongitud()).thenReturn(2);
-	 when(area.getRadio()).thenReturn(4);
-	 when(restriccionTemporal1.estaHabilitado(LocalDateTime.of(2018, 10, 30,5,56))).thenReturn(true);
+	 when(area.getLatitud()).thenReturn(10);
+	 when(area.getLongitud()).thenReturn(10);
+	 when(area.getRadio()).thenReturn(10);
+	 when(coordenada1.getCoordenadaX()).thenReturn(5);
+	 when(coordenada1.getCoordenadaY()).thenReturn(5);
+	 when(coordenada2.getCoordenadaX()).thenReturn(1);
+	 when(coordenada2.getCoordenadaY()).thenReturn(1);
 	 when(restriccionTemporal1.getFechaDeInicio()).thenReturn(LocalDateTime.of(2021, 10, 30,5,56));
 	 when(restriccionTemporal1.getFechaDeCierre()).thenReturn(LocalDateTime.of(2023, 10, 30,5,56));
 	 when(restriccionTemporal2.getFechaDeInicio()).thenReturn(LocalDateTime.of(2020, 10, 30,5,56));
@@ -152,7 +165,22 @@ public class DesafioTest {
 	}
 	
 	@Test
-	public void test16_unDesafioNoEstaActivoPorqueEstaPorInicial() {
+	public void test16_unDesafioNoEstaActivoPorqueEstaPorIniciar() {
 		assertFalse(desafio3.esDesafioActivo());
+	}
+	
+	@Test
+	public void test17_unDesafioIndicaSiUnaMuestraEstaDentroDelArea() {
+		assertTrue(desafio1.estaLaMuestraDentroDelArea(muestra1));
+	}
+	
+	@Test
+	public void test18_unDesafioIndicaSiUnaMuestraNoEstaDentroDelArea() {
+		assertFalse(desafio1.estaLaMuestraDentroDelArea(muestra2));
+	}
+	
+	@Test
+	public void test19_unDesafioIndicaSiUnaMuestraNoEstaDentroDelArea() {
+		assertFalse(desafio1.estaLaMuestraDentroDelArea(muestra2));
 	}
 }

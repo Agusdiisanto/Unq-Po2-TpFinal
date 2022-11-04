@@ -7,8 +7,8 @@ public class RestriccionTemporal {
 	private LocalDateTime fechaDeInicio;
 	private LocalDateTime fechaDeCierre;
 
-	public boolean estaHabilitado(LocalDateTime fecha) {
-		return (fecha.isAfter(this.getFechaDeInicio()) && fecha.isBefore(this.getFechaDeCierre()));
+	public boolean cumpleLaRestriccion(LocalDateTime fecha) {
+		return fecha.isAfter(this.getFechaDeInicio()) && fecha.isBefore(this.getFechaDeCierre());
 	}
 	
 	// ================== COSTRUCTOR ==================
