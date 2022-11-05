@@ -118,16 +118,19 @@ public class PerfilTest {
 	@Test
     public void test13_unPerfilCalculaLaAfinidadConUnaCaracteristica() {
 		
+		caracteristica1 = new Caracteristica("c1", 5);
+		caracteristica2 = new Caracteristica("c2", 7);
+		/*
 		when(caracteristica1.getDescripicion()).thenReturn("Caminar");
 		when(caracteristica1.getAfinidad()).thenReturn(0.5);
 		
 		when(caracteristica2.getDescripicion()).thenReturn("Caminar");
 		when(caracteristica2.getAfinidad()).thenReturn(100.5);
-		
-		perfil.agregarCaracteristicaPreferida(caracteristica2);
+		*/
 		perfil.agregarCaracteristicaPreferida(caracteristica1);
+		perfil.agregarCaracteristicaPreferida(caracteristica2);
 		
-		assertEquals(perfil.afinidadConCaracteristica(caracteristica1), 100);	
+		assertEquals(perfil.afinidadConCaracteristica(caracteristica1), 0);	
     }
 	
 	

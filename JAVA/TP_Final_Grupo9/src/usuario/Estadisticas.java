@@ -31,4 +31,4 @@ public class Estadisticas {
 	public void setCantidadDeMuestrasRecolectadas(int cantidadDeMuestrasRecolectadas) {
 		this.cantidadDeMuestrasRecolectadas = cantidadDeMuestrasRecolectadas;
 	}
-} 
+}
