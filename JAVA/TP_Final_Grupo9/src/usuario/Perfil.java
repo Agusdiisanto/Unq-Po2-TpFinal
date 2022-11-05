@@ -1,9 +1,6 @@
 package usuario;
 
-import java.sql.Array;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import actividad.Caracteristica;
@@ -25,13 +22,12 @@ public class Perfil {
 				Math.abs(this.getCaracteristicaSegunDescripcion(caracteristica.getDescripicion()).getAfinidad() - caracteristica.getAfinidad());
 	}
 	
-<<<<<<< HEAD
 	private Caracteristica getCaracteristicaSegunDescripcion(Caracteristica caracteristica) {
 		return (Caracteristica) this.getCaracteristicasPreferidas().stream().
 				filter(c -> c.getDescripicion().equals(caracteristica.getDescripicion()));
 	
 	} 
-=======
+
 	private Caracteristica getCaracteristicaSegunDescripcion(String descipcion) {
 		Caracteristica caracteristicaEncontrada = null;
 		for (Caracteristica caracteristica : this.getCaracteristicasPreferidas()) {
@@ -41,7 +37,6 @@ public class Perfil {
 		}
 		return caracteristicaEncontrada;
 	}
->>>>>>> 4aed254f681cebb4071de914724ba2020fe492f1
 	
 	// ================= ADD METHODS ==================
 	public void agregarGusto(String gusto){

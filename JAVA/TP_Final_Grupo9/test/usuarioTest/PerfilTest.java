@@ -23,14 +23,13 @@ public class PerfilTest {
 	
 	@BeforeEach
     public void setUp() {
-		
 		caracteristica1			 = mock(Caracteristica.class);
 		caracteristica2          = mock(Caracteristica.class);
 		estategiaDeRecomedacion1 = mock(RecomendacionSegunPreferencias.class);
 		estategiaDeRecomedacion2 = mock(RecomendacionSegunFavoritos.class);
 		perfil					 = new Perfil();
 	}
-	  
+	
 	@Test
     public void test01_unPerfilNuevoNoTieneGustos() {
     	assertEquals(perfil.getGustos().size(), 0);

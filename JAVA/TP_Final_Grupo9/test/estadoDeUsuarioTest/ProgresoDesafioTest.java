@@ -1,4 +1,4 @@
-package estadoDeUsuario;
+package estadoDeUsuarioTest;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import actividad.Desafio;
+import estadoDeUsuario.ProgresoDeDesafioEnCurso;
+import estadoDeUsuario.ProgresoDesafio;
 import muestra.Muestra;
 import usuario.IParticipante;
 

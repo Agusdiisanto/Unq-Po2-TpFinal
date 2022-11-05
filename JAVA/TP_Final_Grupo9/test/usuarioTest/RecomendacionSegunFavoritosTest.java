@@ -33,10 +33,10 @@ class RecomendacionSegunFavoritosTest {
 		perfil1				= new Perfil();
 		desafios1.add(desafio1);
 		desafios1.add(desafio2);
-	} 
+	}
 
 	@Test
 	public void test01_unaEstrategiaRecomiendaDesafiosAUnUsuario() {
-		//assertEquals(tipoDeRecomendacion.recomendarDesafiosAlUsuario(usuario1, desafios1), desafios1);
+		assertEquals(tipoDeRecomendacion.recomendarDesafiosAlUsuario(usuario1, desafios1), desafios1);
 	}
 }

@@ -28,12 +28,11 @@ public class RecomendacionSegunFavoritos extends EstrategiaDeRecomendacion {
 		return current;
 	}
 
-	private Desafio desafioConMayorSimilitudEntre(Desafio d1, Desafio d2, Usuario user) {
-		return user.similitudConFavorito(d1) > user.similitudConFavorito(d2) ? d1 : d2;
+	private Desafio desafioConMayorSimilitudEntre(Desafio desafio1, Desafio desafio2, Usuario usuario) {
+		return usuario.similitudConFavorito(desafio1) > usuario.similitudConFavorito(desafio2) ? desafio1 : desafio2;
 	}
 
 	private int cantidadDeDesafiosASeleccionar() {
 		return 20;
 	}
-
-} 
+}
