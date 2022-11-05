@@ -6,11 +6,12 @@ import java.util.Set;
 import actividad.ActividadLudica;
 import actividad.Caracteristica;
 import actividad.Desafio;
+import filter.IFilter;
 import muestra.Muestra;
 import usuario.IParticipante;
 import usuario.Usuario;
 
-public class Proyecto {
+public class Proyecto implements IFilter {
 	private String				 nombreDelProyecto;
 	private String 				 descripcion;
 	private Set<String> 		 categorias;

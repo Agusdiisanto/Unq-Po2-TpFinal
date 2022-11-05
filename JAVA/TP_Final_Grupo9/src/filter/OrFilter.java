@@ -1,21 +1,29 @@
 package filter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import proyectos.Proyecto;
 
-public class OrFilter extends BinaryFilter {
+public class OrFilter extends Filter {
+	private Filter filter1;
+	private Filter filter2;
 	
-	public OrFilter (IFilter iFilter1, IFilter iFilter2) {
-		super(iFilter1, iFilter2);
-	}
+	
+	public OrFilter (Filter filter1, Filter filter2) {
+	 this.filter1= filter1;
+	 this.filter2= filter2;
+}
+	
 
 	@Override
-	public List<Proyecto> buscarProyecto(List<Proyecto> todosLosProyectos) {
-		List <Proyecto> proyectosFiltrados1 = filter1.buscarProyecto(todosLosProyectos);
-		List <Proyecto> proyectosFiltrados2 = filter2.buscarProyecto(todosLosProyectos);
-		proyectosFiltrados1.removeAll(proyectosFiltrados2);
-		proyectosFiltrados1.addAll(proyectosFiltrados2);
-		return proyectosFiltrados1;
+	public ArrayList<IFilter> iFilter(ArrayList<IFilter> list) {
+		ArrayList <IFilter> iFilter1 = this.filter1.iFilter(list);
+		ArrayList <IFilter> iFilter2 = this.filter1.iFilter(list);
+		ArrayList <IFilter> iFilter  = iFilter1;
+		iFilter.removeAll(iFilter2);
+		iFilter.addAll(iFilter2);
+		
+		return iFilter;
 	}
 }

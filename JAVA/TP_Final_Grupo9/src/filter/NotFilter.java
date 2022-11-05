@@ -1,21 +1,29 @@
 package filter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import proyectos.Proyecto;
 
-public class NotFilter {
-	protected IFilter iFilter;
+public class NotFilter extends Filter{
+	private Filter filter;
 
 	
-	public NotFilter (IFilter iFilter) {
-		this.iFilter = iFilter;
+	public NotFilter (Filter filter) {
+		this.filter = filter;
 	}
 
-	public List<Proyecto> buscarProyecto(List<Proyecto> proyectos) {
-		List <Proyecto> proyectosFiltrados = iFilter.buscarProyecto(proyectos);
-		proyectosFiltrados.removeAll(proyectosFiltrados);
-		return proyectosFiltrados;
+	@Override
+	public ArrayList<IFilter> verificar(ArrayList<IFilter> list) {
+		
+		ArrayList <IFilter> iFilter = this.filter.verificar(list);
+		
+		ArrayList <IFilter> iFilter1 = list;
+		
+		iFilter.removeAll(iFilter1);
+		
+		return iFilter;
+		
 	}
 	
 }
