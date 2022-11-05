@@ -11,9 +11,9 @@ public class ProgresoDesafio {
 	private int				   puntaje;
 	
 	// ================== COSTRUCTOR ==================
-	public ProgresoDesafio(Desafio desafioActual) {
+	public ProgresoDesafio(Desafio desafioActual, IEstadoDelProgreso estado) {
 		this.desafioActual = desafioActual;
-		this.estado        = new ProgresoDeDesafioEnCurso();
+		this.estado        = estado;
 	} 
  
 	// ================== METHODS ==================
@@ -22,7 +22,6 @@ public class ProgresoDesafio {
 		return this.getEstado().esDesafioEnCurso(this);
 	}
 	 
-	// VER ESTO RARO 
 	public void recolectarMuestra(IParticipante participante, Muestra muestra) throws Exception {
 		this.getEstado().recolectarMuestra(this,muestra);
 	}
@@ -76,9 +75,6 @@ public class ProgresoDesafio {
 		return estado;
 	}
 	
-	public void setDesafioActual(Desafio desafioActual) {
-		this.desafioActual = desafioActual;
-	}
 
 	public void setEstado(IEstadoDelProgreso estado) {
 		this.estado = estado;

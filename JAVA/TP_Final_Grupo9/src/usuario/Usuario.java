@@ -10,6 +10,7 @@ import actividad.Desafio;
 
 import java.util.Set;
 
+import estadoDeUsuario.ProgresoDeDesafioEnCurso;
 import estadoDeUsuario.ProgresoDesafio;
 import muestra.Muestra;
 import proyectos.Proyecto;
@@ -103,7 +104,7 @@ public class Usuario implements IParticipante{
 	// ================== PRIVATE =====================
 	
 	private void agregarNuevoDesafioEnCurso(Desafio desafio) {
-		ProgresoDesafio progreso = new ProgresoDesafio(desafio);
+		ProgresoDesafio progreso = new ProgresoDesafio(desafio, new ProgresoDeDesafioEnCurso());
 		this.getDesafiosEnCurso().add(progreso);
 	}
 	

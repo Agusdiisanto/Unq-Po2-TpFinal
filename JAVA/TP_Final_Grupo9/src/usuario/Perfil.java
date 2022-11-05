@@ -1,6 +1,9 @@
 package usuario;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import actividad.Caracteristica;
@@ -25,6 +28,7 @@ public class Perfil {
 	private Caracteristica getCaracteristicaSegunDescripcion(Caracteristica caracteristica) {
 		return (Caracteristica) this.getCaracteristicasPreferidas().stream().
 				filter(c -> c.getDescripicion().equals(caracteristica.getDescripicion()));
+	
 	} 
 	
 	// ================= ADD METHODS ==================
