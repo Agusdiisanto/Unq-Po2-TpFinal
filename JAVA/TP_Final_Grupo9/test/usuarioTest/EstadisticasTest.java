@@ -10,7 +10,7 @@ import usuario.Estadisticas;
 public class EstadisticasTest {
 	private Estadisticas estadisticas1;
 	
-	@BeforeEach
+	@BeforeEach 
     public void setUp() {
 		estadisticas1 = new Estadisticas(10, 50, 10);
 	}

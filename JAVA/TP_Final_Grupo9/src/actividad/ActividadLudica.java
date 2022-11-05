@@ -1,11 +1,11 @@
 package actividad;
 
 
-public abstract class ActividadLudica {
+public class ActividadLudica {
 	
 	public boolean esDesafio() {
 		return false;
 	}
 
-	// ¿Que mas debe haber en la clase abstracta? 
+	// ¿Que mas debe haber en la clase abstracta? -- Fijarse
 }

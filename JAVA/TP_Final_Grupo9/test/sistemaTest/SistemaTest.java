@@ -27,10 +27,7 @@ public class SistemaTest {
 	private Sistema  	  system;
 	private Proyecto 	  proyecto1;
 	private Proyecto 	  proyecto2;
-	private Proyecto 	  proyecto3;
 	private Usuario  	  usuario1;
-	private Usuario  	  usuario2;
-	private Usuario  	  usuario3;
 	private RecomendacionSegunPreferencias estrategiaDeRecomendacion1;
 	private Desafio 	  desafio1;
 	private Desafio 	  desafio2;
@@ -39,23 +36,18 @@ public class SistemaTest {
 	private Set<Desafio>  desafios2;
 	private ArrayList<Desafio> desafios3;
 	private Perfil perfil1;
-	private AplicacionMovil aplicacion1;
 	private Caracteristica caracteristica1;
 	
 	@BeforeEach
 	public void setUp() {
 		proyecto1 = mock(Proyecto.class);
 		proyecto2 = mock(Proyecto.class);
-		proyecto3 = mock(Proyecto.class);
 		usuario1  = mock(Usuario.class);
-		usuario2  = mock(Usuario.class);
-		usuario3  = mock(Usuario.class);
 		desafio1  = mock(Desafio.class);
 		perfil1  = mock(Perfil.class);
 		estrategiaDeRecomendacion1 = mock(RecomendacionSegunPreferencias.class); 
 
     	//perfil1			= new Perfil();
-    	aplicacion1		= new AplicacionMovil();
     	caracteristica1 = new Caracteristica("Carateristica1", 1);
 		desafios1 = new HashSet<Desafio>();
 		desafios2 = new HashSet<Desafio>();
@@ -103,7 +95,7 @@ public class SistemaTest {
 		desafios.add(desafio2);
 		desafios.add(desafio3);
 		
-		
+		 
 		when(usuario1.getEstrategia()).thenReturn(estrategiaDeRecomendacion1);
 		when(estrategiaDeRecomendacion1.quedarseConLosPrimeros(desafios3, 0)).thenReturn(desafios);
 		

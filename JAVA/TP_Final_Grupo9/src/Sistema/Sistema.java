@@ -2,11 +2,8 @@ package Sistema;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
 import actividad.Desafio;
-import filter.IFilter;
 import proyectos.Proyecto;
 import usuario.Usuario;
 
@@ -21,7 +18,7 @@ public class Sistema {
 	public ArrayList<Desafio> recomendarDesafiosAlUsuario(Usuario user) {
 		return user.getEstrategia().recomendarDesafiosAlUsuario(user, this.todosLosDesafios());
 	}
-
+ 
 	// ================== PRIVATE =====================
 	private ArrayList<Desafio> todosLosDesafios() {
 		ArrayList<Desafio> desafios = new ArrayList<Desafio>();
@@ -29,7 +26,7 @@ public class Sistema {
 			desafios.addAll(proyecto.getDesafios());
 		}
 		return desafios; 
-	}
+	} 
  
 	// ====================== CONTRUCTOR ======================
 	public Sistema() {

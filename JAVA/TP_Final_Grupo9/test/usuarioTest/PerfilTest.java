@@ -2,6 +2,8 @@ package usuarioTest;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,20 +14,20 @@ import usuario.RecomendacionSegunFavoritos;
 import usuario.RecomendacionSegunPreferencias;
 
 public class PerfilTest {
-	private String 					  		gusto1;
+	
 	private Caracteristica			  		caracteristica1;
-	private String					  		comportamiento1;
 	private RecomendacionSegunPreferencias	estategiaDeRecomedacion1;
 	private RecomendacionSegunFavoritos		estategiaDeRecomedacion2;
 	private Perfil							perfil;
+	private Caracteristica caracteristica2;
 	
 	@BeforeEach
     public void setUp() {
-		gusto1					 = "Gusto1";
-		caracteristica1			 = new Caracteristica("Botánica", 3);
-		comportamiento1			 = "Caminar";
-		estategiaDeRecomedacion1 = new RecomendacionSegunPreferencias();
-		estategiaDeRecomedacion2 = new RecomendacionSegunFavoritos();
+		
+		caracteristica1			 = mock(Caracteristica.class);
+		caracteristica2          = mock(Caracteristica.class);
+		estategiaDeRecomedacion1 = mock(RecomendacionSegunPreferencias.class);
+		estategiaDeRecomedacion2 = mock(RecomendacionSegunFavoritos.class);
 		perfil					 = new Perfil();
 	}
 	  
@@ -36,17 +38,17 @@ public class PerfilTest {
 	
 	@Test
     public void test02_unPerfilTieneGustos() {
-		perfil.agregarGusto(gusto1);
+		perfil.agregarGusto("Futbol");
 		assertEquals(perfil.getGustos().size(), 1);
-		assertTrue(perfil.getGustos().contains(gusto1));
+		assertTrue(perfil.getGustos().contains("Futbol"));
     }
 	
 	@Test
     public void test03_unPerfilNoTieneGustosRepetidos() {
-		perfil.agregarGusto(gusto1);
-		perfil.agregarGusto(gusto1);
+		perfil.agregarGusto("Futbol");
+		perfil.agregarGusto("Futbol");
 		assertEquals(perfil.getGustos().size(), 1);
-		assertTrue(perfil.getGustos().contains(gusto1));
+		assertTrue(perfil.getGustos().contains("Futbol"));
     }
 	
 	@Test
@@ -76,17 +78,17 @@ public class PerfilTest {
 	
 	@Test
     public void test08_unPerfilTieneComportamientos() {
-		perfil.agregarComportamiento(comportamiento1);
+		perfil.agregarComportamiento("Caminar");
 		assertEquals(perfil.getComportamientos().size(), 1);
-		assertTrue(perfil.getComportamientos().contains(comportamiento1));
+		assertTrue(perfil.getComportamientos().contains("Caminar"));
     }
 	
 	@Test
     public void test09_unPerfilNoTieneComportamientosRepetidos() {
-		perfil.agregarComportamiento(comportamiento1);
-		perfil.agregarComportamiento(comportamiento1);
+		perfil.agregarComportamiento("Caminar");
+		perfil.agregarComportamiento("Caminar");
 		assertEquals(perfil.getComportamientos().size(), 1);
-		assertTrue(perfil.getComportamientos().contains(comportamiento1));
+		assertTrue(perfil.getComportamientos().contains("Caminar"));
     }
 
 	@Test
@@ -103,17 +105,44 @@ public class PerfilTest {
 	
 	@Test
     public void test12_unPerfilMacheaCaracteristicasSegunDescripcion() {
+		
+		when(caracteristica1.getDescripicion()).thenReturn("Botánica");
+		when(caracteristica1.getAfinidad()).thenReturn(0.5);
+		
 		perfil.agregarCaracteristicaPreferida(caracteristica1);
 		assertTrue(perfil.getCaracteristicasPreferidas().contains(caracteristica1));
 		assertTrue(perfil.contieneCaracteristicaConDescripcion("Botánica"));
     }
 	
-	// NO FUNCIONA, A CHEQUEAR LUEGO
+	
 	@Test
     public void test13_unPerfilCalculaLaAfinidadConUnaCaracteristica() {
+		
+		when(caracteristica1.getDescripicion()).thenReturn("Caminar");
+		when(caracteristica1.getAfinidad()).thenReturn(0.5);
+		
+		when(caracteristica2.getDescripicion()).thenReturn("Caminar");
+		when(caracteristica2.getAfinidad()).thenReturn(100.5);
+		
+		perfil.agregarCaracteristicaPreferida(caracteristica2);
 		perfil.agregarCaracteristicaPreferida(caracteristica1);
-		// assertTrue(perfil.getCaracteristicasPreferidas().contains(caracteristica1));
-		// assertTrue(perfil.afinidadConCaracteristica(caracteristica1) == 0);
-		// assertEquals(perfil.afinidadConCaracteristica(caracteristica1), 0);
+		
+		assertEquals(perfil.afinidadConCaracteristica(caracteristica1), 100);	
     }
+	
+	
+	/*
+	 * 
+	 *  ESTOS MENSAJES FALTAN 
+				public double afinidadConCaracteristica(Caracteristica caracteristica) {
+					return Math.abs(this.getCaracteristicaSegunDescripcion(caracteristica).getAfinidad() - caracteristica.getAfinidad());
+				}
+			 
+				private Caracteristica getCaracteristicaSegunDescripcion(Caracteristica caracteristica) {
+					return (Caracteristica) this.getCaracteristicasPreferidas().stream().
+							filter(c -> c.getDescripicion().equals(caracteristica.getDescripicion()));
+				}
+	*/
+	
+	
 }

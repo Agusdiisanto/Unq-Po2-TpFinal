@@ -33,7 +33,7 @@ class RecomendacionSegunFavoritosTest {
 		perfil1				= new Perfil();
 		desafios1.add(desafio1);
 		desafios1.add(desafio2);
-	}
+	} 
 
 	@Test
 	public void test01_unaEstrategiaRecomiendaDesafiosAUnUsuario() {

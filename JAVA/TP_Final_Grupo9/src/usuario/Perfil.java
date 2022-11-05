@@ -21,11 +21,11 @@ public class Perfil {
 	public double afinidadConCaracteristica(Caracteristica caracteristica) {
 		return Math.abs(this.getCaracteristicaSegunDescripcion(caracteristica).getAfinidad() - caracteristica.getAfinidad());
 	}
- 
+	
 	private Caracteristica getCaracteristicaSegunDescripcion(Caracteristica caracteristica) {
 		return (Caracteristica) this.getCaracteristicasPreferidas().stream().
 				filter(c -> c.getDescripicion().equals(caracteristica.getDescripicion()));
-	}
+	} 
 	
 	// ================= ADD METHODS ==================
 	public void agregarGusto(String gusto){

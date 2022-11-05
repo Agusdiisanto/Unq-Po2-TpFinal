@@ -24,7 +24,7 @@ public class RestriccionTemporalTest {
 	public void test01_unaRestriccionConoceLaFechaDeInicio() {
 		assertEquals(LocalDateTime.of(2022, 5, 10, 21, 30), restriccion.getFechaDeInicio());
 	}
-	
+	 
 	@Test
 	public void test02_unaRestriccionConoceLaFechaDeFin() {
 		assertEquals(LocalDateTime.of(2022, 6, 10, 23, 59), restriccion.getFechaDeCierre());

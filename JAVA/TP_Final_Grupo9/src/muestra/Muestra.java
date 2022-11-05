@@ -39,7 +39,7 @@ public class Muestra {
 	// ============== GETTERS & SETTERS ==============
 	public Set<Caracteristica> getCaracteristicas() {
 		return caracteristicas;
-	}
+	} 
 	public Usuario getUsuarioQueLaRecolecto() {
 		return usuarioQueLaRecolecto;
 	}

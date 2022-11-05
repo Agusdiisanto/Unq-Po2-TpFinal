@@ -3,7 +3,6 @@ package actividad;
 import java.time.LocalDateTime;
 
 public class RestriccionTemporal {
-	private Etapa etapa;
 	private LocalDateTime fechaDeInicio;
 	private LocalDateTime fechaDeCierre;
 
@@ -15,7 +14,7 @@ public class RestriccionTemporal {
 	public RestriccionTemporal(LocalDateTime fechaDeInicio, LocalDateTime fechaDeCierre) {
 		this.fechaDeInicio = fechaDeInicio;
 		this.fechaDeCierre = fechaDeCierre;
-	}
+	} 
 	
 	// ============== GETTERS & SETTERS ==============
 	public LocalDateTime getFechaDeInicio() {
@@ -23,11 +22,5 @@ public class RestriccionTemporal {
 	}
 	public LocalDateTime getFechaDeCierre() {
 		return fechaDeCierre;
-	}
-	public Etapa getEtapa() {
-		return etapa;
-	}
-	public void setEtapa(Etapa etapa) {
-		this.etapa = etapa;
 	}
 }
