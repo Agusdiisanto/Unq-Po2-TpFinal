@@ -16,20 +16,32 @@ public class Perfil {
 	private EstrategiaDeRecomendacion tipoDeRecomendacionPreferido;
 
 	// =================== METHODS ====================
-	
 	public boolean contieneCaracteristicaConDescripcion(String s) {
 		return this.getCaracteristicasPreferidas().stream().anyMatch(c -> c.getDescripicion().equals(s));
 	}
 
 	public double afinidadConCaracteristica(Caracteristica caracteristica) {
-		return Math.abs(this.getCaracteristicaSegunDescripcion(caracteristica).getAfinidad() - caracteristica.getAfinidad());
+		return !contieneCaracteristicaConDescripcion(caracteristica.getDescripicion()) ? 0 :
+				Math.abs(this.getCaracteristicaSegunDescripcion(caracteristica.getDescripicion()).getAfinidad() - caracteristica.getAfinidad());
 	}
 	
+<<<<<<< HEAD
 	private Caracteristica getCaracteristicaSegunDescripcion(Caracteristica caracteristica) {
 		return (Caracteristica) this.getCaracteristicasPreferidas().stream().
 				filter(c -> c.getDescripicion().equals(caracteristica.getDescripicion()));
 	
 	} 
+=======
+	private Caracteristica getCaracteristicaSegunDescripcion(String descipcion) {
+		Caracteristica caracteristicaEncontrada = null;
+		for (Caracteristica caracteristica : this.getCaracteristicasPreferidas()) {
+			if (caracteristica.getDescripicion() == descipcion) {
+				caracteristicaEncontrada = caracteristica;
+			}
+		}
+		return caracteristicaEncontrada;
+	}
+>>>>>>> 4aed254f681cebb4071de914724ba2020fe492f1
 	
 	// ================= ADD METHODS ==================
 	public void agregarGusto(String gusto){
