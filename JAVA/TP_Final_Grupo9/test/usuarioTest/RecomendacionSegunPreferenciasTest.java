@@ -1,6 +1,10 @@
 package usuarioTest;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 
@@ -16,7 +20,7 @@ import usuario.Usuario;
 class RecomendacionSegunPreferenciasTest {
 	private RecomendacionSegunPreferencias tipoDeRecomendacion;
 	private Usuario						   usuario1;
-	private ArrayList<Desafio>			   desafios1;
+	private ArrayList<Desafio>			   listaDeDesafios;
 	private Desafio						   desafio1;
 	private Desafio						   desafio2;
 	private AplicacionMovil				   app1;
@@ -26,12 +30,12 @@ class RecomendacionSegunPreferenciasTest {
 	public void setUp() {
 		tipoDeRecomendacion = new RecomendacionSegunPreferencias();
 		usuario1			= new Usuario("Agus", app1, perfil1);
-		desafios1			= new ArrayList<Desafio>();
-		desafio1			= new Desafio(null, null, 5, null, 0);
-		desafio2			= new Desafio(null, null, 5, null, 0);
-		app1				= new AplicacionMovil();
-		perfil1				= new Perfil();
-		desafios1.add(desafio1);
+		listaDeDesafios		= new ArrayList<Desafio>();
+		desafio1			= mock(Desafio.class);
+		desafio2			= mock(Desafio.class);
+		app1				= mock(AplicacionMovil.class);
+		perfil1				= mock(Perfil.class);
+		listaDeDesafios.add(desafio1);
 		//desafios1.add(desafio2);
 	}
 
@@ -40,20 +44,20 @@ class RecomendacionSegunPreferenciasTest {
 		//assertTrue(tipoDeRecomendacion.recomendarDesafiosAlUsuario(usuario1, desafios1).contains(desafio1));
 		//assertTrue(tipoDeRecomendacion.recomendarDesafiosAlUsuario(usuario1, desafios1).contains(desafio2));
 		//assertEquals(tipoDeRecomendacion.recomendarDesafiosAlUsuario(usuario1, desafios1), desafio1);
-		assertEquals(tipoDeRecomendacion.primerosN(desafios1, 2), desafios1);
+		assertEquals(tipoDeRecomendacion.primerosN(listaDeDesafios, 2), listaDeDesafios);
 	}
 
 	@Test
 	void test02() {
-		assertTrue(tipoDeRecomendacion.desafiosRecomendadosPara(usuario1, desafios1).contains(desafio1));
+		assertTrue(tipoDeRecomendacion.desafiosRecomendadosPara(usuario1, listaDeDesafios).contains(desafio1));
 		//assertTrue(tipoDeRecomendacion.recomendarDesafiosAlUsuario(usuario1, desafios1).contains(desafio2));
 	}
 
 	@Test
 	void test03() {
-		desafios1.add(desafio2);
-		assertTrue(tipoDeRecomendacion.ordenarDesafiosSegunCoincidenciaPara2(usuario1, desafios1).contains(desafio2));
-		assertEquals(tipoDeRecomendacion.desafioConMayorCoincidenciaPara(usuario1, desafios1), desafio1);
+		//listaDeDesafios.add(desafio2);
+		assertTrue(tipoDeRecomendacion.ordenarDesafiosSegunCoincidenciaPara2(usuario1, listaDeDesafios).contains(desafio1));
+		//assertTrue(tipoDeRecomendacion.ordenarDesafiosSegunCoincidenciaPara2(usuario1, listaDeDesafios).contains(desafio2));
+		assertEquals(tipoDeRecomendacion.desafioConMayorCoincidenciaPara(usuario1, listaDeDesafios), desafio1);
 	}
-
 }
