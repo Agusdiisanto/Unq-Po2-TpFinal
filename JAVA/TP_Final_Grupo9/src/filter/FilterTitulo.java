@@ -1,27 +1,24 @@
 package filter;
 
-import java.util.ArrayList;
-import java.util.regex.Pattern;
+import java.util.List;
 import java.util.stream.Collectors;
 
+import proyectos.Proyecto;
 
-public class FilterTitulo extends Filter {
+
+public class FilterTitulo implements IFilter {
 	
-	private String filterTitulo;
-	private Pattern patron;
+	private String tituloBuscado;
 	
-	public FilterTitulo(String filterTitulo) {
-		this.patron = Pattern.compile(filterTitulo);
+	public FilterTitulo(String tituloBuscado) {
+		this.tituloBuscado= tituloBuscado;
 	}
 
-
 	@Override
-	public ArrayList<IFilter> verificar (ArrayList<IFilter> list) {
-		ArrayList <IFilter> iFilter = new ArrayList<IFilter>();
-		
-		return (ArrayList<IFilter>) iFilter.stream().
-				filter(f -> patron.matcher(f.getNombre()).matches()).
-				collect(Collectors.toList());
+	public List<Proyecto> filter(List<Proyecto> proyectos) {
+		return proyectos.stream().filter(proyecto ->proyecto.
+						 tieneElTitulo(this.tituloBuscado)).
+				         collect(Collectors.toList());
 	}
  
 }

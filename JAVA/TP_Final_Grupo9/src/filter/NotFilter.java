@@ -6,24 +6,23 @@ import java.util.List;
 import proyectos.Proyecto;
 
 public class NotFilter extends Filter{
-	private Filter filter;
-
 	
-	public NotFilter (Filter filter) {
-		this.filter = filter;
+	public NotFilter() {
+		this.filtros = new ArrayList<IFilter>();
 	}
 
 	@Override
-	public ArrayList<IFilter> verificar(ArrayList<IFilter> list) {
+	public List<Proyecto> filter(List<Proyecto> proyectos) {
 		
-		ArrayList <IFilter> iFilter = this.filter.verificar(list);
+		List <Proyecto>resultados= proyectos;
+		for(IFilter iFilters : this.getFiltros()) {
+			resultados = iFilters.filter(resultados);
+			resultados.removeAll(proyectos);
+		}
 		
-		ArrayList <IFilter> iFilter1 = list;
-		
-		iFilter.removeAll(iFilter1);
-		
-		return iFilter;
-		
+		return resultados;
 	}
+
 	
+
 }

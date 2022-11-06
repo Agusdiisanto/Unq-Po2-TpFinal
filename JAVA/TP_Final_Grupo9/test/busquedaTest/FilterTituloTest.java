@@ -1,22 +1,15 @@
 package busquedaTest;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
 import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import actividad.Caracteristica;
-import filter.AndFilter;
 import filter.Filter;
 import filter.FilterTitulo;
 import filter.IFilter;
-import filter.OrFilter;
 import proyectos.Proyecto;
 
 public class FilterTituloTest {
@@ -47,6 +40,7 @@ public class FilterTituloTest {
 	lista1.add(proyecto1);
 	lista1.add(proyecto2);
 	lista1.add(proyecto3);
+	lista2.add(proyecto1);
 }
 	
 	@Test 
@@ -54,10 +48,17 @@ public class FilterTituloTest {
 
 		filter1 = new FilterTitulo("Proyecto1");
 		
+		
 		assertTrue(lista2.equals(filter1.verificar(lista1)));
 	}
 	
-	
+	@Test
+	public void testTwo() {
+		filter1 = new FilterTitulo("Proyecto2");
+		
+		assertFalse(lista2.equals(filter1.verificar(lista1)));
+	}
 	
 	
 }
+	

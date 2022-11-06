@@ -1,13 +1,12 @@
 package filter;
 
-import java.util.Set;
+import java.util.List;
+
+import proyectos.Proyecto;
 
 
 public interface IFilter {
 
-	
-	public String getNombre();
-	
-	public Set <String> getCategorias();
+	public List <Proyecto> filter(List<Proyecto> proyectos);
 }
 

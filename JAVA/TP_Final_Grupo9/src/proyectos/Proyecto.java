@@ -6,12 +6,11 @@ import java.util.Set;
 import actividad.ActividadLudica;
 import actividad.Caracteristica;
 import actividad.Desafio;
-import filter.IFilter;
 import muestra.Muestra;
 import usuario.IParticipante;
-import usuario.Usuario;
 
-public class Proyecto implements IFilter {
+
+public class Proyecto {
 	private String				 nombreDelProyecto;
 	private String 				 descripcion;
 	private Set<String> 		 categorias;
@@ -123,5 +122,9 @@ public class Proyecto implements IFilter {
 	}
 	public Set<Caracteristica> getCaracteristicasDeInteres() {
 		return caracteristicasDeInteres;
+	}
+
+	public Boolean tieneElTitulo(String tituloBuscado) {
+		return this.getNombre().equals(tituloBuscado);
 	}
 }

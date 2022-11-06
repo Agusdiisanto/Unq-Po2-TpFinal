@@ -1,6 +1,8 @@
 package busquedaTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,9 @@ import org.junit.jupiter.api.Test;
 
 import actividad.Caracteristica;
 import filter.AndFilter;
+import filter.Filter;
 import filter.FilterTitulo;
+import filter.IFilter;
 import filter.OrFilter;
 import proyectos.Proyecto;
 
@@ -20,7 +24,8 @@ public class OrFilterTest {
 	private Proyecto proyecto2;
 	private Proyecto proyecto3;
 	
-	private List <Proyecto>  todosLosProyectos;
+	private List lista1;
+	private List lista2;
 	
 	private Caracteristica caracteristica1;
 	private Caracteristica caracteristica2;
@@ -30,45 +35,43 @@ public class OrFilterTest {
 	private FilterTitulo filterTitulo1;
 	private FilterTitulo filterTitulo2;
 	private OrFilter orFilter;
+	private Filter filter1;
+	private Filter filter2;
+	private Filter orFilter;
 	
 	
 	@BeforeEach
 	public void setUp() {
 		
-		todosLosProyectos = new ArrayList<Proyecto>();
-		proyecto1 = new Proyecto("ProyectoNueve","GrupoNueve");
-		proyecto2 = new Proyecto("ProyectoDiez","GrupoDiez");
-		proyecto3 = new Proyecto("ProyectoOcho","Ocho");
-		todosLosProyectos.add(proyecto1);
-		todosLosProyectos.add(proyecto2);
-		todosLosProyectos.add(proyecto3);
-		texto1 = "ProyectoNueve";
-		texto2 = "ProyectoDiez";
-		texto3 = "Texto3";
+		   lista1= new ArrayList <IFilter>();
+		   lista2= new ArrayList <IFilter>();
+			proyecto1 = mock(Proyecto.class);
+			proyecto2 = mock(Proyecto.class);
+			proyecto3 = mock(Proyecto.class);
+			
+
+			when(proyecto1.getNombre()).thenReturn("Proyecto1");
+			when(proyecto2.getNombre()).thenReturn("Proyecto2");
+			when(proyecto3.getNombre()).thenReturn("Proyecto3");
+			lista1.add(proyecto1);
+			lista1.add(proyecto2);
+			lista1.add(proyecto3);
+			lista2.add(proyecto1);
+		}
+			
 		
-		
-		
-		filterTitulo1 = new FilterTitulo(texto1);
-		filterTitulo2 = new FilterTitulo(texto2);
-		
-		
-		orFilter = new OrFilter(filterTitulo1, filterTitulo2);
-		
-	}
 	
 	
 	@Test
 	public void test01() {
 		
-		List <Proyecto> proyectos = new ArrayList <Proyecto>();
-		proyectos.add(proyecto1);
-		proyectos.add(proyecto2);
-		proyectos.add(proyecto3);
-		
-		List <Proyecto> proyectosBuscados = orFilter.buscarProyecto(todosLosProyectos);
-		
-		assertEquals(proyectos, proyectosBuscados);
-	}
 	
+		filter1  = new FilterTitulo("Proyecto1");
+		filter2  = new FilterTitulo("Proyecto2");
+		orFilter = new OrFilter(filter1, filter2);
+		
+		assertTrue(lista2.equals(orFilter.verificar(lista1)));
+		
+	}
 
 }
