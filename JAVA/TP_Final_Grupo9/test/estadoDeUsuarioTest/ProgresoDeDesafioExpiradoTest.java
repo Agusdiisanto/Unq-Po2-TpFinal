@@ -69,4 +69,9 @@ public class ProgresoDeDesafioExpiradoTest {
 		
 		assertFalse(expirado.esDesafioEnCurso(progresoActual,fecha));
 	}
+	
+	@Test
+	public void test05_unProgresoExpiradoIndicaSiElDesafioEstaEnCurso() {
+		assertFalse(expirado.completoElDesafio(progresoActual));
+	}
 }
