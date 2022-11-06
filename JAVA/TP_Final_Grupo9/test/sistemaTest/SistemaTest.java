@@ -97,7 +97,7 @@ public class SistemaTest {
 		
 		 
 		when(usuario1.getEstrategia()).thenReturn(estrategiaDeRecomendacion1);
-		when(estrategiaDeRecomendacion1.quedarseConLosPrimeros(desafios3, 0)).thenReturn(desafios);
+		when(estrategiaDeRecomendacion1.primerosN(desafios3, 0)).thenReturn(desafios);
 		
 		system.agregarProyecto(proyecto1);
 		system.agregarProyecto(proyecto2);
