@@ -30,7 +30,7 @@ public class ProgresoDesafio {
 		return this.getEstado().completoElDesafio(this);
 	}
 	
-	public void sumarPuntajeAParticipante() throws Exception {
+	public void sumarPuntajeAParticipante(){
 		this.incrementarPuntajeEnUno();
 	}
  
