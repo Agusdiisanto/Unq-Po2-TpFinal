@@ -26,10 +26,9 @@ public abstract class EstrategiaDeRecomendacion {
 	// ================== PRIVATE =====================
 	public ArrayList<Desafio> ordenarDesafiosSegunCoincidenciaPara(Usuario usuario, ArrayList<Desafio> desafios) {
 		ArrayList<Desafio> desafiosOrdenados = new ArrayList<Desafio>();
-		ArrayList<Desafio> desafiosAOrdenar  = desafios;
-		while (!desafiosAOrdenar.isEmpty()) {
-			desafiosOrdenados.add(this.desafioConMayorCoincidenciaPara(usuario, desafiosAOrdenar));
-			desafiosAOrdenar.remove(this.desafioConMayorCoincidenciaPara(usuario, desafiosAOrdenar));
+		while (!desafios.isEmpty()) {
+			desafiosOrdenados.add(this.desafioConMayorCoincidenciaPara(usuario, desafios));
+			desafios.remove(this.desafioConMayorCoincidenciaPara(usuario, desafios));
 		}
 		return desafiosOrdenados;
 	}

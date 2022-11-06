@@ -26,4 +26,3 @@ public class EstadoDeProgreso implements IEstadoDelProgreso {
 	@Override
 	public void verificarSiCompletoElDesafio(ProgresoDeDesafio progreso) {}
 }
- 
