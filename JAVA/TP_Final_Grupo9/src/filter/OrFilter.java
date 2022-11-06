@@ -14,18 +14,20 @@ public class OrFilter extends Filter {
 
 	@Override
 	public List<Proyecto> filter(List<Proyecto> proyectos) {
-
 		List <Proyecto> resultados = new ArrayList<Proyecto>();
-		
-		for(IFilter iFilter : this.getFiltros()) {
-			List <Proyecto> newest = iFilter.filter(proyectos).
-									stream().
+		for (IFilter iFilter : this.getFiltros()) {
+			List <Proyecto> newP = iFilter.filter(proyectos).stream().
 									filter(proyecto -> !resultados.contains(proyecto)).
 									collect(Collectors.toList());
 			
-		
-	   resultados.addAll(newest);
+			resultados.addAll(newP);
+			
+		}
+
+		return resultados;
 	}
-	return	resultados;
+
+	
+
 }
-}
+	

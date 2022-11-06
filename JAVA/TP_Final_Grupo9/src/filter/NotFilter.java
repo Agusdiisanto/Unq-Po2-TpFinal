@@ -2,6 +2,7 @@ package filter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import proyectos.Proyecto;
 
@@ -11,18 +12,9 @@ public class NotFilter extends Filter{
 		this.filtros = new ArrayList<IFilter>();
 	}
 
-	@Override
-	public List<Proyecto> filter(List<Proyecto> proyectos) {
-		
-		List <Proyecto>resultados= proyectos;
-		for(IFilter iFilters : this.getFiltros()) {
-			resultados = iFilters.filter(resultados);
-			resultados.removeAll(proyectos);
-		}
-		
-		return resultados;
-	}
-
 	
+	
+	public List<Proyecto> filter(List<Proyecto> proyectos) {
 
+		List <Proyecto> filters = filtros
 }

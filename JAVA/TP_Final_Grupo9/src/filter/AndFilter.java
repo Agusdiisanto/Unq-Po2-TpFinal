@@ -20,7 +20,7 @@ public class AndFilter extends Filter{
 		for (IFilter filtros : this.getFiltros()) {
 			resultados= filtros.filter(resultados);
 		}
-		return null;
+		return resultados;
 	}
 	
 
