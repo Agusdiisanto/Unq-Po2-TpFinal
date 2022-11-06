@@ -12,7 +12,7 @@ import actividad.Desafio;
 import java.util.Set;
 
 import estadoDeUsuario.ProgresoDeDesafioEnCurso;
-import estadoDeUsuario.ProgresoDesafio;
+import estadoDeUsuario.ProgresoDeDesafio;
 import muestra.Muestra;
 import proyectos.Proyecto;
 
@@ -23,7 +23,7 @@ public class Usuario implements IParticipante{
 	private Set<Proyecto> 		  	   proyectosEnCurso;
 	private Perfil 				  	   perfil;   // Aca tenes las recomendaciones
 	private Map<Desafio, Estadisticas> desafiosCompletados;
-	private Set<ProgresoDesafio>  	   desafiosEnCurso;
+	private Set<ProgresoDeDesafio>  	   desafiosEnCurso;
 	
 	// ================== METHODS USUARIO ========================
 	
@@ -68,7 +68,7 @@ public class Usuario implements IParticipante{
 	}
 	
 	public void recolectarMuestraParaLosDesafios(Muestra muestra, LocalDateTime fecha) throws Exception {
-		for (ProgresoDesafio progresoDesafio : desafiosEnCurso) {
+		for (ProgresoDeDesafio progresoDesafio : desafiosEnCurso) {
 			progresoDesafio.recolectarMuestra(this, muestra,fecha);
 		}
 	}
@@ -105,7 +105,7 @@ public class Usuario implements IParticipante{
 	// ================== PRIVATE =====================
 	
 	private void agregarNuevoDesafioEnCurso(Desafio desafio) {
-		ProgresoDesafio progreso = new ProgresoDesafio(desafio, new ProgresoDeDesafioEnCurso());
+		ProgresoDeDesafio progreso = new ProgresoDeDesafio(desafio, new ProgresoDeDesafioEnCurso());
 		this.getDesafiosEnCurso().add(progreso);
 	}
 	
@@ -116,7 +116,7 @@ public class Usuario implements IParticipante{
 		this.perfil 			 	= perfil;
 		this.proyectosEnCurso 	 	= new HashSet<Proyecto>();
 		this.desafiosCompletados 	= new HashMap<Desafio, Estadisticas>();
-		this.desafiosEnCurso        = new HashSet<ProgresoDesafio>();
+		this.desafiosEnCurso        = new HashSet<ProgresoDeDesafio>();
 	}
 
 	// ============== GETTERS & SETTERS ==============
@@ -137,7 +137,7 @@ public class Usuario implements IParticipante{
 	public Map<Desafio, Estadisticas> getDesafiosCompletados() {
 		return desafiosCompletados;
 	}
-	public Set<ProgresoDesafio> getDesafiosEnCurso() {
+	public Set<ProgresoDeDesafio> getDesafiosEnCurso() {
 		return desafiosEnCurso;
 	}
 	public void agregarNuevoProyectoEnCurso(Proyecto proyecto) {
@@ -151,7 +151,7 @@ public class Usuario implements IParticipante{
 		// TODO Auto-generated method stub
 		return this.getDesafiosCompletados().size();
 	}
-	public void agregarNuevoProgresoDeDesafio(ProgresoDesafio progreso) {
+	public void agregarNuevoProgresoDeDesafio(ProgresoDeDesafio progreso) {
 		this.getDesafiosEnCurso().add(progreso);
 	}
 	public Integer cantidadDeDesafiosEnCurso() {

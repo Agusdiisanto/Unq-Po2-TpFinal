@@ -6,49 +6,37 @@ import muestra.Muestra;
 public class ProgresoDeDesafioEnCurso extends EstadoDeProgreso{
 
 	@Override
-	public boolean esDesafioEnCurso(ProgresoDesafio progresoDesafio, LocalDateTime fecha) {
-		return progresoDesafio.getDesafioActual().estaDentroDeLaRestriccion(fecha); 
-	} 
-	  
+	public boolean esDesafioEnCurso(ProgresoDeDesafio progreso, LocalDateTime fecha) {
+		return progreso.getDesafioActual().estaDentroDeLaRestriccion(fecha); 
+	}
+	
 	@Override
-	public void recolectarMuestra(ProgresoDesafio progresoDesafio, Muestra muestra, LocalDateTime fecha) throws Exception {	
-		
-		if(this.esDesafioEnCurso(progresoDesafio,fecha) == false) {
-			progresoDesafio.setEstado(new ProgresoDeDesafioExpirado());
+	public void recolectarMuestra(ProgresoDeDesafio progreso, Muestra muestra, LocalDateTime fecha) throws Exception {
+		if (this.esDesafioEnCurso(progreso, fecha)) {
+			this.recolectarMuestraSiAunNoHaExpirado(progreso, muestra);	
 		}
 		else {
-			recolectarMuestraSiAunNoHaExpirado(progresoDesafio, muestra);	
+			progreso.setEstado(new ProgresoDeDesafioExpirado());
 		}
-	} 
-	
-	@Override
-	public boolean completoElDesafio(ProgresoDesafio progresoDesafio) {
-		return progresoDesafio.getPuntaje() == progresoDesafio.getDesafioActual().getCantidadDeMuestrasARecolectar();
 	}
 	
 	@Override
-	public void verificarSiCompletoElDesafio(ProgresoDesafio progreso) {
-		if(this.completoElDesafio(progreso)) {
+	public boolean completoElDesafio(ProgresoDeDesafio progreso) {
+		return progreso.getPuntaje() == progreso.getDesafioActual().getCantidadDeMuestrasARecolectar();
+	}
+	
+	@Override
+	public void verificarSiCompletoElDesafio(ProgresoDeDesafio progreso) {
+		if (this.completoElDesafio(progreso)) {
 			progreso.setEstado(new ProgresoDeDesafioTerminado());
 		}
-	} 
-	
-	
-	// ============================ PRIVATE METHODS ================================================
-	
-	private void recolectarMuestraSiAunNoHaExpirado(ProgresoDesafio progresoDesafio, Muestra muestra) throws Exception {
-		if (progresoDesafio.esUnaMuestraValida(muestra)) {
-			progresoDesafio.sumarPuntajeAParticipante();
-			this.verificarSiCompletoElDesafio(progresoDesafio);
-		}
 	}
 	
-	// ============================================================================================
-	
-	 
-	
-	
-	
-	
-	
+	// ============================ PRIVATE METHODS ============================
+	private void recolectarMuestraSiAunNoHaExpirado(ProgresoDeDesafio progreso, Muestra muestra) throws Exception {
+		if (progreso.esUnaMuestraValida(muestra)) {
+			progreso.sumarPuntajeAParticipante();
+			this.verificarSiCompletoElDesafio(progreso);
+		}
+	}
 }

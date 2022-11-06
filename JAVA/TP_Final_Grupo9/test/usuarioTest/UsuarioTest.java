@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 import actividad.Caracteristica;
 import actividad.Desafio;
 import actividad.Dificultad;
-import estadoDeUsuario.ProgresoDesafio;
+import estadoDeUsuario.ProgresoDeDesafio;
 import muestra.Muestra;
 import proyectos.Proyecto;
 import usuario.AplicacionMovil;
@@ -30,7 +30,7 @@ public class UsuarioTest {
 	private Usuario usuario;
 	private AplicacionMovil appMovil;
 	private Perfil perfil;
-	private ProgresoDesafio progreso;
+	private ProgresoDeDesafio progreso;
 	private Desafio desafio;
 	private Proyecto proyecto;
 	private Muestra muestra;
@@ -43,7 +43,7 @@ public class UsuarioTest {
 		proyecto = mock(Proyecto.class);
 		appMovil = mock(AplicacionMovil.class);
 		perfil = mock(Perfil.class);
-		progreso = mock(ProgresoDesafio.class);
+		progreso = mock(ProgresoDeDesafio.class);
 		desafio = mock(Desafio.class);
 		muestra = mock(Muestra.class);
 		desafio2 = mock(Desafio.class);

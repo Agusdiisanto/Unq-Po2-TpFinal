@@ -6,21 +6,13 @@ import actividad.Desafio;
 import muestra.Muestra;
 import usuario.IParticipante;
 
-public class ProgresoDesafio {
-	
+public class ProgresoDeDesafio {
 	private Desafio 		   desafioActual;
 	private IEstadoDelProgreso estado;
 	private int				   puntaje;
-	
-	// ================== COSTRUCTOR ==================
-	public ProgresoDesafio(Desafio desafioActual, IEstadoDelProgreso estado) {
-		this.desafioActual = desafioActual;
-		this.estado        = estado;
-	} 
  
 	// ================== METHODS ==================
 	public boolean esDesafioActual(LocalDateTime fecha) {
-		// TODO Auto-generated method stub 
 		return this.getEstado().esDesafioEnCurso(this, fecha);
 	}
 	 
@@ -45,13 +37,12 @@ public class ProgresoDesafio {
 	}
 	
 	public boolean recolectoAlmenosUnaMuestra() {
-		// TODO Auto-generated method stub
 		return this.getPuntaje() >= 1;
 	}
 	
 	public boolean esUnaMuestraValida(Muestra muestra) {
-		// TODO Auto-generated method stub
-		return estaLaMuestraDentroDelAreaDelDesafio(muestra) && estaLaMuestraDentroDeLaRestriccionDelDesafio(muestra);
+		return estaLaMuestraDentroDelAreaDelDesafio(muestra)
+			&& estaLaMuestraDentroDeLaRestriccionDelDesafio(muestra);
 	}
 	
 	
@@ -68,27 +59,30 @@ public class ProgresoDesafio {
 		return this.getDesafioActual().estaLaMuestraDentroDeLaRestriccion(muestra);
 	}
 	
+	// ================== COSTRUCTOR ==================
+	public ProgresoDeDesafio(Desafio desafioActual, IEstadoDelProgreso estado) {
+		this.setDesafioActual(desafioActual);
+		this.setEstado(estado);
+		this.setPuntaje(0);
+	}
+	
 	// ============== GETTERS & SETTERS ==============
 	public Desafio getDesafioActual() {
 		return desafioActual;
 	}
-
+	void setDesafioActual(Desafio desafioActual) {
+		this.desafioActual = desafioActual;
+	}
 	public IEstadoDelProgreso getEstado() {
 		return estado;
 	}
-	
-
 	public void setEstado(IEstadoDelProgreso estado) {
 		this.estado = estado;
 	}
-	
 	public int getPuntaje() {
 		return puntaje;
 	}
-
 	public void setPuntaje(int puntaje) {
 		this.puntaje = puntaje;
-	} 
- 
-	
+	}
 }

@@ -52,7 +52,7 @@ class RecomendacionSegunPreferenciasTest {
 	@Test
 	void test03() {
 		desafios1.add(desafio2);
-		assertTrue(tipoDeRecomendacion.ordenarDesafiosSegunCoincidenciaPara(usuario1, desafios1).contains(desafio1));
+		assertTrue(tipoDeRecomendacion.ordenarDesafiosSegunCoincidenciaPara2(usuario1, desafios1).contains(desafio2));
 		assertEquals(tipoDeRecomendacion.desafioConMayorCoincidenciaPara(usuario1, desafios1), desafio1);
 	}
 

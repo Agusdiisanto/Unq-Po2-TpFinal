@@ -8,20 +8,22 @@ import usuario.IParticipante;
 public class EstadoDeProgreso implements IEstadoDelProgreso {
 
 	@Override
-	public boolean esDesafioEnCurso(ProgresoDesafio progresoDesafio, LocalDateTime fecha) { return false;}
+	public boolean esDesafioEnCurso(ProgresoDeDesafio progresoDesafio, LocalDateTime fecha) {
+		return false;
+	}
 
 	@Override
-	public void recolectarMuestra(ProgresoDesafio progresoDesafio, Muestra muestra, LocalDateTime fecha) throws Exception {
-		
-	}
-	 
-	@Override
-	public void registrarDesafioCompletado(IParticipante participante, ProgresoDesafio progresoDesafio, int sastifaccion) {}
+	public void recolectarMuestra(ProgresoDeDesafio progresoDesafio, Muestra muestra, LocalDateTime fecha) throws Exception {}
 	
 	@Override
-	public boolean completoElDesafio(ProgresoDesafio progresoDesafio) {return false;}
+	public void registrarDesafioCompletado(IParticipante participante, ProgresoDeDesafio progresoDesafio, int sastifaccion) {}
+	
+	@Override
+	public boolean completoElDesafio(ProgresoDeDesafio progresoDesafio) {
+		return false;
+	}
 
 	@Override
-	public void verificarSiCompletoElDesafio(ProgresoDesafio progreso) {}
+	public void verificarSiCompletoElDesafio(ProgresoDeDesafio progreso) {}
 }
  
