@@ -1,5 +1,7 @@
 package estadoDeUsuario;
 
+import java.time.LocalDateTime;
+
 import actividad.Desafio;
 import muestra.Muestra;
 import usuario.IParticipante;
@@ -17,13 +19,13 @@ public class ProgresoDesafio {
 	} 
  
 	// ================== METHODS ==================
-	public boolean esDesafioActual() {
+	public boolean esDesafioActual(LocalDateTime fecha) {
 		// TODO Auto-generated method stub 
-		return this.getEstado().esDesafioEnCurso(this);
+		return this.getEstado().esDesafioEnCurso(this, fecha);
 	}
 	 
-	public void recolectarMuestra(IParticipante participante, Muestra muestra) throws Exception {
-		this.getEstado().recolectarMuestra(this,muestra);
+	public void recolectarMuestra(IParticipante participante, Muestra muestra , LocalDateTime fecha) throws Exception {
+		this.getEstado().recolectarMuestra(this,muestra, fecha);
 	}
 
 	public boolean completoElDesafio() {

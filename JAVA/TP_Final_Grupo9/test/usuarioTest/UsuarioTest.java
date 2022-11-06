@@ -9,18 +9,18 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import actividad.Caracteristica;
 import actividad.Desafio;
 import actividad.Dificultad;
-import actividadTest.DificultadTest;
 import estadoDeUsuario.ProgresoDesafio;
 import muestra.Muestra;
 import proyectos.Proyecto;
 import usuario.AplicacionMovil;
-import usuario.Estadisticas;
 import usuario.Perfil;
 import usuario.RecomendacionSegunPreferencias;
 import usuario.Usuario;
@@ -131,16 +131,22 @@ public class UsuarioTest {
 	
 	@Test
 	public void test08_UnUsuarioSabeCuandoEstaEnDesafioActualmente() {
+		
+		LocalDateTime fecha = LocalDateTime.now();
+		
 		usuario.agregarNuevoProgresoDeDesafio(progreso);
-		when(progreso.esDesafioActual()).thenReturn(true);
-		assertTrue(usuario.estaEnDesafioActualmente());
+		when(progreso.esDesafioActual(fecha)).thenReturn(true);
+		assertTrue(usuario.estaEnDesafioActualmente(fecha));
 	}
 	
 	@Test
 	public void test09_UnUsuarioSabeCuandoEstaEnDesafioActualmente() {
+		
+		LocalDateTime fecha = LocalDateTime.now();
+		
 		usuario.agregarNuevoProgresoDeDesafio(progreso);
-		when(progreso.esDesafioActual()).thenReturn(false);
-		assertFalse(usuario.estaEnDesafioActualmente());
+		when(progreso.esDesafioActual(fecha)).thenReturn(false);
+		assertFalse(usuario.estaEnDesafioActualmente(fecha));
 	}
 	
 	@Test
@@ -169,10 +175,12 @@ public class UsuarioTest {
 	@Test
 	public void test13_UnUsuarioPuedeRecolectarMuestrasParaDesafios() throws Exception {
 		
-		usuario.agregarNuevoProgresoDeDesafio(progreso);
-		usuario.recolectarMuestraParaLosDesafios(muestra);
+		LocalDateTime fecha = LocalDateTime.now();
 		
-		verify(progreso,times(1)).recolectarMuestra(usuario, muestra);
+		usuario.agregarNuevoProgresoDeDesafio(progreso);
+		usuario.recolectarMuestraParaLosDesafios(muestra,fecha);
+		
+		verify(progreso,times(1)).recolectarMuestra(usuario, muestra,fecha);
 	}
 	
 	@Test

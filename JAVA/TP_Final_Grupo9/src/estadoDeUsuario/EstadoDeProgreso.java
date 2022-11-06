@@ -1,15 +1,17 @@
 package estadoDeUsuario;
 
+import java.time.LocalDateTime;
+
 import muestra.Muestra;
 import usuario.IParticipante;
 
 public class EstadoDeProgreso implements IEstadoDelProgreso {
 
 	@Override
-	public boolean esDesafioEnCurso(ProgresoDesafio progresoDesafio) { return false;}
+	public boolean esDesafioEnCurso(ProgresoDesafio progresoDesafio, LocalDateTime fecha) { return false;}
 
 	@Override
-	public void recolectarMuestra(ProgresoDesafio progresoDesafio, Muestra muestra) throws Exception {
+	public void recolectarMuestra(ProgresoDesafio progresoDesafio, Muestra muestra, LocalDateTime fecha) throws Exception {
 		
 	}
 	 

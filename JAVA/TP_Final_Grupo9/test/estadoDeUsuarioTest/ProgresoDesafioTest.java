@@ -10,6 +10,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -57,22 +59,29 @@ public class ProgresoDesafioTest {
 	
 	@Test
 	public void test04_cuandoSeIniciaElProsesoDesafioEstaEnCurso() {
-		when(progresoEnCurso.esDesafioEnCurso(progreso)).thenReturn(true);
-		assertTrue(progreso.esDesafioActual());
-		verify(progresoEnCurso,only()).esDesafioEnCurso(progreso);
+		
+		LocalDateTime fecha = LocalDateTime.now();
+		
+		when(progresoEnCurso.esDesafioEnCurso(progreso,fecha)).thenReturn(true);
+		assertTrue(progreso.esDesafioActual(fecha));
+		verify(progresoEnCurso,only()).esDesafioEnCurso(progreso,fecha);
 	}
 	
 	@Test
 	public void test05_cuandoSeIniciaElProsesoDesafioNoEstaEnCurso() {
-		when(progresoEnCurso.esDesafioEnCurso(progreso)).thenReturn(false);
-		assertFalse(progreso.esDesafioActual());
-		verify(progresoEnCurso,only()).esDesafioEnCurso(progreso);
+		LocalDateTime fecha = LocalDateTime.now();
+		when(progresoEnCurso.esDesafioEnCurso(progreso,fecha)).thenReturn(false);
+		assertFalse(progreso.esDesafioActual(fecha));
+		verify(progresoEnCurso,only()).esDesafioEnCurso(progreso,fecha);
 	}
 	
 	@Test
 	public void test06_unProgresoDeDesafioSabeRecolectarMuestra() throws Exception {
-		progreso.recolectarMuestra(participante, muestra);
-		verify(progresoEnCurso,only()).recolectarMuestra(progreso, muestra);
+		
+		LocalDateTime fecha = LocalDateTime.now();
+		
+		progreso.recolectarMuestra(participante, muestra,fecha);
+		verify(progresoEnCurso,only()).recolectarMuestra(progreso, muestra,fecha);
 	}
 	
 	@Test

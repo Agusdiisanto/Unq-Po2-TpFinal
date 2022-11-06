@@ -1,5 +1,6 @@
 package usuario;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -66,9 +67,9 @@ public class Usuario implements IParticipante{
 		this.recolectarMuestraParaLosProyectos(muestra);
 	}
 	
-	public void recolectarMuestraParaLosDesafios(Muestra muestra) throws Exception {
+	public void recolectarMuestraParaLosDesafios(Muestra muestra, LocalDateTime fecha) throws Exception {
 		for (ProgresoDesafio progresoDesafio : desafiosEnCurso) {
-			progresoDesafio.recolectarMuestra(this, muestra);
+			progresoDesafio.recolectarMuestra(this, muestra,fecha);
 		}
 	}
 	
@@ -79,8 +80,8 @@ public class Usuario implements IParticipante{
 	}
 	
 	@Override
-	public boolean estaEnDesafioActualmente() {
-		return this.getDesafiosEnCurso().stream().anyMatch(p -> p.esDesafioActual());
+	public boolean estaEnDesafioActualmente(LocalDateTime fecha) {
+		return this.getDesafiosEnCurso().stream().anyMatch(p -> p.esDesafioActual(fecha));
 	}
 
 	@Override

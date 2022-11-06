@@ -6,14 +6,14 @@ import muestra.Muestra;
 public class ProgresoDeDesafioEnCurso extends EstadoDeProgreso{
 
 	@Override
-	public boolean esDesafioEnCurso(ProgresoDesafio progresoDesafio) {
-		return progresoDesafio.getDesafioActual().estaDentroDeLaRestriccion(LocalDateTime.now());
-	}
-	 
+	public boolean esDesafioEnCurso(ProgresoDesafio progresoDesafio, LocalDateTime fecha) {
+		return progresoDesafio.getDesafioActual().estaDentroDeLaRestriccion(fecha); 
+	} 
+	  
 	@Override
-	public void recolectarMuestra(ProgresoDesafio progresoDesafio, Muestra muestra) throws Exception {	
+	public void recolectarMuestra(ProgresoDesafio progresoDesafio, Muestra muestra, LocalDateTime fecha) throws Exception {	
 		
-		if(this.esDesafioEnCurso(progresoDesafio) == false) {
+		if(this.esDesafioEnCurso(progresoDesafio,fecha) == false) {
 			progresoDesafio.setEstado(new ProgresoDeDesafioExpirado());
 		}
 		else {

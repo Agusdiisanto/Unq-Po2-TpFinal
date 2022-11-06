@@ -1,5 +1,6 @@
 package usuario;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +16,7 @@ public class AplicacionMovil {
 		if(proyecto.tieneRegistradoAlUsuario(usuario) && proyecto.esMuestraDeInteres(muestra)) {
 			this.cargarMuestraEnAplicacion(muestra);
 			proyecto.agregarMuestra(muestra);
-			usuario.recolectarMuestraParaLosDesafios(muestra);
+			usuario.recolectarMuestraParaLosDesafios(muestra, LocalDateTime.now());   // Revisar logica  (Fecha)
 		}
 	}
 
