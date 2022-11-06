@@ -74,5 +74,9 @@ public class AndFilterTest {
 		assertEquals(proyectos1.size(), 1);
 	
 }
+	@Test
+	public void test02() {
+		
+	}
 
 }
