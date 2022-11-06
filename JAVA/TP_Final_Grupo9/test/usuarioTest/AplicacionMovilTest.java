@@ -18,28 +18,25 @@ import usuario.Usuario;
 public class AplicacionMovilTest {
 		
 	AplicacionMovil app;
-	Muestra muestra;
-	Proyecto proyecto;
-	Usuario usuario;
+	Muestra			muestra;
+	Proyecto		proyecto;
+	Usuario			usuario;
 
-	
-	
 	@BeforeEach
 	public void setUp() {
-		muestra = mock(Muestra.class);
+		muestra	 = mock(Muestra.class);
 		proyecto = mock(Proyecto.class);
-		app = new AplicacionMovil();
-		usuario = mock(Usuario.class);
+		app		 = new AplicacionMovil();
+		usuario	 = mock(Usuario.class);
 	}
 	
 	@Test
-	public void test01_UnaAplicacionCuandoSeCreaNoContieneMuestras() {
+	public void test01_UnaAplicacionNuevaNoTieneMuestras() {
 		assertTrue(app.getMuestras().isEmpty());
 	}
 	
 	@Test
-	public void test02_UnaAplicacionPuedeAgregarMuestras() {
-		
+	public void test02_UnaAplicacionTieneMuestras() {
 		app.cargarMuestraEnAplicacion(muestra);
 		
 		assertTrue(app.getMuestras().contains(muestra));
@@ -72,7 +69,6 @@ public class AplicacionMovilTest {
 	
 	@Test
 	public void test05_UnaAplicacionNoPuedeRecolectarLaMuestraSiEsDeInteresParaElProyectoPeroNoEstaRegistrado() throws Exception {
-		
 		when(proyecto.tieneRegistradoAlUsuario(usuario)).thenReturn(false); 
 		when(proyecto.esMuestraDeInteres(muestra)).thenReturn(true);
 		
@@ -90,6 +86,19 @@ public class AplicacionMovilTest {
 		app.recolectarMuestra(muestra,usuario,proyecto);
 
 		assertTrue(app.getMuestras().isEmpty());
+	}
+	
+	@Test
+	public void test07_UnaAplicacionNuevaNoTieneProyectos() {
+		assertTrue(app.getProyectos().isEmpty());
+	}
+	
+	@Test
+	public void test06_UnaAplicacionTieneProyectos() {
+		app.agregarProyecto(proyecto);
+		
+		assertTrue(app.getProyectos().contains(proyecto));
+		assertFalse(app.getProyectos().isEmpty());
 	}
 	
 }

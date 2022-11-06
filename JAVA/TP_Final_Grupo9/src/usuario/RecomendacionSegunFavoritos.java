@@ -9,11 +9,11 @@ public class RecomendacionSegunFavoritos extends EstrategiaDeRecomendacion {
 	// ======================== METHODS =========================
 	@Override 
 	public ArrayList<Desafio> recomendarDesafiosAlUsuario(Usuario user, ArrayList<Desafio> desafios) {
-		ArrayList<Desafio> desafiosAOrdenar = this.primerosN(desafiosRecomendadosPara(user,desafios),cantidadDeDesafiosASeleccionar());
+		ArrayList<Desafio> desafiosAOrdenar = this.primerosN(desafiosRecomendadosPara(user,desafios),cantidadASeleccionar());
 		ArrayList<Desafio> desafiosOrdenados = new ArrayList<Desafio>();
 		while (!desafiosAOrdenar.isEmpty()) {
 			desafiosOrdenados.add(desafioConMayorSimilitudPara(desafiosAOrdenar, user));
-			desafiosAOrdenar.remove(desafioConMayorSimilitudPara(desafiosAOrdenar, user));
+			//desafiosAOrdenar.remove(desafioConMayorSimilitudPara(desafiosAOrdenar, user));
 		}
 		return desafiosOrdenados;
 	}
@@ -32,7 +32,7 @@ public class RecomendacionSegunFavoritos extends EstrategiaDeRecomendacion {
 		return usuario.similitudConFavorito(desafio1) > usuario.similitudConFavorito(desafio2) ? desafio1 : desafio2;
 	}
 
-	private int cantidadDeDesafiosASeleccionar() {
+	private int cantidadASeleccionar() {
 		return 20;
 	}
 }

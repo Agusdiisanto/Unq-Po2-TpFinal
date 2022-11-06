@@ -16,7 +16,7 @@ public class Proyecto {
 	private Set<String> 		 categorias;
 	private Set<ActividadLudica> actividades;
 	private Set<Muestra> 		 muestrasRecolectadas;
-	private Set<IParticipante>   participantes; // SE PUEDE TYPEAR CON USUARIO?
+	private Set<IParticipante>   participantes; // SE PUEDE TYPAR CON USUARIO?
 	private Set<Caracteristica>  caracteristicasDeInteres;
 	
 	// ================== METHODS ==================
@@ -46,6 +46,10 @@ public class Proyecto {
 	
 	public boolean noContieneCategorias(Set<String> categorias) {
 		return !this.contieneCategorias(categorias);
+	}
+
+	public Boolean tieneElTitulo(String tituloBuscado) {
+		return this.getNombre().equals(tituloBuscado);
 	}
 
 	// ================ ADD METHODS =================
@@ -122,9 +126,5 @@ public class Proyecto {
 	}
 	public Set<Caracteristica> getCaracteristicasDeInteres() {
 		return caracteristicasDeInteres;
-	}
-
-	public Boolean tieneElTitulo(String tituloBuscado) {
-		return this.getNombre().equals(tituloBuscado);
 	}
 }
