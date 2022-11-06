@@ -1,6 +1,7 @@
 package usuarioTest;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ import usuario.Usuario;
 class RecomendacionSegunFavoritosTest {
 	private RecomendacionSegunFavoritos tipoDeRecomendacion;
 	private Usuario						usuario1;
-	private ArrayList<Desafio>			desafios1;
+	private ArrayList<Desafio>			listaDeDesafios;
 	private Desafio						desafio1;
 	private Desafio						desafio2;
 	private AplicacionMovil				app1;
@@ -25,18 +26,19 @@ class RecomendacionSegunFavoritosTest {
 	@BeforeEach
 	public void setUp() {
 		tipoDeRecomendacion = new RecomendacionSegunFavoritos();
-		usuario1			= new Usuario("Agus", app1, perfil1);
-		desafios1			= new ArrayList<Desafio>(); 
-		desafio1			= new Desafio(null, null, 5, null, 0);
-		desafio2			= new Desafio(null, null, 5, null, 0);
-		app1				= new AplicacionMovil();
-		perfil1				= new Perfil();
-		desafios1.add(desafio1);
-		desafios1.add(desafio2);
+		usuario1			= mock(Usuario.class);
+		listaDeDesafios		= new ArrayList<Desafio>(); 
+		desafio1			= mock(Desafio.class);
+		desafio2			= mock(Desafio.class);
+		app1				= mock(AplicacionMovil.class);
+		perfil1				= mock(Perfil.class);
+		listaDeDesafios.add(desafio1);
+		listaDeDesafios.add(desafio2);
 	}
 
 	@Test
-	public void test01_unaEstrategiaRecomiendaDesafiosAUnUsuario() {
-		assertEquals(tipoDeRecomendacion.recomendarDesafiosAlUsuario(usuario1, desafios1), desafios1);
+	void test04_unaEstrategiaRecomiendaDesafiosAUnUsuario() {
+		assertTrue(tipoDeRecomendacion.recomendarDesafiosAlUsuario(usuario1, listaDeDesafios).contains(desafio1));
+		//assertTrue(tipoDeRecomendacion.recomendarDesafiosAlUsuario(usuario1, desafios1).contains(desafio2));
 	}
 }

@@ -21,12 +21,6 @@ public class Perfil {
 		return !contieneCaracteristicaConDescripcion(caracteristica.getDescripicion()) ? 0 :
 				Math.abs(this.getCaracteristicaSegunDescripcion(caracteristica.getDescripicion()).getAfinidad() - caracteristica.getAfinidad());
 	}
-	
-	private Caracteristica getCaracteristicaSegunDescripcion(Caracteristica caracteristica) {
-		return (Caracteristica) this.getCaracteristicasPreferidas().stream().
-				filter(c -> c.getDescripicion().equals(caracteristica.getDescripicion()));
-	
-	} 
 
 	private Caracteristica getCaracteristicaSegunDescripcion(String descipcion) {
 		Caracteristica caracteristicaEncontrada = null;

@@ -26,27 +26,21 @@ public abstract class EstrategiaDeRecomendacion {
 	// ================== PRIVATE =====================
 	public ArrayList<Desafio> ordenarDesafiosSegunCoincidenciaPara(Usuario usuario, ArrayList<Desafio> desafios) {
 		ArrayList<Desafio> desafiosOrdenados = new ArrayList<Desafio>();
-		while (!desafios.isEmpty()) {
-			desafiosOrdenados.add(this.desafioConMayorCoincidenciaPara(usuario, desafios));
-			desafios.remove(this.desafioConMayorCoincidenciaPara(usuario, desafios));
-		}
-		return desafiosOrdenados;
-	}
-	
-	public ArrayList<Desafio> ordenarDesafiosSegunCoincidenciaPara2(Usuario usuario, ArrayList<Desafio> desafios) {
-		ArrayList<Desafio> desafiosOrdenados = new ArrayList<Desafio>();
-		if (!desafios.isEmpty()) {
-			desafiosOrdenados.add(this.desafioConMayorCoincidenciaPara(usuario, desafios));
-			desafios.remove(this.desafioConMayorCoincidenciaPara(usuario, desafios));
-			desafiosOrdenados.addAll(ordenarDesafiosSegunCoincidenciaPara2(usuario, desafios));
+		ArrayList<Desafio> desafiosAOrdenar  = desafios;
+		while (desafiosOrdenados.size() < desafiosAOrdenar.size()) {
+		//while (!desafiosAOrdenar.isEmpty()) {
+			desafiosOrdenados.add(this.desafioConMayorCoincidenciaPara(usuario, desafiosAOrdenar));
+			//desafiosAOrdenar.remove(this.desafioConMayorCoincidenciaPara(usuario, desafiosAOrdenar));
 		}
 		return desafiosOrdenados;
 	}
 
 	public Desafio desafioConMayorCoincidenciaPara(Usuario usuario, ArrayList<Desafio> desafios) {
-		Desafio current = desafios.get(0);
-		desafios.remove(0);
-		for (Desafio desafio : desafios) {
+		//System.out.println(desafios);
+		ArrayList<Desafio> desafiosARecorrer = new ArrayList<Desafio>(desafios);
+		Desafio current = desafiosARecorrer.get(0);
+		desafiosARecorrer.remove(0);
+		for (Desafio desafio : desafiosARecorrer) {
 			current = desafioConMayorCoincidenciaEntre(current, desafio, usuario);
 		}
 		return current;
