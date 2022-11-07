@@ -5,6 +5,14 @@ import java.time.LocalDateTime;
 import muestra.Muestra;
 import usuario.IParticipante;
 
+
+/**
+ * 
+ * 
+ * Esta calse se encarga de verificar el estado de un proyecto.
+ *
+ */
+
 public class EstadoDeProgreso implements IEstadoDelProgreso {
 
 	@Override

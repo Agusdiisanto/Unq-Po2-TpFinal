@@ -1,5 +1,12 @@
 package actividad;
 
+
+/**
+ * 
+ * Esta clase se encarga de modelar una caracteristica con su descripción y su afinidad.
+ *
+ */
+
 public class Caracteristica {
 	private String descripicion;
 	private double afinidad;

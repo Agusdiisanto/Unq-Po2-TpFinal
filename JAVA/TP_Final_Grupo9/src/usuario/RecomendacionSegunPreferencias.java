@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 import actividad.Desafio;
 
+/**
+ * 
+ * 
+ * Esta clase se encarga de modelar una recomendación según las preferencias de un usuario.
+ *
+ */
+
 public class RecomendacionSegunPreferencias extends EstrategiaDeRecomendacion {
 
 	@Override

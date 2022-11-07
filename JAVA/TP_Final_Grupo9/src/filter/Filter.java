@@ -3,6 +3,11 @@ package filter;
 
 import java.util.List;
 
+/*
+ * Esta clase abstracta se encarga de modelar un filtro.
+ * 
+ */
+
 public abstract class Filter implements IFilter{
 	
 	List <IFilter> filtros;
@@ -19,12 +24,6 @@ public abstract class Filter implements IFilter{
 	public boolean containsFilter(IFilter iFilter) {
 		
 		return this.getFiltros().contains(iFilter);
-	}
-
-	public void deleteFilter(IFilter iFilter) {
-		if(this.containsFilter(iFilter)) {
-			this.getFiltros().remove(iFilter);
-		}
 	}
 	
 }

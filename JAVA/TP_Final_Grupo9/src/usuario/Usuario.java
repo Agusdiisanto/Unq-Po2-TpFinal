@@ -16,6 +16,13 @@ import estadoDeUsuario.ProgresoDeDesafio;
 import muestra.Muestra;
 import proyectos.Proyecto;
 
+/**
+ * 
+ * 
+ * Esta clase se encarga de modelar a un usuario.
+ *
+ */
+
 public class Usuario implements IParticipante{
 	
 	private String		          	   nombre;

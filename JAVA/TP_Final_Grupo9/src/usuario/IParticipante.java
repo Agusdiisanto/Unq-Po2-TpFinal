@@ -6,6 +6,12 @@ import actividad.Desafio;
 import muestra.Muestra;
 import proyectos.Proyecto;
 
+/**
+ * 
+ * Esta interfaz se encarga modelar los metodos de un participante.
+ *
+ */
+
 public interface IParticipante {
 	
 	public void recolectarMuestra(Muestra muestra) throws Exception;

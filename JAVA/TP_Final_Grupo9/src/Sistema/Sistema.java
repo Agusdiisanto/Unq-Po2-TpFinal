@@ -7,6 +7,13 @@ import actividad.Desafio;
 import proyectos.Proyecto;
 import usuario.Usuario;
 
+/**
+ * 
+ * 
+ * Esta clase se encarga de modelar un sistema.
+ *
+ */
+
 public class Sistema {
 	private Set<Proyecto> proyectos;
 

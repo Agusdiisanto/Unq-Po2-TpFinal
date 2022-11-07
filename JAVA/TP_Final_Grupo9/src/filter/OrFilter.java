@@ -6,6 +6,14 @@ import java.util.stream.Collectors;
 
 import proyectos.Proyecto;
 
+
+/**
+ * 
+ * Esta clase se encarga de modelar un Filtro OR.
+ * 
+ *
+ */
+
 public class OrFilter extends Filter {
 	
 	public OrFilter() {

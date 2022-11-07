@@ -1,8 +1,16 @@
 package muestra;
 
+/**
+ * 
+ * 
+ * Esta clase se encarga de modelar una coordenada.
+ *
+ */
+
 public class Coordenada {
 	private double coordenadaX;
 	private double coordenadaY;
+
 	
 	// ============ CONSTRUCTOR ===================
 	public Coordenada(double coordenadaX, double coordenadaY) {

@@ -5,6 +5,13 @@ import java.util.Set;
 
 import actividad.Caracteristica;
 
+/**
+ * 
+ * 
+ * Esta clase se encarga de modelar un perfil.
+ *
+ */
+
 public class Perfil {
 	
 	private Set<String>		 		  gustos;

@@ -5,6 +5,13 @@ import java.util.stream.Collectors;
 
 import proyectos.Proyecto;
 
+/**
+ * 
+ * 
+ * Esta clase se encarga de modelar un filtro que incluye una titulo "t".
+ *
+ */
+
 
 public class FilterTitulo implements IFilter {
 	
@@ -17,7 +24,7 @@ public class FilterTitulo implements IFilter {
 	@Override
 	public List<Proyecto> filter(List<Proyecto> proyectos) {
 		return proyectos.stream().filter(proyecto ->proyecto.
-						 tieneElTitulo(this.tituloBuscado)).
+						 tieneElNombre(this.tituloBuscado)).
 				         collect(Collectors.toList());
 	}
  

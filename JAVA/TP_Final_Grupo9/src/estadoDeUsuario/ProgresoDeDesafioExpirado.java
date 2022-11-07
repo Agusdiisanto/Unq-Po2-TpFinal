@@ -5,6 +5,13 @@ import java.time.LocalDateTime;
 import muestra.Muestra;
 import usuario.IParticipante;
 
+
+/**
+ * 
+ * 
+ * Esta clase se encarga de ver si un desafío esta expirado.
+ *
+ */
 public class ProgresoDeDesafioExpirado extends EstadoDeProgreso{
 	
 	@Override

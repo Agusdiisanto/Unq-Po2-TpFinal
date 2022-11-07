@@ -6,6 +6,12 @@ import java.util.stream.Collectors;
 import proyectos.Proyecto;
 
 
+/**
+ * 
+ * Esta clase se encarga de modelar un filtro que incluye una categoria "c".
+ *
+ */
+
 public class FilterIncludeCategoria extends Filter{
 	
 	private String filterNombreCategoria;
@@ -17,8 +23,7 @@ public class FilterIncludeCategoria extends Filter{
 	@Override
 	public List<Proyecto> filter(List<Proyecto> proyectos) {
 		
-		return proyectos.stream().filter(pr -> pr.getCategorias().
-			   contains(this.filterNombreCategoria)).
-				collect(Collectors.toList());
+		return proyectos.stream().filter(pr -> pr.contieneALaCategoria(filterNombreCategoria)).
+			  collect(Collectors.toList());
 	}
 }

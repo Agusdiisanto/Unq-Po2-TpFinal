@@ -9,6 +9,13 @@ import actividad.Desafio;
 import muestra.Muestra;
 import usuario.IParticipante;
 
+/**
+ * 
+ * 
+ * Esta calse se encarga de modelar un proyecto.
+ *
+ */
+
 
 public class Proyecto {
 	private String				 nombreDelProyecto;
@@ -44,11 +51,15 @@ public class Proyecto {
 		return this.getCategorias().containsAll(categorias);
 	}
 	
+	public boolean contieneALaCategoria(String categoria) {
+		return this.getCategorias().contains(categoria);
+	}
+	
 	public boolean noContieneCategorias(Set<String> categorias) {
 		return !this.contieneCategorias(categorias);
 	}
 
-	public Boolean tieneElTitulo(String tituloBuscado) {
+	public Boolean tieneElNombre(String tituloBuscado) {
 		return this.getNombre().equals(tituloBuscado);
 	}
 

@@ -4,24 +4,21 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import actividad.Caracteristica;
 import filter.AndFilter;
 import filter.Filter;
 import filter.FilterIncludeCategoria;
+import filter.FilterNotIncludeCategoria;
 import filter.FilterTitulo;
-import filter.IFilter;
+
+import filter.NotFilter;
 import filter.OrFilter;
 import proyectos.Proyecto;
 
@@ -33,13 +30,11 @@ public class FIltroTest {
 	private Proyecto proyecto3;
 	private Filter andFilter;
 	private Filter orFilter;
-	private Filter filterTitulo1;
-	private Filter filterTitulo2;
 	private Filter filterCategoria;
-	private Filter filterSinCategoria;
-	private Set <String> categorias1;
 	private FilterTitulo filterTitulo;
 	private Filter        otroFiltroOr;
+	private Filter   filterNoIncluyeCategoria;
+	private Filter notFilter;
 	
 	
 	
@@ -57,27 +52,37 @@ public class FIltroTest {
 		proyecto1.agregarCategoria("Categoria2");
 		
 		
-		when(proyecto1.tieneElTitulo("Proyecto1")).thenReturn(true);
-		when(proyecto2.tieneElTitulo("Proyecto2")).thenReturn(true);
-		when(proyecto3.tieneElTitulo("Proyecto3")).thenReturn(true);
+		when(proyecto1.tieneElNombre("Proyecto1")).thenReturn(true);
+		when(proyecto2.tieneElNombre("Proyecto2")).thenReturn(true);
+		when(proyecto3.tieneElNombre("Proyecto3")).thenReturn(true);
+		when(proyecto1.contieneALaCategoria("Categoria1")).thenReturn(true);
+		when(proyecto1.contieneALaCategoria("Categoria2")).thenReturn(true);
 		
 		
 		filterCategoria = new FilterIncludeCategoria("Categoria1");
+		filterNoIncluyeCategoria = new FilterNotIncludeCategoria ("Categoria1");
 		orFilter = new OrFilter();
 		andFilter = new AndFilter();
 		
 		filterTitulo = new FilterTitulo("Proyecto1");
 		orFilter.addFilter(filterTitulo);
-		otroFiltroOr = filterCategoria;
+		otroFiltroOr = new OrFilter();
+		otroFiltroOr.addFilter(andFilter);
+		otroFiltroOr.addFilter(filterCategoria);
+		
 		
 		
 		andFilter.addFilter(filterTitulo);
+		
+		notFilter = new NotFilter();
+		notFilter.addFilter(andFilter);
+		notFilter.addFilter(filterCategoria);
 		
 		
 	}
 	
 	@Test
-	public void test01() {
+	public void test01puedoFiltrarProyectosConElOrFilter() {
 		
 		List <Proyecto> proyectos1 = orFilter.filter(proyectos);
 
@@ -87,7 +92,7 @@ public class FIltroTest {
 	
 }
 	@Test
-	public void test02() {
+	public void test02puedoFiltrarProyectosConElAndFilter() {
 		
 		List <Proyecto> proyectos1 = andFilter.filter(proyectos);
 				
@@ -98,21 +103,46 @@ public class FIltroTest {
 	}
 	
 	@Test
-	public void test03() {
+	public void test03puedoFiltrarProyectosConElFilterTitulo() {
 		
 		List <Proyecto> proyectos1 = filterTitulo.filter(proyectos);
-		
+	
 		
 		assertEquals(proyectos1.size(), 1);
+		assertTrue(proyectos1.contains(proyecto1));
+		assertFalse(proyectos1.contains(proyecto2));
 		
 	}
 	
 	@Test 
 	
-	public void test04() {
+	public void test04puedoFiltrarProyectosConElFilterQueIncluyeUnaCategoria() {
 		
+		List <Proyecto> proyectos1 = filterCategoria.filter(proyectos);
+		
+		
+		assertEquals(proyectos1.size(), 1);
+		assertTrue(proyectos1.contains(proyecto1));
+		assertFalse(proyectos1.contains(proyecto2));
 	}
 	
+	@Test 
+	public void test05puedoFiltrarProyectosConElFilterQueNoIncluyeUnaCategoria() {
+		List <Proyecto> proyectos1 = filterNoIncluyeCategoria.filter(proyectos);
 	
+		
+		assertEquals(proyectos1.size(), 2);
+		assertTrue(proyectos1.contains(proyecto2));
+		assertFalse(proyectos1.contains(proyecto1));
+	}
 
+	@Test
+	public void test046uedoFiltrarProyectosConElNotFilter() {
+		List <Proyecto> proyectos1 = notFilter.filter(proyectos);
+		
+		assertEquals(proyectos1.size(), 2);
+		assertTrue(proyectos1.contains(proyecto2));
+		assertFalse(proyectos1.contains(proyecto1));
+	}
+	
 }

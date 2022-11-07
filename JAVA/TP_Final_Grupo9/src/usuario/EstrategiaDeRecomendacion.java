@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import actividad.Caracteristica;
 import actividad.Desafio;
 
+/**
+ * 
+ * 
+ * Esta clase abstracta se encarga de modelar una estrategia de recomendación.
+ *
+ */
+
 public abstract class EstrategiaDeRecomendacion { 
 
 	public abstract ArrayList<Desafio> recomendarDesafiosAlUsuario(Usuario usuario,ArrayList<Desafio> desafios);

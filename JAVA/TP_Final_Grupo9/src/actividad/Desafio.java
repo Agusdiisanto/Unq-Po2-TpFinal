@@ -7,6 +7,13 @@ import java.util.Set;
 import muestra.Muestra;
 import usuario.IParticipante;
 
+
+/**
+ * 
+ * Esta clase se encarga de modelar un desafío con sus correspondientes atributos.
+ *
+ */
+
 public class Desafio extends ActividadLudica {
 	private Area 				area;
 	private RestriccionTemporal restriccionTemporal;
@@ -21,6 +28,12 @@ public class Desafio extends ActividadLudica {
 	public boolean esDesafio() {
 		return true;
 	}
+	
+	/**
+	 * 
+	 * Este metodo se encarga de verificar si un desafío es activo, con la fecha actual 
+	 * y la restricción temporal. 
+	 */
 	
 	public Boolean esDesafioActivo() {
 		return LocalDateTime.now().isAfter(this.getRestriccionTemporal().getFechaDeInicio())

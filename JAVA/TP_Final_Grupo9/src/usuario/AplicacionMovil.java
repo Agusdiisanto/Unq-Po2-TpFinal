@@ -10,6 +10,14 @@ import filter.IFilter;
 import muestra.Muestra;
 import proyectos.Proyecto;
 
+
+/**
+ * 
+ * 
+ * Esta Clase encarga de modelar una aplicación móvil
+ *
+ */
+
 public class AplicacionMovil {
 	private Set<Muestra>   muestras;
 	private List<Proyecto> proyectos;

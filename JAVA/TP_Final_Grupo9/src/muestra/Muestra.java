@@ -7,6 +7,13 @@ import java.util.Set;
 import actividad.Caracteristica;
 import usuario.Usuario;
 
+/**
+ * 
+ * 
+ * Esta clase se encarga de modelar una muestra. 
+ *
+ */
+
 public class Muestra {
 	private Set<Caracteristica> caracteristicas;
 	private Usuario 			usuarioQueLaRecolecto;
