@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 /**
  * 
- * 
  * Esta clase se encarga de modelar una restricción temporal con una fecha de inicio y una fecha de fin.
  *
  */

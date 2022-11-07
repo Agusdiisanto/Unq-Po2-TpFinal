@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,22 +15,14 @@ import org.junit.jupiter.api.Test;
 import actividad.ActividadLudica;
 import actividad.Caracteristica;
 import actividad.Desafio;
-import muestra.Coordenada;
 import muestra.Muestra;
 import proyectos.Proyecto;
 import usuario.IParticipante;
-import usuario.Usuario;
 
 public class ProyectoTest {
-	
 	private Muestra 			muestra1;
 	private Muestra 			muestra2;
 	private IParticipante 		participante1;
-	private IParticipante 		participante2;
-	private Coordenada      	coordenada1;
-	private Coordenada      	coordenada2;
-	private LocalDateTime   	fecha1;
-	private LocalDateTime   	fecha2;
 	private Proyecto 			proyecto;
 	private Caracteristica 		caracteristica1;
 	private Caracteristica 		caracteristica2;
@@ -46,8 +37,6 @@ public class ProyectoTest {
 		inicializadorDeObjetos();
 		iniciarComportamientoDeObjetos();
 	}
-	
-//	Hay que testear por el caso verdadero y el caso falso.
 	
 	@Test
 	public void test01_TodoProyectoTieneNombre() {
@@ -128,7 +117,6 @@ public class ProyectoTest {
 	public void test13_unProyectoTieneParticipantes() {
 		proyecto.agregarParticipante(participante1);
 		assertEquals(proyecto.cantidadDeParticipantes(), 1);
-		// SE PODRÍA USAR "elProyectoTieneAlParticipante()" ?
 		assertTrue(proyecto.getParticipantes().contains(participante1));
 	}
 	
@@ -240,10 +228,7 @@ public class ProyectoTest {
 		caracteristica2  = mock(Caracteristica.class);
 		muestra1		 = mock(Muestra.class);
 		muestra2		 = mock(Muestra.class);
-		coordenada1		 = mock(Coordenada.class);
-		coordenada2		 = mock(Coordenada.class);
 		participante1	 = mock(IParticipante.class);
-		participante2	 = mock(IParticipante.class);
 		actividad1		 = mock(ActividadLudica.class);
 		desafio1		 = mock(Desafio.class);
 		desafio2		 = mock(Desafio.class);

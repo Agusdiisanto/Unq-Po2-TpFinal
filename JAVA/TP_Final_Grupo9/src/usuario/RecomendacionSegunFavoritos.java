@@ -6,7 +6,6 @@ import actividad.Desafio;
 
 /**
  * 
- * 
  * Esta clase se encarga de modelar una recomendación según los favoritos de un usuario.
  *
  */
@@ -20,7 +19,6 @@ public class RecomendacionSegunFavoritos extends EstrategiaDeRecomendacion {
 		ArrayList<Desafio> desafiosOrdenados = new ArrayList<Desafio>();
 		while (!desafiosAOrdenar.isEmpty()) {
 			desafiosOrdenados.add(desafioConMayorSimilitudPara(desafiosAOrdenar, user));
-			//desafiosAOrdenar.remove(desafioConMayorSimilitudPara(desafiosAOrdenar, user));
 		}
 		return desafiosOrdenados;
 	}

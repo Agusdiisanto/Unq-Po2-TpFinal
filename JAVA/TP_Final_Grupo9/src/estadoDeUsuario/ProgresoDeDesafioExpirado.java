@@ -8,7 +8,6 @@ import usuario.IParticipante;
 
 /**
  * 
- * 
  * Esta clase se encarga de ver si un desafío esta expirado.
  *
  */

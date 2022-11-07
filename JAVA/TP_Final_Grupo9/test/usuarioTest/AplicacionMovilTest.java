@@ -45,7 +45,6 @@ public class AplicacionMovilTest {
 	
 	@Test
 	public void test03_UnaAplicacionPuedeRecolectarLaMuestraSiEsDeInteresParaElProyecto() throws Exception {
-		
 		when(proyecto.tieneRegistradoAlUsuario(usuario)).thenReturn(true); 
 		when(proyecto.esMuestraDeInteres(muestra)).thenReturn(true);
 		
@@ -53,12 +52,10 @@ public class AplicacionMovilTest {
 		
 		assertTrue(app.getMuestras().contains(muestra));
 		assertFalse(app.getMuestras().isEmpty());
-	
 	}
 
 	@Test
 	public void test04_UnaAplicacionNoPuedeRecolectarLaMuestraSiNoEsDeInteresParaElProyectoPeroSiEstaRegistrado() throws Exception {
-		
 		when(proyecto.tieneRegistradoAlUsuario(usuario)).thenReturn(true); 
 		when(proyecto.esMuestraDeInteres(muestra)).thenReturn(false);
 		
@@ -79,7 +76,6 @@ public class AplicacionMovilTest {
 	
 	@Test
 	public void test06_UnaAplicacionNoPuedeRecolectarLaMuestraSiNoEsDeInteresParaElProyectoPeroNoEstaRegistrado() throws Exception {
-		
 		when(proyecto.tieneRegistradoAlUsuario(usuario)).thenReturn(false); 
 		when(proyecto.esMuestraDeInteres(muestra)).thenReturn(false);
 		
@@ -100,5 +96,4 @@ public class AplicacionMovilTest {
 		assertTrue(app.getProyectos().contains(proyecto));
 		assertFalse(app.getProyectos().isEmpty());
 	}
-	
 }

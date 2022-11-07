@@ -18,22 +18,19 @@ import proyectos.Proyecto;
 
 /**
  * 
- * 
  * Esta clase se encarga de modelar a un usuario.
  *
  */
 
 public class Usuario implements IParticipante{
-	
 	private String		          	   nombre;
 	private AplicacionMovil 	  	   aplicacion;
 	private Set<Proyecto> 		  	   proyectosEnCurso;
-	private Perfil 				  	   perfil;   // Aca tenes las recomendaciones
+	private Perfil 				  	   perfil;
 	private Map<Desafio, Estadisticas> desafiosCompletados;
 	private Set<ProgresoDeDesafio>  	   desafiosEnCurso;
 	
 	// ================== METHODS USUARIO ========================
-	
 	public boolean contieneCaracteristicaConDescripcion(String descripcion) {
 		return this.getPerfil().contieneCaracteristicaConDescripcion(descripcion);
 	}
@@ -52,9 +49,6 @@ public class Usuario implements IParticipante{
 		double diferenciaDeRecompensa = Math.abs(desafio.getRecompensa()                        - this.getDesafioFavorito().getRecompensa());
 		return Math.round((diferenciaDeMuestras + diferenciaDeDificultad + diferenciaDeRecompensa)/3);
 	}
-	 
-	// _ _ _ _ _ __ 
-	
 	
 	public Desafio getDesafioFavorito() {
         int satisfaccionMaxima = 0;
@@ -104,13 +98,11 @@ public class Usuario implements IParticipante{
 	
 	@Override
 	public void registrarDesafioCompletado(Desafio desafio, int recompensa, int muestrasRecolectadas, int satisfaccion) {
-	
 		Estadisticas estadisticas = new Estadisticas(satisfaccion, recompensa, muestrasRecolectadas);
 		this.getDesafiosCompletados().put(desafio, estadisticas);
 	}
 	 
 	// ================== PRIVATE =====================
-	
 	private void agregarNuevoDesafioEnCurso(Desafio desafio) {
 		ProgresoDeDesafio progreso = new ProgresoDeDesafio(desafio, new ProgresoDeDesafioEnCurso());
 		this.getDesafiosEnCurso().add(progreso);
@@ -130,7 +122,6 @@ public class Usuario implements IParticipante{
 	public String getNombre() {
 		return nombre;
 	}
-	
 	public AplicacionMovil getAplicacion() {
 		return aplicacion;
 	}
@@ -140,7 +131,6 @@ public class Usuario implements IParticipante{
 	public Perfil getPerfil() {
 		return perfil;
 	}
-	
 	public Map<Desafio, Estadisticas> getDesafiosCompletados() {
 		return desafiosCompletados;
 	}
@@ -151,18 +141,15 @@ public class Usuario implements IParticipante{
 		this.getProyectoEnCurso().add(proyecto);
 	}
 	public Integer cantidadDeProyectosEnCurso() {
-		// TODO Auto-generated method stub
 		return this.getProyectoEnCurso().size();
 	}
 	public Integer cantidadDeDesafiosCompletados() {
-		// TODO Auto-generated method stub
 		return this.getDesafiosCompletados().size();
 	}
 	public void agregarNuevoProgresoDeDesafio(ProgresoDeDesafio progreso) {
 		this.getDesafiosEnCurso().add(progreso);
 	}
 	public Integer cantidadDeDesafiosEnCurso() {
-		// TODO Auto-generated method stub
 		return this.getDesafiosEnCurso().size();
 	}
 	

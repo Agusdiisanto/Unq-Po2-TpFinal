@@ -10,9 +10,7 @@ import filter.IFilter;
 import muestra.Muestra;
 import proyectos.Proyecto;
 
-
 /**
- * 
  * 
  * Esta Clase encarga de modelar una aplicación móvil
  *
@@ -27,7 +25,7 @@ public class AplicacionMovil {
 		if (proyecto.tieneRegistradoAlUsuario(usuario) && proyecto.esMuestraDeInteres(muestra)) {
 			this.cargarMuestraEnAplicacion(muestra);
 			proyecto.agregarMuestra(muestra);
-			usuario.recolectarMuestraParaLosDesafios(muestra, LocalDateTime.now()); // Revisar logica (Fecha)
+			usuario.recolectarMuestraParaLosDesafios(muestra, LocalDateTime.now());
 		}
 	}
 
@@ -47,7 +45,6 @@ public class AplicacionMovil {
 	public AplicacionMovil() {
 		this.muestras  = new HashSet<Muestra>();
 		this.proyectos = new ArrayList<Proyecto>();
-		// Tomi: Agrego los proyectos para respetar el patron composite.
 	}
 
 	// ================== GETTERS & SETTERS ===================

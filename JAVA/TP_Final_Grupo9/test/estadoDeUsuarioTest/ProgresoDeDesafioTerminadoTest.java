@@ -18,7 +18,6 @@ import muestra.Muestra;
 import usuario.IParticipante;
 
 public class ProgresoDeDesafioTerminadoTest {
-
 	private ProgresoDeDesafioTerminado terminado;
 	private Muestra                    muestra;
 	private Desafio					   desafio;

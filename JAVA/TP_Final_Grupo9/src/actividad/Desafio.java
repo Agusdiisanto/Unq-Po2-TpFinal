@@ -7,7 +7,6 @@ import java.util.Set;
 import muestra.Muestra;
 import usuario.IParticipante;
 
-
 /**
  * 
  * Esta clase se encarga de modelar un desafío con sus correspondientes atributos.
@@ -30,7 +29,6 @@ public class Desafio extends ActividadLudica {
 	}
 	
 	/**
-	 * 
 	 * Este metodo se encarga de verificar si un desafío es activo, con la fecha actual 
 	 * y la restricción temporal. 
 	 */

@@ -11,11 +11,9 @@ import usuario.IParticipante;
 
 /**
  * 
- * 
  * Esta calse se encarga de modelar un proyecto.
  *
  */
-
 
 public class Proyecto {
 	private String				 nombreDelProyecto;

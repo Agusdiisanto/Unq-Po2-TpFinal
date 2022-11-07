@@ -1,10 +1,8 @@
 package actividad;
 
-
 /**
  * 
  * Este enum se encarga de modelar la difícultad de un desafío. 
- *
  *
  */
 

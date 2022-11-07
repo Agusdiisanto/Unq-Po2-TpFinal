@@ -3,15 +3,12 @@ package actividadTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.calls;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
-
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,7 +21,6 @@ import actividad.RestriccionTemporal;
 import muestra.Coordenada;
 import muestra.Muestra;
 import usuario.IParticipante;
-
 
 public class DesafioTest {
 	private Area				area;
@@ -45,7 +41,6 @@ public class DesafioTest {
 		
 	@BeforeEach
 	public void setUp() {
-		
 		restriccionTemporal1 = mock(RestriccionTemporal.class);
 		restriccionTemporal2 = mock(RestriccionTemporal.class);
 		restriccionTemporal3 = mock(RestriccionTemporal.class);
@@ -183,27 +178,22 @@ public class DesafioTest {
 	
 	@Test
 	public void test19_unDesafioIndicaSiUnaFechaCumpleLaRestriccion() {
-		
 		LocalDateTime fecha = LocalDateTime.now();
 		when(restriccionTemporal1.cumpleLaRestriccion(fecha)).thenReturn(true);
 		assertTrue(desafio1.estaDentroDeLaRestriccion(fecha));
 		verify(restriccionTemporal1, times(1)).cumpleLaRestriccion(fecha);
-		
 	}
 	
 	@Test
 	public void test20_unDesafioIndicaSiUnaFechaNoCumpleLaRestriccion() {
-		
 		LocalDateTime fecha = LocalDateTime.now();
 		when(restriccionTemporal1.cumpleLaRestriccion(fecha)).thenReturn(false);
 		assertFalse(desafio1.estaDentroDeLaRestriccion(fecha));
 		verify(restriccionTemporal1, times(1)).cumpleLaRestriccion(fecha);
-		
 	}
 	
 	@Test 
 	public void test21_unDesafioIndicaSiUnaMuestraCumpleConLaRestriccion() {
-		
 		LocalDateTime fecha = LocalDateTime.of(2021, 10, 20, 10, 50);
 		
 		when(muestra1.getFechaYHoraDeRecoleccion()).thenReturn(fecha);
@@ -216,7 +206,6 @@ public class DesafioTest {
 	
 	@Test 
 	public void test22_unDesafioIndicaSiUnaMuestraNoCumpleConLaRestriccion() {
-		
 		LocalDateTime fecha = LocalDateTime.of(2021, 10, 20, 10, 50);
 		
 		when(muestra1.getFechaYHoraDeRecoleccion()).thenReturn(fecha);
@@ -226,14 +215,4 @@ public class DesafioTest {
 		verify(restriccionTemporal1, times(1)).cumpleLaRestriccion(fecha);
 		verify(muestra1, times(1)).getFechaYHoraDeRecoleccion();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

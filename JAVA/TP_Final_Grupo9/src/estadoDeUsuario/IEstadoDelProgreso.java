@@ -7,7 +7,6 @@ import usuario.IParticipante;
 
 /**
  * 
- * 
  * Esta interfaz se encarga de verificar el estado del progreso de un desafío.
  *
  */

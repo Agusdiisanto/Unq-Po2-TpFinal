@@ -7,7 +7,6 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -17,13 +16,11 @@ import Sistema.Sistema;
 import actividad.Caracteristica;
 import actividad.Desafio;
 import proyectos.Proyecto;
-import usuario.AplicacionMovil;
 import usuario.Perfil;
 import usuario.RecomendacionSegunPreferencias;
 import usuario.Usuario;
 
 public class SistemaTest {
-	
 	private Sistema  	  system;
 	private Proyecto 	  proyecto1;
 	private Proyecto 	  proyecto2;
@@ -44,10 +41,9 @@ public class SistemaTest {
 		proyecto2 = mock(Proyecto.class);
 		usuario1  = mock(Usuario.class);
 		desafio1  = mock(Desafio.class);
-		perfil1  = mock(Perfil.class);
+		perfil1   = mock(Perfil.class);
 		estrategiaDeRecomendacion1 = mock(RecomendacionSegunPreferencias.class); 
 
-    	//perfil1			= new Perfil();
     	caracteristica1 = new Caracteristica("Carateristica1", 1);
 		desafios1 = new HashSet<Desafio>();
 		desafios2 = new HashSet<Desafio>();
@@ -86,7 +82,6 @@ public class SistemaTest {
 		assertTrue(system.getProyectos().contains(proyecto1));
 	}
 	
-	// NO FUNCIONA, A CHEQUEAR LUEGO
 	@Test
 	public void test04_unSistemaRecomiendaDesafiosAUnUsuarioPorPreferencia() {
 		ArrayList<Desafio> desafios = new ArrayList<>();
@@ -94,7 +89,6 @@ public class SistemaTest {
 		desafios.add(desafio1);
 		desafios.add(desafio2);
 		desafios.add(desafio3);
-		
 		 
 		when(usuario1.getEstrategia()).thenReturn(estrategiaDeRecomendacion1);
 		when(estrategiaDeRecomendacion1.primerosN(desafios3, 0)).thenReturn(desafios);
@@ -102,10 +96,5 @@ public class SistemaTest {
 		system.agregarProyecto(proyecto1);
 		system.agregarProyecto(proyecto2);
 		assertEquals(system.recomendarDesafiosAlUsuario(usuario1).size(), 0);
-		// assertTrue(system.recomendarDesafiosAlUsuario(usuario1).contains(desafio1));
-		// assertTrue(system.recomendarDesafiosAlUsuario(usuario1).contains(desafio2));
-		// assertTrue(system.recomendarDesafiosAlUsuario(usuario1).contains(desafio3));
 	}
-	
-	// HABRÍA QUE TESTEAR MÁS CASOS
 }

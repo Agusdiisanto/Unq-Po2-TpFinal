@@ -6,7 +6,6 @@ import actividad.Desafio;
 
 /**
  * 
- * 
  * Esta clase se encarga de modelar una recomendación según las preferencias de un usuario.
  *
  */

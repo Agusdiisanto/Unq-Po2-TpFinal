@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import actividad.RestriccionTemporal;
 
 public class RestriccionTemporalTest {
-	
 	RestriccionTemporal restriccion;
 	
 	@BeforeEach

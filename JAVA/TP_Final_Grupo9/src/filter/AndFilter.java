@@ -7,7 +7,6 @@ import proyectos.Proyecto;
 
 /**
  * 
- * 
  * Esta clase se encarga de modelar un filtro And.
  *
  */
@@ -16,7 +15,6 @@ public class AndFilter extends Filter{
 
 	public AndFilter() {
 		this.filtros= new ArrayList <IFilter>();
-		
 	}
 
 	@Override
@@ -27,8 +25,5 @@ public class AndFilter extends Filter{
 		}
 		return resultados;
 	}
-	
-
-	
 }
 

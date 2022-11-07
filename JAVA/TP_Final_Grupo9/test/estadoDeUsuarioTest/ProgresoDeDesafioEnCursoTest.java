@@ -55,7 +55,6 @@ public class ProgresoDeDesafioEnCursoTest {
 		verify(progresoActual,times(1)).getDesafioActual();	
 	}
 	
-	// REVISAR
 	@Test
 	public void test03_unProgresoRecolectaUnaMuestra() throws Exception {
 		LocalDateTime fecha = LocalDateTime.now();
@@ -124,7 +123,6 @@ public class ProgresoDeDesafioEnCursoTest {
 		verify(desafio,times(1)).getCantidadDeMuestrasARecolectar();
 	}
 
-	// REVISAR
 	@Test
 	public void test08_unProgresoVerificaSiCompletoElDesafio() throws Exception {
 		ProgresoDeDesafioTerminado progresoTerminado = new ProgresoDeDesafioTerminado();

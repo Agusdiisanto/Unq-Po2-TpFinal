@@ -26,7 +26,6 @@ import usuario.RecomendacionSegunPreferencias;
 import usuario.Usuario;
 
 public class UsuarioTest {
-	
 	private Usuario usuario;
 	private AplicacionMovil appMovil;
 	private Perfil perfil;
@@ -49,9 +48,7 @@ public class UsuarioTest {
 		desafio2 = mock(Desafio.class);
 		caracteristica = mock(Caracteristica.class);
 		estrategia = mock(RecomendacionSegunPreferencias.class);
-		
 		usuario = new Usuario("Agustin", appMovil, perfil);
-		
 	}
 	
 	@Test
@@ -87,7 +84,6 @@ public class UsuarioTest {
 	
 	@Test
 	public void test06_UnUsuarioRegistraLosDesafiosCompletados() {
-		
 		when(desafio.getRecompensa()).thenReturn(3456);
 		usuario.registrarDesafioCompletado(desafio,desafio.getRecompensa(),10,0);
 		
@@ -98,7 +94,6 @@ public class UsuarioTest {
 	 
 	@Test
 	public void test07_UnUsuarioNoTieneDesafiosCompletadosRepetidos() {
-		
 		when(desafio.getRecompensa()).thenReturn(3456);
 		usuario.registrarDesafioCompletado(desafio,desafio.getRecompensa(),10,0);
 		usuario.registrarDesafioCompletado(desafio,desafio.getRecompensa(),10,0);
@@ -110,7 +105,6 @@ public class UsuarioTest {
 	
 	@Test
 	public void test07_UnUsuarioPuedeAgregarDesafiosEnCurso() {
-		
 		usuario.agregarNuevoProgresoDeDesafio(progreso);
 		
 		assertTrue(usuario.getDesafiosEnCurso().contains(progreso));
@@ -120,7 +114,6 @@ public class UsuarioTest {
 	
 	@Test
 	public void test07_UnUsuarioNoPuedeAgregarDosVecesElDesafiosEnCurso() {
-		
 		usuario.agregarNuevoProgresoDeDesafio(progreso);
 		usuario.agregarNuevoProgresoDeDesafio(progreso);
 		
@@ -131,7 +124,6 @@ public class UsuarioTest {
 	
 	@Test
 	public void test08_UnUsuarioSabeCuandoEstaEnDesafioActualmente() {
-		
 		LocalDateTime fecha = LocalDateTime.now();
 		
 		usuario.agregarNuevoProgresoDeDesafio(progreso);
@@ -141,7 +133,6 @@ public class UsuarioTest {
 	
 	@Test
 	public void test09_UnUsuarioSabeCuandoEstaEnDesafioActualmente() {
-		
 		LocalDateTime fecha = LocalDateTime.now();
 		
 		usuario.agregarNuevoProgresoDeDesafio(progreso);
@@ -151,7 +142,6 @@ public class UsuarioTest {
 	
 	@Test
 	public void test10_UnUsuarioSabeIncribirseAUnDesafio() throws Exception {
-		
 		usuario.inscribirseEnUnDesafio(desafio);
 		assertEquals(1, usuario.cantidadDeDesafiosEnCurso());
 		assertFalse(usuario.getDesafiosEnCurso().isEmpty());
@@ -159,7 +149,6 @@ public class UsuarioTest {
 	
 	@Test
 	public void test11_UnUsuarioPuedeInscribiriseEnUnProyecto() {
-
 		usuario.solicitarSuscripcionAProyecto(proyecto);
 		verify(proyecto,times(1)).agregarParticipante(usuario);
 	} 
@@ -169,12 +158,10 @@ public class UsuarioTest {
 		usuario.agregarNuevoProyectoEnCurso(proyecto);
 		usuario.recolectarMuestra(muestra);
 		verify(appMovil,times(1)).recolectarMuestra(muestra, usuario, proyecto);
-
 	}
 	
 	@Test
 	public void test13_UnUsuarioPuedeRecolectarMuestrasParaDesafios() throws Exception {
-		
 		LocalDateTime fecha = LocalDateTime.now();
 		
 		usuario.agregarNuevoProgresoDeDesafio(progreso);
@@ -185,7 +172,6 @@ public class UsuarioTest {
 	
 	@Test
 	public void test14_UnUsuarioPuedeRecolectarMuestrasParaProyecto() throws Exception {
-		
 		usuario.agregarNuevoProyectoEnCurso(proyecto);
 		usuario.recolectarMuestraParaLosProyectos(muestra);
 		
@@ -194,7 +180,6 @@ public class UsuarioTest {
 	
 	@Test
 	public void test15_UnUsuarioTieneUnDesafioFavorito(){
-		
 		usuario.registrarDesafioCompletado(desafio2,2,5,5);
 		usuario.registrarDesafioCompletado(desafio,3,2,2);
 		
@@ -204,7 +189,6 @@ public class UsuarioTest {
 	
 	@Test
 	public void test16_UnUsuarioTieneAfinidadConCaracteristica() {
-	
 		when(perfil.afinidadConCaracteristica(caracteristica)).thenReturn(2.3);
 		assertEquals(usuario.afinidadConCaracteristica(caracteristica), 2.3);
 		verify(perfil,times(1)).afinidadConCaracteristica(caracteristica);
@@ -212,7 +196,6 @@ public class UsuarioTest {
 	
 	@Test
 	public void test17_UnUsuarioNoTieneAfinidadConCaracteristica() {
-	
 		when(perfil.afinidadConCaracteristica(caracteristica)).thenReturn(0.0);
 		assertEquals(usuario.afinidadConCaracteristica(caracteristica), 0.0);
 		verify(perfil,times(1)).afinidadConCaracteristica(caracteristica);
@@ -220,7 +203,6 @@ public class UsuarioTest {
 	
 	@Test
 	public void test18_UnUsuarioContieneCaracteristicaConDescripcion() {
-		
 		when(perfil.contieneCaracteristicaConDescripcion("s")).thenReturn(true);
 		assertTrue(usuario.contieneCaracteristicaConDescripcion("s"));
 		verify(perfil,only()).contieneCaracteristicaConDescripcion("s");
@@ -228,7 +210,6 @@ public class UsuarioTest {
 	
 	@Test
 	public void test19_UnUsuarioNoContieneCaracteristicaConDescripcion() {
-		
 		when(perfil.contieneCaracteristicaConDescripcion("s")).thenReturn(false);
 		assertFalse(usuario.contieneCaracteristicaConDescripcion("s"));
 		verify(perfil,times(1)).contieneCaracteristicaConDescripcion("s");
@@ -236,7 +217,6 @@ public class UsuarioTest {
 	
 	@Test
 	public void test20_UnUsuarioSabeLaSimilitudEntreUnDesafioYSuFavorito() {
-		
 		usuario.registrarDesafioCompletado(desafio2,2,5,5);
 	
 		when(desafio.getCantidadDeMuestrasARecolectar()).thenReturn(30);
@@ -247,21 +227,15 @@ public class UsuarioTest {
 		when(desafio2.getDificultad()).thenReturn(Dificultad.MUY_DIFICIL);
 		when(desafio2.getRecompensa()).thenReturn(1000);
 		
-		
 		assertEquals(usuario.getDesafioFavorito(), desafio2);
 		assertEquals(usuario.similitudConFavorito(desafio),676.0);
 	}
 	
 	@Test
 	public void test21_UnUsuarioSabeLaEstrategiaARecomendar() {
-		
 		when(perfil.getTipoDeRecomendacionPreferida()).thenReturn(estrategia);
 		
 		assertEquals(usuario.getEstrategia(), estrategia);
 		verify(perfil,times(1)).getTipoDeRecomendacionPreferida();
-		
 	}
-	
-	
-	
 }

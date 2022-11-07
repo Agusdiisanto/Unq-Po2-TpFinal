@@ -6,12 +6,10 @@ import java.util.stream.Collectors;
 
 import proyectos.Proyecto;
 
-
 /**
  * 
  * Esta clase se encarga de modelar un Filtro OR.
  * 
- *
  */
 
 public class OrFilter extends Filter {
@@ -27,15 +25,9 @@ public class OrFilter extends Filter {
 			List <Proyecto> newP = iFilter.filter(proyectos).stream().
 									filter(proyecto -> !resultados.contains(proyecto)).
 									collect(Collectors.toList());
-			
 			resultados.addAll(newP);
-			
 		}
-
 		return resultados;
 	}
-
-	
-
 }
 	

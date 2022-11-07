@@ -14,18 +14,16 @@ import proyectos.Proyecto;
 
 public class NotFilter extends Filter{
 	
-	
 	public NotFilter() {
-		this.filtros=  new ArrayList<IFilter>();
+		this.filtros = new ArrayList<IFilter>();
 	}	
 	
 	public List<Proyecto> filter(List<Proyecto> proyectos) {
-		  List <Proyecto> resultados = new ArrayList<>(proyectos);
-		  for(IFilter filtros : this.filtros) {
-		    List <Proyecto>filtrados = filtros.filter(proyectos);
-		    resultados.removeAll(filtrados);
-		  }
-		  
-		  return resultados;
-		}
+		List <Proyecto> resultados = new ArrayList<>(proyectos);
+		for(IFilter filtros : this.filtros) {
+			List <Proyecto>filtrados = filtros.filter(proyectos);
+			resultados.removeAll(filtrados);
+		}  
+		return resultados;
+	}
 }

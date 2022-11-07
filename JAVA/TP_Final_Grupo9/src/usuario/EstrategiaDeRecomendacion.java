@@ -7,7 +7,6 @@ import actividad.Desafio;
 
 /**
  * 
- * 
  * Esta clase abstracta se encarga de modelar una estrategia de recomendación.
  *
  */
@@ -35,15 +34,12 @@ public abstract class EstrategiaDeRecomendacion {
 		ArrayList<Desafio> desafiosOrdenados = new ArrayList<Desafio>();
 		ArrayList<Desafio> desafiosAOrdenar  = desafios;
 		while (desafiosOrdenados.size() < desafiosAOrdenar.size()) {
-		//while (!desafiosAOrdenar.isEmpty()) {
 			desafiosOrdenados.add(this.desafioConMayorCoincidenciaPara(usuario, desafiosAOrdenar));
-			//desafiosAOrdenar.remove(this.desafioConMayorCoincidenciaPara(usuario, desafiosAOrdenar));
 		}
 		return desafiosOrdenados;
 	}
 
 	public Desafio desafioConMayorCoincidenciaPara(Usuario usuario, ArrayList<Desafio> desafios) {
-		//System.out.println(desafios);
 		ArrayList<Desafio> desafiosARecorrer = new ArrayList<Desafio>(desafios);
 		Desafio current = desafiosARecorrer.get(0);
 		desafiosARecorrer.remove(0);

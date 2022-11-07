@@ -1,6 +1,5 @@
 package actividad;
 
-
 /**
  * 
  * Esta clase se encarga de modelar una caracteristica con su descripción y su afinidad.

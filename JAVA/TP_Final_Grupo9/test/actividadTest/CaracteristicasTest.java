@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import actividad.Caracteristica;
 
 public class CaracteristicasTest {
-	
-	
 	Caracteristica caracterista;
 	
 	@BeforeEach
@@ -26,7 +24,4 @@ public class CaracteristicasTest {
 	public void test02_unaCaracteristicaTieneUnaAfinidad() {
 		assertEquals(3, caracterista.getAfinidad());
 	}
-	
-	
-	
 }

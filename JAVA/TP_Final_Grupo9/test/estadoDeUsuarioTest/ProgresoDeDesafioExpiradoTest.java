@@ -2,18 +2,13 @@ package estadoDeUsuarioTest;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import actividad.Desafio;
 import estadoDeUsuario.ProgresoDeDesafio;
 import estadoDeUsuario.ProgresoDeDesafioExpirado;
 import muestra.Muestra;
@@ -22,7 +17,6 @@ import usuario.IParticipante;
 public class ProgresoDeDesafioExpiradoTest {
 	private ProgresoDeDesafioExpirado expirado;
 	private Muestra                   muestra;
-	private Desafio					   desafio;
 	private ProgresoDeDesafio         progresoActual;
 	private IParticipante			  participante;
 	
@@ -30,7 +24,6 @@ public class ProgresoDeDesafioExpiradoTest {
 	public void setUp() {
 		muestra		    = mock(Muestra.class);
 		progresoActual  = mock(ProgresoDeDesafio.class);
-		desafio			= mock(Desafio.class);
 		participante	= mock(IParticipante.class);
 		expirado		= new ProgresoDeDesafioExpirado();
 	}
@@ -66,7 +59,6 @@ public class ProgresoDeDesafioExpiradoTest {
 	@Test
 	public void test04_unProgresoExpiradoIndicaSiElDesafioEstaEnCurso() {
 		LocalDateTime fecha = LocalDateTime.now();
-		
 		assertFalse(expirado.esDesafioEnCurso(progresoActual,fecha));
 	}
 	

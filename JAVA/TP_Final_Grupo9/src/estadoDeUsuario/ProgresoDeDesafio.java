@@ -8,10 +8,8 @@ import usuario.IParticipante;
 
 /**
  * 
- * 
  * Esta clase se encarga de modelar el progreso de un desafío.
  * 
- *
  */
 
 public class ProgresoDeDesafio {

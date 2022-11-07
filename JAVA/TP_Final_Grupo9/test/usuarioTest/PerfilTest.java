@@ -14,12 +14,11 @@ import usuario.RecomendacionSegunFavoritos;
 import usuario.RecomendacionSegunPreferencias;
 
 public class PerfilTest {
-	
 	private Caracteristica			  		caracteristica1;
 	private RecomendacionSegunPreferencias	estategiaDeRecomedacion1;
 	private RecomendacionSegunFavoritos		estategiaDeRecomedacion2;
 	private Perfil							perfil;
-	private Caracteristica caracteristica2;
+	private Caracteristica					caracteristica2;
 	
 	@BeforeEach
     public void setUp() {
@@ -104,7 +103,6 @@ public class PerfilTest {
 	
 	@Test
     public void test12_unPerfilMacheaCaracteristicasSegunDescripcion() {
-		
 		when(caracteristica1.getDescripicion()).thenReturn("Botánica");
 		when(caracteristica1.getAfinidad()).thenReturn(0.5);
 		
@@ -116,35 +114,10 @@ public class PerfilTest {
 	
 	@Test
     public void test13_unPerfilCalculaLaAfinidadConUnaCaracteristica() {
-		
 		caracteristica1 = new Caracteristica("c1", 5);
 		caracteristica2 = new Caracteristica("c2", 7);
-		/*
-		when(caracteristica1.getDescripicion()).thenReturn("Caminar");
-		when(caracteristica1.getAfinidad()).thenReturn(0.5);
-		
-		when(caracteristica2.getDescripicion()).thenReturn("Caminar");
-		when(caracteristica2.getAfinidad()).thenReturn(100.5);
-		*/
 		perfil.agregarCaracteristicaPreferida(caracteristica1);
 		perfil.agregarCaracteristicaPreferida(caracteristica2);
-		
 		assertEquals(perfil.afinidadConCaracteristica(caracteristica1), 0);	
     }
-	
-	
-	/*
-	 * 
-	 *  ESTOS MENSAJES FALTAN 
-				public double afinidadConCaracteristica(Caracteristica caracteristica) {
-					return Math.abs(this.getCaracteristicaSegunDescripcion(caracteristica).getAfinidad() - caracteristica.getAfinidad());
-				}
-			 
-				private Caracteristica getCaracteristicaSegunDescripcion(Caracteristica caracteristica) {
-					return (Caracteristica) this.getCaracteristicasPreferidas().stream().
-							filter(c -> c.getDescripicion().equals(caracteristica.getDescripicion()));
-				}
-	*/
-	
-	
 }

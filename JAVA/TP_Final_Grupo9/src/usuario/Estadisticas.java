@@ -1,12 +1,11 @@
 package usuario;
 
-
 /**
- * 
  * 
  * Esta clase modela una estadistica.
  *
  */
+
 public class Estadisticas {
 	private int satisfaccion;
 	private int recompensa;

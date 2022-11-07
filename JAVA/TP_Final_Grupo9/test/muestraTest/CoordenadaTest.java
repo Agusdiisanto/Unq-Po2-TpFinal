@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import muestra.Coordenada;
 
 public class CoordenadaTest {
-	
 	Coordenada coordenada;
 	
 	@BeforeEach

@@ -1,6 +1,5 @@
 package actividad;
 
-
 /**
  * 
  * Esta clase se encarga de modelar un Area con su latitud, su longitud y su radio.

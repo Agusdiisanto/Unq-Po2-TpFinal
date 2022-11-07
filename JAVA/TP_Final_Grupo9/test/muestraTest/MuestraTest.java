@@ -6,8 +6,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -22,33 +20,29 @@ import usuario.Perfil;
 import usuario.Usuario;
 
 public class MuestraTest {
-
-	private Muestra muestra1;
-	private Usuario usuario1;
-	private LocalDateTime fechaYHoraDeRecoleccion1;
-	private Coordenada coordenadaDeRecoleccion;
-	private Perfil  perfil1;
-	private Caracteristica caracteristica1;
+	private Muestra 		muestra1;
+	private Usuario 		usuario1;
+	private LocalDateTime 	fechaYHoraDeRecoleccion1;
+	private Coordenada 		coordenadaDeRecoleccion;
+	private Perfil  		perfil1;
+	private Caracteristica  caracteristica1;
 	private AplicacionMovil aplicacion1;
-	private Set <Caracteristica> caracteristicas1;
 	
     @BeforeEach
     public void setUp() {
-    	perfil1= new Perfil();
+    	perfil1		= new Perfil();
     	aplicacion1 = new AplicacionMovil();
-    	usuario1= new Usuario("Tomas", aplicacion1, perfil1);
+    	usuario1	= new Usuario("Tomas", aplicacion1, perfil1);
     	fechaYHoraDeRecoleccion1 = LocalDateTime.now(); 
-    	coordenadaDeRecoleccion = mock(Coordenada.class);
-    	caracteristicas1 = new HashSet <Caracteristica>();
-    	muestra1= new Muestra(usuario1, fechaYHoraDeRecoleccion1, coordenadaDeRecoleccion);
-    	caracteristica1 = new Caracteristica("Carateristica1", 1);
+    	coordenadaDeRecoleccion  = mock(Coordenada.class);
+    	muestra1				 = new Muestra(usuario1, fechaYHoraDeRecoleccion1, coordenadaDeRecoleccion);
+    	caracteristica1			 = new Caracteristica("Carateristica1", 1);
     	perfil1.agregarGusto("Gusto1");
     	perfil1.agregarCaracteristicaPreferida(caracteristica1);
     	perfil1.agregarComportamiento("Comportamiento1");
     	when(coordenadaDeRecoleccion.getCoordenadaX()).thenReturn(1.0);
     	when(coordenadaDeRecoleccion.getCoordenadaY()).thenReturn(2.0);
     }
-	
     
     @Test
     public void test01CuandoUnaMuestraSeCreaTieneUnUsuarioQueLaRecolecta() {
@@ -67,7 +61,6 @@ public class MuestraTest {
     	assertTrue(muestra1.tieneLaCaracteristica(caracteristica1));
     }
     
-    //Comentar sobre el localDate
     @Test 
     public void test04CuandoUnaMuestraSeCreaTieneUnaCoordenadaYUnaHoraDeRecoleccion() {
     	assertEquals(muestra1.getCoordenadaDeRecollecion().getCoordenadaX(),1);
@@ -75,7 +68,5 @@ public class MuestraTest {
     	assertEquals(muestra1.getFechaYHoraDeRecoleccion().getDayOfYear(), LocalDateTime.now().getDayOfYear());
     	assertEquals(muestra1.getFechaYHoraDeRecoleccion().getHour(), LocalDateTime.now().getHour());
     }
-    
-    
 }
 

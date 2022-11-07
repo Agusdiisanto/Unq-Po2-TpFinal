@@ -9,7 +9,6 @@ import usuario.Usuario;
 
 /**
  * 
- * 
  * Esta clase se encarga de modelar un sistema.
  *
  */

@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import actividad.Dificultad;
 
 public class DificultadTest {
-	
 	Dificultad dificultad;
 	
 	@BeforeEach

@@ -7,14 +7,11 @@ import proyectos.Proyecto;
 
 /**
  * 
- * 
  * Esta clase se encarga de modelar un filtro que incluye una titulo "t".
  *
  */
 
-
 public class FilterTitulo implements IFilter {
-	
 	private String tituloBuscado;
 	
 	public FilterTitulo(String tituloBuscado) {
@@ -27,5 +24,4 @@ public class FilterTitulo implements IFilter {
 						 tieneElNombre(this.tituloBuscado)).
 				         collect(Collectors.toList());
 	}
- 
 }

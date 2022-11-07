@@ -5,7 +5,6 @@ import muestra.Muestra;
  
 /**
  * 
- * 
  * Esta clase se encarga ver si un desafío está en curso.
  *
  */
