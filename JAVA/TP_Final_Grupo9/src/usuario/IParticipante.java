@@ -17,6 +17,5 @@ public interface IParticipante {
 	public void solicitarSuscripcionAProyecto(Proyecto proyecto);
 	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception ;
 	public boolean estaEnDesafioActualmente(LocalDateTime fecha);
-	public AplicacionMovil getAplicacion();
 	public void registrarDesafioCompletado(Desafio desafio, int recompensa, int muestrasRecolectadas, int satisfaccion);
 }

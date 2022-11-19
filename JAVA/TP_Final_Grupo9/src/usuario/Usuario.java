@@ -10,6 +10,7 @@ import actividad.Caracteristica;
 import actividad.Desafio;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import estadoDeUsuario.ProgresoDeDesafioEnCurso;
 import estadoDeUsuario.ProgresoDeDesafio;
@@ -24,11 +25,10 @@ import proyectos.Proyecto;
 
 public class Usuario implements IParticipante{
 	private String		          	   nombre;
-	private AplicacionMovil 	  	   aplicacion;
 	private Set<Proyecto> 		  	   proyectosEnCurso;
 	private Perfil 				  	   perfil;
 	private Map<Desafio, Estadisticas> desafiosCompletados;
-	private Set<ProgresoDeDesafio>  	   desafiosEnCurso;
+	private Set<ProgresoDeDesafio>     desafiosEnCurso;
 	
 	// ================== METHODS USUARIO ========================
 	public boolean contieneCaracteristicaConDescripcion(String descripcion) {
@@ -75,8 +75,9 @@ public class Usuario implements IParticipante{
 	}
 	
 	public void recolectarMuestraParaLosProyectos(Muestra muestra) throws Exception {
-		for (Proyecto proyecto : this.getProyectoEnCurso()) {
-			aplicacion.recolectarMuestra(muestra, this, proyecto);
+		for (Proyecto proyecto : this.proyectosDeInteres(muestra)) {
+			proyecto.agregarMuestra(muestra);
+			this.recolectarMuestraParaLosDesafios(muestra, LocalDateTime.now());
 		}
 	}
 	
@@ -101,6 +102,10 @@ public class Usuario implements IParticipante{
 		Estadisticas estadisticas = new Estadisticas(satisfaccion, recompensa, muestrasRecolectadas);
 		this.getDesafiosCompletados().put(desafio, estadisticas);
 	}
+	
+	public Set<Proyecto> proyectosDeInteres(Muestra unaMuestra){
+		return this.getProyectoEnCurso().stream().filter(p -> p.esMuestraDeInteres(unaMuestra)).collect(Collectors.toSet());
+	}
 	 
 	// ================== PRIVATE =====================
 	private void agregarNuevoDesafioEnCurso(Desafio desafio) {
@@ -109,9 +114,8 @@ public class Usuario implements IParticipante{
 	}
 	
 	// ================== COSTRUCTOR ==================
-	public Usuario(String nombre, AplicacionMovil aplicacion, Perfil perfil) {
+	public Usuario(String nombre,Perfil perfil) {
 		this.nombre				 	= nombre;
-		this.aplicacion			 	= aplicacion;
 		this.perfil 			 	= perfil;
 		this.proyectosEnCurso 	 	= new HashSet<Proyecto>();
 		this.desafiosCompletados 	= new HashMap<Desafio, Estadisticas>();
@@ -122,9 +126,7 @@ public class Usuario implements IParticipante{
 	public String getNombre() {
 		return nombre;
 	}
-	public AplicacionMovil getAplicacion() {
-		return aplicacion;
-	}
+
 	public Set<Proyecto> getProyectoEnCurso() {
 		return proyectosEnCurso;
 	}
@@ -152,7 +154,6 @@ public class Usuario implements IParticipante{
 	public Integer cantidadDeDesafiosEnCurso() {
 		return this.getDesafiosEnCurso().size();
 	}
-	
 	
 	
 	

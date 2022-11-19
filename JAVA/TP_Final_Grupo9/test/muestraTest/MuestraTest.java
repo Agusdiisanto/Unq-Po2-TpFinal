@@ -15,7 +15,6 @@ import org.junit.jupiter.api.BeforeEach;
 
 import muestra.Coordenada;
 import muestra.Muestra;
-import usuario.AplicacionMovil;
 import usuario.Perfil;
 import usuario.Usuario;
 
@@ -26,17 +25,15 @@ public class MuestraTest {
 	private Coordenada 		coordenadaDeRecoleccion;
 	private Perfil  		perfil1;
 	private Caracteristica  caracteristica1;
-	private AplicacionMovil aplicacion1;
 	
     @BeforeEach
     public void setUp() {
     	perfil1		= new Perfil();
-    	aplicacion1 = new AplicacionMovil();
-    	usuario1	= new Usuario("Tomas", aplicacion1, perfil1);
+    	usuario1	= mock(Usuario.class);
     	fechaYHoraDeRecoleccion1 = LocalDateTime.now(); 
     	coordenadaDeRecoleccion  = mock(Coordenada.class);
     	muestra1				 = new Muestra(usuario1, fechaYHoraDeRecoleccion1, coordenadaDeRecoleccion);
-    	caracteristica1			 = new Caracteristica("Carateristica1", 1);
+    	caracteristica1			 = mock(Caracteristica.class);
     	perfil1.agregarGusto("Gusto1");
     	perfil1.agregarCaracteristicaPreferida(caracteristica1);
     	perfil1.agregarComportamiento("Comportamiento1");

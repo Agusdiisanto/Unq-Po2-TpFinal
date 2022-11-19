@@ -20,14 +20,12 @@ import actividad.Dificultad;
 import estadoDeUsuario.ProgresoDeDesafio;
 import muestra.Muestra;
 import proyectos.Proyecto;
-import usuario.AplicacionMovil;
 import usuario.Perfil;
 import usuario.RecomendacionSegunPreferencias;
 import usuario.Usuario;
 
 public class UsuarioTest {
 	private Usuario usuario;
-	private AplicacionMovil appMovil;
 	private Perfil perfil;
 	private ProgresoDeDesafio progreso;
 	private Desafio desafio;
@@ -40,7 +38,6 @@ public class UsuarioTest {
 	@BeforeEach
 	public void setUp() {
 		proyecto = mock(Proyecto.class);
-		appMovil = mock(AplicacionMovil.class);
 		perfil = mock(Perfil.class);
 		progreso = mock(ProgresoDeDesafio.class);
 		desafio = mock(Desafio.class);
@@ -48,17 +45,12 @@ public class UsuarioTest {
 		desafio2 = mock(Desafio.class);
 		caracteristica = mock(Caracteristica.class);
 		estrategia = mock(RecomendacionSegunPreferencias.class);
-		usuario = new Usuario("Agustin", appMovil, perfil);
+		usuario = new Usuario("Agustin", perfil);
 	}
 	
 	@Test
 	public void test01_UnUsuarioSabeSuNombre() {
 		assertEquals("Agustin", usuario.getNombre());
-	}
-	
-	@Test
-	public void test02_UnUsuarioTieneUnaAplicacion() {
-		assertEquals(appMovil, usuario.getAplicacion());
 	}
 	
 	@Test
@@ -157,7 +149,7 @@ public class UsuarioTest {
 	public void test12_UnUsuarioPuedeRecolectarMuestras() throws Exception {
 		usuario.agregarNuevoProyectoEnCurso(proyecto);
 		usuario.recolectarMuestra(muestra);
-		verify(appMovil,times(1)).recolectarMuestra(muestra, usuario, proyecto);
+		//verify(appMovil,times(1)).recolectarMuestra(muestra, usuario, proyecto);
 	}
 	
 	@Test
@@ -175,7 +167,7 @@ public class UsuarioTest {
 		usuario.agregarNuevoProyectoEnCurso(proyecto);
 		usuario.recolectarMuestraParaLosProyectos(muestra);
 		
-		verify(appMovil,times(1)).recolectarMuestra(muestra, usuario, proyecto);
+		//verify(appMovil,times(1)).recolectarMuestra(muestra, usuario, proyecto);
 	}
 	
 	@Test

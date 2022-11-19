@@ -1,6 +1,7 @@
 package estadoDeUsuario;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import actividad.Desafio;
 import muestra.Muestra;
@@ -16,6 +17,8 @@ public class ProgresoDeDesafio {
 	private Desafio 		   desafioActual;
 	private IEstadoDelProgreso estado;
 	private int				   puntaje;
+	private Set<Muestra>   	   muestras;
+	
  
 	// ================== METHODS ==================
 	public boolean esDesafioActual(LocalDateTime fecha) {
@@ -24,6 +27,7 @@ public class ProgresoDeDesafio {
 	 
 	public void recolectarMuestra(IParticipante participante, Muestra muestra , LocalDateTime fecha) throws Exception {
 		this.getEstado().recolectarMuestra(this,muestra, fecha);
+		this.agregarMuestra(muestra);
 	}
 
 	public boolean completoElDesafio() {
@@ -91,4 +95,13 @@ public class ProgresoDeDesafio {
 	public void setPuntaje(int puntaje) {
 		this.puntaje = puntaje;
 	}
+	public Set<Muestra> getMuestras() {
+		return muestras;
+	}
+	
+	public void agregarMuestra(Muestra muestra) {
+		this.getMuestras().add(muestra);
+	}
+	
+	
 }
