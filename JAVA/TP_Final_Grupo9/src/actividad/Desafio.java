@@ -14,8 +14,8 @@ import usuario.IParticipante;
  */
 
 public class Desafio implements ActividadLudica {
-	private Area 				area;
-	private RestriccionTemporal restriccionTemporal;
+	private Circulo 			circulo;
+	private RestriccionTemporalMixta restriccionTemporal;
 	private int 				cantidadDeMuestrasARecolectar;
 	private Dificultad 			dificultad;
 	private int 				recompensa;
@@ -39,7 +39,7 @@ public class Desafio implements ActividadLudica {
 	}
 	
 	public boolean estaLaMuestraDentroDelArea(Muestra muestra) {
-		return this.getArea().estaDentroDelArea(muestra.getCoordenadaDeRecollecion().getCoordenadaX(),
+		return this.getCirculo().estaDentroDelArea(muestra.getCoordenadaDeRecollecion().getCoordenadaX(),
 												muestra.getCoordenadaDeRecollecion().getCoordenadaY());
 	}
 	
@@ -70,25 +70,23 @@ public class Desafio implements ActividadLudica {
 	}
 	
 	// ================== COSTRUCTOR ==================
-	public Desafio(Area 			   area,
-				   RestriccionTemporal restriccionTemporal,
+	public Desafio(Circulo 			   circulo,
+				   RestriccionTemporalMixta restriccionTemporal,
 				   int 				   cantidadDeMuestrasARecolectar,
 				   Dificultad 		   dificultad,
 				   int				   recompensa) {
-		this.area 							= area;
-		this.restriccionTemporal 			= restriccionTemporal;
-		this.cantidadDeMuestrasARecolectar  = cantidadDeMuestrasARecolectar;
-		this.dificultad 					= dificultad;
-		this.recompensa 					= recompensa;
+		this.setCirculo(circulo);
+		this.setRestriccionTemporal(restriccionTemporal);
+		this.setCantidadDeMuestrasARecolectar(cantidadDeMuestrasARecolectar);
+		this.setDificultad(dificultad);
+		this.setRecompensa(recompensa);
 		this.participantes					= new HashSet<IParticipante>();
 		this.caracteristicas                = new HashSet<Caracteristica>();
 	}
 
 	// ============== GETTERS & SETTERS ==============
-	public Area getArea() {
-		return area;
-	}
-	public RestriccionTemporal getRestriccionTemporal() {
+	
+	public RestriccionTemporalMixta getRestriccionTemporal() {
 		return restriccionTemporal;
 	}
 	public int getCantidadDeMuestrasARecolectar() {
@@ -106,4 +104,29 @@ public class Desafio implements ActividadLudica {
 	public Set<Caracteristica> getCaracteristicas() {
 		return caracteristicas;
 	}
+
+	public Circulo getCirculo() {
+		return circulo;
+	}
+
+	public void setCirculo(Circulo circulo) {
+		this.circulo = circulo;
+	}
+
+	public void setRestriccionTemporal(RestriccionTemporalMixta restriccionTemporal) {
+		this.restriccionTemporal = restriccionTemporal;
+	}
+
+	public void setCantidadDeMuestrasARecolectar(int cantidadDeMuestrasARecolectar) {
+		this.cantidadDeMuestrasARecolectar = cantidadDeMuestrasARecolectar;
+	}
+
+	public void setDificultad(Dificultad dificultad) {
+		this.dificultad = dificultad;
+	}
+
+	public void setRecompensa(int recompensa) {
+		this.recompensa = recompensa;
+	}
+
 }

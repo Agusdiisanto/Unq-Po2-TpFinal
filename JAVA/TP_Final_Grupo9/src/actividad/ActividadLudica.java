@@ -1,7 +1,7 @@
 package actividad;
 
 /*
- *	Esta clase se encarga de ver si una actividad lúdica es un desafío.
+ *	Esta interfaz de que las actividades ludicas implementen si es un desafio.
  */
 public interface ActividadLudica {
 	

@@ -52,11 +52,7 @@ public class correciones {
 		como el Usuario conocen proyectos. No tiene sentido este doble
 		conocimiento, dado que la app es del usuario.                        --- Agus : Ya lo hice (Verificar)
 		
-		11.Debajo de algunas subclases se especifica “Nota: Se implementan los
-		msj de la calse superclase”. Esto no es válido en UML. Si eso ocurre,
-		entonces repetir los mensajes en las subclases (y eliminar esas notas).  
-		
-		
+		 
 		12. Usuario tiene un mensaje “getEstrategiaDeRecomentación”, pero no
 		tiene el atributo y ninguna flechar llega hasta tal estrategia. Es
 		incorrecto pues no se puedeacceder a la misma. Revisar diseño.

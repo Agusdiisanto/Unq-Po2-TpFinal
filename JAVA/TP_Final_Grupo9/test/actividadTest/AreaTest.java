@@ -7,14 +7,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import actividad.Area;
+import actividad.Circulo;
 
 public class AreaTest {
-	private Area area;
+	private Circulo area;
 
 	@BeforeEach
 	public void setUp() {
-		area = new Area(10, 10, 4);
+		area = new Circulo(10, 10, 4);
 	}
 	
 	@Test

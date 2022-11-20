@@ -13,20 +13,20 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import actividad.Area;
+import actividad.Circulo;
 import actividad.Caracteristica;
 import actividad.Desafio;
 import actividad.Dificultad;
-import actividad.RestriccionTemporal;
+import actividad.RestriccionTemporalMixta;
 import muestra.Coordenada;
 import muestra.Muestra;
 import usuario.IParticipante;
 
 public class DesafioTest {
-	private Area				area;
-	private RestriccionTemporal restriccionTemporal1;
-	private RestriccionTemporal restriccionTemporal2;
-	private RestriccionTemporal restriccionTemporal3;
+	private Circulo				area;
+	private RestriccionTemporalMixta restriccionTemporal1;
+	private RestriccionTemporalMixta restriccionTemporal2;
+	private RestriccionTemporalMixta restriccionTemporal3;
 	private Desafio				desafio1;
 	private Desafio				desafio2;
 	private Desafio				desafio3;
@@ -41,16 +41,16 @@ public class DesafioTest {
 		
 	@BeforeEach
 	public void setUp() {
-		restriccionTemporal1 = mock(RestriccionTemporal.class);
-		restriccionTemporal2 = mock(RestriccionTemporal.class);
-		restriccionTemporal3 = mock(RestriccionTemporal.class);
+		restriccionTemporal1 = mock(RestriccionTemporalMixta.class);
+		restriccionTemporal2 = mock(RestriccionTemporalMixta.class);
+		restriccionTemporal3 = mock(RestriccionTemporalMixta.class);
 		caracteristica1	  	 = mock(Caracteristica.class);
 		caracteristica2	  	 = mock(Caracteristica.class);
 		caracteristica3	  	 = mock(Caracteristica.class);
 		participante1		 = mock(IParticipante.class);
 		muestra1             = mock(Muestra.class);
 		
-		area				 = new Area(10.0, 10.0, 10.0);
+		area				 = new Circulo(10.0, 10.0, 10.0);
 		desafio1			 = new Desafio(area, restriccionTemporal1, 30, Dificultad.MEDIO, 50);
 		desafio2			 = new Desafio(area, restriccionTemporal2, 30, Dificultad.MEDIO, 50);
 		desafio3			 = new Desafio(area, restriccionTemporal3, 30, Dificultad.MEDIO, 50);

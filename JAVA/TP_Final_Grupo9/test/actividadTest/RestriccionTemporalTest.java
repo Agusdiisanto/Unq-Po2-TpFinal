@@ -9,14 +9,14 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import actividad.RestriccionTemporal;
+import actividad.RestriccionTemporalMixta;
 
 public class RestriccionTemporalTest {
-	RestriccionTemporal restriccion;
+	RestriccionTemporalMixta restriccion;
 	
 	@BeforeEach
 	public void setUp() {
-		restriccion = new RestriccionTemporal(LocalDateTime.of(2022, 5, 10, 21, 30), LocalDateTime.of(2022, 6, 10, 23, 59));
+		restriccion = new RestriccionTemporalMixta(LocalDateTime.of(2022, 5, 10, 21, 30), LocalDateTime.of(2022, 6, 10, 23, 59));
 	}
 	
 	@Test
