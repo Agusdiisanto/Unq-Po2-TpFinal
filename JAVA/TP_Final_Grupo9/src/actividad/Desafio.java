@@ -14,13 +14,13 @@ import usuario.IParticipante;
  */
 
 public class Desafio implements ActividadLudica {
-	private Circulo 			circulo;
+	private Circulo 				 area;
 	private RestriccionTemporalMixta restriccionTemporal;
-	private int 				cantidadDeMuestrasARecolectar;
-	private Dificultad 			dificultad;
-	private int 				recompensa;
-	private Set<IParticipante>  participantes;
-	private Set<Caracteristica> caracteristicas;
+	private int 					 cantidadDeMuestrasARecolectar;
+	private Dificultad 				 dificultad;
+	private int 					 recompensa;
+	private Set<IParticipante>  	 participantes;
+	private Set<Caracteristica> 	 caracteristicas;
 
 	// ================== METHODS ==================
 	@Override
@@ -28,18 +28,14 @@ public class Desafio implements ActividadLudica {
 		return true;
 	}
 	
-	/**
-	 * Este metodo se encarga de verificar si un desafío es activo, con la fecha actual 
-	 * y la restricción temporal. 
-	 */
-	
+	// Verifica si un desafío es activo, según la fecha actual y la restricción temporal.
 	public Boolean esDesafioActivo() {
 		return LocalDateTime.now().isAfter(this.getRestriccionTemporal().getFechaDeInicio())
 			&& LocalDateTime.now().isBefore(this.getRestriccionTemporal().getFechaDeCierre());
 	}
 	
 	public boolean estaLaMuestraDentroDelArea(Muestra muestra) {
-		return this.getCirculo().estaDentroDelArea(muestra.getCoordenadaDeRecollecion().getCoordenadaX(),
+		return this.getArea().estaDentroDelArea(muestra.getCoordenadaDeRecollecion().getCoordenadaX(),
 												muestra.getCoordenadaDeRecollecion().getCoordenadaY());
 	}
 	
@@ -70,22 +66,24 @@ public class Desafio implements ActividadLudica {
 	}
 	
 	// ================== COSTRUCTOR ==================
-	public Desafio(Circulo 			   circulo,
+	public Desafio(Circulo 			   		area,
 				   RestriccionTemporalMixta restriccionTemporal,
-				   int 				   cantidadDeMuestrasARecolectar,
-				   Dificultad 		   dificultad,
-				   int				   recompensa) {
-		this.setCirculo(circulo);
+				   int 				   	 	cantidadDeMuestrasARecolectar,
+				   Dificultad 		   		dificultad,
+				   int				   		recompensa) {
+		this.setArea(area);
 		this.setRestriccionTemporal(restriccionTemporal);
 		this.setCantidadDeMuestrasARecolectar(cantidadDeMuestrasARecolectar);
 		this.setDificultad(dificultad);
 		this.setRecompensa(recompensa);
-		this.participantes					= new HashSet<IParticipante>();
-		this.caracteristicas                = new HashSet<Caracteristica>();
+		this.setParticipantes(new HashSet<IParticipante>());
+		this.setCaracteristicas(new HashSet<Caracteristica>());
 	}
 
 	// ============== GETTERS & SETTERS ==============
-	
+	public Circulo getArea() {
+		return area;
+	}
 	public RestriccionTemporalMixta getRestriccionTemporal() {
 		return restriccionTemporal;
 	}
@@ -104,29 +102,25 @@ public class Desafio implements ActividadLudica {
 	public Set<Caracteristica> getCaracteristicas() {
 		return caracteristicas;
 	}
-
-	public Circulo getCirculo() {
-		return circulo;
+	public void setArea(Circulo circulo) {
+		this.area = circulo;
 	}
-
-	public void setCirculo(Circulo circulo) {
-		this.circulo = circulo;
-	}
-
 	public void setRestriccionTemporal(RestriccionTemporalMixta restriccionTemporal) {
 		this.restriccionTemporal = restriccionTemporal;
 	}
-
 	public void setCantidadDeMuestrasARecolectar(int cantidadDeMuestrasARecolectar) {
 		this.cantidadDeMuestrasARecolectar = cantidadDeMuestrasARecolectar;
 	}
-
 	public void setDificultad(Dificultad dificultad) {
 		this.dificultad = dificultad;
 	}
-
 	public void setRecompensa(int recompensa) {
 		this.recompensa = recompensa;
 	}
-
+	private void setParticipantes(Set<IParticipante> participantes) {
+		this.participantes = participantes;
+	}
+	private void setCaracteristicas(Set<Caracteristica> caracteristicas) {
+		this.caracteristicas = caracteristicas;
+	}
 }

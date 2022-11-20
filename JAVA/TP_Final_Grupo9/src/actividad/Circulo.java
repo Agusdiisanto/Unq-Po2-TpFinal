@@ -10,22 +10,22 @@ import muestra.Coordenada;
 
 public class Circulo {
 	private Coordenada centro;
-	private double radio;
+	private double	   radio;
 	
-	/*public boolean estaDentroDelArea(double coordenadaX, double coordenadaY) {   ---SANTI
-		double x = coordenadaX - this.getLatitud();
-		double y = coordenadaY - this.getLongitud();
+	// =================== METHODS ====================
+	public boolean includes(Coordenada coordenada) {
+		double x = coordenada.getCoordenadaX() - this.getCentro().getCoordenadaX();
+		double y = coordenada.getCoordenadaY() - this.getCentro().getCoordenadaY();
 		return Math.pow(x, 2) + Math.pow(y, 2) <= Math.pow(this.getRadio(), 2);
-	}*/
-
+	}
+	
 	// ================== COSTRUCTOR ==================
 	public Circulo(Coordenada centro, double radio) {
 		this.setCentro(centro);
 		this.setRadio(radio);
 	}
 	
-	// ============== GETTERS & SETTERS ==============
-	
+	// ============== GETTERS & SETTERS ===============
 	public double getRadio() {
 		return radio;
 	}

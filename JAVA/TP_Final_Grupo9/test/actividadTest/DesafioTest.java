@@ -23,22 +23,22 @@ import muestra.Muestra;
 import usuario.IParticipante;
 
 public class DesafioTest {
-	private Circulo				area;
+	private Circulo					 area;
 	private RestriccionTemporalMixta restriccionTemporal1;
 	private RestriccionTemporalMixta restriccionTemporal2;
 	private RestriccionTemporalMixta restriccionTemporal3;
-	private Desafio				desafio1;
-	private Desafio				desafio2;
-	private Desafio				desafio3;
-	private Coordenada			coordenada1;
-	private Coordenada			coordenada2;
-	private Muestra				muestra1;
-	private Muestra				muestra2;
-	private IParticipante		participante1;
-	private Caracteristica		caracteristica1;
-	private Caracteristica		caracteristica2;
-	private Caracteristica		caracteristica3;
-		
+	private Desafio					 desafio1;
+	private Desafio					 desafio2;
+	private Desafio					 desafio3;
+	private Coordenada				 coordenada1;
+	private Coordenada				 coordenada2;
+	private Muestra					 muestra1;
+	private Muestra					 muestra2;
+	private IParticipante			 participante1;
+	private Caracteristica			 caracteristica1;
+	private Caracteristica			 caracteristica2;
+	private Caracteristica			 caracteristica3;
+	
 	@BeforeEach
 	public void setUp() {
 		restriccionTemporal1 = mock(RestriccionTemporalMixta.class);
@@ -49,8 +49,8 @@ public class DesafioTest {
 		caracteristica3	  	 = mock(Caracteristica.class);
 		participante1		 = mock(IParticipante.class);
 		muestra1             = mock(Muestra.class);
+		area				 = mock(Circulo.class);
 		
-		area				 = new Circulo(10.0, 10.0, 10.0);
 		desafio1			 = new Desafio(area, restriccionTemporal1, 30, Dificultad.MEDIO, 50);
 		desafio2			 = new Desafio(area, restriccionTemporal2, 30, Dificultad.MEDIO, 50);
 		desafio3			 = new Desafio(area, restriccionTemporal3, 30, Dificultad.MEDIO, 50);
