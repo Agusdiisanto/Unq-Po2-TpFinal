@@ -13,7 +13,7 @@ import usuario.IParticipante;
  *
  */
 
-public class Desafio extends ActividadLudica {
+public class Desafio implements ActividadLudica {
 	private Area 				area;
 	private RestriccionTemporal restriccionTemporal;
 	private int 				cantidadDeMuestrasARecolectar;

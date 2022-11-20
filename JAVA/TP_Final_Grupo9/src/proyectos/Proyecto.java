@@ -16,7 +16,7 @@ import usuario.IParticipante;
  */
 
 public class Proyecto {
-	private String				 nombreDelProyecto;
+	private String				 nombre;
 	private String 				 descripcion;
 	private Set<String> 		 categorias;
 	private Set<ActividadLudica> actividades;
@@ -29,7 +29,7 @@ public class Proyecto {
 		Set<Caracteristica> caracteristicasEnComun = this.getCaracteristicasDeInteres();
 		caracteristicasEnComun.retainAll(muestra.getCaracteristicas());
 		return !caracteristicasEnComun.isEmpty();
-	}
+	} 
 	
 	public Set<Desafio> getDesafios(){
 		Set<Desafio> desafios = new HashSet<Desafio>();
@@ -105,8 +105,8 @@ public class Proyecto {
 	
 	// ================== COSTRUCTOR ==================
 	public Proyecto(String nombreDelProyecto, String descripcion) {
-		this.nombreDelProyecto    	  = nombreDelProyecto;
-		this.descripcion 	   	  	  = descripcion;
+		this.setNombre(nombreDelProyecto);
+		this.setDescripcion(descripcion);
 		this.actividades 		      = new HashSet<ActividadLudica>();
 		this.categorias			  	  = new HashSet<String>(); 
 		this.muestrasRecolectadas 	  = new HashSet<Muestra>();
@@ -115,9 +115,7 @@ public class Proyecto {
 	}
 	
 	// ============== GETTERS & SETTERS ==============
-	public String getNombre() {
-		return nombreDelProyecto;
-	}
+	
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -135,5 +133,17 @@ public class Proyecto {
 	}
 	public Set<Caracteristica> getCaracteristicasDeInteres() {
 		return caracteristicasDeInteres;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 }

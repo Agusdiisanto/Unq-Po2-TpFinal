@@ -11,7 +11,7 @@ public class correciones {
 		
 		2. Las relaciones no tienen nombre y varias de ellas no tienen la
 		cardinalidad (por lo cual se asume 1, lo cual en varios casos es
-		incorrecto).
+		incorrecto). 
 		
 		3. Área en rigor es un círculo, podría entonces llamarse de esta manera
 		para aumentar el reúso y poder ser utilizada legiblemente en otras
@@ -31,30 +31,30 @@ public class correciones {
 				atributo.
 				
 		5. Se modela una única restricción temporal. Deberían ser varias y
-		además poder combinarse.
+		además poder combinarse. (COMPOSITE)    							  -- LO HACEMOS ENTRE TODOS
 		
-		6. ActividadLúdica extiende de desafío, pero sólo agrega un mensaje.
+		6. ActividadLúdica extiende de desafío, pero sólo agrega un mensaje.  --> INTERFAZ  -- Agus : Ya lo hice (Verificar)
 		Revisar este diseño.
 		
 		7. Por un lado modelan la Coordenada, y por otro lado modelan el Área
 		(que es un Círculo) pero que sin embargo no utiliza la Coordenada para
 		representar su centro. Revisar. No están “reusando” su propio modelo,
-		lo cual implica duplicaciones de diseño y código
+		lo cual implica duplicaciones de diseño y código.                         --SANTI
 		
 		
-		8. Característica tiene un atributo “latitud” cuyo objetivo no es claro.
+		8. Característica tiene un atributo “latitud” cuyo objetivo no es claro.  --SANTI
 		
 		9. El Composite de filtros está inmaduro. Faltan atributos en varios filtros y
 		las flechas recursivas de conocimiento típicas del patrón. Revisar
-		diseño completo.
+		diseño completo.                                                                --TOMI Y LO AYUDAMOS
 		
 		10. No hace falta modelar la Aplicación Móvil. De hecho, tanto ésta
 		como el Usuario conocen proyectos. No tiene sentido este doble
-		conocimiento, dado que la app es del usuario.
+		conocimiento, dado que la app es del usuario.                        --- Agus : Ya lo hice (Verificar)
 		
 		11.Debajo de algunas subclases se especifica “Nota: Se implementan los
 		msj de la calse superclase”. Esto no es válido en UML. Si eso ocurre,
-		entonces repetir los mensajes en las subclases (y eliminar esas notas).
+		entonces repetir los mensajes en las subclases (y eliminar esas notas).  
 		
 		
 		12. Usuario tiene un mensaje “getEstrategiaDeRecomentación”, pero no
@@ -66,9 +66,6 @@ public class correciones {
 		flecha no aparece en el diagrama. Si bien es válido en UML, siempre se
 		sugiere que las flechas tan significativas para el modelo se dibujen
 		explícitamente en el diagrama.
-		
-		
-		14. Identifican un state para el estado de ProgresoDesafío. Correcto.
 		
 		
 		Implementación:
