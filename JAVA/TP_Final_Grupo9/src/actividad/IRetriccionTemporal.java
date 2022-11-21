@@ -1,9 +1,9 @@
 package actividad;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public interface IRetriccionTemporal {
 	
-	public boolean validar(LocalDate fecha);
+	public boolean cumpleLaRestricion(LocalDateTime fecha);
 
 }

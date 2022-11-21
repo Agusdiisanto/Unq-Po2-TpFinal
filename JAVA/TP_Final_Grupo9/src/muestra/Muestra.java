@@ -17,7 +17,7 @@ public class Muestra {
 	private Set<Caracteristica> caracteristicas;
 	private Usuario 			usuarioQueLaRecolecto;
 	private LocalDateTime 		fechaYHoraDeRecoleccion;
-	private Coordenada 			coordenadaDeRecoleccion;
+	private Coordenada 			coordenada;
 
 	// ================== METHODS ==================
 	public boolean tieneLaCaracteristica(Caracteristica caracteristica) {
@@ -35,19 +35,22 @@ public class Muestra {
 	// ================== COSTRUCTOR ==================
 	public Muestra(Usuario		 usuarioQueLaRecolecto, 
 			       LocalDateTime fechaYHoraDeRecoleccion,
-			       Coordenada	 coordenadaDeRecollecion) {
-		this.caracteristicas = new HashSet<Caracteristica>();
+			       Coordenada	 coordenada) {
+		this.setCaracteristicas(new HashSet<Caracteristica>());
 		this.setUsuarioQueLaRecolecto(usuarioQueLaRecolecto);
 		this.setFechaYHoraDeRecoleccion(fechaYHoraDeRecoleccion);
-		this.setCoordenadaDeRecollecion(coordenadaDeRecollecion);
+		this.setCoordenada(coordenada);
 	}
 
 	// ============== GETTERS & SETTERS ==============
 	public Set<Caracteristica> getCaracteristicas() {
 		return caracteristicas;
-	} 
+	}
 	public Usuario getUsuarioQueLaRecolecto() {
 		return usuarioQueLaRecolecto;
+	}
+	private void setCaracteristicas(Set<Caracteristica> caracteristicas) {
+		this.caracteristicas = caracteristicas;
 	}
 	public void setUsuarioQueLaRecolecto(Usuario usuarioQueLaRecolecto) {
 		this.usuarioQueLaRecolecto = usuarioQueLaRecolecto;
@@ -58,10 +61,10 @@ public class Muestra {
 	public void setFechaYHoraDeRecoleccion(LocalDateTime fechaYHoraDeRecoleccion) {
 		this.fechaYHoraDeRecoleccion = fechaYHoraDeRecoleccion;
 	}
-	public Coordenada getCoordenadaDeRecollecion() {
-		return coordenadaDeRecoleccion;
+	public Coordenada getCoordenada() {
+		return coordenada;
 	}
-	public void setCoordenadaDeRecollecion(Coordenada coordenadaDeRecollecion) {
-		this.coordenadaDeRecoleccion = coordenadaDeRecollecion;
+	public void setCoordenada(Coordenada coordenada) {
+		this.coordenada = coordenada;
 	}
 }

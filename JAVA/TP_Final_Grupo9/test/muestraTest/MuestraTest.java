@@ -60,8 +60,8 @@ public class MuestraTest {
     
     @Test 
     public void test04CuandoUnaMuestraSeCreaTieneUnaCoordenadaYUnaHoraDeRecoleccion() {
-    	assertEquals(muestra1.getCoordenadaDeRecollecion().getCoordenadaX(),1);
-    	assertEquals(muestra1.getCoordenadaDeRecollecion().getCoordenadaY(), 2);
+    	assertEquals(muestra1.getCoordenada().getCoordenadaX(),1);
+    	assertEquals(muestra1.getCoordenada().getCoordenadaY(), 2);
     	assertEquals(muestra1.getFechaYHoraDeRecoleccion().getDayOfYear(), LocalDateTime.now().getDayOfYear());
     	assertEquals(muestra1.getFechaYHoraDeRecoleccion().getHour(), LocalDateTime.now().getHour());
     }

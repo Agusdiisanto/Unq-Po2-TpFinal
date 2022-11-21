@@ -1,6 +1,5 @@
 package actividad;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,33 +11,28 @@ import java.util.Set;
  */
 
 public class RestriccionTemporalMixta implements IRetriccionTemporal {
-	
 	private Set<IRetriccionTemporal> retricciones;
 	
-	public boolean cumpleLaRestriccion(LocalDateTime fecha) {
-	   return true;
-	}
-	
-	// ================== COSTRUCTOR ==================
-	public RestriccionTemporalMixta() {
-		retricciones = new HashSet<IRetriccionTemporal>();
-	} 
-	
-	// ============== GETTERS & SETTERS ==============
-	
+	// =================== METHODS ====================
 	@Override
-	public boolean validar(LocalDate fecha) {
-		// TODO Auto-generated method stub
-		return this.getRetricciones().stream().allMatch(r -> r.validar(fecha));
-	}
-
-	public Set<IRetriccionTemporal> getRetricciones() {
-		return retricciones;
+	public boolean cumpleLaRestricion(LocalDateTime fecha) {
+		return this.getRetricciones().stream().allMatch(r -> r.cumpleLaRestricion(fecha));
 	}
 	
 	public void agregarRetriccionTemporal(IRetriccionTemporal retriccion) {
 		this.getRetricciones().add(retriccion);
 	}
 	
+	// ================== COSTRUCTOR ==================
+	public RestriccionTemporalMixta() {
+		this.setRetricciones(new HashSet<IRetriccionTemporal>());
+	}
 	
+	// ============== GETTERS & SETTERS ==============
+	public Set<IRetriccionTemporal> getRetricciones() {
+		return retricciones;
+	}
+	private void setRetricciones(Set<IRetriccionTemporal> retricciones) {
+		this.retricciones = retricciones;
+	}
 }

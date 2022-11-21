@@ -14,13 +14,13 @@ import usuario.IParticipante;
  */
 
 public class Desafio implements ActividadLudica {
-	private Circulo 				 area;
-	private RestriccionTemporalMixta restriccionTemporal;
-	private int 					 cantidadDeMuestrasARecolectar;
-	private Dificultad 				 dificultad;
-	private int 					 recompensa;
-	private Set<IParticipante>  	 participantes;
-	private Set<Caracteristica> 	 caracteristicas;
+	private Circulo 			area;
+	private IRetriccionTemporal restriccionTemporal;
+	private int 				cantidadDeMuestrasARecolectar;
+	private Dificultad 			dificultad;
+	private int 				recompensa;
+	private Set<IParticipante>  participantes;
+	private Set<Caracteristica> caracteristicas;
 
 	// ================== METHODS ==================
 	@Override
@@ -28,30 +28,28 @@ public class Desafio implements ActividadLudica {
 		return true;
 	}
 	
-	// Verifica si un desafío es activo, según la fecha actual y la restricción temporal.
+	// Verifica si un desafío es activo, según la fecha actual y la restricción temporal.      FALTA TERMINAR!
 	public Boolean esDesafioActivo() {
-		return LocalDateTime.now().isAfter(this.getRestriccionTemporal().getFechaDeInicio())
-			&& LocalDateTime.now().isBefore(this.getRestriccionTemporal().getFechaDeCierre());
+		return this.getRestriccionTemporal().cumpleLaRestricion(LocalDateTime.now());
 	}
 	
 	public boolean estaLaMuestraDentroDelArea(Muestra muestra) {
-		return this.getArea().estaDentroDelArea(muestra.getCoordenadaDeRecollecion().getCoordenadaX(),
-												muestra.getCoordenadaDeRecollecion().getCoordenadaY());
+		return this.getArea().includes(muestra.getCoordenada());
 	}
 	
 	public boolean estaDentroDeLaRestriccion(LocalDateTime fecha) {
-		return this.getRestriccionTemporal().cumpleLaRestriccion(fecha);
+		return this.getRestriccionTemporal().cumpleLaRestricion(fecha);
 	}
 	
 	public boolean estaLaMuestraDentroDeLaRestriccion(Muestra muestra) {
-		return this.getRestriccionTemporal().cumpleLaRestriccion(muestra.getFechaYHoraDeRecoleccion());
+		return this.getRestriccionTemporal().cumpleLaRestricion(muestra.getFechaYHoraDeRecoleccion());
 	}
 	
 	// ================ ADD METHODS ================
 	public void agregarParticipanteAlDesafio(IParticipante usuario) {
 		// Un participante puede ingresar a un desafío que aún no haya arrancado
 		// pero solo se contabilizan las muestras a partir del inicio del desafío.
-		if (sePuedeInscribir()) {
+		if (this.sePuedeInscribir()) {
 			this.getParticipantes().add(usuario);
 		}
 	}
@@ -62,15 +60,15 @@ public class Desafio implements ActividadLudica {
 	
 	// ================ PRIVATE METHODS ================
 	private boolean sePuedeInscribir() {
-		return this.getRestriccionTemporal().getFechaDeCierre().isAfter(LocalDateTime.now());
+		return this.getRestriccionTemporal().cierre().isAfter(LocalDateTime.now());
 	}
 	
 	// ================== COSTRUCTOR ==================
-	public Desafio(Circulo 			   		area,
-				   RestriccionTemporalMixta restriccionTemporal,
-				   int 				   	 	cantidadDeMuestrasARecolectar,
-				   Dificultad 		   		dificultad,
-				   int				   		recompensa) {
+	public Desafio(Circulo 			   area,
+				   IRetriccionTemporal restriccionTemporal,
+				   int 				   cantidadDeMuestrasARecolectar,
+				   Dificultad 		   dificultad,
+				   int				   recompensa) {
 		this.setArea(area);
 		this.setRestriccionTemporal(restriccionTemporal);
 		this.setCantidadDeMuestrasARecolectar(cantidadDeMuestrasARecolectar);
@@ -84,7 +82,7 @@ public class Desafio implements ActividadLudica {
 	public Circulo getArea() {
 		return area;
 	}
-	public RestriccionTemporalMixta getRestriccionTemporal() {
+	public IRetriccionTemporal getRestriccionTemporal() {
 		return restriccionTemporal;
 	}
 	public int getCantidadDeMuestrasARecolectar() {
@@ -105,7 +103,7 @@ public class Desafio implements ActividadLudica {
 	public void setArea(Circulo circulo) {
 		this.area = circulo;
 	}
-	public void setRestriccionTemporal(RestriccionTemporalMixta restriccionTemporal) {
+	public void setRestriccionTemporal(IRetriccionTemporal restriccionTemporal) {
 		this.restriccionTemporal = restriccionTemporal;
 	}
 	public void setCantidadDeMuestrasARecolectar(int cantidadDeMuestrasARecolectar) {
