@@ -12,16 +12,18 @@ import proyectos.Proyecto;
  */
 
 public class AndFilter extends Filter{
+	private IFilter filtro1;
+	private IFilter filtro2;
 
 	public AndFilter() {
 		this.filtros= new ArrayList <IFilter>();
 	}
 
 	@Override
-	public List<Proyecto> filter(List<Proyecto> proyectos) {
+	public List<Proyecto> buscar(List<Proyecto> proyectos) {
 		List<Proyecto> resultados = proyectos;
 		for (IFilter filtros : this.getFiltros()) {
-			resultados= filtros.filter(resultados);
+			resultados= filtros.buscar(resultados);
 		}
 		return resultados;
 	}

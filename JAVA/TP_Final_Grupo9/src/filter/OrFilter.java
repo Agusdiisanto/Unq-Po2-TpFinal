@@ -13,16 +13,18 @@ import proyectos.Proyecto;
  */
 
 public class OrFilter extends Filter {
+	private IFilter filtro1;
+	private IFilter filtro2;
 	
 	public OrFilter() {
-		this.filtros= new ArrayList <IFilter>();
+		this.filtros = new ArrayList<IFilter>();
 	}
 
 	@Override
-	public List<Proyecto> filter(List<Proyecto> proyectos) {
-		List <Proyecto> resultados = new ArrayList<Proyecto>();
+	public ArrayList<Proyecto> buscar(ArrayList<Proyecto> proyectos) {
+		ArrayList<Proyecto> resultados = new ArrayList<Proyecto>();
 		for (IFilter iFilter : this.getFiltros()) {
-			List <Proyecto> newP = iFilter.filter(proyectos).stream().
+			List<Proyecto> newP = iFilter.buscar(proyectos).stream().
 									filter(proyecto -> !resultados.contains(proyecto)).
 									collect(Collectors.toList());
 			resultados.addAll(newP);
@@ -30,4 +32,3 @@ public class OrFilter extends Filter {
 		return resultados;
 	}
 }
-	

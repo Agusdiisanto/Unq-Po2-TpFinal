@@ -33,15 +33,15 @@ public class Desafio implements ActividadLudica {
 		return this.getRestriccionTemporal().cumpleLaRestricion(LocalDateTime.now());
 	}
 	
-	public boolean estaLaMuestraDentroDelArea(Muestra muestra) {
+	public boolean includesMuestra(Muestra muestra) {
 		return this.getArea().includes(muestra.getCoordenada());
 	}
 	
-	public boolean estaDentroDeLaRestriccion(LocalDateTime fecha) {
+	public boolean fechaCumpleLaRestriccion(LocalDateTime fecha) {
 		return this.getRestriccionTemporal().cumpleLaRestricion(fecha);
 	}
 	
-	public boolean estaLaMuestraDentroDeLaRestriccion(Muestra muestra) {
+	public boolean muestraCumpleLaRestriccion(Muestra muestra) {
 		return this.getRestriccionTemporal().cumpleLaRestricion(muestra.getFechaYHoraDeRecoleccion());
 	}
 	

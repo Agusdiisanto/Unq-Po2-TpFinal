@@ -71,7 +71,7 @@ public class FIltroTest {
 	
 	@Test
 	public void test01puedoFiltrarProyectosConElOrFilter() {
-		List <Proyecto> proyectos1 = orFilter.filter(proyectos);
+		List <Proyecto> proyectos1 = orFilter.buscar(proyectos);
 
 		assertEquals(proyectos1.size(), 1);
 		assertTrue(proyectos1.contains(proyecto1));
@@ -80,7 +80,7 @@ public class FIltroTest {
 	
 	@Test
 	public void test02puedoFiltrarProyectosConElAndFilter() {
-		List <Proyecto> proyectos1 = andFilter.filter(proyectos);
+		List <Proyecto> proyectos1 = andFilter.buscar(proyectos);
 				
 		assertEquals(proyectos1.size(), 1);
 		assertTrue(proyectos1.contains(proyecto1));
@@ -89,7 +89,7 @@ public class FIltroTest {
 	
 	@Test
 	public void test03puedoFiltrarProyectosConElFilterTitulo() {
-		List <Proyecto> proyectos1 = filterTitulo.filter(proyectos);
+		List <Proyecto> proyectos1 = filterTitulo.buscar(proyectos);
 		assertEquals(proyectos1.size(), 1);
 		assertTrue(proyectos1.contains(proyecto1));
 		assertFalse(proyectos1.contains(proyecto2));
@@ -97,7 +97,7 @@ public class FIltroTest {
 	
 	@Test
 	public void test04puedoFiltrarProyectosConElFilterQueIncluyeUnaCategoria() {
-		List <Proyecto> proyectos1 = filterCategoria.filter(proyectos);
+		List <Proyecto> proyectos1 = filterCategoria.buscar(proyectos);
 		
 		assertEquals(proyectos1.size(), 1);
 		assertTrue(proyectos1.contains(proyecto1));
@@ -106,7 +106,7 @@ public class FIltroTest {
 	
 	@Test 
 	public void test05puedoFiltrarProyectosConElFilterQueNoIncluyeUnaCategoria() {
-		List <Proyecto> proyectos1 = filterNoIncluyeCategoria.filter(proyectos);
+		List <Proyecto> proyectos1 = filterNoIncluyeCategoria.buscar(proyectos);
 		
 		assertEquals(proyectos1.size(), 2);
 		assertTrue(proyectos1.contains(proyecto2));
@@ -115,7 +115,7 @@ public class FIltroTest {
 
 	@Test
 	public void test046uedoFiltrarProyectosConElNotFilter() {
-		List <Proyecto> proyectos1 = notFilter.filter(proyectos);
+		List <Proyecto> proyectos1 = notFilter.buscar(proyectos);
 		
 		assertEquals(proyectos1.size(), 2);
 		assertTrue(proyectos1.contains(proyecto2));

@@ -1,6 +1,6 @@
 package filter;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /*
  * Esta clase abstracta se encarga de modelar un filtro.
@@ -8,7 +8,7 @@ import java.util.List;
  */
 
 public abstract class Filter implements IFilter{
-	List <IFilter> filtros;
+	ArrayList<IFilter> filtros;
 	
 	public void addFilter(IFilter iFilter) {
 		if(!this.containsFilter(iFilter)) {
@@ -16,7 +16,7 @@ public abstract class Filter implements IFilter{
 		}
 	}
 	
-	public List <IFilter> getFiltros(){ 
+	public ArrayList<IFilter> getFiltros(){ 
 		return this.filtros;
 	}
 	

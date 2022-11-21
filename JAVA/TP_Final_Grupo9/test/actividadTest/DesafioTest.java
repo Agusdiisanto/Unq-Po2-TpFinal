@@ -166,21 +166,21 @@ public class DesafioTest {
 	public void test17_unDesafioIndicaSiUnaMuestraEstaDentroDelArea() {
 		coordenada1 = new Coordenada(7.0, 7.0);
 		muestra1	= new Muestra(null, null, coordenada1);
-		assertTrue(desafio1.estaLaMuestraDentroDelArea(muestra1));
+		assertTrue(desafio1.includesMuestra(muestra1));
 	}
 	
 	@Test
 	public void test18_unDesafioIndicaSiUnaMuestraNoEstaDentroDelArea() {
 		coordenada2 = new Coordenada(1.0, 1.0);
 		muestra2	= new Muestra(null, null, coordenada2);
-		assertFalse(desafio1.estaLaMuestraDentroDelArea(muestra2));
+		assertFalse(desafio1.includesMuestra(muestra2));
 	}
 	
 	@Test
 	public void test19_unDesafioIndicaSiUnaFechaCumpleLaRestriccion() {
 		LocalDateTime fecha = LocalDateTime.now();
 		when(restriccionTemporal1.cumpleLaRestriccion(fecha)).thenReturn(true);
-		assertTrue(desafio1.estaDentroDeLaRestriccion(fecha));
+		assertTrue(desafio1.fechaCumpleLaRestriccion(fecha));
 		verify(restriccionTemporal1, times(1)).cumpleLaRestriccion(fecha);
 	}
 	
@@ -188,7 +188,7 @@ public class DesafioTest {
 	public void test20_unDesafioIndicaSiUnaFechaNoCumpleLaRestriccion() {
 		LocalDateTime fecha = LocalDateTime.now();
 		when(restriccionTemporal1.cumpleLaRestriccion(fecha)).thenReturn(false);
-		assertFalse(desafio1.estaDentroDeLaRestriccion(fecha));
+		assertFalse(desafio1.fechaCumpleLaRestriccion(fecha));
 		verify(restriccionTemporal1, times(1)).cumpleLaRestriccion(fecha);
 	}
 	
@@ -199,7 +199,7 @@ public class DesafioTest {
 		when(muestra1.getFechaYHoraDeRecoleccion()).thenReturn(fecha);
 		when(restriccionTemporal1.cumpleLaRestriccion(fecha)).thenReturn(true);
 		
-		assertTrue(desafio1.estaLaMuestraDentroDeLaRestriccion(muestra1));
+		assertTrue(desafio1.muestraCumpleLaRestriccion(muestra1));
 		verify(restriccionTemporal1, times(1)).cumpleLaRestriccion(fecha);
 		verify(muestra1, times(1)).getFechaYHoraDeRecoleccion();
 	}
@@ -211,7 +211,7 @@ public class DesafioTest {
 		when(muestra1.getFechaYHoraDeRecoleccion()).thenReturn(fecha);
 		when(restriccionTemporal1.cumpleLaRestriccion(fecha)).thenReturn(false);
 		
-		assertFalse(desafio1.estaLaMuestraDentroDeLaRestriccion(muestra1));
+		assertFalse(desafio1.muestraCumpleLaRestriccion(muestra1));
 		verify(restriccionTemporal1, times(1)).cumpleLaRestriccion(fecha);
 		verify(muestra1, times(1)).getFechaYHoraDeRecoleccion();
 	}

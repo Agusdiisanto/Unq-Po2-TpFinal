@@ -62,11 +62,11 @@ public class ProgresoDeDesafio {
 	}
 
 	private boolean estaLaMuestraDentroDelAreaDelDesafio(Muestra muestra) {
-		return this.getDesafioActual().estaLaMuestraDentroDelArea(muestra);
+		return this.getDesafioActual().includesMuestra(muestra);
 	}
 
 	private boolean estaLaMuestraDentroDeLaRestriccionDelDesafio(Muestra muestra) {
-		return this.getDesafioActual().estaLaMuestraDentroDeLaRestriccion(muestra);
+		return this.getDesafioActual().muestraCumpleLaRestriccion(muestra);
 	}
 	
 	// ================== COSTRUCTOR ==================

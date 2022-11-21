@@ -19,7 +19,7 @@ public class FilterTitulo implements IFilter {
 	}
 
 	@Override
-	public List<Proyecto> filter(List<Proyecto> proyectos) {
+	public List<Proyecto> buscar(List<Proyecto> proyectos) {
 		return proyectos.stream().filter(proyecto ->proyecto.
 						 tieneElNombre(this.tituloBuscado)).
 				         collect(Collectors.toList());

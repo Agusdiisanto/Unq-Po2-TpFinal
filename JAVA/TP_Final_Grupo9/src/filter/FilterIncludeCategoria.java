@@ -19,7 +19,7 @@ public class FilterIncludeCategoria extends Filter{
 	}
 	
 	@Override
-	public List<Proyecto> filter(List<Proyecto> proyectos) {
+	public List<Proyecto> buscar(List<Proyecto> proyectos) {
 		return proyectos.stream().filter(pr -> pr.contieneALaCategoria(filterNombreCategoria)).
 			   collect(Collectors.toList());
 	}

@@ -38,7 +38,7 @@ public class ProgresoDeDesafioEnCursoTest {
 		LocalDateTime fecha = LocalDateTime.now();
 		
 		when(progresoActual.getDesafioActual()).thenReturn(desafio);
-		when(desafio.estaDentroDeLaRestriccion(fecha)).thenReturn(true);
+		when(desafio.fechaCumpleLaRestriccion(fecha)).thenReturn(true);
 		
 		assertTrue(progresoEnCurso.esDesafioEnCurso(progresoActual,fecha));
 		verify(progresoActual,times(1)).getDesafioActual();
@@ -49,7 +49,7 @@ public class ProgresoDeDesafioEnCursoTest {
 		LocalDateTime fecha = LocalDateTime.now();
 		
 		when(progresoActual.getDesafioActual()).thenReturn(desafio);
-		when(desafio.estaDentroDeLaRestriccion(fecha)).thenReturn(false);
+		when(desafio.fechaCumpleLaRestriccion(fecha)).thenReturn(false);
 		
 		assertFalse(progresoEnCurso.esDesafioEnCurso(progresoActual,fecha));
 		verify(progresoActual,times(1)).getDesafioActual();	
@@ -60,7 +60,7 @@ public class ProgresoDeDesafioEnCursoTest {
 		LocalDateTime fecha = LocalDateTime.now();
 		
 		when(progresoActual.getDesafioActual()).thenReturn(desafio);
-		when(desafio.estaDentroDeLaRestriccion(fecha)).thenReturn(true);
+		when(desafio.fechaCumpleLaRestriccion(fecha)).thenReturn(true);
 		when(progresoActual.esUnaMuestraValida(muestra)).thenReturn(true);
 		
 		assertTrue(progresoEnCurso.esDesafioEnCurso(progresoActual,fecha));
@@ -75,7 +75,7 @@ public class ProgresoDeDesafioEnCursoTest {
 		LocalDateTime fecha = LocalDateTime.of(2023, 01, 01, 00, 00);
 		
 		when(progresoActual.getDesafioActual()).thenReturn(desafio);
-		when(desafio.estaDentroDeLaRestriccion(fecha)).thenReturn(false);
+		when(desafio.fechaCumpleLaRestriccion(fecha)).thenReturn(false);
 		
 		assertFalse(progresoEnCurso.esDesafioEnCurso(progresoActual,fecha));
 		progresoEnCurso.recolectarMuestra(progresoActual, muestra, fecha);
@@ -89,14 +89,14 @@ public class ProgresoDeDesafioEnCursoTest {
 		
 		when(progresoActual.getDesafioActual()).thenReturn(desafio);
 		when(progresoActual.esUnaMuestraValida(muestra)).thenReturn(false);
-		when(desafio.estaDentroDeLaRestriccion(fecha)).thenReturn(true);
+		when(desafio.fechaCumpleLaRestriccion(fecha)).thenReturn(true);
 		
 		assertTrue(progresoEnCurso.esDesafioEnCurso(progresoActual,fecha));
 		progresoEnCurso.recolectarMuestra(progresoActual, muestra, fecha);
 		assertEquals(progresoActual.getPuntaje(), 0);
 		verify(progresoActual,times(2)).getDesafioActual();
 		verify(progresoActual,times(1)).esUnaMuestraValida(muestra);
-		verify(desafio,times(2)).estaDentroDeLaRestriccion(fecha);
+		verify(desafio,times(2)).fechaCumpleLaRestriccion(fecha);
 	}
 	
 	@Test

@@ -1,6 +1,6 @@
 package filter;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import proyectos.Proyecto;
 
@@ -11,5 +11,5 @@ import proyectos.Proyecto;
  */
 
 public interface IFilter {
-	public List <Proyecto> filter(List<Proyecto> proyectos);
+	public ArrayList<Proyecto> buscar(ArrayList<Proyecto> proyectos);
 }
