@@ -13,7 +13,7 @@ public class ProgresoDeDesafioEnCurso extends EstadoDeProgreso{
 
 	@Override
 	public boolean esDesafioEnCurso(ProgresoDeDesafio progreso, LocalDateTime fecha) {
-		return progreso.getDesafioActual().estaDentroDeLaRestriccion(fecha); 
+		return progreso.getDesafioActual().fechaCumpleLaRestriccion(fecha); 
 	}
 	
 	@Override

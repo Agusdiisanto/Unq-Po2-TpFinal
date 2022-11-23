@@ -12,6 +12,8 @@ import proyectos.Proyecto;
  */
 
 public class AndFilter extends Filter{
+	private IFilter filtro1;
+	private IFilter filtro2;
 
 	public AndFilter() {
 		this.filtros= new ArrayList <IFilter>();

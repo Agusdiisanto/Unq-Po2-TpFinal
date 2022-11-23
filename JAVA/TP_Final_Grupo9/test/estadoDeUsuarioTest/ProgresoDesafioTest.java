@@ -128,42 +128,42 @@ public class ProgresoDesafioTest {
 	
 	@Test
 	public void test14_unProgresoSabeSiEsUnaMuestraValida() {
-		when(desafio.estaLaMuestraDentroDelArea(muestra)).thenReturn(true);
-		when(desafio.estaLaMuestraDentroDeLaRestriccion(muestra)).thenReturn(true);
+		when(desafio.includesMuestra(muestra)).thenReturn(true);
+		when(desafio.muestraCumpleLaRestriccion(muestra)).thenReturn(true);
 		
 		assertTrue(progreso.esUnaMuestraValida(muestra));
-		verify(desafio,times(1)).estaLaMuestraDentroDelArea(muestra);
-		verify(desafio,times(1)).estaLaMuestraDentroDeLaRestriccion(muestra);
+		verify(desafio,times(1)).includesMuestra(muestra);
+		verify(desafio,times(1)).muestraCumpleLaRestriccion(muestra);
 	}
 	
 	@Test
 	public void test15_unProgresoSabeSiNoEsUnaMuestraValida() {
 		// Esta implementado el short circuit
-		when(desafio.estaLaMuestraDentroDelArea(muestra)).thenReturn(false);
-		when(desafio.estaLaMuestraDentroDeLaRestriccion(muestra)).thenReturn(true);
+		when(desafio.includesMuestra(muestra)).thenReturn(false);
+		when(desafio.muestraCumpleLaRestriccion(muestra)).thenReturn(true);
 		
 		assertFalse(progreso.esUnaMuestraValida(muestra));
-		verify(desafio,times(1)).estaLaMuestraDentroDelArea(muestra);	
+		verify(desafio,times(1)).includesMuestra(muestra);	
 	}
 	
 	@Test
 	public void test16_unProgresoSabeSiNoEsUnaMuestraValida() {
 		// Esta implementado el short circuit
-		when(desafio.estaLaMuestraDentroDelArea(muestra)).thenReturn(true);
-		when(desafio.estaLaMuestraDentroDeLaRestriccion(muestra)).thenReturn(false);
+		when(desafio.includesMuestra(muestra)).thenReturn(true);
+		when(desafio.muestraCumpleLaRestriccion(muestra)).thenReturn(false);
 		
 		assertFalse(progreso.esUnaMuestraValida(muestra));
-		verify(desafio,times(1)).estaLaMuestraDentroDelArea(muestra);
-		verify(desafio,times(1)).estaLaMuestraDentroDeLaRestriccion(muestra);
+		verify(desafio,times(1)).includesMuestra(muestra);
+		verify(desafio,times(1)).muestraCumpleLaRestriccion(muestra);
 	} 
 	
 	@Test
 	public void test17_unProgresoSabeSiNoEsUnaMuestraValida() {
 		// Esta implementado el short circuit
-		when(desafio.estaLaMuestraDentroDelArea(muestra)).thenReturn(false);
-		when(desafio.estaLaMuestraDentroDeLaRestriccion(muestra)).thenReturn(false);
+		when(desafio.includesMuestra(muestra)).thenReturn(false);
+		when(desafio.muestraCumpleLaRestriccion(muestra)).thenReturn(false);
 		
 		assertFalse(progreso.esUnaMuestraValida(muestra));
-		verify(desafio,times(1)).estaLaMuestraDentroDelArea(muestra);
+		verify(desafio,times(1)).includesMuestra(muestra);
 	}
 }
