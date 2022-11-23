@@ -18,10 +18,10 @@ public class AndFilter extends Filter{
 	}
 
 	@Override
-	public List<Proyecto> filter(List<Proyecto> proyectos) {
+	public List<Proyecto> buscar(List<Proyecto> proyectos) {
 		List<Proyecto> resultados = proyectos;
 		for (IFilter filtros : this.getFiltros()) {
-			resultados= filtros.filter(resultados);
+			resultados= filtros.buscar(resultados);
 		}
 		return resultados;
 	}

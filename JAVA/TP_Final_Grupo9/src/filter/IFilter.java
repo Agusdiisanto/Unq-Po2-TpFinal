@@ -11,5 +11,5 @@ import proyectos.Proyecto;
  */
 
 public interface IFilter {
-	public List <Proyecto> filter(List<Proyecto> proyectos);
+	public List <Proyecto> buscar(List<Proyecto> proyectos);
 }

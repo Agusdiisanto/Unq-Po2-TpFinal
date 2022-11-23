@@ -19,10 +19,10 @@ public class OrFilter extends Filter {
 	}
 
 	@Override
-	public List<Proyecto> filter(List<Proyecto> proyectos) {
+	public List<Proyecto> buscar(List<Proyecto> proyectos) {
 		List <Proyecto> resultados = new ArrayList<Proyecto>();
 		for (IFilter iFilter : this.getFiltros()) {
-			List <Proyecto> newP = iFilter.filter(proyectos).stream().
+			List <Proyecto> newP = iFilter.buscar(proyectos).stream().
 									filter(proyecto -> !resultados.contains(proyecto)).
 									collect(Collectors.toList());
 			resultados.addAll(newP);

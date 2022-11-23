@@ -60,7 +60,7 @@ public class Desafio implements ActividadLudica {
 	
 	// ================ PRIVATE METHODS ================
 	private boolean sePuedeInscribir() {
-		return this.getRestriccionTemporal().cierre().isAfter(LocalDateTime.now());
+		return this.getRestriccionTemporal().cumpleLaRestricion(LocalDateTime.now());
 	}
 	
 	// ================== COSTRUCTOR ==================

@@ -18,10 +18,10 @@ public class NotFilter extends Filter{
 		this.filtros = new ArrayList<IFilter>();
 	}	
 	
-	public List<Proyecto> filter(List<Proyecto> proyectos) {
+	public List<Proyecto> buscar(List<Proyecto> proyectos) {
 		List <Proyecto> resultados = new ArrayList<>(proyectos);
 		for(IFilter filtros : this.filtros) {
-			List <Proyecto>filtrados = filtros.filter(proyectos);
+			List <Proyecto>filtrados = filtros.buscar(proyectos);
 			resultados.removeAll(filtrados);
 		}  
 		return resultados;
