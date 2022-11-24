@@ -1,6 +1,7 @@
 package filter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import proyectos.Proyecto;
 
@@ -15,24 +16,14 @@ public class NotFilter extends Filter{
 	
 	public NotFilter() {
 		this.filtros = new ArrayList<IFilter>();
-<<<<<<< HEAD
 	}	
 	
-	public List<Proyecto> buscar(List<Proyecto> proyectos) {
-		List <Proyecto> resultados = new ArrayList<>(proyectos);
-		for(IFilter filtros : this.filtros) {
-			List <Proyecto>filtrados = filtros.buscar(proyectos);
-			resultados.removeAll(filtrados);
-		}  
-=======
-	}
-
+	
 	@Override
-	public ArrayList<Proyecto> buscar(ArrayList<Proyecto> proyectos) {
-		ArrayList<Proyecto> temporal   = filtro.buscar(proyectos);
-		ArrayList<Proyecto> resultados = new ArrayList<Proyecto>(proyectos);
+	public List<Proyecto> buscar(List<Proyecto> proyectos) {
+		List<Proyecto> temporal   = filtro.buscar(proyectos);
+		List<Proyecto> resultados = new ArrayList<Proyecto>(proyectos);
 		resultados.removeAll(temporal);
->>>>>>> 3bd6600a0b05939a2942da6faf92736532987d8c
 		return resultados;
 	}
 }

@@ -1,8 +1,9 @@
 package filter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 import proyectos.Proyecto;
 
@@ -19,23 +20,15 @@ public class OrFilter extends Filter {
 	public OrFilter() {
 		this.filtros = new ArrayList<IFilter>();
 	}
-
-	@Override
-<<<<<<< HEAD
+	
 	public List<Proyecto> buscar(List<Proyecto> proyectos) {
-		List <Proyecto> resultados = new ArrayList<Proyecto>();
-		for (IFilter iFilter : this.getFiltros()) {
-			List <Proyecto> newP = iFilter.buscar(proyectos).stream().
-=======
-	public ArrayList<Proyecto> buscar(ArrayList<Proyecto> proyectos) {
-		ArrayList<Proyecto> resultados = new ArrayList<Proyecto>();
-		for (IFilter iFilter : this.getFiltros()) {
-			List<Proyecto> newP = iFilter.buscar(proyectos).stream().
->>>>>>> 3bd6600a0b05939a2942da6faf92736532987d8c
-									filter(proyecto -> !resultados.contains(proyecto)).
-									collect(Collectors.toList());
-			resultados.addAll(newP);
-		}
-		return resultados;
+		
+		Set<Proyecto> result = new HashSet<Proyecto>();
+		
+		result.addAll(filtro1.buscar(proyectos));
+		result.addAll(filtro2.buscar(proyectos));
+		
+		return new ArrayList<Proyecto>(result);
+		
 	}
 }

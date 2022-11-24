@@ -21,11 +21,9 @@ public class AndFilter extends Filter{
 
 	@Override
 	public List<Proyecto> buscar(List<Proyecto> proyectos) {
-		List<Proyecto> resultados = proyectos;
-		for (IFilter filtros : this.getFiltros()) {
-			resultados= filtros.buscar(resultados);
-		}
-		return resultados;
+		List<Proyecto> resultado = new ArrayList<Proyecto>(filtro1.buscar(proyectos));
+		resultado.retainAll(filtro2.buscar(proyectos));
+		return resultado;
 	}
 }
 

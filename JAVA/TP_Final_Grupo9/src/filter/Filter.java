@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 
 public abstract class Filter implements IFilter{
+	
 	ArrayList<IFilter> filtros;
 	
 	public void addFilter(IFilter iFilter) {
