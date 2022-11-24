@@ -17,10 +17,6 @@ public class OrFilter extends Filter {
 	private IFilter filtro1;
 	private IFilter filtro2;
 	
-	public OrFilter() {
-		this.filtros = new ArrayList<IFilter>();
-	}
-	
 	public List<Proyecto> buscar(List<Proyecto> proyectos) {
 		
 		Set<Proyecto> result = new HashSet<Proyecto>();
@@ -30,5 +26,11 @@ public class OrFilter extends Filter {
 		
 		return new ArrayList<Proyecto>(result);
 		
+	}
+
+	@Override
+	public boolean containsFilter(IFilter iFilter) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

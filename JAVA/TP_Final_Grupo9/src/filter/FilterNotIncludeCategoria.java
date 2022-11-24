@@ -19,8 +19,8 @@ public class FilterNotIncludeCategoria extends Filter {
 	}
 	
 	@Override
-	public List<Proyecto> buscar(List<Proyecto> proyectos) {
-		return proyectos.stream().filter(pr -> !pr.contieneALaCategoria(filterNombreCategoria)).
-			   collect(Collectors.toList());
+	public boolean containsFilter(IFilter iFilter) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

@@ -11,13 +11,8 @@ import proyectos.Proyecto;
  *
  */
 
-public class NotFilter extends Filter{
+public class NotFilter implements IFilter{
 	private IFilter filtro;
-	
-	public NotFilter() {
-		this.filtros = new ArrayList<IFilter>();
-	}	
-	
 	
 	@Override
 	public List<Proyecto> buscar(List<Proyecto> proyectos) {

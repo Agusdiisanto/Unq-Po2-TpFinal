@@ -23,4 +23,10 @@ public class FilterIncludeCategoria extends Filter{
 		return proyectos.stream().filter(pr -> pr.contieneALaCategoria(filterNombreCategoria)).
 			   collect(Collectors.toList());
 	}
+
+	@Override
+	public boolean containsFilter(IFilter iFilter) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
