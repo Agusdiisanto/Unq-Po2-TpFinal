@@ -11,6 +11,7 @@ import java.util.Set;
  */
 
 public class RestriccionTemporalMixta implements IRetriccionTemporal {
+	
 	private Set<IRetriccionTemporal> retricciones;
 	
 	// =================== METHODS ====================

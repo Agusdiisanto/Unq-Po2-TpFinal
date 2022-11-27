@@ -1,8 +1,5 @@
 package filter;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import proyectos.Proyecto;
 
 /**
@@ -12,6 +9,7 @@ import proyectos.Proyecto;
  */
 
 public class FilterNotIncludeCategoria extends Filter {
+	
 	private String filterNombreCategoria;
 
 	public FilterNotIncludeCategoria(String filterNombreCategoria) {
@@ -19,8 +17,8 @@ public class FilterNotIncludeCategoria extends Filter {
 	}
 	
 	@Override
-	public boolean containsFilter(IFilter iFilter) {
+	public boolean containsFilter(Proyecto proyecto) {
 		// TODO Auto-generated method stub
-		return false;
+		return !proyecto.contieneALaCategoria(filterNombreCategoria);
 	}
 }

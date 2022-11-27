@@ -1,7 +1,5 @@
 package filter;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
 import proyectos.Proyecto;
 
@@ -11,7 +9,7 @@ import proyectos.Proyecto;
  *
  */
 
-public class FilterTitulo implements IFilter {
+public class FilterTitulo extends Filter {
 	private String tituloBuscado;
 	
 	public FilterTitulo(String tituloBuscado) {
@@ -19,9 +17,9 @@ public class FilterTitulo implements IFilter {
 	}
 
 	@Override
-	public List<Proyecto> buscar(List<Proyecto> proyectos) {
-		return proyectos.stream().filter(proyecto ->proyecto.
-						 tieneElNombre(this.tituloBuscado)).
-				         collect(Collectors.toList());
+	public boolean containsFilter(Proyecto proyecto) {
+		// TODO Auto-generated method stub
+		return proyecto.tieneElNombre(tituloBuscado);
 	}
+	
 }

@@ -14,6 +14,10 @@ import proyectos.Proyecto;
 public class NotFilter implements IFilter{
 	private IFilter filtro;
 	
+	public NotFilter(IFilter filtro) {
+		this.filtro = filtro;
+	}
+	
 	@Override
 	public List<Proyecto> buscar(List<Proyecto> proyectos) {
 		List<Proyecto> temporal   = filtro.buscar(proyectos);

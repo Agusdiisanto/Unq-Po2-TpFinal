@@ -17,16 +17,16 @@ import actividad.Circulo;
 import actividad.Caracteristica;
 import actividad.Desafio;
 import actividad.Dificultad;
-import actividad.RestriccionTemporalMixta;
+import actividad.IRetriccionTemporal;
 import muestra.Coordenada;
 import muestra.Muestra;
 import usuario.IParticipante;
 
 public class DesafioTest {
 	private Circulo					 area;
-	private RestriccionTemporalMixta restriccionTemporal1;
-	private RestriccionTemporalMixta restriccionTemporal2;
-	private RestriccionTemporalMixta restriccionTemporal3;
+	private IRetriccionTemporal restriccionTemporal1;
+	private IRetriccionTemporal restriccionTemporal2;
+	private IRetriccionTemporal restriccionTemporal3;
 	private Desafio					 desafio1;
 	private Desafio					 desafio2;
 	private Desafio					 desafio3;
@@ -41,12 +41,15 @@ public class DesafioTest {
 	
 	@BeforeEach
 	public void setUp() {
-		restriccionTemporal1 = mock(RestriccionTemporalMixta.class);
-		restriccionTemporal2 = mock(RestriccionTemporalMixta.class);
-		restriccionTemporal3 = mock(RestriccionTemporalMixta.class);
+		
+		restriccionTemporal1 = mock(IRetriccionTemporal.class);
+		restriccionTemporal2 = mock(IRetriccionTemporal.class);
+		restriccionTemporal3 = mock(IRetriccionTemporal.class);
+		
 		caracteristica1	  	 = mock(Caracteristica.class);
 		caracteristica2	  	 = mock(Caracteristica.class);
 		caracteristica3	  	 = mock(Caracteristica.class);
+		
 		participante1		 = mock(IParticipante.class);
 		muestra1             = mock(Muestra.class);
 		area				 = mock(Circulo.class);
@@ -54,14 +57,6 @@ public class DesafioTest {
 		desafio1			 = new Desafio(area, restriccionTemporal1, 30, Dificultad.MEDIO, 50);
 		desafio2			 = new Desafio(area, restriccionTemporal2, 30, Dificultad.MEDIO, 50);
 		desafio3			 = new Desafio(area, restriccionTemporal3, 30, Dificultad.MEDIO, 50);
-	
-		when(restriccionTemporal1.getFechaDeInicio()).thenReturn(LocalDateTime.of(2020, 10, 30,5,56));
-		when(restriccionTemporal1.getFechaDeCierre()).thenReturn(LocalDateTime.of(2023, 10, 30,5,56));
-		
-		when(restriccionTemporal2.getFechaDeInicio()).thenReturn(LocalDateTime.of(2020, 10, 30,5,56));
-		when(restriccionTemporal2.getFechaDeCierre()).thenReturn(LocalDateTime.of(2021, 10, 30,5,56));
-		when(restriccionTemporal3.getFechaDeInicio()).thenReturn(LocalDateTime.of(2023, 10, 30,5,56));
-		when(restriccionTemporal3.getFechaDeCierre()).thenReturn(LocalDateTime.of(2024, 10, 30,5,56));
 		
 		when(caracteristica1.getDescripicion()).thenReturn("Agustin es mejor");
 		when(caracteristica1.getAfinidad()).thenReturn(9.9);
@@ -179,17 +174,17 @@ public class DesafioTest {
 	@Test
 	public void test19_unDesafioIndicaSiUnaFechaCumpleLaRestriccion() {
 		LocalDateTime fecha = LocalDateTime.now();
-		when(restriccionTemporal1.cumpleLaRestriccion(fecha)).thenReturn(true);
+		when(restriccionTemporal1.cumpleLaRestricion(fecha)).thenReturn(true);
 		assertTrue(desafio1.fechaCumpleLaRestriccion(fecha));
-		verify(restriccionTemporal1, times(1)).cumpleLaRestriccion(fecha);
+		verify(restriccionTemporal1, times(1)).cumpleLaRestricion(fecha);
 	}
 	
 	@Test
 	public void test20_unDesafioIndicaSiUnaFechaNoCumpleLaRestriccion() {
 		LocalDateTime fecha = LocalDateTime.now();
-		when(restriccionTemporal1.cumpleLaRestriccion(fecha)).thenReturn(false);
+		when(restriccionTemporal1.cumpleLaRestricion(fecha)).thenReturn(false);
 		assertFalse(desafio1.fechaCumpleLaRestriccion(fecha));
-		verify(restriccionTemporal1, times(1)).cumpleLaRestriccion(fecha);
+		verify(restriccionTemporal1, times(1)).cumpleLaRestricion(fecha);
 	}
 	
 	@Test 
@@ -197,10 +192,10 @@ public class DesafioTest {
 		LocalDateTime fecha = LocalDateTime.of(2021, 10, 20, 10, 50);
 		
 		when(muestra1.getFechaYHoraDeRecoleccion()).thenReturn(fecha);
-		when(restriccionTemporal1.cumpleLaRestriccion(fecha)).thenReturn(true);
+		when(restriccionTemporal1.cumpleLaRestricion(fecha)).thenReturn(true);
 		
 		assertTrue(desafio1.muestraCumpleLaRestriccion(muestra1));
-		verify(restriccionTemporal1, times(1)).cumpleLaRestriccion(fecha);
+		verify(restriccionTemporal1, times(1)).cumpleLaRestricion(fecha);
 		verify(muestra1, times(1)).getFechaYHoraDeRecoleccion();
 	}
 	
@@ -209,10 +204,10 @@ public class DesafioTest {
 		LocalDateTime fecha = LocalDateTime.of(2021, 10, 20, 10, 50);
 		
 		when(muestra1.getFechaYHoraDeRecoleccion()).thenReturn(fecha);
-		when(restriccionTemporal1.cumpleLaRestriccion(fecha)).thenReturn(false);
+		when(restriccionTemporal1.cumpleLaRestricion(fecha)).thenReturn(false);
 		
 		assertFalse(desafio1.muestraCumpleLaRestriccion(muestra1));
-		verify(restriccionTemporal1, times(1)).cumpleLaRestriccion(fecha);
+		verify(restriccionTemporal1, times(1)).cumpleLaRestricion(fecha);
 		verify(muestra1, times(1)).getFechaYHoraDeRecoleccion();
 	}
 }

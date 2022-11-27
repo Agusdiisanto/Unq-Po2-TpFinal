@@ -59,13 +59,16 @@ public class Desafio implements ActividadLudica {
 	}
 	
 	// ================ PRIVATE METHODS ================
+	
+	// Tira error aca porque no esta inicializado el entre fechas 
+	
 	private boolean sePuedeInscribir() {
 		return this.getRestriccionTemporal().cumpleLaRestricion(LocalDateTime.now());
 	}
 	
 	// ================== COSTRUCTOR ==================
 	public Desafio(Circulo 			   area,
-				   IRetriccionTemporal restriccionTemporal,
+			       IRetriccionTemporal restriccionTemporal,
 				   int 				   cantidadDeMuestrasARecolectar,
 				   Dificultad 		   dificultad,
 				   int				   recompensa) {

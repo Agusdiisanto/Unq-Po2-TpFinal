@@ -14,6 +14,11 @@ import proyectos.Proyecto;
 public class AndFilter implements IFilter{
 	private IFilter filtro1;
 	private IFilter filtro2;
+	
+	public AndFilter(IFilter filtro1, IFilter filtro2) {
+		this.filtro1 = filtro1;
+		this.filtro2 = filtro2;
+	}
 
 	@Override
 	public List<Proyecto> buscar(List<Proyecto> proyectos) {

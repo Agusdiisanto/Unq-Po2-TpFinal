@@ -1,8 +1,5 @@
 package filter;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import proyectos.Proyecto;
 
 /**
@@ -17,16 +14,10 @@ public class FilterIncludeCategoria extends Filter{
 	public FilterIncludeCategoria(String filterNombreCategoria) {
 		this.filterNombreCategoria = filterNombreCategoria;
 	}
-	
-	@Override
-	public List<Proyecto> buscar(List<Proyecto> proyectos) {
-		return proyectos.stream().filter(pr -> pr.contieneALaCategoria(filterNombreCategoria)).
-			   collect(Collectors.toList());
-	}
 
 	@Override
-	public boolean containsFilter(IFilter iFilter) {
+	public boolean containsFilter(Proyecto proyecto) {
 		// TODO Auto-generated method stub
-		return false;
+		return proyecto.contieneALaCategoria(filterNombreCategoria);
 	}
 }

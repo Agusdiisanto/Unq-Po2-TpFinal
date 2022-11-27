@@ -13,9 +13,14 @@ import proyectos.Proyecto;
  * 
  */
 
-public class OrFilter extends Filter {
+public class OrFilter implements IFilter {
 	private IFilter filtro1;
 	private IFilter filtro2;
+	
+	public OrFilter(IFilter filtro1, IFilter filtro2) {
+		this.filtro1 = filtro1;
+		this.filtro2 = filtro2;
+	}
 	
 	public List<Proyecto> buscar(List<Proyecto> proyectos) {
 		
@@ -26,11 +31,5 @@ public class OrFilter extends Filter {
 		
 		return new ArrayList<Proyecto>(result);
 		
-	}
-
-	@Override
-	public boolean containsFilter(IFilter iFilter) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 }
