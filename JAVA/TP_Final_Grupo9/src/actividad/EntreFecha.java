@@ -2,7 +2,7 @@ package actividad;
 
 import java.time.LocalDateTime;
 
-public class EntreFechas implements IRetriccionTemporal{
+public class EntreFecha implements IRetriccionTemporal{
 	private LocalDateTime inicio;
 	private LocalDateTime cierre;
 
@@ -13,7 +13,7 @@ public class EntreFechas implements IRetriccionTemporal{
 	}
 	
 	// ========================== CONSTRUCTOR ==========================
-	public EntreFechas(LocalDateTime inicio, LocalDateTime cierre) {
+	public EntreFecha(LocalDateTime inicio, LocalDateTime cierre) {
 		this.setInicio(inicio);
 		this.setCierre(cierre);
 	}
