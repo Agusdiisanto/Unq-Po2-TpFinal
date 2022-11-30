@@ -12,11 +12,9 @@ import proyectos.Proyecto;
 
 public abstract class Filter implements IFilter{
 	
-	
-	public  List<Proyecto> buscar(List<Proyecto> proyectos){
+	public List<Proyecto> buscar(List<Proyecto> proyectos){
 		return proyectos.stream().filter(p -> this.containsFilter(p)).collect(Collectors.toList());
 	}
 
 	public abstract boolean containsFilter(Proyecto proyecto);
-	
 }

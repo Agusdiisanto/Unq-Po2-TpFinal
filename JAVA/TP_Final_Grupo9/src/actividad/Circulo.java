@@ -14,8 +14,8 @@ public class Circulo {
 	
 	// =================== METHODS ====================
 	public boolean includes(Coordenada coordenada) {
-		double x = coordenada.getCoordenadaX() - this.getCentro().getCoordenadaX();
-		double y = coordenada.getCoordenadaY() - this.getCentro().getCoordenadaY();
+		double x = coordenada.getX() - this.getCentro().getX();
+		double y = coordenada.getY() - this.getCentro().getY();
 		return Math.pow(x, 2) + Math.pow(y, 2) <= Math.pow(this.getRadio(), 2);
 	}
 	

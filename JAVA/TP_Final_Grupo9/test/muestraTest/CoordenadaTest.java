@@ -17,11 +17,11 @@ public class CoordenadaTest {
 	
 	@Test
 	public void test01_UnaCoordenadaSabeSuEjeX() {
-		assertEquals(15, coordenada.getCoordenadaX());
+		assertEquals(15, coordenada.getX());
 	}
 	
 	@Test
 	public void test02_UnaCoordenadaSabeSuEjeY() {
-		assertEquals(3, coordenada.getCoordenadaY());
+		assertEquals(3, coordenada.getY());
 	}
 }

@@ -15,16 +15,16 @@ import usuario.Usuario;
 
 public class Muestra {
 	private Set<Caracteristica> caracteristicas;
-	private Usuario 			usuarioQueLaRecolecto;
+	private Usuario 			usuarioRecolector;
 	private LocalDateTime 		fechaYHoraDeRecoleccion;
 	private Coordenada 			coordenada;
 
 	// ================== METHODS ==================
-	public boolean tieneLaCaracteristica(Caracteristica caracteristica) {
+	public boolean includes(Caracteristica caracteristica) {
 		return this.getCaracteristicas().contains(caracteristica);
 	}
 	
-	public void agregarCaracteristicaAMuestra(Caracteristica caracteristica) {
+	public void addCaracteristica(Caracteristica caracteristica) {
 		this.getCaracteristicas().add(caracteristica);
 	}
 	
@@ -47,13 +47,13 @@ public class Muestra {
 		return caracteristicas;
 	}
 	public Usuario getUsuarioQueLaRecolecto() {
-		return usuarioQueLaRecolecto;
+		return usuarioRecolector;
 	}
 	private void setCaracteristicas(Set<Caracteristica> caracteristicas) {
 		this.caracteristicas = caracteristicas;
 	}
 	public void setUsuarioQueLaRecolecto(Usuario usuarioQueLaRecolecto) {
-		this.usuarioQueLaRecolecto = usuarioQueLaRecolecto;
+		this.usuarioRecolector = usuarioQueLaRecolecto;
 	}
 	public LocalDateTime getFechaYHoraDeRecoleccion() {
 		return fechaYHoraDeRecoleccion;

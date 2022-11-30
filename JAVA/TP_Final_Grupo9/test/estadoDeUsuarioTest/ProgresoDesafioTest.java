@@ -128,42 +128,42 @@ public class ProgresoDesafioTest {
 	
 	@Test
 	public void test14_unProgresoSabeSiEsUnaMuestraValida() {
-		when(desafio.includesMuestra(muestra)).thenReturn(true);
-		when(desafio.muestraCumpleLaRestriccion(muestra)).thenReturn(true);
+		when(desafio.includes(muestra)).thenReturn(true);
+		when(desafio.esMuestraValida(muestra)).thenReturn(true);
 		
 		assertTrue(progreso.esUnaMuestraValida(muestra));
-		verify(desafio,times(1)).includesMuestra(muestra);
-		verify(desafio,times(1)).muestraCumpleLaRestriccion(muestra);
+		verify(desafio,times(1)).includes(muestra);
+		verify(desafio,times(1)).esMuestraValida(muestra);
 	}
 	
 	@Test
 	public void test15_unProgresoSabeSiNoEsUnaMuestraValida() {
 		// Esta implementado el short circuit
-		when(desafio.includesMuestra(muestra)).thenReturn(false);
-		when(desafio.muestraCumpleLaRestriccion(muestra)).thenReturn(true);
+		when(desafio.includes(muestra)).thenReturn(false);
+		when(desafio.esMuestraValida(muestra)).thenReturn(true);
 		
 		assertFalse(progreso.esUnaMuestraValida(muestra));
-		verify(desafio,times(1)).includesMuestra(muestra);	
+		verify(desafio,times(1)).includes(muestra);	
 	}
 	
 	@Test
 	public void test16_unProgresoSabeSiNoEsUnaMuestraValida() {
 		// Esta implementado el short circuit
-		when(desafio.includesMuestra(muestra)).thenReturn(true);
-		when(desafio.muestraCumpleLaRestriccion(muestra)).thenReturn(false);
+		when(desafio.includes(muestra)).thenReturn(true);
+		when(desafio.esMuestraValida(muestra)).thenReturn(false);
 		
 		assertFalse(progreso.esUnaMuestraValida(muestra));
-		verify(desafio,times(1)).includesMuestra(muestra);
-		verify(desafio,times(1)).muestraCumpleLaRestriccion(muestra);
+		verify(desafio,times(1)).includes(muestra);
+		verify(desafio,times(1)).esMuestraValida(muestra);
 	} 
 	
 	@Test
 	public void test17_unProgresoSabeSiNoEsUnaMuestraValida() {
 		// Esta implementado el short circuit
-		when(desafio.includesMuestra(muestra)).thenReturn(false);
-		when(desafio.muestraCumpleLaRestriccion(muestra)).thenReturn(false);
+		when(desafio.includes(muestra)).thenReturn(false);
+		when(desafio.esMuestraValida(muestra)).thenReturn(false);
 		
 		assertFalse(progreso.esUnaMuestraValida(muestra));
-		verify(desafio,times(1)).includesMuestra(muestra);
+		verify(desafio,times(1)).includes(muestra);
 	}
 }

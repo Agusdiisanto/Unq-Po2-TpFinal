@@ -7,26 +7,26 @@ package muestra;
  */
 
 public class Coordenada {
-	private double coordenadaX;
-	private double coordenadaY;
+	private double x;
+	private double y;
 
 	// ============ CONSTRUCTOR ===================
-	public Coordenada(double coordenadaX, double coordenadaY) {
-		this.setCoordenadaX(coordenadaX);
-		this.setCoordenadaY(coordenadaY);
+	public Coordenada(double x, double y) {
+		this.setX(x);
+		this.setY(y);
 	}
 	
 	// ============= METHODS =======================
-	public double getCoordenadaX() {
-		return coordenadaX;
+	public double getX() {
+		return x;
 	}
-	public void setCoordenadaX(double coordenadaX) {
-		this.coordenadaX = coordenadaX;
+	public void setX(double x) {
+		this.x = x;
 	}
-	public double getCoordenadaY() {
-		return coordenadaY;
+	public double getY() {
+		return y;
 	}
-	public void setCoordenadaY(double coordenadaY) {
-		this.coordenadaY = coordenadaY;
+	public void setY(double y) {
+		this.y = y;
 	}
 }

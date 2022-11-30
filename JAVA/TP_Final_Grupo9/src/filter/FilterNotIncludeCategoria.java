@@ -9,16 +9,14 @@ import proyectos.Proyecto;
  */
 
 public class FilterNotIncludeCategoria extends Filter {
-	
-	private String filterNombreCategoria;
+	private String categoriaBuscada;
 
-	public FilterNotIncludeCategoria(String filterNombreCategoria) {
-		this.filterNombreCategoria = filterNombreCategoria;
+	public FilterNotIncludeCategoria(String categoriaBuscada) {
+		this.categoriaBuscada = categoriaBuscada;
 	}
 	
 	@Override
 	public boolean containsFilter(Proyecto proyecto) {
-		// TODO Auto-generated method stub
-		return !proyecto.contieneALaCategoria(filterNombreCategoria);
+		return !proyecto.includes(categoriaBuscada);
 	}
 }

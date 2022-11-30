@@ -1,6 +1,5 @@
 package filter;
 
-
 import proyectos.Proyecto;
 
 /**
@@ -13,13 +12,11 @@ public class FilterTitulo extends Filter {
 	private String tituloBuscado;
 	
 	public FilterTitulo(String tituloBuscado) {
-		this.tituloBuscado= tituloBuscado;
+		this.tituloBuscado = tituloBuscado;
 	}
 
 	@Override
 	public boolean containsFilter(Proyecto proyecto) {
-		// TODO Auto-generated method stub
-		return proyecto.tieneElNombre(tituloBuscado);
+		return proyecto.getNombre().equals(tituloBuscado);
 	}
-	
 }

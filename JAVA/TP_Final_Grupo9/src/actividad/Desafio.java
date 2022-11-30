@@ -16,7 +16,7 @@ import usuario.IParticipante;
 public class Desafio implements ActividadLudica {
 	private Circulo 			area;
 	private IRetriccionTemporal restriccionTemporal;
-	private int 				cantidadDeMuestrasARecolectar;
+	private int 				objetivo;
 	private Dificultad 			dificultad;
 	private int 				recompensa;
 	private Set<IParticipante>  participantes;
@@ -29,24 +29,24 @@ public class Desafio implements ActividadLudica {
 	}
 	
 	// Verifica si un desafío es activo, según la fecha actual y la restricción temporal.      FALTA TERMINAR!
-	public Boolean esDesafioActivo() {
+	public Boolean esActivo() {
 		return this.getRestriccionTemporal().cumpleLaRestricion(LocalDateTime.now());
 	}
 	
-	public boolean includesMuestra(Muestra muestra) {
+	public boolean includes(Muestra muestra) {
 		return this.getArea().includes(muestra.getCoordenada());
 	}
 	
-	public boolean fechaCumpleLaRestriccion(LocalDateTime fecha) {
+	public boolean esFechaValida(LocalDateTime fecha) {
 		return this.getRestriccionTemporal().cumpleLaRestricion(fecha);
 	}
 	
-	public boolean muestraCumpleLaRestriccion(Muestra muestra) {
+	public boolean esMuestraValida(Muestra muestra) {
 		return this.getRestriccionTemporal().cumpleLaRestricion(muestra.getFechaYHoraDeRecoleccion());
 	}
 	
 	// ================ ADD METHODS ================
-	public void agregarParticipanteAlDesafio(IParticipante usuario) {
+	public void addParticipante(IParticipante usuario) {
 		// Un participante puede ingresar a un desafío que aún no haya arrancado
 		// pero solo se contabilizan las muestras a partir del inicio del desafío.
 		if (this.sePuedeInscribir()) {
@@ -54,7 +54,7 @@ public class Desafio implements ActividadLudica {
 		}
 	}
 	
-	public void agregarCaracteristica(Caracteristica caracteristica) {
+	public void addCaracteristica(Caracteristica caracteristica) {
 		this.getCaracteristicas().add(caracteristica);
 	}
 	
@@ -69,12 +69,12 @@ public class Desafio implements ActividadLudica {
 	// ================== COSTRUCTOR ==================
 	public Desafio(Circulo 			   area,
 			       IRetriccionTemporal restriccionTemporal,
-				   int 				   cantidadDeMuestrasARecolectar,
+				   int 				   objetivo,
 				   Dificultad 		   dificultad,
 				   int				   recompensa) {
 		this.setArea(area);
 		this.setRestriccionTemporal(restriccionTemporal);
-		this.setCantidadDeMuestrasARecolectar(cantidadDeMuestrasARecolectar);
+		this.setObjetivo(objetivo);
 		this.setDificultad(dificultad);
 		this.setRecompensa(recompensa);
 		this.setParticipantes(new HashSet<IParticipante>());
@@ -88,8 +88,8 @@ public class Desafio implements ActividadLudica {
 	public IRetriccionTemporal getRestriccionTemporal() {
 		return restriccionTemporal;
 	}
-	public int getCantidadDeMuestrasARecolectar() {
-		return cantidadDeMuestrasARecolectar;
+	public int getObjetivo() {
+		return objetivo;
 	}
 	public Dificultad getDificultad() {
 		return dificultad;
@@ -109,8 +109,8 @@ public class Desafio implements ActividadLudica {
 	public void setRestriccionTemporal(IRetriccionTemporal restriccionTemporal) {
 		this.restriccionTemporal = restriccionTemporal;
 	}
-	public void setCantidadDeMuestrasARecolectar(int cantidadDeMuestrasARecolectar) {
-		this.cantidadDeMuestrasARecolectar = cantidadDeMuestrasARecolectar;
+	public void setObjetivo(int objetivo) {
+		this.objetivo = objetivo;
 	}
 	public void setDificultad(Dificultad dificultad) {
 		this.dificultad = dificultad;

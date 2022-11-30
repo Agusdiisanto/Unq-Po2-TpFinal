@@ -28,24 +28,24 @@ public class CirculoTest {
 		coordenada3 = mock(Coordenada.class);
 		circulo     = new Circulo(coordenada1, 4);
 		
-		when(coordenada1.getCoordenadaX()).thenReturn(10.0);
-		when(coordenada1.getCoordenadaY()).thenReturn(10.0);
-		when(coordenada2.getCoordenadaX()).thenReturn(-2.0);
-		when(coordenada2.getCoordenadaY()).thenReturn(4.0);
-		when(coordenada3.getCoordenadaX()).thenReturn(9.0);
-		when(coordenada3.getCoordenadaY()).thenReturn(9.0);
+		when(coordenada1.getX()).thenReturn(10.0);
+		when(coordenada1.getY()).thenReturn(10.0);
+		when(coordenada2.getX()).thenReturn(-2.0);
+		when(coordenada2.getY()).thenReturn(4.0);
+		when(coordenada3.getX()).thenReturn(9.0);
+		when(coordenada3.getY()).thenReturn(9.0);
 	}
 	
 	@Test
 	public void test01_unCirculoTieneUnCentroConCoordenadaX() {
-		assertEquals(10, circulo.getCentro().getCoordenadaX());
-		verify(coordenada1, only()).getCoordenadaX();
+		assertEquals(10, circulo.getCentro().getX());
+		verify(coordenada1, only()).getX();
 	}
 	
 	@Test
 	public void test02_unCirculoTieneUnCentroConCoordenadaY() {
-		assertEquals(10, circulo.getCentro().getCoordenadaY());
-		verify(coordenada1, only()).getCoordenadaY();
+		assertEquals(10, circulo.getCentro().getY());
+		verify(coordenada1, only()).getY();
 	}
 	
 	@Test
@@ -56,18 +56,18 @@ public class CirculoTest {
 	@Test
 	public void test04_unCirculoIndicaSiContieneUnaCoordenada() {
 		assertTrue(circulo.includes(coordenada3));
-		verify(coordenada1, times(1)).getCoordenadaX();
-		verify(coordenada1, times(1)).getCoordenadaY();
-		verify(coordenada3, times(1)).getCoordenadaX();
-		verify(coordenada3, times(1)).getCoordenadaY();
+		verify(coordenada1, times(1)).getX();
+		verify(coordenada1, times(1)).getY();
+		verify(coordenada3, times(1)).getX();
+		verify(coordenada3, times(1)).getY();
 	}
 	
 	@Test
 	public void test05_unCirculoIndicaSiNoContieneUnaCoordenada() {
 		assertFalse(circulo.includes(coordenada2));
-		verify(coordenada1, times(1)).getCoordenadaX();
-		verify(coordenada1, times(1)).getCoordenadaY();
-		verify(coordenada2, times(1)).getCoordenadaX();
-		verify(coordenada2, times(1)).getCoordenadaY();
+		verify(coordenada1, times(1)).getX();
+		verify(coordenada1, times(1)).getY();
+		verify(coordenada2, times(1)).getX();
+		verify(coordenada2, times(1)).getY();
 	}
 }

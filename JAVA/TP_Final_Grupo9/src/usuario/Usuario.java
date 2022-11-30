@@ -44,8 +44,8 @@ public class Usuario implements IParticipante{
 	}  
   
 	public double similitudConFavorito(Desafio desafio) {
-		double diferenciaDeMuestras   = Math.abs(desafio.getCantidadDeMuestrasARecolectar()     - this.getDesafiosCompletados().get(this.getDesafioFavorito()).getCantidadDeMuestrasRecolectadas());
-		double diferenciaDeDificultad = Math.abs(desafio.getDificultad().getNivelDeDificultad() - this.getDesafioFavorito().getDificultad().getNivelDeDificultad());
+		double diferenciaDeMuestras   = Math.abs(desafio.getObjetivo()     - this.getDesafiosCompletados().get(this.getDesafioFavorito()).getCantidadDeMuestrasRecolectadas());
+		double diferenciaDeDificultad = Math.abs(desafio.getDificultad().getNivel() - this.getDesafioFavorito().getDificultad().getNivel());
 		double diferenciaDeRecompensa = Math.abs(desafio.getRecompensa()                        - this.getDesafioFavorito().getRecompensa());
 		return Math.round((diferenciaDeMuestras + diferenciaDeDificultad + diferenciaDeRecompensa)/3);
 	}
@@ -93,7 +93,7 @@ public class Usuario implements IParticipante{
 	
 	@Override
 	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception {
-		desafio.agregarParticipanteAlDesafio(this);
+		desafio.addParticipante(this);
 		this.agregarNuevoDesafioEnCurso(desafio);
 	}
 	

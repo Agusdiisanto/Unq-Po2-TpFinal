@@ -38,7 +38,7 @@ public class ProgresoDeDesafioEnCursoTest {
 		LocalDateTime fecha = LocalDateTime.now();
 		
 		when(progresoActual.getDesafioActual()).thenReturn(desafio);
-		when(desafio.fechaCumpleLaRestriccion(fecha)).thenReturn(true);
+		when(desafio.esFechaValida(fecha)).thenReturn(true);
 		
 		assertTrue(progresoEnCurso.esDesafioEnCurso(progresoActual,fecha));
 		verify(progresoActual,times(1)).getDesafioActual();
@@ -49,7 +49,7 @@ public class ProgresoDeDesafioEnCursoTest {
 		LocalDateTime fecha = LocalDateTime.now();
 		
 		when(progresoActual.getDesafioActual()).thenReturn(desafio);
-		when(desafio.fechaCumpleLaRestriccion(fecha)).thenReturn(false);
+		when(desafio.esFechaValida(fecha)).thenReturn(false);
 		
 		assertFalse(progresoEnCurso.esDesafioEnCurso(progresoActual,fecha));
 		verify(progresoActual,times(1)).getDesafioActual();	
@@ -60,7 +60,7 @@ public class ProgresoDeDesafioEnCursoTest {
 		LocalDateTime fecha = LocalDateTime.now();
 		
 		when(progresoActual.getDesafioActual()).thenReturn(desafio);
-		when(desafio.fechaCumpleLaRestriccion(fecha)).thenReturn(true);
+		when(desafio.esFechaValida(fecha)).thenReturn(true);
 		when(progresoActual.esUnaMuestraValida(muestra)).thenReturn(true);
 		
 		assertTrue(progresoEnCurso.esDesafioEnCurso(progresoActual,fecha));
@@ -75,7 +75,7 @@ public class ProgresoDeDesafioEnCursoTest {
 		LocalDateTime fecha = LocalDateTime.of(2023, 01, 01, 00, 00);
 		
 		when(progresoActual.getDesafioActual()).thenReturn(desafio);
-		when(desafio.fechaCumpleLaRestriccion(fecha)).thenReturn(false);
+		when(desafio.esFechaValida(fecha)).thenReturn(false);
 		
 		assertFalse(progresoEnCurso.esDesafioEnCurso(progresoActual,fecha));
 		progresoEnCurso.recolectarMuestra(progresoActual, muestra, fecha);
@@ -89,38 +89,38 @@ public class ProgresoDeDesafioEnCursoTest {
 		
 		when(progresoActual.getDesafioActual()).thenReturn(desafio);
 		when(progresoActual.esUnaMuestraValida(muestra)).thenReturn(false);
-		when(desafio.fechaCumpleLaRestriccion(fecha)).thenReturn(true);
+		when(desafio.esFechaValida(fecha)).thenReturn(true);
 		
 		assertTrue(progresoEnCurso.esDesafioEnCurso(progresoActual,fecha));
 		progresoEnCurso.recolectarMuestra(progresoActual, muestra, fecha);
 		assertEquals(progresoActual.getPuntaje(), 0);
 		verify(progresoActual,times(2)).getDesafioActual();
 		verify(progresoActual,times(1)).esUnaMuestraValida(muestra);
-		verify(desafio,times(2)).fechaCumpleLaRestriccion(fecha);
+		verify(desafio,times(2)).esFechaValida(fecha);
 	}
 	
 	@Test
 	public void test06_unProgresoIndicaSiCompletoElDesafio() throws Exception {
 		when(progresoActual.getDesafioActual()).thenReturn(desafio);
 		when(progresoActual.getPuntaje()).thenReturn(5);
-		when(desafio.getCantidadDeMuestrasARecolectar()).thenReturn(5);
+		when(desafio.getObjetivo()).thenReturn(5);
 		
 		assertTrue(progresoEnCurso.completoElDesafio(progresoActual));
 		verify(progresoActual,times(1)).getDesafioActual();
 		verify(progresoActual,times(1)).getPuntaje();
-		verify(desafio,times(1)).getCantidadDeMuestrasARecolectar();
+		verify(desafio,times(1)).getObjetivo();
 	}
 	
 	@Test
 	public void test07_unProgresoIndicaSiNoCompletoElDesafio() throws Exception {
 		when(progresoActual.getDesafioActual()).thenReturn(desafio);
 		when(progresoActual.getPuntaje()).thenReturn(2);
-		when(desafio.getCantidadDeMuestrasARecolectar()).thenReturn(5);
+		when(desafio.getObjetivo()).thenReturn(5);
 		
 		assertFalse(progresoEnCurso.completoElDesafio(progresoActual));
 		verify(progresoActual,times(1)).getDesafioActual();
 		verify(progresoActual,times(1)).getPuntaje();
-		verify(desafio,times(1)).getCantidadDeMuestrasARecolectar();
+		verify(desafio,times(1)).getObjetivo();
 	}
 
 	@Test
@@ -129,14 +129,14 @@ public class ProgresoDeDesafioEnCursoTest {
 		when(progresoActual.getDesafioActual()).thenReturn(desafio);
 		when(progresoActual.getPuntaje()).thenReturn(5);
 		when(progresoActual.getEstado()).thenReturn(progresoTerminado);
-		when(desafio.getCantidadDeMuestrasARecolectar()).thenReturn(5);
+		when(desafio.getObjetivo()).thenReturn(5);
 		
 		assertTrue(progresoEnCurso.completoElDesafio(progresoActual));
 		progresoEnCurso.verificarSiCompletoElDesafio(progresoActual);
 		assertEquals(progresoActual.getEstado(), progresoTerminado);
 		verify(progresoActual,times(2)).getDesafioActual();
 		verify(progresoActual,times(2)).getPuntaje();
-		verify(desafio,times(2)).getCantidadDeMuestrasARecolectar();
+		verify(desafio,times(2)).getObjetivo();
 	}
 
 	// REVISAR
@@ -146,13 +146,13 @@ public class ProgresoDeDesafioEnCursoTest {
 		when(progresoActual.getDesafioActual()).thenReturn(desafio);
 		when(progresoActual.getPuntaje()).thenReturn(2);
 		when(progresoActual.getEstado()).thenReturn(progresoEnCurso);
-		when(desafio.getCantidadDeMuestrasARecolectar()).thenReturn(5);
+		when(desafio.getObjetivo()).thenReturn(5);
 		
 		assertFalse(progresoEnCurso.completoElDesafio(progresoActual));
 		progresoEnCurso.verificarSiCompletoElDesafio(progresoActual);
 		assertEquals(progresoActual.getEstado(), progresoEnCurso);
 		verify(progresoActual,times(2)).getDesafioActual();
 		verify(progresoActual,times(2)).getPuntaje();
-		verify(desafio,times(2)).getCantidadDeMuestrasARecolectar();
+		verify(desafio,times(2)).getObjetivo();
 	}
 }

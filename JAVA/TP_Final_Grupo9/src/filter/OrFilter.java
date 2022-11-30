@@ -23,13 +23,9 @@ public class OrFilter implements IFilter {
 	}
 	
 	public List<Proyecto> buscar(List<Proyecto> proyectos) {
-		
 		Set<Proyecto> result = new HashSet<Proyecto>();
-		
 		result.addAll(filtro1.buscar(proyectos));
 		result.addAll(filtro2.buscar(proyectos));
-		
 		return new ArrayList<Proyecto>(result);
-		
 	}
 }

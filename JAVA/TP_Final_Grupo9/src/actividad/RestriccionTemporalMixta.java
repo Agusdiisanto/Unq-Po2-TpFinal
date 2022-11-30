@@ -20,7 +20,7 @@ public class RestriccionTemporalMixta implements IRetriccionTemporal {
 		return this.getRetricciones().stream().allMatch(r -> r.cumpleLaRestricion(fecha));
 	}
 	
-	public void agregarRetriccionTemporal(IRetriccionTemporal retriccion) {
+	public void addRetriccionTemporal(IRetriccionTemporal retriccion) {
 		this.getRetricciones().add(retriccion);
 	}
 	

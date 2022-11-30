@@ -27,4 +27,3 @@ public class AndFilter implements IFilter{
 		return resultado;
 	}
 }
-

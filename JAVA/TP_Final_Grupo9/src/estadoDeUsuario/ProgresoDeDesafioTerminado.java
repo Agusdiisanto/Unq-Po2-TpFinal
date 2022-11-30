@@ -27,7 +27,7 @@ public class ProgresoDeDesafioTerminado extends EstadoDeProgreso {
 	public void registrarDesafioCompletado(IParticipante participante, ProgresoDeDesafio progreso, int sastifaccion) {
 		participante.registrarDesafioCompletado(progreso.getDesafioActual(),
 												progreso.recompensaDelDesafio(),
-												progreso.getDesafioActual().getCantidadDeMuestrasARecolectar(),
+												progreso.getDesafioActual().getObjetivo(),
 												5);
 	}
 }

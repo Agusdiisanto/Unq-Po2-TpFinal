@@ -10,12 +10,12 @@ public enum Dificultad {
 	MUY_FACIL(1), FACIL(2), MEDIO(3), DIFICIL(4), MUY_DIFICIL(5);
 	
 	private Dificultad(final int dificultad) {
-		this.nivelDeDificultad = dificultad; 
+		this.nivel = dificultad; 
 	}
 	
-	private int nivelDeDificultad;
+	private int nivel;
 
-	public int getNivelDeDificultad() {
-		return nivelDeDificultad;
+	public int getNivel() {
+		return nivel;
 	}
 } 

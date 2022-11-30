@@ -17,6 +17,6 @@ public class DificultadTest {
 	
 	@Test
 	public void test01_UnaDificultadTieneAsociadoUnNivel() {
-		assertEquals(5, dificultad.getNivelDeDificultad());
+		assertEquals(5, dificultad.getNivel());
 	}
 }

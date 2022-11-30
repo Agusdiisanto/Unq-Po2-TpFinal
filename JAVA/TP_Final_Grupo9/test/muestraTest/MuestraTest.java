@@ -37,8 +37,8 @@ public class MuestraTest {
     	perfil1.agregarGusto("Gusto1");
     	perfil1.agregarCaracteristicaPreferida(caracteristica1);
     	perfil1.agregarComportamiento("Comportamiento1");
-    	when(coordenadaDeRecoleccion.getCoordenadaX()).thenReturn(1.0);
-    	when(coordenadaDeRecoleccion.getCoordenadaY()).thenReturn(2.0);
+    	when(coordenadaDeRecoleccion.getX()).thenReturn(1.0);
+    	when(coordenadaDeRecoleccion.getY()).thenReturn(2.0);
     }
     
     @Test
@@ -53,15 +53,15 @@ public class MuestraTest {
     
     @Test
     public void test03CuandoAUnaMuestraSeLeAgregaUnaCaracteristicaLaMismaEstaEnElSet() {
-    	muestra1.agregarCaracteristicaAMuestra(caracteristica1);
+    	muestra1.addCaracteristica(caracteristica1);
     	assertEquals(muestra1.cantidadDeCaracteristicas(), 1);
-    	assertTrue(muestra1.tieneLaCaracteristica(caracteristica1));
+    	assertTrue(muestra1.includes(caracteristica1));
     }
     
     @Test 
     public void test04CuandoUnaMuestraSeCreaTieneUnaCoordenadaYUnaHoraDeRecoleccion() {
-    	assertEquals(muestra1.getCoordenada().getCoordenadaX(),1);
-    	assertEquals(muestra1.getCoordenada().getCoordenadaY(), 2);
+    	assertEquals(muestra1.getCoordenada().getX(),1);
+    	assertEquals(muestra1.getCoordenada().getY(), 2);
     	assertEquals(muestra1.getFechaYHoraDeRecoleccion().getDayOfYear(), LocalDateTime.now().getDayOfYear());
     	assertEquals(muestra1.getFechaYHoraDeRecoleccion().getHour(), LocalDateTime.now().getHour());
     }

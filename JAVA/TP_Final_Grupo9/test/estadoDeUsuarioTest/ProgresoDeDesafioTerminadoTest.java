@@ -54,7 +54,7 @@ public class ProgresoDeDesafioTerminadoTest {
 	
 	@Test
 	public void test03_unProgresoTerminadoRegistraElDesafioCompletado() throws Exception {
-		when(desafio.getCantidadDeMuestrasARecolectar()).thenReturn(4);
+		when(desafio.getObjetivo()).thenReturn(4);
 		progreso.registrarDesafioCompletado(participante, 4);
 		verify(participante,only()).registrarDesafioCompletado(desafio, 0, 4, 5);
 	}

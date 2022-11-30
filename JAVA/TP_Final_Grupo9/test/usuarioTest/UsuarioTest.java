@@ -211,11 +211,11 @@ public class UsuarioTest {
 	public void test20_UnUsuarioSabeLaSimilitudEntreUnDesafioYSuFavorito() {
 		usuario.registrarDesafioCompletado(desafio2,2,5,5);
 	
-		when(desafio.getCantidadDeMuestrasARecolectar()).thenReturn(30);
+		when(desafio.getObjetivo()).thenReturn(30);
 		when(desafio.getDificultad()).thenReturn(Dificultad.MUY_FACIL);
 		when(desafio.getRecompensa()).thenReturn(3000);
 	
-		when(desafio2.getCantidadDeMuestrasARecolectar()).thenReturn(10);
+		when(desafio2.getObjetivo()).thenReturn(10);
 		when(desafio2.getDificultad()).thenReturn(Dificultad.MUY_DIFICIL);
 		when(desafio2.getRecompensa()).thenReturn(1000);
 		
