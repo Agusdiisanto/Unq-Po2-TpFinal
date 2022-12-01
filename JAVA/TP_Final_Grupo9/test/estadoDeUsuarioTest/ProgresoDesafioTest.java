@@ -103,7 +103,7 @@ public class ProgresoDesafioTest {
 	}
 	
 	@Test
-	public void test10_unProgresoDeDesafioSabeRegistrarDesafioCompletado() {
+	public void test10_unProgresoDeDesafioSabeRegistrarDesafioCompletado() throws Exception {
 		progreso.registrarDesafioCompletado(participante, 4);
 		verify(progresoEnCurso,only()).registrarDesafioCompletado(participante, progreso, 4);
 	}

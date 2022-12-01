@@ -2,6 +2,7 @@ package estadoDeUsuario;
 
 import java.time.LocalDateTime; 
 import muestra.Muestra;
+import usuario.IParticipante;
  
 /**
  * 
@@ -9,7 +10,7 @@ import muestra.Muestra;
  *
  */
 
-public class ProgresoDeDesafioEnCurso extends EstadoDeProgreso{
+public class ProgresoDeDesafioEnCurso implements IEstadoDelProgreso{
 
 	@Override
 	public boolean esDesafioEnCurso(ProgresoDeDesafio progreso, LocalDateTime fecha) {
@@ -44,5 +45,11 @@ public class ProgresoDeDesafioEnCurso extends EstadoDeProgreso{
 			progreso.sumarPuntajeAParticipante();
 			this.verificarSiCompletoElDesafio(progreso);
 		}
+	}
+
+	@Override // FALTA TESTEAR
+	public void registrarDesafioCompletado(IParticipante participante, ProgresoDeDesafio progresoDesafio,
+			int sastifaccion) throws Exception {
+		throw new RuntimeException("La partida ya ha finalizado");
 	}
 }

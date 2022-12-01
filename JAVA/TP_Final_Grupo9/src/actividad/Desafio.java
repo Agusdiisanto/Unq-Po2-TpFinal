@@ -29,8 +29,8 @@ public class Desafio implements ActividadLudica {
 	}
 	
 	// Verifica si un desafío es activo, según la fecha actual y la restricción temporal.      FALTA TERMINAR!
-	public Boolean esActivo() {
-		return this.getRestriccionTemporal().cumpleLaRestricion(LocalDateTime.now());
+	public Boolean esActivo(LocalDateTime fecha) {
+		return this.getRestriccionTemporal().cumpleLaRestricion(fecha);
 	}
 	
 	public boolean includes(Muestra muestra) {
@@ -46,24 +46,16 @@ public class Desafio implements ActividadLudica {
 	}
 	
 	// ================ ADD METHODS ================
-	public void addParticipante(IParticipante usuario) {
+	public void addParticipante(IParticipante usuario, LocalDateTime fecha) {
 		// Un participante puede ingresar a un desafío que aún no haya arrancado
 		// pero solo se contabilizan las muestras a partir del inicio del desafío. ARREGLAR
-		if (this.sePuedeInscribir()) {
+		if (this.esActivo(fecha)) {
 			this.getParticipantes().add(usuario);
 		}
 	}
 	
 	public void addCaracteristica(Caracteristica caracteristica) {
 		this.getCaracteristicas().add(caracteristica);
-	}
-	
-	// ================ PRIVATE METHODS ================
-	
-	// Tira error aca porque no esta inicializado el entre fechas 
-	
-	private boolean sePuedeInscribir() {
-		return this.getRestriccionTemporal().cumpleLaRestricion(LocalDateTime.now());
 	}
 	
 	// ================== COSTRUCTOR ==================

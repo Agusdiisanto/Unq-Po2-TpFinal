@@ -11,7 +11,7 @@ import usuario.IParticipante;
  * Esta clase se encarga de ver si un desafío esta expirado.
  *
  */
-public class ProgresoDeDesafioExpirado extends EstadoDeProgreso{
+public class ProgresoDeDesafioExpirado implements IEstadoDelProgreso{
 	
 	@Override
 	public void recolectarMuestra(ProgresoDeDesafio progresoDesafio, Muestra muestra, LocalDateTime fecha) throws Exception {
@@ -27,5 +27,14 @@ public class ProgresoDeDesafioExpirado extends EstadoDeProgreso{
 	public void verificarSiCompletoElDesafio(ProgresoDeDesafio progreso) {
 		throw new RuntimeException("Ya no puedes verificar el progreso, el desafío ya ha expirado");	
 	}
-	 
+
+	@Override
+	public boolean esDesafioEnCurso(ProgresoDeDesafio progresoDesafio, LocalDateTime fecha) {
+		return false;
+	}
+
+	@Override
+	public boolean completoElDesafio(ProgresoDeDesafio progresoDesafio) {
+		return false;
+	}
 }

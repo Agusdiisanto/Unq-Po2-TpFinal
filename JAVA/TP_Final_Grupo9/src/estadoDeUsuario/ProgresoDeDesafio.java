@@ -39,7 +39,7 @@ public class ProgresoDeDesafio {
 		this.incrementarPuntajeEnUno();
 	}
  
-	public void registrarDesafioCompletado(IParticipante participante, int sastifaccion){
+	public void registrarDesafioCompletado(IParticipante participante, int sastifaccion) throws Exception {
 		this.getEstado().registrarDesafioCompletado(participante, this, sastifaccion);
 	}
 

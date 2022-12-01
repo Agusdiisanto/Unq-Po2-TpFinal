@@ -38,6 +38,7 @@ public class DesafioTest {
 	private Caracteristica			 caracteristica1;
 	private Caracteristica			 caracteristica2;
 	private Caracteristica			 caracteristica3;
+	private LocalDateTime 			 now;
 	
 	@BeforeEach
 	public void setUp() {
@@ -63,7 +64,9 @@ public class DesafioTest {
 		when(caracteristica2.getDescripicion()).thenReturn("Tomi es mejor");
 		when(caracteristica2.getAfinidad()).thenReturn(5.5);
 		when(caracteristica3.getDescripicion()).thenReturn("Santi es mejor");
-		when(caracteristica3.getAfinidad()).thenReturn(7.7); 
+		when(caracteristica3.getAfinidad()).thenReturn(7.7);
+		
+		now = LocalDateTime.now();
 	}
 	
 	@Test
@@ -99,9 +102,9 @@ public class DesafioTest {
 	@Test
 	public void test07_unDesafioTieneParticipantes() {
 		
-		when(restriccionTemporal1.cumpleLaRestricion(LocalDateTime.now())).thenReturn(true);
+		when(restriccionTemporal1.cumpleLaRestricion(now)).thenReturn(true);
 		
-		desafio1.addParticipante(participante1);
+		desafio1.addParticipante(participante1, now);
 		
 		assertEquals(desafio1.getParticipantes().size(), 1);
 		assertTrue(desafio1.getParticipantes().contains(participante1));
@@ -109,15 +112,16 @@ public class DesafioTest {
 	
 	@Test
 	public void test08_unDesafioNoTieneParticipantesRepetidos() {
-		desafio1.addParticipante(participante1);
-		desafio1.addParticipante(participante1);
+		when(restriccionTemporal1.cumpleLaRestricion(now)).thenReturn(true);
+		desafio1.addParticipante(participante1, now);
+		desafio1.addParticipante(participante1, now);
 		assertEquals(desafio1.getParticipantes().size(), 1);
 		assertTrue(desafio1.getParticipantes().contains(participante1));
 	}
 	
 	@Test
 	public void test09_unDesafioConcluidoNoAceptaParticipantes() {
-		desafio2.addParticipante(participante1);
+		desafio2.addParticipante(participante1, now);
 		assertTrue(desafio2.getParticipantes().isEmpty());
 	}
 	
@@ -148,47 +152,46 @@ public class DesafioTest {
 	
 	@Test
 	public void test14_unDesafioEstaActivo() {
-		assertTrue(desafio1.esActivo());
+		when(restriccionTemporal3.cumpleLaRestricion(now)).thenReturn(true);
+		assertTrue(desafio3.esActivo(now));
 	}
 	 
 	@Test
-	public void test15_unDesafioNoEstaActivoPorqueEstaConcluido() {
-		assertFalse(desafio2.esActivo());
+	public void test15_unDesafioNoEstaActivo() {
+		when(restriccionTemporal3.cumpleLaRestricion(now)).thenReturn(false);
+		assertFalse(desafio2.esActivo(now));
 	}
 	
 	@Test
-	public void test16_unDesafioNoEstaActivoPorqueEstaPorIniciar() {
-		assertFalse(desafio3.esActivo());
-	}
-	
-	@Test
-	public void test17_unDesafioIndicaSiUnaMuestraEstaDentroDelArea() {
-		coordenada1 = new Coordenada(7.0, 7.0);
-		muestra1	= new Muestra(null, null, coordenada1);
+	public void test17_unDesafioIndicaSiIncluyeUnaMuestra() {
+		coordenada1 = mock(Coordenada.class);
+		muestra1	= mock(Muestra.class);
+		when(muestra1.getCoordenada()).thenReturn(coordenada1);
+		when(area.includes(coordenada1)).thenReturn(true);
 		assertTrue(desafio1.includes(muestra1));
 	}
 	
 	@Test
 	public void test18_unDesafioIndicaSiUnaMuestraNoEstaDentroDelArea() {
-		coordenada2 = new Coordenada(1.0, 1.0);
-		muestra2	= new Muestra(null, null, coordenada2);
+		coordenada2 = mock(Coordenada.class);
+		muestra2	= mock(Muestra.class);
+		when(muestra2.getCoordenada()).thenReturn(coordenada2);
+		when(area.includes(coordenada2)).thenReturn(false);
 		assertFalse(desafio1.includes(muestra2));
 	}
 	
 	@Test
 	public void test19_unDesafioIndicaSiUnaFechaCumpleLaRestriccion() {
-		LocalDateTime fecha = LocalDateTime.now();
-		when(restriccionTemporal1.cumpleLaRestricion(fecha)).thenReturn(true);
-		assertTrue(desafio1.esFechaValida(fecha));
-		verify(restriccionTemporal1, times(1)).cumpleLaRestricion(fecha);
+		when(restriccionTemporal1.cumpleLaRestricion(now)).thenReturn(true);
+		assertTrue(desafio1.esFechaValida(now));
+		verify(restriccionTemporal1, times(1)).cumpleLaRestricion(now);
 	}
 	
 	@Test
 	public void test20_unDesafioIndicaSiUnaFechaNoCumpleLaRestriccion() {
-		LocalDateTime fecha = LocalDateTime.now();
-		when(restriccionTemporal1.cumpleLaRestricion(fecha)).thenReturn(false);
-		assertFalse(desafio1.esFechaValida(fecha));
-		verify(restriccionTemporal1, times(1)).cumpleLaRestricion(fecha);
+		when(restriccionTemporal1.cumpleLaRestricion(now)).thenReturn(false);
+		assertFalse(desafio1.esFechaValida(now));
+		verify(restriccionTemporal1, times(1)).cumpleLaRestricion(now);
 	}
 	
 	@Test 

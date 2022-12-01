@@ -144,7 +144,6 @@ public class Proyecto {
 	}
 
 	public boolean includes(String string) {
-		// TODO Auto-generated method stub
 		return this.getCategorias().contains(string);
 	}
 }

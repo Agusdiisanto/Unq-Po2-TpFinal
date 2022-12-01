@@ -222,6 +222,17 @@ public class ProyectoTest {
 		assertFalse(proyecto.noContieneCategorias(categorias));
 	}
 	
+	@Test
+	public void test27_unProyectoIndicaSiContieneUnasCategorias() { /// ACAAAAAA
+		HashSet<String> categorias = new HashSet<>();
+		categorias.add("Botánica");
+		categorias.add("Fauna");
+		proyecto.agregarCategoria("Botánica");
+		proyecto.agregarCategoria("Árboles");
+		proyecto.agregarCategoria("Fauna");
+		assertFalse(proyecto.noContieneCategorias(categorias));
+	}
+	
 	
 	private void inicializadorDeObjetos() {
 		caracteristica1  = mock(Caracteristica.class);

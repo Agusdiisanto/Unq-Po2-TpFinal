@@ -93,7 +93,7 @@ public class Usuario implements IParticipante{
 	
 	@Override
 	public void inscribirseEnUnDesafio(Desafio desafio) throws Exception {
-		desafio.addParticipante(this);
+		desafio.addParticipante(this, LocalDateTime.now());
 		this.agregarNuevoDesafioEnCurso(desafio);
 	}
 	
