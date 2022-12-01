@@ -98,7 +98,11 @@ public class DesafioTest {
 	
 	@Test
 	public void test07_unDesafioTieneParticipantes() {
+		
+		when(restriccionTemporal1.cumpleLaRestricion(LocalDateTime.now())).thenReturn(true);
+		
 		desafio1.addParticipante(participante1);
+		
 		assertEquals(desafio1.getParticipantes().size(), 1);
 		assertTrue(desafio1.getParticipantes().contains(participante1));
 	}

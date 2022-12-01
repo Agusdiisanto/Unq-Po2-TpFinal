@@ -31,8 +31,14 @@ public class EntreFechasTest {
 	}
 	
 	@Test
-	public void test02_cuandoUnaFechaNoSeEncuentraDentroDelRango() {
+	public void test02_cuandoUnaFechaNoSeEncuentraDentroDelRangoDeCierre() {
 		assertFalse(restriccion.cumpleLaRestricion(LocalDateTime.of(2022, 12, 30, 10, 50)));
 	}
+	
+	@Test
+	public void test03_cuandoUnaFechaNoSeEncuentraDentroDelRangoDeInicio() {
+		assertFalse(restriccion.cumpleLaRestricion(LocalDateTime.of(2021, 12, 30, 10, 50)));
+	}
+	
 	
 }

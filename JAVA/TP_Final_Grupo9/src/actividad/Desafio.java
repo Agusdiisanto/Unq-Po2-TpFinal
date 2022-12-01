@@ -48,7 +48,7 @@ public class Desafio implements ActividadLudica {
 	// ================ ADD METHODS ================
 	public void addParticipante(IParticipante usuario) {
 		// Un participante puede ingresar a un desafío que aún no haya arrancado
-		// pero solo se contabilizan las muestras a partir del inicio del desafío.
+		// pero solo se contabilizan las muestras a partir del inicio del desafío. ARREGLAR
 		if (this.sePuedeInscribir()) {
 			this.getParticipantes().add(usuario);
 		}

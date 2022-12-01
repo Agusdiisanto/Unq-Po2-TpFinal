@@ -64,7 +64,7 @@ public class Usuario implements IParticipante{
 	 
 	//================== METHODS IPARTICIPANTE ====================
 	@Override
-	public void recolectarMuestra(Muestra muestra) throws Exception {
+	public void recolectarMuestra(Muestra muestra) throws Exception{
 		this.recolectarMuestraParaLosProyectos(muestra);
 	}
 	
@@ -75,7 +75,7 @@ public class Usuario implements IParticipante{
 	}
 	
 	public void recolectarMuestraParaLosProyectos(Muestra muestra) throws Exception {
-		for (Proyecto proyecto : this.proyectosDeInteres(muestra)) {
+		for (Proyecto proyecto : this.getProyectosDeInteres(muestra)) {
 			proyecto.agregarMuestra(muestra);
 			this.recolectarMuestraParaLosDesafios(muestra, LocalDateTime.now());
 		}
@@ -103,7 +103,7 @@ public class Usuario implements IParticipante{
 		this.getDesafiosCompletados().put(desafio, estadisticas);
 	}
 	
-	public Set<Proyecto> proyectosDeInteres(Muestra unaMuestra){
+	public Set<Proyecto> getProyectosDeInteres(Muestra unaMuestra){
 		return this.getProyectoEnCurso().stream().filter(p -> p.esMuestraDeInteres(unaMuestra)).collect(Collectors.toSet());
 	}
 	 
