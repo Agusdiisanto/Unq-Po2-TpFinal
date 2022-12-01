@@ -142,4 +142,8 @@ public class Proyecto {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	public boolean tieneElTitulo(String titulo) {
+		return this.getNombre().equals(titulo);
+	}
 }
