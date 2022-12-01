@@ -118,6 +118,6 @@ public class PerfilTest {
 		caracteristica2 = new Caracteristica("c2", 7);
 		perfil.agregarCaracteristicaPreferida(caracteristica1);
 		perfil.agregarCaracteristicaPreferida(caracteristica2);
-		assertEquals(perfil.afinidadConCaracteristica(caracteristica1), 0);	
+		assertEquals(perfil.afinidadConCaracteristica(caracteristica1), 0);
     }
 }

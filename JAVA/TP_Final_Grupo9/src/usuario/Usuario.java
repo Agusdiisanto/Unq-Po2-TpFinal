@@ -28,7 +28,7 @@ public class Usuario implements IParticipante{
 	private Set<Proyecto> 		  	   proyectosEnCurso;
 	private Perfil 				  	   perfil;
 	private Map<Desafio, Estadisticas> desafiosCompletados;
-	private Set<ProgresoDeDesafio>     desafiosEnCurso;
+	private Set<ProgresoDeDesafio>     desafiosEnCurso; 
 	
 	// ================== METHODS USUARIO ========================
 	public boolean contieneCaracteristicaConDescripcion(String descripcion) {

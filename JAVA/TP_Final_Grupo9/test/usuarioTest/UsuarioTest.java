@@ -71,7 +71,7 @@ public class UsuarioTest {
 		usuario.agregarNuevoProyectoEnCurso(proyecto);
 		assertEquals(1, usuario.cantidadDeProyectosEnCurso());
 		assertTrue(usuario.getProyectoEnCurso().contains(proyecto));
-		assertFalse(usuario.getProyectoEnCurso().isEmpty());
+		assertFalse(usuario.getProyectoEnCurso().isEmpty()); 
 	} 
 	
 	@Test
@@ -167,7 +167,7 @@ public class UsuarioTest {
 		usuario.agregarNuevoProyectoEnCurso(proyecto);
 		usuario.recolectarMuestraParaLosProyectos(muestra);
 		
-		//verify(appMovil,times(1)).recolectarMuestra(muestra, usuario, proyecto);
+		verify(proyecto,times(usuario.proyectosDeInteres(muestra).size())).agregarMuestra(muestra);
 	}
 	
 	@Test

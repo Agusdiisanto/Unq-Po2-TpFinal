@@ -77,7 +77,7 @@ public class ProgresoDesafioTest {
 		LocalDateTime fecha = LocalDateTime.now();
 		
 		progreso.recolectarMuestra(participante, muestra,fecha);
-		verify(progresoEnCurso,only()).recolectarMuestra(progreso, muestra,fecha);
+		verify(progresoEnCurso,times(1)).recolectarMuestra(progreso, muestra,fecha);
 	}
 	
 	@Test

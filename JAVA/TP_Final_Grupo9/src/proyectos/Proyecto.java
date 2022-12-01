@@ -48,11 +48,7 @@ public class Proyecto {
 	public boolean contieneCategorias(Set<String> categorias) {
 		return this.getCategorias().containsAll(categorias);
 	}
-	
-	public boolean includes(String categoria) {
-		return this.getCategorias().contains(categoria);
-	}
-	
+		
 	public boolean noContieneCategorias(Set<String> categorias) {
 		return !this.contieneCategorias(categorias);
 	}
@@ -145,5 +141,10 @@ public class Proyecto {
 	
 	public boolean tieneElTitulo(String titulo) {
 		return this.getNombre().equals(titulo);
+	}
+
+	public boolean includes(String string) {
+		// TODO Auto-generated method stub
+		return this.getCategorias().contains(string);
 	}
 }

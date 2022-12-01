@@ -16,7 +16,7 @@ public class ProgresoDeDesafioEnCurso extends EstadoDeProgreso{
 		return progreso.getDesafioActual().esFechaValida(fecha); 
 	}
 	
-	@Override
+	@Override 
 	public void recolectarMuestra(ProgresoDeDesafio progreso, Muestra muestra, LocalDateTime fecha) throws Exception {
 		if (this.esDesafioEnCurso(progreso, fecha)) {
 			this.recolectarMuestraSiAunNoHaExpirado(progreso, muestra);	

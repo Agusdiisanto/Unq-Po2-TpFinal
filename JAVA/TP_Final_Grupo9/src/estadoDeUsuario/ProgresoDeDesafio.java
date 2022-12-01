@@ -1,6 +1,7 @@
 package estadoDeUsuario;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 import actividad.Desafio;
@@ -28,7 +29,7 @@ public class ProgresoDeDesafio {
 	public void recolectarMuestra(IParticipante participante, Muestra muestra , LocalDateTime fecha) throws Exception {
 		this.getEstado().recolectarMuestra(this,muestra, fecha);
 		this.agregarMuestra(muestra);
-	}
+	} 
 
 	public boolean completoElDesafio() {
 		return this.getEstado().completoElDesafio(this);
@@ -55,7 +56,7 @@ public class ProgresoDeDesafio {
 			&& estaLaMuestraDentroDeLaRestriccionDelDesafio(muestra);
 	}
 	
-	
+
 	// =============== PRIVATE METHODS ================
 	private void incrementarPuntajeEnUno() {
 		this.setPuntaje(this.getPuntaje()+1);
@@ -74,6 +75,7 @@ public class ProgresoDeDesafio {
 		this.setDesafioActual(desafioActual);
 		this.setEstado(estado);
 		this.setPuntaje(0);
+		this.muestras = new HashSet<>();
 	}
 	
 	// ============== GETTERS & SETTERS ==============
