@@ -14,8 +14,8 @@ import filter.FilterTitulo;
 import proyectos.Proyecto;
 
 public class FilterTituloTest {
-	private FilterTitulo condicion1;
-	private Proyecto proyecto1, proyecto2, proyecto3;
+	private FilterTitulo condicion1, condicion2;
+	private Proyecto proyecto1, proyecto2, proyecto3, proyecto4;
 	
 	@BeforeEach
 	public void setUp() {
@@ -24,30 +24,41 @@ public class FilterTituloTest {
 		proyecto1 = mock(Proyecto.class);
 		proyecto2 = mock(Proyecto.class);
 		proyecto3 = mock(Proyecto.class);
+		proyecto4 = mock(Proyecto.class);
 		
 		when(proyecto1.getNombre()).thenReturn("Programacion con Java");
 		when(proyecto2.getNombre()).thenReturn("Patrones De Dieseño");
 		when(proyecto3.getNombre()).thenReturn("Programacion con C#");
+		when(proyecto4.getNombre()).thenReturn("Programacion con Java");
 		
 		when(proyecto1.tieneElTitulo("Programacion con Java")).thenReturn(true);
 		when(proyecto2.tieneElTitulo("Programacion con Java")).thenReturn(false);
 		when(proyecto3.tieneElTitulo("Programacion con Java")).thenReturn(false);
-		condicion1= new FilterTitulo("Programacion con Java");
+		when(proyecto4.tieneElTitulo("Programacion con Java")).thenReturn(true);
+		condicion1 = new FilterTitulo("Programacion con Java");
+		condicion2 = new FilterTitulo("");
 		
 	}
 	
 	@Test
 	
-	public void testFiltrarProyectosAND() {
+	public void testFiltrarProyectosIncluyendoUnTitulo() {
 		
-		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3);
+		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3, proyecto4);
 		
-		List<Proyecto> filtrados = Arrays.asList(proyecto1); 
+		List<Proyecto> filtrados = Arrays.asList(proyecto1, proyecto4); 
 		
 		assertEquals(condicion1.buscar(proyectos), filtrados);
-		assertEquals(condicion1.buscar(proyectos).size(), 1);
+		assertEquals(condicion1.buscar(proyectos).size(), 2);
 		
 	}
 	
-
+	@Test
+	public void testFiltrarProyectosQueNoIncluyenUnTitulo() {
+		
+		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3, proyecto4);
+		
+		assertEquals(condicion2.buscar(proyectos).size(), 0);
 }
+}
+

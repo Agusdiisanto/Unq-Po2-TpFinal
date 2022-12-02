@@ -11,11 +11,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import filter.FilterIncludeCategoria;
+import filter.FilterNotIncludeCategoria;
 import proyectos.Proyecto;
 
 public class FilterIncludeCategoriaTest {
 	
 	private FilterIncludeCategoria condicion1;
+	private FilterNotIncludeCategoria condicion2;
 	private Proyecto proyecto1, proyecto2, proyecto3;
 	
 	@BeforeEach
@@ -37,12 +39,13 @@ public class FilterIncludeCategoriaTest {
 		when(proyecto2.includes("Categoria1")).thenReturn(false);
 		when(proyecto3.includes("Categoria1")).thenReturn(false);
 		condicion1 = new FilterIncludeCategoria("Categoria1");
+		condicion2 = new FilterNotIncludeCategoria("Categoria1");
 		
 	}
 	
 	@Test
 	
-	public void testFiltrarProyectosAND() {
+	public void testFiltrarProyectosQueIncluyenUnaCategoria() {
 		
 		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3);
 		
@@ -50,6 +53,20 @@ public class FilterIncludeCategoriaTest {
 		
 		assertEquals(condicion1.buscar(proyectos), filtrados);
 		assertEquals(condicion1.buscar(proyectos).size(), 1);
+		
+	}
+	
+	@Test
+	
+	public void testFiltrarProyectosQueNoIncluyenUnaCategoria() {
+		
+		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3);
+	
+		List <Proyecto> filtrados = Arrays.asList(proyecto2, proyecto3); 
+		
+		assertEquals(condicion2.buscar(proyectos), filtrados);
+		
+		assertEquals(condicion2.buscar(proyectos).size(), 2);
 		
 	}
 

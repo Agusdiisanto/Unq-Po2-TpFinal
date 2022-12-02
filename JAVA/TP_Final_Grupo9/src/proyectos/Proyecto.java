@@ -142,6 +142,7 @@ public class Proyecto {
 	public boolean tieneElTitulo(String titulo) {
 		return this.getNombre().equals(titulo);
 	}
+	
 
 	public boolean includes(String string) {
 		return this.getCategorias().contains(string);
