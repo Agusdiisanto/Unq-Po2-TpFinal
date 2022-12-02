@@ -232,6 +232,18 @@ public class ProyectoTest {
 		proyecto.agregarCategoria("Fauna");
 		assertFalse(proyecto.noContieneCategorias(categorias));
 	}
+		
+	@Test
+	public void test28_unProyectoIndicaSiTieneUnTitulo() { /// ACAAAAAA
+		assertTrue(proyecto.tieneElTitulo("ProyectoNueve"));
+	}
+
+	@Test
+	public void test29_unProyectoIndicaSiTieneUnTitulo() { /// ACAAAAAA
+		proyecto.agregarCategoria("Categoria1");
+		assertTrue(proyecto.includes("Categoria1"));
+		assertEquals(proyecto.getCategorias().size(), 1);
+	}
 	
 	
 	private void inicializadorDeObjetos() {

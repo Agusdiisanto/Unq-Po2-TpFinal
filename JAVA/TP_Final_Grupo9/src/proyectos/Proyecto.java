@@ -52,6 +52,14 @@ public class Proyecto {
 	public boolean noContieneCategorias(Set<String> categorias) {
 		return !this.contieneCategorias(categorias);
 	}
+	
+	public boolean tieneElTitulo(String titulo) {
+		return this.getNombre().equals(titulo);
+	}
+	
+	public boolean includes(String string) {
+		return this.getCategorias().contains(string);
+	}
 
 	// ================ ADD METHODS =================
 	public void agregarActividad(ActividadLudica actividad) {
@@ -107,15 +115,17 @@ public class Proyecto {
 	}
 	
 	// ============== GETTERS & SETTERS ==============
-	
+	public String getNombre() {
+		return nombre;
+	}
 	public String getDescripcion() {
 		return descripcion;
 	}
-	public Set<String> getCategorias() {
-		return categorias;
-	}
 	public Set<ActividadLudica> getActividades() {
 		return actividades;
+	}
+	public Set<String> getCategorias() {
+		return categorias;
 	}
 	public Set<Muestra> getMuestrasRecolectadas() {
 		return muestrasRecolectadas;
@@ -130,21 +140,7 @@ public class Proyecto {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-	
-	public boolean tieneElTitulo(String titulo) {
-		return this.getNombre().equals(titulo);
-	}
-	
-
-	public boolean includes(String string) {
-		return this.getCategorias().contains(string);
 	}
 }
