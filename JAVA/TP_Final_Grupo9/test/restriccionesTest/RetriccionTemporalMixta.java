@@ -10,7 +10,7 @@ import actividad.DiaDeSemana;
 import actividad.EntreFecha;
 import actividad.RestriccionTemporalMixta;
 
-public class RetriccioinTemporalMixta {
+public class RetriccionTemporalMixta {
 	
 	private EntreFecha restriccion1;
 	private DiaDeSemana restriccion2;

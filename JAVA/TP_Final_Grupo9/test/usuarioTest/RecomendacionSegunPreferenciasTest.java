@@ -21,6 +21,7 @@ class RecomendacionSegunPreferenciasTest {
 	private ArrayList<Desafio>			   listaDeDesafios;
 	private Desafio						   desafio1;
 	private Desafio						   desafio2;
+	private Desafio                        desafio3;
 	private Caracteristica				   caracteristica1;
 	private Caracteristica				   caracteristica2;
 	private HashSet<Caracteristica>		   caracteristicas;
@@ -32,6 +33,7 @@ class RecomendacionSegunPreferenciasTest {
 		listaDeDesafios		= new ArrayList<Desafio>();
 		desafio1			= mock(Desafio.class);
 		desafio2			= mock(Desafio.class);
+		desafio3            = mock(Desafio.class); 
 		caracteristica1		= mock(Caracteristica.class);
 		caracteristica2		= mock(Caracteristica.class);
 		caracteristicas		= new HashSet<Caracteristica>();
@@ -62,4 +64,13 @@ class RecomendacionSegunPreferenciasTest {
 	void test04_unaEstrategiaRecomiendaDesafiosAUnUsuario() {
 		assertTrue(tipoDeRecomendacion.recomendarDesafiosAlUsuario(usuario1, listaDeDesafios).contains(desafio1));
 	}
+	
+	@Test
+	void test05_unaEstrategiaNoLeRecomiendaDesafiosAUnUsuario(){
+		assertFalse(tipoDeRecomendacion.desafiosRecomendadosPara(usuario1, listaDeDesafios).contains(desafio3));
+	}
+	
+
 }
+
+
