@@ -29,4 +29,9 @@ public class Caracteristica {
 	public void setAfinidad(double afinidad) {
 		this.afinidad = afinidad;
 	}
+
+	public boolean include(String s) {
+		// TODO Auto-generated method stub
+		return this.getDescripicion().equals(s);
+	}
 }

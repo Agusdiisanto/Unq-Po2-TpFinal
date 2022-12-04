@@ -83,7 +83,7 @@ public class UsuarioTest {
 		assertEquals(1, usuario.cantidadDeDesafiosCompletados());
 		assertFalse(usuario.getDesafiosCompletados().isEmpty());
 	}
-	 
+	  
 	@Test
 	public void test07_UnUsuarioNoTieneDesafiosCompletadosRepetidos() {
 		when(desafio.getRecompensa()).thenReturn(3456);
@@ -149,7 +149,7 @@ public class UsuarioTest {
 	public void test12_UnUsuarioPuedeRecolectarMuestras() throws Exception {
 		usuario.agregarNuevoProyectoEnCurso(proyecto);
 		usuario.recolectarMuestra(muestra);
-		//verify(appMovil,times(1)).recolectarMuestra(muestra, usuario, proyecto);
+		verify(proyecto,times(usuario.getProyectosDeInteres(muestra).size())).agregarMuestra(muestra);
 	}
 	
 	@Test
@@ -195,35 +195,45 @@ public class UsuarioTest {
 	}
 	
 	@Test
-	public void test17_UnUsuarioTieneAfinidadConCaracteristica() {
+	public void test17_UnUsuarioNoTieneUnDesafioFavorito(){
+		
+		// Retorna null porque no encuentra ningun desafio favorito
+
+		usuario.registrarDesafioCompletado(desafio2,12,345,0);
+	    assertEquals(usuario.getDesafioFavorito(), null);
+	   
+	}
+	
+	@Test
+	public void test18_UnUsuarioTieneAfinidadConCaracteristica() {
 		when(perfil.afinidadConCaracteristica(caracteristica)).thenReturn(2.3);
 		assertEquals(usuario.afinidadConCaracteristica(caracteristica), 2.3);
 		verify(perfil,times(1)).afinidadConCaracteristica(caracteristica);
 	}
 	
 	@Test
-	public void test18_UnUsuarioNoTieneAfinidadConCaracteristica() {
+	public void test19_UnUsuarioNoTieneAfinidadConCaracteristica() {
 		when(perfil.afinidadConCaracteristica(caracteristica)).thenReturn(0.0);
 		assertEquals(usuario.afinidadConCaracteristica(caracteristica), 0.0);
 		verify(perfil,times(1)).afinidadConCaracteristica(caracteristica);
 	}
 	
 	@Test
-	public void test19_UnUsuarioContieneCaracteristicaConDescripcion() {
+	public void test20_UnUsuarioContieneCaracteristicaConDescripcion() {
 		when(perfil.contieneCaracteristicaConDescripcion("s")).thenReturn(true);
 		assertTrue(usuario.contieneCaracteristicaConDescripcion("s"));
 		verify(perfil,only()).contieneCaracteristicaConDescripcion("s");
 	}
 	
 	@Test
-	public void test20_UnUsuarioNoContieneCaracteristicaConDescripcion() {
+	public void test21_UnUsuarioNoContieneCaracteristicaConDescripcion() {
 		when(perfil.contieneCaracteristicaConDescripcion("s")).thenReturn(false);
 		assertFalse(usuario.contieneCaracteristicaConDescripcion("s"));
 		verify(perfil,times(1)).contieneCaracteristicaConDescripcion("s");
 	}
 	
 	@Test
-	public void test21_UnUsuarioSabeLaSimilitudEntreUnDesafioYSuFavorito() {
+	public void test22_UnUsuarioSabeLaSimilitudEntreUnDesafioYSuFavorito() {
 		usuario.registrarDesafioCompletado(desafio2,2,5,5);
 	
 		when(desafio.getObjetivo()).thenReturn(30);
@@ -239,7 +249,7 @@ public class UsuarioTest {
 	}
 	
 	@Test
-	public void test22_UnUsuarioSabeLaEstrategiaARecomendar() {
+	public void test23_UnUsuarioSabeLaEstrategiaARecomendar() {
 		when(perfil.getTipoDeRecomendacionPreferida()).thenReturn(estrategia);
 		
 		assertEquals(usuario.getEstrategia(), estrategia);

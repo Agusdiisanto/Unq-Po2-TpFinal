@@ -31,7 +31,7 @@ class RecomendacionSegunFavoritosTest {
 	}
 
 	@Test
-	void test04_unaEstrategiaRecomiendaDesafiosAUnUsuario() {
+	void test01_unaEstrategiaRecomiendaDesafiosAUnUsuario() {
 		assertTrue(tipoDeRecomendacion.recomendarDesafiosAlUsuario(usuario1, listaDeDesafios).contains(desafio1));
 	}
 }

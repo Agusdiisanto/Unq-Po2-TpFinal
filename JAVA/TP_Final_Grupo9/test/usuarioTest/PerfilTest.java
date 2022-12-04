@@ -18,12 +18,13 @@ public class PerfilTest {
 	private RecomendacionSegunPreferencias	estategiaDeRecomedacion1;
 	private RecomendacionSegunFavoritos		estategiaDeRecomedacion2;
 	private Perfil							perfil;
-	private Caracteristica					caracteristica2;
+	private Caracteristica					caracteristica2,caracteristica3;
 	
 	@BeforeEach
     public void setUp() {
 		caracteristica1			 = mock(Caracteristica.class);
 		caracteristica2          = mock(Caracteristica.class);
+		caracteristica3          = mock(Caracteristica.class);
 		estategiaDeRecomedacion1 = mock(RecomendacionSegunPreferencias.class);
 		estategiaDeRecomedacion2 = mock(RecomendacionSegunFavoritos.class);
 		perfil					 = new Perfil();
@@ -105,6 +106,7 @@ public class PerfilTest {
     public void test12_unPerfilMacheaCaracteristicasSegunDescripcion() {
 		when(caracteristica1.getDescripicion()).thenReturn("Botánica");
 		when(caracteristica1.getAfinidad()).thenReturn(0.5);
+		when(caracteristica1.include(caracteristica1.getDescripicion())).thenReturn(true);
 		
 		perfil.agregarCaracteristicaPreferida(caracteristica1);
 		assertTrue(perfil.getCaracteristicasPreferidas().contains(caracteristica1));
@@ -113,11 +115,41 @@ public class PerfilTest {
 	
 	
 	@Test
-    public void test13_unPerfilCalculaLaAfinidadConUnaCaracteristica() {
-		caracteristica1 = new Caracteristica("c1", 5);
-		caracteristica2 = new Caracteristica("c2", 7);
+    public void test13_unPerfilCalculaLaAfinidadConUnaCaracteristicaSiEstaEnLaDescripcion() {
+			
+		when(caracteristica1.getDescripicion()).thenReturn("c1");
+		when(caracteristica1.getAfinidad()).thenReturn(5.0);
+		
+		when(caracteristica2.getDescripicion()).thenReturn("c2");
+		when(caracteristica2.getAfinidad()).thenReturn(7.0);
+		
 		perfil.agregarCaracteristicaPreferida(caracteristica1);
 		perfil.agregarCaracteristicaPreferida(caracteristica2);
 		assertEquals(perfil.afinidadConCaracteristica(caracteristica1), 0);
+		
     }
+	
+	@Test
+    public void test14_unPerfilCalculaLaAfinidadConUnaCaracteristicaSiNoEstaEnLaDescripcion() {
+		
+		when(caracteristica1.getDescripicion()).thenReturn("s1");
+		when(caracteristica1.getAfinidad()).thenReturn(5.0);
+		when(caracteristica2.getDescripicion()).thenReturn("s2");
+		when(caracteristica2.getAfinidad()).thenReturn(7.0);
+		when(caracteristica3.getDescripicion()).thenReturn("sert");
+		when(caracteristica3.getAfinidad()).thenReturn(3.0);
+		when(caracteristica2.include(caracteristica3.getDescripicion())).thenReturn(true);
+		when(caracteristica1.include(caracteristica3.getDescripicion())).thenReturn(true);
+		
+		perfil.agregarCaracteristicaPreferida(caracteristica1);
+		perfil.agregarCaracteristicaPreferida(caracteristica2);
+		perfil.agregarCaracteristicaPreferida(caracteristica3); 
+		
+		assertEquals(perfil.afinidadConCaracteristica(caracteristica3), 0);
+		
+		// Faltan verify y este es el caso positivo pero da 0 porque se restan mutuamente cambiar eso
+		// post hay que ver el if de la condicion caso positivo y caso negativo
+		
+    }
+	
 }

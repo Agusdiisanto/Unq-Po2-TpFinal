@@ -1,5 +1,7 @@
 package actividadTest;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -24,4 +26,15 @@ public class CaracteristicasTest {
 	public void test02_unaCaracteristicaTieneUnaAfinidad() {
 		assertEquals(3, caracterista.getAfinidad());
 	}
+	
+	@Test
+	public void test03_unaCaracteristicaIncluyeLaDescripcion() {
+		assertTrue(caracterista.include("Oro"));
+	}
+	
+	@Test
+	public void test04_unaCaracteristicaNoIncluyeLaDescripcion() {
+		assertFalse(caracterista.include("Plata"));
+	}
+	
 }

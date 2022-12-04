@@ -19,23 +19,25 @@ public class Perfil {
 
 	// =================== METHODS ====================
 	public boolean contieneCaracteristicaConDescripcion(String s) {
-		return this.getCaracteristicasPreferidas().stream().anyMatch(c -> c.getDescripicion().equals(s));
+		return this.getCaracteristicasPreferidas().stream().anyMatch(c -> c.include(s));   // c.getDescripcion.equals(s) 
 	}
-
-	public double afinidadConCaracteristica(Caracteristica caracteristica) {
-		return !contieneCaracteristicaConDescripcion(caracteristica.getDescripicion()) ? 0 :
-				Math.abs(this.getCaracteristicaSegunDescripcion(caracteristica.getDescripicion()).getAfinidad() - caracteristica.getAfinidad());
-	}
+    
+	// Ver santi, esta restando afinidad dos veces y siempre te da 0
 	
-	private Caracteristica getCaracteristicaSegunDescripcion(String descipcion) {
+	public double afinidadConCaracteristica(Caracteristica caracteristica) { 
+		return !contieneCaracteristicaConDescripcion(caracteristica.getDescripicion()) ? 0 : 
+				Math.abs(this.getCaracteristicaSegunDescripcion(caracteristica.getDescripicion()).getAfinidad() - caracteristica.getAfinidad());
+	}   
+	 
+	private Caracteristica getCaracteristicaSegunDescripcion(String descripcion) {
 		Caracteristica caracteristicaEncontrada = null;
 		for (Caracteristica caracteristica : this.getCaracteristicasPreferidas()) {
-			if (caracteristica.getDescripicion() == descipcion) {
+			if (caracteristica.getDescripicion() == descripcion) {
 				caracteristicaEncontrada = caracteristica;
 			}
 		}
 		return caracteristicaEncontrada;
-	}
+	} 
 	
 	// ================= ADD METHODS ==================
 	public void agregarGusto(String gusto){

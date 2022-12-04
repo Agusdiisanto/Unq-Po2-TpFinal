@@ -1,5 +1,7 @@
 package estadoDeUsuarioTest;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.only;
@@ -31,10 +33,23 @@ public class ProgresoDeDesafioTerminadoTest {
 		desafio			= mock(Desafio.class);
 		terminado		= new ProgresoDeDesafioTerminado();
 		progreso		= new ProgresoDeDesafio(desafio,terminado);
+		
 	}
 	
 	@Test
-	public void test01_unProgresoTerminadoNoPermiteRecolectarMuestras() throws Exception {
+	public void test01_unProgresoTerminadoNoEstaEnCurso() {
+		LocalDateTime fecha = LocalDateTime.now();
+		assertFalse(terminado.esDesafioEnCurso(progreso, fecha));
+	}
+	
+	@Test
+	public void test02_unProgresoTerminadoNoEstaEnCurso() {
+		// Se supone que si ya termino el progreso, es porque ya lo ha completado
+		assertTrue(terminado.completoElDesafio(progreso));
+	}
+	
+	@Test
+	public void test03_unProgresoTerminadoNoPermiteRecolectarMuestras() throws Exception {
 		LocalDateTime fecha = LocalDateTime.now();
 		assertThrows(
 			RuntimeException.class,
@@ -44,7 +59,7 @@ public class ProgresoDeDesafioTerminadoTest {
 	}
 	
 	@Test
-	public void test02_unProgresoTerminadoNoPermiteConcederRecompensas() throws Exception {
+	public void test04_unProgresoTerminadoNoPermiteConcederRecompensas() throws Exception {
 		assertThrows(
 			RuntimeException.class,
 			() -> {terminado.verificarSiCompletoElDesafio(progreso);},
@@ -53,9 +68,12 @@ public class ProgresoDeDesafioTerminadoTest {
 	}
 	
 	@Test
-	public void test03_unProgresoTerminadoRegistraElDesafioCompletado() throws Exception {
+	public void test05_unProgresoTerminadoRegistraElDesafioCompletado() throws Exception {
 		when(desafio.getObjetivo()).thenReturn(4);
 		progreso.registrarDesafioCompletado(participante, 4);
 		verify(participante,only()).registrarDesafioCompletado(desafio, 0, 4, 5);
 	}
+	
+	
+	
 }

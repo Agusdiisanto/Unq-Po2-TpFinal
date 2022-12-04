@@ -3,6 +3,7 @@ package estadoDeUsuarioTest;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -18,6 +19,7 @@ import estadoDeUsuario.ProgresoDeDesafioEnCurso;
 import estadoDeUsuario.ProgresoDeDesafioTerminado;
 import estadoDeUsuario.ProgresoDeDesafio;
 import muestra.Muestra;
+import usuario.IParticipante;
 
 public class ProgresoDeDesafioEnCursoTest {
 	ProgresoDeDesafioEnCurso progresoEnCurso;
@@ -154,5 +156,22 @@ public class ProgresoDeDesafioEnCursoTest {
 		verify(progresoActual,times(2)).getDesafioActual();
 		verify(progresoActual,times(2)).getPuntaje();
 		verify(desafio,times(2)).getObjetivo();
+	} 
+	
+	
+	@Test
+	public void test10_unProgresoNoPuedeRegistrarSiSigueEnCurso()  throws Exception{
+		
+		IParticipante participante = mock(IParticipante.class);
+		
+	    assertThrows( 
+	    	RuntimeException.class,
+	    	() -> {progresoEnCurso.registrarDesafioCompletado(participante, progresoActual, 10);},
+	    	"No se puede registrar, el desafio sigue en curso"
+	    	
+	    );
+		
 	}
+	
+	
 }

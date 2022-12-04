@@ -36,8 +36,8 @@ public class ProgresoDeDesafioTerminado implements IEstadoDelProgreso {
 		return false;
 	}
 
-	@Override
+	@Override 
 	public boolean completoElDesafio(ProgresoDeDesafio progresoDesafio) {
-		return false;
+		return true;
 	}
 }

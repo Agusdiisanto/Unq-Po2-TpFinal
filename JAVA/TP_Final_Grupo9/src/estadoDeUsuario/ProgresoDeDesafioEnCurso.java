@@ -46,10 +46,10 @@ public class ProgresoDeDesafioEnCurso implements IEstadoDelProgreso{
 			this.verificarSiCompletoElDesafio(progreso);
 		}
 	}
-
-	@Override // FALTA TESTEAR
+	
+	@Override 
 	public void registrarDesafioCompletado(IParticipante participante, ProgresoDeDesafio progresoDesafio,
 			int sastifaccion) throws Exception {
-		throw new RuntimeException("La partida ya ha finalizado");
+		throw new RuntimeException("No se puede registrar, el desafio sigue en curso"); 
 	}
 }

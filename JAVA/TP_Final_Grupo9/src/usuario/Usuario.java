@@ -57,8 +57,8 @@ public class Usuario implements IParticipante{
             if(satisfaccionMaxima < entry.getValue().getSatisfaccion()) {
                 satisfaccionMaxima = entry.getValue().getSatisfaccion();
                 desafioActual = entry.getKey();
-            }
-        };
+            } 
+        };  
         return desafioActual;  
     } 
 	 
