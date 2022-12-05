@@ -22,7 +22,7 @@ public class Perfil {
 		return !includesCaracteristicaConDescripcion(caracteristica.getDescripicion()) ? 0 : 
 				Math.abs(this.getCaracteristicaSegunDescripcion(caracteristica.getDescripicion()).getAfinidad() - caracteristica.getAfinidad());
 	}
-	
+	 
 	public boolean includesCaracteristicaConDescripcion(String descripcion) {
 		return this.getCaracteristicas().stream().anyMatch(c -> c.tieneDescripcion(descripcion));
 	}
@@ -35,8 +35,8 @@ public class Perfil {
 			}
 		}
 		return caracteristicaEncontrada;
-	}
-	
+	} 
+	 
 	// ================= ADD METHODS ==================
 	public void addGusto(String gusto){
 		this.getGustos().add(gusto);

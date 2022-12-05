@@ -28,7 +28,6 @@ public class Desafio implements ActividadLudica {
 		return true;
 	}
 	
-	// Verifica si un desafío es activo, según la fecha actual y la restricción temporal.
 	public Boolean esActivo(LocalDateTime fecha) {
 		return this.getRestriccionTemporal().cumpleLaRestriccion(fecha);
 	}
@@ -47,8 +46,6 @@ public class Desafio implements ActividadLudica {
 	
 	// ================ ADD METHODS ================
 	public void addParticipante(IParticipante usuario, LocalDateTime fecha) {
-		// Un participante puede ingresar a un desafío que aún no haya arrancado
-		// pero solo se contabilizan las muestras a partir del inicio del desafío.
 		if (this.esActivo(fecha)) {
 			this.getParticipantes().add(usuario);
 		}

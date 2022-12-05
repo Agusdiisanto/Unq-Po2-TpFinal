@@ -27,7 +27,7 @@ public class Usuario implements IParticipante{
 	private String		          	   nombre;
 	private Set<Proyecto> 		  	   proyectosEnCurso;
 	private Perfil 				  	   perfil;
-	private Map<Desafio, Estadisticas> desafiosCompletados;
+	private Map<Desafio, Estadisticas> desafiosCompletados; 
 	private Set<ProgresoDeDesafio>     desafiosEnCurso; 
 	
 	// ================== METHODS USUARIO ========================

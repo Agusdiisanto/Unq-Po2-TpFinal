@@ -29,14 +29,13 @@ public abstract class EstrategiaDeRecomendacion {
 		return this.ordenarDesafiosSegunCoincidenciaPara(usuario, desafios);
 	}
 	
-	// ================== PRIVATE =====================
 	public ArrayList<Desafio> ordenarDesafiosSegunCoincidenciaPara(Usuario usuario, ArrayList<Desafio> desafios) {
 		ArrayList<Desafio> desafiosOrdenados = new ArrayList<Desafio>();
 		ArrayList<Desafio> desafiosAOrdenar  = desafios;
 		while (desafiosOrdenados.size() < desafiosAOrdenar.size()) {
 			desafiosOrdenados.add(this.desafioConMayorCoincidenciaPara(usuario, desafiosAOrdenar));
 		}
-		return desafiosOrdenados;
+		return desafiosOrdenados; 
 	}
 
 	public Desafio desafioConMayorCoincidenciaPara(Usuario usuario, ArrayList<Desafio> desafios) {
@@ -48,6 +47,9 @@ public abstract class EstrategiaDeRecomendacion {
 		}
 		return current;
 	}
+	
+	
+	// ================== PRIVATE =====================
 
 	private Desafio desafioConMayorCoincidenciaEntre(Desafio desafio1 ,Desafio desafio2, Usuario usuario) {
 		return coincidenciaConUsuario(desafio1,usuario) <= coincidenciaConUsuario(desafio2,usuario) ? desafio1 : desafio2;
