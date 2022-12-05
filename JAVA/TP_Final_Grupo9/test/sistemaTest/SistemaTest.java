@@ -56,10 +56,10 @@ public class SistemaTest {
 		desafios3.add(0, desafio1);
 		desafios3.add(1, desafio2);
 		desafios3.add(2, desafio3);
-    	perfil1.agregarGusto("Gusto1");
-    	perfil1.agregarCaracteristicaPreferida(caracteristica1);
-    	perfil1.agregarComportamiento("Comportamiento1");
-    	perfil1.setTipoDeRecomendacionPreferido(estrategiaDeRecomendacion1);	
+    	perfil1.addGusto("Gusto1");
+    	perfil1.addCaracteristica(caracteristica1);
+    	perfil1.addComportamiento("Comportamiento1");
+    	perfil1.setRecomendacionPreferida(estrategiaDeRecomendacion1);	
 	}
 	
 	@Test

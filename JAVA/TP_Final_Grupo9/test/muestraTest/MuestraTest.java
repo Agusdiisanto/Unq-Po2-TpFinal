@@ -34,9 +34,9 @@ public class MuestraTest {
     	coordenadaDeRecoleccion  = mock(Coordenada.class);
     	muestra1				 = new Muestra(usuario1, fechaYHoraDeRecoleccion1, coordenadaDeRecoleccion);
     	caracteristica1			 = mock(Caracteristica.class);
-    	perfil1.agregarGusto("Gusto1");
-    	perfil1.agregarCaracteristicaPreferida(caracteristica1);
-    	perfil1.agregarComportamiento("Comportamiento1");
+    	perfil1.addGusto("Gusto1");
+    	perfil1.addCaracteristica(caracteristica1);
+    	perfil1.addComportamiento("Comportamiento1");
     	when(coordenadaDeRecoleccion.getX()).thenReturn(1.0);
     	when(coordenadaDeRecoleccion.getY()).thenReturn(2.0);
     }

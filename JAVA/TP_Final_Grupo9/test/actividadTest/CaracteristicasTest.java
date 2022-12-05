@@ -29,12 +29,12 @@ public class CaracteristicasTest {
 	
 	@Test
 	public void test03_unaCaracteristicaIncluyeLaDescripcion() {
-		assertTrue(caracterista.include("Oro"));
+		assertTrue(caracterista.tieneDescripcion("Oro"));
 	}
 	
 	@Test
 	public void test04_unaCaracteristicaNoIncluyeLaDescripcion() {
-		assertFalse(caracterista.include("Plata"));
+		assertFalse(caracterista.tieneDescripcion("Plata"));
 	}
 	
 }

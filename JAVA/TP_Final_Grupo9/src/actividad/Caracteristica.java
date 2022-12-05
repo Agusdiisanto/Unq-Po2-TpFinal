@@ -10,6 +10,10 @@ public class Caracteristica {
 	private String descripicion;
 	private double afinidad;
 	
+	public boolean tieneDescripcion(String descripcion) {
+		return this.getDescripicion().equals(descripcion);
+	}
+	
 	// ====================== CONSTRUCTOR =======================
 	public Caracteristica(String descripicion, double afinidad) {
 		this.setDescripicion(descripicion);
@@ -28,10 +32,5 @@ public class Caracteristica {
 	}
 	public void setAfinidad(double afinidad) {
 		this.afinidad = afinidad;
-	}
-
-	public boolean include(String s) {
-		// TODO Auto-generated method stub
-		return this.getDescripicion().equals(s);
 	}
 }

@@ -25,27 +25,27 @@ import usuario.RecomendacionSegunPreferencias;
 import usuario.Usuario;
 
 public class UsuarioTest {
-	private Usuario usuario;
-	private Perfil perfil;
-	private ProgresoDeDesafio progreso;
-	private Desafio desafio;
-	private Proyecto proyecto;
-	private Muestra muestra;
-	private Desafio desafio2;
-	private Caracteristica caracteristica;
+	private Usuario						   usuario;
+	private Perfil						   perfil;
+	private ProgresoDeDesafio			   progreso;
+	private Desafio						   desafio;
+	private Proyecto					   proyecto;
+	private Muestra 					   muestra;
+	private Desafio						   desafio2;
+	private Caracteristica				   caracteristica;
 	private RecomendacionSegunPreferencias estrategia;
 	
 	@BeforeEach
 	public void setUp() {
-		proyecto = mock(Proyecto.class);
-		perfil = mock(Perfil.class);
-		progreso = mock(ProgresoDeDesafio.class);
-		desafio = mock(Desafio.class);
-		muestra = mock(Muestra.class);
-		desafio2 = mock(Desafio.class);
+		proyecto	   = mock(Proyecto.class);
+		perfil		   = mock(Perfil.class);
+		progreso	   = mock(ProgresoDeDesafio.class);
+		desafio		   = mock(Desafio.class);
+		muestra		   = mock(Muestra.class);
+		desafio2	   = mock(Desafio.class);
 		caracteristica = mock(Caracteristica.class);
-		estrategia = mock(RecomendacionSegunPreferencias.class);
-		usuario = new Usuario("Agustin", perfil);
+		estrategia	   = mock(RecomendacionSegunPreferencias.class);
+		usuario		   = new Usuario("Agustin", perfil);
 	}
 	
 	@Test
@@ -155,53 +155,40 @@ public class UsuarioTest {
 	@Test
 	public void test13_UnUsuarioPuedeRecolectarMuestrasParaDesafios() throws Exception {
 		LocalDateTime fecha = LocalDateTime.now();
-		
 		usuario.agregarNuevoProgresoDeDesafio(progreso);
 		usuario.recolectarMuestraParaLosDesafios(muestra,fecha);
-		
 		verify(progreso,times(1)).recolectarMuestra(usuario, muestra,fecha);
 	}
 	
 	@Test
 	public void test14_UnUsuarioPuedeRecolectarMuestrasParaProyectoSiEsDeInteres() throws Exception {
-		
 		when(proyecto.esMuestraDeInteres(muestra)).thenReturn(true);
-		
 		usuario.agregarNuevoProyectoEnCurso(proyecto);
 		usuario.recolectarMuestraParaLosProyectos(muestra);
-		
 		verify(proyecto,times(usuario.getProyectosDeInteres(muestra).size())).agregarMuestra(muestra);
 	}
 	
 	@Test
 	public void test15_UnUsuarioPuedeRecolectarMuestrasParaProyectoSiNoEsDeInteres() throws Exception {
-		
 		when(proyecto.esMuestraDeInteres(muestra)).thenReturn(false);
-		
 		usuario.agregarNuevoProyectoEnCurso(proyecto);
 		usuario.recolectarMuestraParaLosProyectos(muestra);
-		
 		verify(proyecto,times(usuario.getProyectosDeInteres(muestra).size())).agregarMuestra(muestra);
 	}
-	
 	
 	@Test
 	public void test16_UnUsuarioTieneUnDesafioFavorito(){
 		usuario.registrarDesafioCompletado(desafio2,2,5,5);
 		usuario.registrarDesafioCompletado(desafio,3,2,2);
-		
 	    assertEquals(usuario.getDesafioFavorito(), desafio2);
 	    assertEquals(usuario.getDesafiosCompletados().size(), 2);
 	}
 	
 	@Test
 	public void test17_UnUsuarioNoTieneUnDesafioFavorito(){
-		
 		// Retorna null porque no encuentra ningun desafio favorito
-
 		usuario.registrarDesafioCompletado(desafio2,12,345,0);
 	    assertEquals(usuario.getDesafioFavorito(), null);
-	   
 	}
 	
 	@Test
@@ -220,16 +207,16 @@ public class UsuarioTest {
 	
 	@Test
 	public void test20_UnUsuarioContieneCaracteristicaConDescripcion() {
-		when(perfil.contieneCaracteristicaConDescripcion("s")).thenReturn(true);
+		when(perfil.includesCaracteristicaConDescripcion("s")).thenReturn(true);
 		assertTrue(usuario.contieneCaracteristicaConDescripcion("s"));
-		verify(perfil,only()).contieneCaracteristicaConDescripcion("s");
+		verify(perfil,only()).includesCaracteristicaConDescripcion("s");
 	}
 	
 	@Test
 	public void test21_UnUsuarioNoContieneCaracteristicaConDescripcion() {
-		when(perfil.contieneCaracteristicaConDescripcion("s")).thenReturn(false);
+		when(perfil.includesCaracteristicaConDescripcion("s")).thenReturn(false);
 		assertFalse(usuario.contieneCaracteristicaConDescripcion("s"));
-		verify(perfil,times(1)).contieneCaracteristicaConDescripcion("s");
+		verify(perfil,times(1)).includesCaracteristicaConDescripcion("s");
 	}
 	
 	@Test
@@ -250,9 +237,9 @@ public class UsuarioTest {
 	
 	@Test
 	public void test23_UnUsuarioSabeLaEstrategiaARecomendar() {
-		when(perfil.getTipoDeRecomendacionPreferida()).thenReturn(estrategia);
+		when(perfil.getRecomendacionPreferida()).thenReturn(estrategia);
 		
 		assertEquals(usuario.getEstrategia(), estrategia);
-		verify(perfil,times(1)).getTipoDeRecomendacionPreferida();
+		verify(perfil,times(1)).getRecomendacionPreferida();
 	}
 }

@@ -32,7 +32,7 @@ public class Usuario implements IParticipante{
 	
 	// ================== METHODS USUARIO ========================
 	public boolean contieneCaracteristicaConDescripcion(String descripcion) {
-		return this.getPerfil().contieneCaracteristicaConDescripcion(descripcion);
+		return this.getPerfil().includesCaracteristicaConDescripcion(descripcion);
 	}
 	
 	public double afinidadConCaracteristica(Caracteristica caracteristica) {
@@ -40,13 +40,13 @@ public class Usuario implements IParticipante{
 	}
  
 	public EstrategiaDeRecomendacion getEstrategia() {
-		return this.getPerfil().getTipoDeRecomendacionPreferida();
+		return this.getPerfil().getRecomendacionPreferida();
 	}  
   
 	public double similitudConFavorito(Desafio desafio) {
-		double diferenciaDeMuestras   = Math.abs(desafio.getObjetivo()     - this.getDesafiosCompletados().get(this.getDesafioFavorito()).getCantidadDeMuestrasRecolectadas());
+		double diferenciaDeMuestras   = Math.abs(desafio.getObjetivo()				- this.getDesafiosCompletados().get(this.getDesafioFavorito()).getCantidadDeMuestrasRecolectadas());
 		double diferenciaDeDificultad = Math.abs(desafio.getDificultad().getNivel() - this.getDesafioFavorito().getDificultad().getNivel());
-		double diferenciaDeRecompensa = Math.abs(desafio.getRecompensa()                        - this.getDesafioFavorito().getRecompensa());
+		double diferenciaDeRecompensa = Math.abs(desafio.getRecompensa()			- this.getDesafioFavorito().getRecompensa());
 		return Math.round((diferenciaDeMuestras + diferenciaDeDificultad + diferenciaDeRecompensa)/3);
 	}
 	
@@ -62,6 +62,25 @@ public class Usuario implements IParticipante{
         return desafioActual;  
     } 
 	 
+	public void agregarNuevoProyectoEnCurso(Proyecto proyecto) {
+		this.getProyectoEnCurso().add(proyecto);
+	}
+	
+	public void agregarNuevoProgresoDeDesafio(ProgresoDeDesafio progreso) {
+		this.getDesafiosEnCurso().add(progreso);
+	}
+	
+	public Integer cantidadDeProyectosEnCurso() {
+		return this.getProyectoEnCurso().size();
+	}
+	
+	public Integer cantidadDeDesafiosCompletados() {
+		return this.getDesafiosCompletados().size();
+	}
+	
+	public Integer cantidadDeDesafiosEnCurso() {
+		return this.getDesafiosEnCurso().size();
+	}
 	//================== METHODS IPARTICIPANTE ====================
 	@Override
 	public void recolectarMuestra(Muestra muestra) throws Exception{
@@ -103,8 +122,8 @@ public class Usuario implements IParticipante{
 		this.getDesafiosCompletados().put(desafio, estadisticas);
 	}
 	
-	public Set<Proyecto> getProyectosDeInteres(Muestra unaMuestra){
-		return this.getProyectoEnCurso().stream().filter(p -> p.esMuestraDeInteres(unaMuestra)).collect(Collectors.toSet());
+	public Set<Proyecto> getProyectosDeInteres(Muestra muestra){
+		return this.getProyectoEnCurso().stream().filter(p -> p.esMuestraDeInteres(muestra)).collect(Collectors.toSet());
 	}
 	 
 	// ================== PRIVATE =====================
@@ -126,7 +145,6 @@ public class Usuario implements IParticipante{
 	public String getNombre() {
 		return nombre;
 	}
-
 	public Set<Proyecto> getProyectoEnCurso() {
 		return proyectosEnCurso;
 	}
@@ -139,30 +157,4 @@ public class Usuario implements IParticipante{
 	public Set<ProgresoDeDesafio> getDesafiosEnCurso() {
 		return desafiosEnCurso;
 	}
-	public void agregarNuevoProyectoEnCurso(Proyecto proyecto) {
-		this.getProyectoEnCurso().add(proyecto);
-	}
-	public Integer cantidadDeProyectosEnCurso() {
-		return this.getProyectoEnCurso().size();
-	}
-	public Integer cantidadDeDesafiosCompletados() {
-		return this.getDesafiosCompletados().size();
-	}
-	public void agregarNuevoProgresoDeDesafio(ProgresoDeDesafio progreso) {
-		this.getDesafiosEnCurso().add(progreso);
-	}
-	public Integer cantidadDeDesafiosEnCurso() {
-		return this.getDesafiosEnCurso().size();
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
