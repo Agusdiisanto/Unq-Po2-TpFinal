@@ -125,7 +125,7 @@ public class Usuario implements IParticipante{
 	public Set<Proyecto> getProyectosDeInteres(Muestra muestra){
 		return this.getProyectoEnCurso().stream().filter(p -> p.esMuestraDeInteres(muestra)).collect(Collectors.toSet());
 	}
-	 
+	
 	// ================== PRIVATE =====================
 	private void agregarNuevoDesafioEnCurso(Desafio desafio) {
 		ProgresoDeDesafio progreso = new ProgresoDeDesafio(desafio, new ProgresoDeDesafioEnCurso());

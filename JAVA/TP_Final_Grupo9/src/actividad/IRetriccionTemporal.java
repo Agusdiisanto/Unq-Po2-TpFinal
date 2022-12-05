@@ -4,6 +4,6 @@ import java.time.LocalDateTime;
 
 public interface IRetriccionTemporal {
 	
-	public boolean cumpleLaRestricion(LocalDateTime fecha);
+	public boolean cumpleLaRestriccion(LocalDateTime fecha);
 
 }

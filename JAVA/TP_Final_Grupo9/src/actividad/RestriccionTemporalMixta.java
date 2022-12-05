@@ -16,8 +16,8 @@ public class RestriccionTemporalMixta implements IRetriccionTemporal {
 	
 	// =================== METHODS ====================
 	@Override
-	public boolean cumpleLaRestricion(LocalDateTime fecha) {
-		return this.getRetricciones().stream().allMatch(r -> r.cumpleLaRestricion(fecha));
+	public boolean cumpleLaRestriccion(LocalDateTime fecha) {
+		return this.getRetricciones().stream().allMatch(r -> r.cumpleLaRestriccion(fecha));
 	}
 	
 	public void addRetriccionTemporal(IRetriccionTemporal retriccion) {

@@ -35,5 +35,3 @@ class RecomendacionSegunFavoritosTest {
 		assertTrue(tipoDeRecomendacion.recomendarDesafiosAlUsuario(usuario1, listaDeDesafios).contains(desafio1));
 	}
 }
-	
-	

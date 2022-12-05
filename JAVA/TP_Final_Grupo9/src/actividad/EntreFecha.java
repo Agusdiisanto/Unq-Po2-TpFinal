@@ -8,7 +8,7 @@ public class EntreFecha implements IRetriccionTemporal{
 
 	// ============================ METHODS ============================
 	@Override
-	public boolean cumpleLaRestricion(LocalDateTime fecha) {
+	public boolean cumpleLaRestriccion(LocalDateTime fecha) {
 		return fecha.isAfter(this.getInicio()) && fecha.isBefore(this.getCierre());
 	}
 	

@@ -18,8 +18,6 @@ public class Perfil {
 	private EstrategiaDeRecomendacion recomendacionPreferida;
 
 	// =================== METHODS ====================
-	// Ver santi, esta restando afinidad dos veces y siempre te da 0
-	
 	public double afinidadConCaracteristica(Caracteristica caracteristica) { 
 		return !includesCaracteristicaConDescripcion(caracteristica.getDescripicion()) ? 0 : 
 				Math.abs(this.getCaracteristicaSegunDescripcion(caracteristica.getDescripicion()).getAfinidad() - caracteristica.getAfinidad());

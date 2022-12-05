@@ -15,7 +15,7 @@ public class RecomendacionSegunFavoritos extends EstrategiaDeRecomendacion {
 	// ======================== METHODS =========================
 	@Override 
 	public ArrayList<Desafio> recomendarDesafiosAlUsuario(Usuario user, ArrayList<Desafio> desafios) {
-		ArrayList<Desafio> desafiosAOrdenar = this.primerosN(desafiosRecomendadosPara(user,desafios),cantidadASeleccionar());
+		ArrayList<Desafio> desafiosAOrdenar  = this.primerosN(desafiosRecomendadosPara(user,desafios),cantidadASeleccionar());
 		ArrayList<Desafio> desafiosOrdenados = new ArrayList<Desafio>();
 		while (!desafiosAOrdenar.isEmpty()) {
 			desafiosOrdenados.add(desafioConMayorSimilitudPara(desafiosAOrdenar, user));

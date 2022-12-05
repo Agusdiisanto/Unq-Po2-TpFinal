@@ -37,7 +37,7 @@ public class RetriccionTemporalMixta {
 	public void test02_unaRestriccionMixtaEvaluaSiTodasLasRestriccionesCumplen() {
 		restriccionMixta.addRetriccionTemporal(restriccion1);
 		restriccionMixta.addRetriccionTemporal(restriccion2);
-		assertTrue(restriccionMixta.cumpleLaRestricion(LocalDateTime.of(2022, 11, 25, 10, 50)));
+		assertTrue(restriccionMixta.cumpleLaRestriccion(LocalDateTime.of(2022, 11, 25, 10, 50)));
 	}
 	
 	

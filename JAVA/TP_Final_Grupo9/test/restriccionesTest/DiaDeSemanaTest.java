@@ -22,17 +22,17 @@ public class DiaDeSemanaTest {
 	
 	@Test
 	public void test01_cumpleRestriccionCuandoDiaDeSemana() {
-		assertTrue(restriccion.cumpleLaRestricion(LocalDateTime.of(2022, 11, 25, 10, 50)));
+		assertTrue(restriccion.cumpleLaRestriccion(LocalDateTime.of(2022, 11, 25, 10, 50)));
 	}
 	
 	@Test
 	public void test02_NocumpleRestriccionCuandoCaeDomingo() {
-		assertFalse(restriccion.cumpleLaRestricion(LocalDateTime.of(2022, 11, 27, 10, 50)));
+		assertFalse(restriccion.cumpleLaRestriccion(LocalDateTime.of(2022, 11, 27, 10, 50)));
 	}
 	
 	@Test
 	public void test03_NocumpleRestriccionCuandoCaeDiaDeSemana() {
-		assertFalse(restriccion.cumpleLaRestricion(LocalDateTime.of(2022, 11, 26, 10, 50)));
+		assertFalse(restriccion.cumpleLaRestriccion(LocalDateTime.of(2022, 11, 26, 10, 50)));
 	}
 	
 }
